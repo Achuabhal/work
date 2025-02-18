@@ -7,7 +7,6 @@ function App() {
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<LOGO/>} />
-        <Route path="/lo" element={<LOGO/>} />
 
       </Routes>
     </BrowserRouter>
