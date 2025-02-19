@@ -19,7 +19,8 @@ const ContactForm = () => {
           </ul>
         </nav>
         <div className={styles.icons}>
-          <span className={styles.icon}>📍</span>
+          <span className={styles.icon}>📍</span></div>
+          <div>
           <span className={styles.icon}>🛒</span>
           <span className={styles.icon}>🌐</span>
         </div>
@@ -29,7 +30,8 @@ const ContactForm = () => {
         <textarea placeholder="Describe your issue here" className={styles.textarea} />
         <div className={styles.formGroup}>
           <input type="text" placeholder="Name" className={styles.input} />
-          <input type="text" placeholder="Contact Number" className={styles.input} />
+          <input type="text" placeholder="Contact Number" className={styles.input} /><br></br>
+          
           <input type="email" placeholder="Email" className={styles.input} />
         </div>
         <button className={styles.submitButton}>Submit</button>
@@ -49,7 +51,7 @@ const ContactForm = () => {
 <br></br>
 
                 <div className={styles.footerLinks}>
-          <p>Services Available At Bengaluru</p>
+          <p>Services Available At<br></br> Bengaluru</p>
           <button className={styles.bookNowButton}>BOOK NOW</button>
         </div>
 
