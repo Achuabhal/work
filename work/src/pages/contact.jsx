@@ -35,11 +35,8 @@ const ContactForm = () => {
         <button className={styles.submitButton}>Submit</button>
       </main>
       <footer className={styles.footer}>
-        <div className={styles.footerLogo}>DUZO</div>
-        <div className={styles.footerLinks}>
-          <p>Services Available At Bengaluru</p>
-          <button className={styles.bookNowButton}>BOOK NOW</button>
-        </div>
+        {/* <div className={styles.footerLogo}>DUZO</div> */}
+        
         <div className={styles.contactInfo}>
           <p>Phone number</p>
           <p>E-mail address</p>
@@ -49,9 +46,26 @@ const ContactForm = () => {
             <span className={styles.icon}>❌</span>
           </div>
         </div>
+<br></br>
+
+                <div className={styles.footerLinks}>
+          <p>Services Available At Bengaluru</p>
+          <button className={styles.bookNowButton}>BOOK NOW</button>
+        </div>
+
+
+        {/* <div className={styles.contactInfo}>
+          <p>Phone number</p>
+          <p>E-mail address</p>
+          <div className={styles.socialIcons}>
+            <span className={styles.icon}>📷</span>
+            <span className={styles.icon}>📘</span>
+            <span className={styles.icon}>❌</span>
+          </div>
+        </div> */}
         <nav className={styles.footerNav}>
           <ul>
-            <li>Site Map</li>
+            <h3>Site Map</h3>
             <li>Services</li>
             <li>Hiring</li>
             <li>About Us</li>

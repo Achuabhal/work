@@ -71,7 +71,7 @@ body {
 
 .nav ul li {
   cursor: pointer;
-  font-size: 14px;
+  font-size: 18px;
 }
 
 .icons {
@@ -129,7 +129,7 @@ body {
 }
 
 .footer {
-  background-color: #f8c08e;
+  background-color: #ec9345;
   padding: 20px;
   border-radius: 15px;
   display: flex;
@@ -154,7 +154,7 @@ body {
 }
 
 .bookNowButton {
-  background-color: #d28b4b;
+  background-color: #e67410;
   color: black;
   font-weight: bold;
   border: none;
@@ -191,7 +191,7 @@ body {
 
 .footerNav ul li {
   color: blue;
-  text-decoration: underline;
+  /* text-decoration: underline; */
   cursor: pointer;
 }
 
