@@ -34,30 +34,32 @@ const MyAccount = () => {
           </div>
 
           <div className={styles.textInp}>
-            <div className={styles.formGroup}>
-              <input type="text" className={styles.inputField} />
-            </div>
-            <div className={styles.formGroup}>
-              <input type="text" className={styles.inputField} />
-            </div>
-          </div>
+  <div className={styles.formGroup}>
+    <input type="text" className={styles.nameInputField} />
+  </div>
+  <div className={styles.formGroup}>
+    <input type="text" className={styles.nameInputField} />
+  </div>
+</div>
+
+          
           
           <div className={styles.genderContainer}>
             <label className={styles.genderLabel}>Gender</label>    
-            <a href="#" className={styles.genderEdit}>Edit</a>
           </div>
           <div className={styles.radioGroup}>
             <label><input type="radio" name="gender" value="male"/> Male</label>
             <label><input type="radio" name="gender" value="female"/> Female</label>
           </div>
 
-          <div className={styles.formGroup}>
-            <label>Email Address</label>
-            <div className={styles.inputEdit}>
-              <input type="email" className={styles.inputField} />
-              <a href="#" className={styles.editLink}>Edit</a>
-            </div>
-          </div>
+              <div className={styles.formGroup}>
+      <div className={styles.labelEditContainer}>
+        <label>Email Address</label>
+        <a href="#" className={styles.emailEditLink}>Edit</a>
+      </div>
+      <input type="email" className={styles.inputField} />
+    </div>
+
 
           <div className={styles.formGroup}>
             <label>Phone Number</label>
