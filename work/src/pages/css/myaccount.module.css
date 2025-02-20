@@ -1,13 +1,5 @@
  /* General Styles */
- body {
-  background-color: #fff3e0;
-  font-family: Arial, sans-serif;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
-  margin: 0;
-}
+
 .duzo-logo {
   height: 40px; /* Adjust size */
   width: auto;
@@ -28,6 +20,13 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  background-color: #fff3e0;
+  font-family: Arial, sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
 }
 
 /* Header */
