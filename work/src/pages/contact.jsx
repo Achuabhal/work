@@ -49,6 +49,8 @@ const ContactForm = () => {
       </main>
 
       <footer className={styles.footer}>
+        
+        <div className={styles.contactInfoo}></div>
         <div className={styles.contactInfo}>
           <p>Phone number</p>
           <p>E-mail address</p>
