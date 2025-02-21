@@ -61,13 +61,14 @@ const MyAccount = () => {
     </div>
 
 
-          <div className={styles.formGroup}>
-            <label>Phone Number</label>
-            <div className={styles.inputEdit}>
-              <input type="tel" className={styles.inputField} />
-              <a href="#" className={styles.editLink}>Edit</a>
-            </div>
-          </div>
+        <div className={styles.formGroup}>
+      <div className={styles.labelRow}>
+        <label className={styles.label}>Phone Number</label>
+        <a href="#" className={styles.editLink}>Edit</a>
+      </div>
+      <input type="tel" className={styles.inputField} />
+    </div>
+
         </section>
       </div>
 
