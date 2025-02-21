@@ -4,32 +4,38 @@ import styles from './css/contact.module.css';
 const ContactForm = () => {
   return (
     <div className={styles.container}>
-      <header className={styles.header}>
-        {/* Corrected the <div> tag around the <img> */}
-        <img src="/assets/logo.png" alt="DUZO logo" className={styles.logo} />
-        <span className={styles.search}>
-          <input type="text" placeholder="How can we help you with?" />
-          <button className={styles.searchButton}>🔍</button>
-
-          <span className={styles.icon}>📍</span>
-          <span className={styles.icon}>🛒</span>
-          {/* <span className={styles.icon}>🌐</span> */}
-          <span className={styles.icon}>👤</span> {/* This is a profile emoji */}
-
-        </span>
-
-        <div className={styles.menu}>
-          <nav className={styles.nav}>
-            <ul>
-              <li>Homes</li>
-              <li>Beauty</li>
-              <li>Automobile</li>
-              <li>Buy / Rent</li>
-            </ul>
-          </nav>
+      <header className={styles.headerContainer}>
+              <div className={styles.headerContent}>
+                <div className={styles.searchBar}>
+                  <img src="/duzo.png" alt="DUZO" className={styles.logo} />
+                  <div className={styles.searchInputContainer}>
+          <input
+            type="text"
+            placeholder="How can we help you with?"
+            className={styles.searchInput}
+          />
+          <button className={styles.searchBtn}>
+            <span className={styles.searchIcon}>🔍</span>
+          </button>
         </div>
-      </header>
-
+                  <div className={styles.navIcons}>
+                    <div className={styles.iconn}>
+                    <img src="/image.png" className={styles.iconn} />
+                    </div>
+                    <img src="/cart.png" className={styles.icon} />
+                    <img src="/user.png" className={styles.icon} />
+                  </div>
+                </div>
+                <nav className={styles.navbar}>
+                  <div className={styles.navLinks}>
+                    <a href="#" className={styles.navItem}>Homes</a>
+                    <a href="#" className={styles.navItem}>Beauty</a>
+                    <a href="#" className={styles.navItem}>Automobile</a>
+                    <a href="#" className={styles.navItem}>Buy/Rent</a>
+                  </div>
+                </nav>
+              </div>
+            </header>
       <main className={styles.main}>
         <h2>How Can We Help You?</h2>
         <textarea placeholder="Describe your issue here" className={styles.textarea} />

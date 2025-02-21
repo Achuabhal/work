@@ -4,18 +4,28 @@ import { FaInstagram, FaFacebook, FaTwitter, FaPhone, FaEnvelope, FaBell, FaShop
 
 const About = () => {
   return (
+    <div className={styles.formm}>
     <div className={styles.form}>
       <header className={styles.headerContainer}>
         <div className={styles.headerContent}>
           <div className={styles.searchBar}>
             <img src="/duzo.png" alt="DUZO" className={styles.logo} />
-            <input type="text" placeholder="How can we help you with?" />
-            <button className={styles.searchBtn}>🔍</button>
-            {/* Replaced icons with React Icons */}
+            <div className={styles.searchInputContainer}>
+    <input
+      type="text"
+      placeholder="How can we help you with?"
+      className={styles.searchInput}
+    />
+    <button className={styles.searchBtn}>
+      <span className={styles.searchIcon}>🔍</span>
+    </button>
+  </div>
             <div className={styles.navIcons}>
-              <FaBell className={styles.icon} />
-              <FaShoppingCart className={styles.icon} />
-              <FaUser className={styles.icon} />
+              <div className={styles.iconn}>
+              <img src="/image.png" className={styles.iconn} />
+              </div>
+              <img src="/cart.png" className={styles.icon} />
+              <img src="/user.png" className={styles.icon} />
             </div>
           </div>
           <nav className={styles.navbar}>
@@ -30,6 +40,7 @@ const About = () => {
       </header>
 
       <main>
+        <div className={styles.banner}>
         <section className={styles.aboutUs}>
           <h2>About Us</h2>
           <div className={styles.aboutContent}>
@@ -55,7 +66,10 @@ const About = () => {
 
         <section className={styles.faq}>
           <div className={styles.faqList}>
-            <h2>Frequently Asked Questions (FAQ'S)</h2>
+            <div className={styles.faqListt}>
+            <h2> Frequently Asked Questions (FAQ'S) </h2>
+            </div>
+            <div className={styles.faqDetails}>
             <details>
               <summary> </summary>
               <p></p>
@@ -72,15 +86,17 @@ const About = () => {
               <summary></summary>
               <p></p>
             </details>
+            </div>
           </div>
         </section>
+        </div>
       </main>
 
       <footer>
         <div className={styles.footerContent}>
           <div className={styles.footerLogoo}>
             <div className={styles.footerLogo}>
-              <img src="/duzo-logo.png" alt="DUZO" />
+            <img src="/duzo.png" alt="DUZO" className={styles.footerLogo} />
             </div>
             <div className={styles.footerInfo}>
               <p><FaPhone /> Phone number</p>
@@ -100,10 +116,10 @@ const About = () => {
           <div className={styles.footerLinks}>
             <h3>Site Map</h3>
             <ul>
-              <li><a href="#">Services</a></li>
-              <li><a href="#">Hiring</a></li>
-              <li><a href="#">About Us</a></li>
-              <li><a href="#">Contact Us</a></li>
+              <li><a href="#"></a>Services</li>
+              <li><a href="#"></a>Hiring</li>
+              <li><a href="#"></a>About Us</li>
+              <li><a href="#"></a>Contact Us</li>
             </ul>
           </div>
         </div>
@@ -112,6 +128,7 @@ const About = () => {
       <div className={styles.footerBottom}>
         <p>© 2024 - DUZO</p>
       </div>
+    </div>
     </div>
   );
 };
