@@ -35,9 +35,7 @@ const CombinedPage = () => {
       {/* Main Content - Location Form */}
       <main className={styles.main}>
         <div className={styles.content}>
-          <h3 className="abdul">
             <img src={myImage1} alt="DUZO Logo" />
-          </h3>
           <h2 className={styles.heading}>
             Pinpoint Your Place and Unlock Our Services.<br />Let's Get Started!
           </h2>

@@ -2,8 +2,7 @@ import React, { useState } from "react";
 import { FaInstagram, FaFacebook, FaTwitter } from "react-icons/fa";
 import { motion } from "framer-motion";
 import { LogIn, MapPin, User, Search } from "lucide-react";
-// import styles from "./css/Oops.module.css";
-import styles from "./css/App.module.css";
+import styles from "./css/Oops.module.css";
 import myImage3 from "./assets/oops1.png";
 import myImage2 from "./assets/oops.png";
 import myImage1 from "./assets/logo.png";
@@ -26,9 +25,7 @@ const Oops = () => {
                 {/* Main Content - Location Form */}
                 <main className={styles.main}>
                   <div className={styles.content}>
-                    <h3 className="abdul">
                       <img src={myImage2} alt="DUZO Logo" />
-                    </h3>
                     <h2 className={styles.heading}>
                       Sit tight.<br />Our service are reaching you soon!!
                     </h2>

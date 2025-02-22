@@ -103,6 +103,7 @@
   width: 24px;
   height: 24px;
   margin-right: 10px;
+  background-color: or;
 }
 
 .button {
@@ -110,7 +111,7 @@
   border: none;
   border-radius: 20px;
   padding: 10px 20px;
-  color: white;
+  color: rgb(255, 135, 7);
   font-size: 16px;
   cursor: pointer;
   position: absolute;
@@ -160,8 +161,8 @@
   gap: 8px;
 }
 
-.main .container .abdul img {
-  width: 10px; /* Reduce the width to 30px */
-  height: 10px; /* Reduce the height to 30px */
+.main .content img {
+  width: 600px; /* Reduce the width to 30px */
+  height: 100px; /* Reduce the height to 30px */
   object-fit: contain; /* Ensure the image maintains its aspect ratio */
 }

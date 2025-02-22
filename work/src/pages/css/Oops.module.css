@@ -1,21 +1,18 @@
-/* oops.module.css */
-
+/* General container */
 .container {
     min-height: 100vh;
     background-color: #ffe4c8;
     display: flex;
     flex-direction: column;
-    align-items: center;
-    justify-content: center;
   }
   
+  /* Header Styles */
   .header {
     background-color: #ffa439;
     padding: 0.2rem;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    width: 100%;
   }
   
   .logo img {
@@ -43,6 +40,7 @@
     font-weight: bold;
   }
   
+  /* Main Section */
   .main {
     flex: 1;
     display: flex;
@@ -61,10 +59,16 @@
   
   .imageContainer {
     width: 30%;
-    height: auto;
+    height: 30%;
     display: flex;
     justify-content: center;
     align-items: center;
+  }
+  
+  @media (min-width: 768px) {
+    .imageContainer {
+      width: 40%;
+    }
   }
   
   .image {
@@ -75,18 +79,66 @@
     object-fit: cover;
   }
   
-  .footer {
-    background-color: #ffa439;
-    padding: 1rem;
-    text-align: center;
-    width: 100%;
+  .inputGroup {
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+    background-color: #fff3e0;
+    border: 1px solid #ffcc80;
+    border-radius: 5px;
+    padding: 10px;
+    position: relative;
+    width: 80%;
   }
   
-  .footerContent {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+  .input {
+    border: none;
+    outline: none;
+    flex-grow: 1;
+    font-size: 16px;
+    background: transparent;
   }
+  
+  .icon {
+    width: 24px;
+    height: 24px;
+    margin-right: 10px;
+    background-color: or;
+  }
+  
+  .button {
+    background-color: #ffb74d;
+    border: none;
+    border-radius: 20px;
+    padding: 10px 20px;
+    color: rgb(255, 135, 7);
+    font-size: 16px;
+    cursor: pointer;
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+  
+  .button:hover {
+    background-color: #ffa726;
+  }
+  
+  /* Footer */
+  .footer {
+      background-color: #ffa439;
+      padding: 0.8rem;
+      text-align: center;
+      width: 98%;
+      height: auto;
+      border-radius: 0%;
+    }
+    
+    .footerContent {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
   
   .socialLinks {
     display: flex;
@@ -102,20 +154,15 @@
     transform: scale(1.1);
   }
   
-  .oops {
-    font-size: 48px;
-    color: #ff6f00;
-    text-align: center;
+  /* Styles for the Abdul image */
+  .abdul {
+    display: flex;
+    align-items: center;
+    gap: 8px;
   }
   
-  .message {
-    margin-top: 20px;
-    color: #333;
-    text-align: center;
-  }
-  
-  @media (min-width: 768px) {
-    .imageContainer {
-      width: 40%;
-    }
+  .main .content img {
+    width: 600px; /* Reduce the width to 30px */
+    height: 200px; /* Reduce the height to 30px */
+    object-fit: contain; /* Ensure the image maintains its aspect ratio */
   }
