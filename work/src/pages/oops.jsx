@@ -12,15 +12,7 @@ const Oops = () => {
           {/* Header */}
           <header className={styles.header}>
             <div className={styles.logo}><img src={myImage1} alt="DUZO Logo" /></div>
-            <div className={styles.nav}>
-              <span>My Account</span>
-              <div className={styles.navItems}>
-                <span>Login</span>
-                <span className={styles.divider}>|</span>
-                <span>Signup</span>
-                <LogIn className="w-5 h-5" />
-              </div>
-            </div>
+ 
           </header>
                 {/* Main Content - Location Form */}
                 <main className={styles.main}>
