@@ -1,5 +1,9 @@
 import React from 'react';
 import styles from './css/contact.module.css';
+// import styes from './css/about.module.css';
+
+// Import the CSS Module styles
+import { FaInstagram, FaFacebook, FaTwitter, FaPhone, FaEnvelope, FaBell, FaShoppingCart, FaUser } from "react-icons/fa";
 
 const ContactForm = () => {
   return (
@@ -49,34 +53,42 @@ const ContactForm = () => {
       </main>
 
       <footer className={styles.footer}>
-        
-        <div className={styles.contactInfoo}></div>
-        <div className={styles.contactInfo}>
-          <p>Phone number</p>
-          <p>E-mail address</p>
-          <div className={styles.socialIcons}>
-            <span className={styles.icon}>📷</span>
-            <span className={styles.icon}>📘</span>
-            <span className={styles.icon}>❌</span>
-          </div>
-        </div>
-        <br />
-
-        <div className={styles.footerLinks}>
-          <p>Services Available At<br />Bengaluru</p>
-          <button className={styles.bookNowButton}>BOOK NOW</button>
-        </div>
-
-        <nav className={styles.footerNav}>
-          <ul>
-            <h3>Site Map</h3>
-            <li>Services</li>
-            <li>Hiring</li>
-            <li>About Us</li>
-            <li>Contact Us</li>
-          </ul>
-        </nav>
-      </footer>
+       
+                <div className={styles.footerContent}>
+                  <div className={styles.footerLogoo}>
+                    <div className={styles.footerLogo}>
+                    <img src="/duzo.png" alt="DUZO" className={styles.footerLogo} />
+                    </div>
+                    <div className={styles.footerInfo}>
+                      <p><FaPhone /> Phone number</p>
+                      <p><FaEnvelope /> E-mail address</p>
+                      <div className={styles.socialLinks}>
+                        <a href="#" className={styles.socialIcon}><FaInstagram /></a>
+                        <a href="#" className={styles.socialIcon}><FaFacebook /></a>
+                        <a href="#" className={styles.socialIcon}><FaTwitter /></a>
+                      </div>
+                    </div>
+                  </div>
+                  <div className={styles.footerLocation}>
+                    <h3>Services Available At</h3>
+                    <h3>Bengaluru</h3>
+                    <button className={styles.bookNow}>BOOK NOW</button>
+                  </div>
+                  <div className={styles.footerLinks}>
+                    <h3>Site Map</h3>
+                    <ul>
+                      <li><a href="#"></a>Services</li>
+                      <li><a href="#"></a>Hiring</li>
+                      <li><a href="#"></a>About Us</li>
+                      <li><a href="#"></a>Contact Us</li>
+                    </ul>
+                  </div>
+                </div>
+              </footer>
+        <div className={styles.footerBottom}>
+                <p>© 2024 - DUZO</p>
+              </div>
+      
     </div>
   );
 };

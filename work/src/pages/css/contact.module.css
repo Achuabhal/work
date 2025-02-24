@@ -13,11 +13,13 @@ body {
   display: flex;
   flex-direction: column;
 }
-
+.container{
+  margin-left: 20%;
+}
 /* Header Container */
 .headerContainer {
   background-color: #FFD29E;
-
+margin-left: 1%;
   height: 203px;
   width: 1440px;
   display: flex;
@@ -75,6 +77,10 @@ body {
   height: 50px;
     gap: 0.9rem;
 }
+
+.searchInputContainer{
+  display: flex;
+}
   /* background: #FFBE5D;
   border-radius: 30px;
   left: 200px;
@@ -96,15 +102,23 @@ body {
 }
 
 .searchBtn {
-  height: 35px;
-  width: 40px;
-  background-color: #eee6d9;
-  border-radius: 50%;
+  /* height: 35px; */
+  /* width: 40px; */
+  background-color: #fafeff;
+  margin-left: -35px;
+  /* border-radius: 50%; */
   border: none;
   cursor: pointer;
   display: flex;
+  border: 1px solid #ccc;
 }
 
+.searchIcon{
+  width: 46.55px;
+  height: 43.64px;
+  margin: auto;
+  
+}
 /* Navigation Icons */
 .navIcons {
   display: flex;
@@ -117,6 +131,7 @@ body {
 }
 
 .iconn {
+  background:orange;
   width: 46.55px;
   height: 43.64px;
   top: 71px;
@@ -173,12 +188,17 @@ body {
 .main {
   padding: 20px;
   flex-grow: 1; /* Ensure main section takes the available space */
-  overflow-y: auto; /* Allow scroll if content overflows */
+  overflow-y: auto; 
+  margin-left: 1%;
+  width: 1421px;
+  height: 553px;
+  top: 225px;
+  border-radius: 46px;
 }
 
 .textarea {
-  width: 100%;
-  height: 150px;
+  width: 1480px;
+  height: 203px;
   font-size: 1.2rem;
   padding: 10px;
   background-color: #d1cfcf;
@@ -216,38 +236,45 @@ body {
   cursor: pointer;
 }
 
-/* Footer styles */
+
 /* Footer styles */
 footer {
   background-color: #FFD29E;
   height: 468px;
-  width: 1440px;
+  width: 1390px;
   top: 2056px;
   border-radius: 43.64px;
   padding: 3rem 2rem 1rem;
+  /* margin-left: -15%; */
+  /* left: 10px; */
+  /* margin-left:-12%; */
 }
 
 .footerContent {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  gap: 2rem;
+  gap:15rem;
   max-width: 100%;
   width: fit-content;
   margin: 0 auto;
+  /* left: -36%; */
+  margin-left: 2%;
+border-radius: 46%;
+
 }
 
 .footerLogo {
   width: 303.27px;
   height: 212.36px;
   top: 2100px;
-  left: 74px;
+  left: 70px;
 }
-  
+
 .footerInfo{
   width: 226px;
   height: 44px;
   font-family: OutFit;
-  font-size: 19px;
+  font-size: 25px;
 color: #000000;
 }
 
@@ -271,7 +298,7 @@ color: #000000;
 
 .footerLinks h3 {
   padding-left: 1.9rem;
-  font-size: 1.6rem;
+  font-size: 1.9rem;
   list-style: none;
   color: black;
 }
@@ -279,24 +306,29 @@ color: #000000;
 .footerLinks ul li {
   list-style: none;
   color: blue;
-  font-size: 1.3rem;
+  font-size: 1.7rem;
 }
 
 .footerLocation {
-  font-size: 1.2rem;
+  font-size: 1.6rem;
   color: #0b0b0b;
   text-align: center;
 }
 
 .footerLinks a {
+  font-size: 1.4rem;
   color: #333;
   text-decoration: none;
 }
 
+
+
+/*  */
+
 .footerBottom {
   text-align: center;
-  margin-top: 0.6rem;
-  /* padding-top: 0 auto; */
+  margin-top: 2.2rem;
+  margin-left: 1%;  /* padding-top: 0 auto; */
   padding: 0.7rem;
 
   background-color: #D28E26;
@@ -305,6 +337,7 @@ color: #000000;
   height: 72.73px;
   font-size: 26px;
 }
+
 
 /* Responsive design */
 @media (max-width: 1024px) {
