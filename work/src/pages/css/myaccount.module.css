@@ -1,68 +1,65 @@
- /* General Styles */
- 
+
+@media screen and (min-width:1024px) and (max-width: 2000px)
+ {
+
+/* General Styles */
+.container
+{
+  width: 100%;
+  height: auto;  
+}
 .duzoLogo {
   padding-top: 10px;
-  height: 100px; /* Adjust size */
+  height: 70px; /* Adjust size */
   width: auto;
   margin-left: 8px; /* Space from the left */
 }
 
-.accountTitle{
+.accountTitle {
   color: black;
   margin-right: 30px;
 }
 
-/* Container */
-.container {
-  width: 100vw;
-  height: 100vh;
-  background-color: #fff3e0;
-  padding: 0px;
-  border-radius: 10px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  font-family: Arial, sans-serif;
-  margin: 0;
-}
-
-
 /* Header */
-  .header { 
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background-color: #ffa726;
-    padding: 5px;
-    font-size: 18px;
-    font-weight: bold;  
-    color: white;
-    width: 100vw;  /* Ensure full width */
-    height: 100vh; /* Make it full-screen height */
-    border-radius: 0; /* Remove unnecessary border-radius */
-  }
-  
-
-/* Main Content */
-.mainContent {
+.header {
   display: flex;
-  width: 100%;
-  margin-top: 20px;
+  flex-direction: row;
   justify-content: space-between;
+  align-items: center;
+  background-color: #ffa726;
+  padding: 5px;
+  font-size: 18px;
+  font-weight: bold;
+  color: white;
+  width: 100%; /* Ensure full width */
+  height: 70px; /* Make it full-screen height */
+  border-radius: 0; /* Remove unnecessary border-radius */
 }
+.mainPage{
+  display: flex;
+  flex-direction: row;
+  padding: 30px;
+  width: 100%;
+  height: auto;
+  gap: 20px;
+
+  
+}
+
 
 /* Sidebar */
 .sidebar {
   display: flex;
+  margin-top: 70px;
+  margin-left: 100px;
+  margin-right: 100px;
   flex-direction: column;
-  gap: 15px;
-  width: 250px;
-  padding: 15px;
+  gap: 20px;
+  width: 200px;
+  padding: 0px;
 }
 
-.sidebar button {
+.sidebarButton {
   background-color: #FFAB5B;
   border: none;
   padding: 15px;
@@ -72,13 +69,25 @@
   color: black;
   font-weight: bold;
   border-radius: 25px;
-  width: 100%;
-  height : 70px;
+  width: 200px;
+  height: 70px;
   box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
   transition: all 0.3s ease-in-out;
 }
+.content{
+  .content {
+    width: calc(100% - 40px); /* Adjust width dynamically */
+    
+    padding: 20px;
+    margin: 0 auto; /* Center content */
+    text-align: center;
+    height: 600px;
+    overflow-x: hidden; /* Prevent horizontal scrolling */
+  }
+  
+}
 
-.sidebar button:hover {
+.sidebarButton:hover {
   background-color: #ff9800;
 }
 
@@ -87,15 +96,32 @@
   background: #ffcc99; /* Light peach background */
   padding: 20px;
   border-radius: 15px; /* Rounded corners */
-  max-width: 500px;
-  width: 100%;
-  margin: auto;
+  
+  width: 700px;
+  height: 450px;
+  margin-bottom: 20px;
+  margin-top: 30px;
+  margin-right: 250px;
   text-align: center;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
-.sectionTitle{
+/* Customer care*/
+.customerCare{
+  background: #ffcc99; /* Light peach background */
+  padding: 20px;
+  border-radius: 15px; /* Rounded corners */
+  max-width:100%;
+  height: 450px;
+  margin-bottom: 20px;
+  margin-top: 30px;
+  margin-right: 200px;
+  text-align: center;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.sectionTitle {
   padding: 10px;
-  font-family:Georgia, 'Times New Roman', Times, serif ;
+  font-family: Georgia, 'Times New Roman', Times, serif;
 }
 
 /* Form Fields */
@@ -105,7 +131,7 @@
   gap: 20px;
 }
 
-.textInp {
+.personalInfotextInp {
   display: flex;
   gap: 10px; /* Adds spacing between the inputs */
   justify-content: space-between; /* Ensures they stay on the same line */
@@ -118,14 +144,14 @@
 }
 
 .nameInputField {
+  max-width: fit-content;
   width: 100%; /* Adjusts input width to be responsive */
   padding: 8px;
-  margin-right: 120px;
+  margin-right: 100px;
   border: none;
   border-radius: 70px;
   background-color: white;
 }
-
 
 .editLink {
   margin-left: 0px;
@@ -134,16 +160,11 @@
   cursor: pointer;
 }
 
-
-/* .formGroupInline input {
-  width: 40px;
-} */
-
 /* Labels */
 .formGroup label {
   font-weight: bolder;
   padding-right: 90px;
-  font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
   font-size: 15px;
   flex: 1;
   text-align: left;
@@ -162,7 +183,6 @@
 /* Radio Buttons */
 .genderContainer {
   display: flex;
-  
   width: 100%;
   padding: 0px;
   margin-left: 0px;
@@ -172,10 +192,11 @@
 
 .genderLabel {
   font-weight: bolder;
-  font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
   font-size: 16px;
   margin-right: 150px;
 }
+
 .radioGroup {
   display: flex;
   gap: 150px; /* Adds space between the radio buttons */
@@ -196,7 +217,7 @@
   cursor: pointer;
 }
 
-/*email*/
+/* Email and Phone Number */
 .formGroup {
   display: flex;
   flex-direction: column; /* Ensures input stays on the next line */
@@ -206,7 +227,6 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  
   margin-top: 15px;
   margin-bottom: 5px; /* Adds slight spacing before the input box */
 }
@@ -218,7 +238,8 @@
   cursor: pointer;
   font-size: 14px;
 }
-/*Phone number */
+
+/* Phone Number */
 .formGroup {
   display: flex;
   flex-direction: column;
@@ -243,8 +264,6 @@
   color: #007bff;
 }
 
-
-
 .inputField {
   width: 150px;
   padding: 8px;
@@ -259,7 +278,6 @@
   cursor: pointer;
   font-size: 14px;
 }
-
 
 /* Footer */
 .footer {
@@ -277,13 +295,111 @@
   height: 15px;
   border-radius: 1px;
 }
-.footerText{
+
+.footerText {
   margin-left: 50px;
-  color: black
+  color: black;
 }
 
 .socialIcons {
   display: flex;
   margin-right: 20px;
   gap: 30px; /* Adds space between icons */
+}
+}
+
+/* Media Queries for Mobile Screens */
+@media screen and (min-device-width:320px) and (orientation: portrait) {
+  .container{
+    width: 100%;
+    height: auto;
+  }
+  
+  .header {
+    margin: 0%;
+    height: 35px;
+    width: 100%;
+    display: flex;
+    gap: 190px;
+    flex-direction: row;
+    background-color: #ffa726;
+  }
+  .logoContainer{
+    margin: 0px;
+  }
+  .duzoLogo{
+    padding-top: 0px;
+  height: 30px; /* Adjust size */
+  width: auto;
+   
+  }
+
+  .accountTitle {
+    font-size:10.6px;
+  }
+
+  .mainContent {
+    flex-direction: column;
+    margin-top: 10px;
+  }
+
+  .sidebar {
+    margin: 0;
+    flex-direction: row;
+    display: flex;
+    width: 100%;
+    padding: 10px;
+  }
+
+  .sidebar button {
+    width: 100%;
+    margin-bottom: 10px;
+  }
+
+  .personalInfo, .customerCare {
+    margin: 20px;
+    margin-right: 20px;
+  }
+
+  .formGroupInline {
+    flex-direction: column;
+  }
+
+  .textInp {
+    flex-direction: column;
+  }
+
+  .formGroup {
+    margin-bottom: 10px;
+  }
+
+  .genderContainer {
+    margin-left: 0;
+  }
+
+  .genderLabel {
+    margin-right: 0;
+  }
+
+  .radioGroup {
+    gap: 10px;
+  }
+
+  .labelEditContainer, .labelRow {
+    width: 100%;
+  }
+
+  .emailEditLink, .editLink {
+    margin-right: 0;
+  }
+
+  .inputField {
+    width: 100%;
+  }
+
+  .footer {
+    flex-direction: column;
+    margin-top: 20px;
+    margin-right: 0;
+  }
 }
