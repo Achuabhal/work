@@ -1,5 +1,5 @@
 
-@media screen and (min-width:1024px) and (max-width: 2000px)
+@media screen and (min-width:1024px) 
  {
 
 /* General Styles */
@@ -21,7 +21,7 @@
 }
 
 /* Header */
-.header {
+.heading {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -41,9 +41,7 @@
   padding: 30px;
   width: 100%;
   height: auto;
-  gap: 20px;
-
-  
+  gap: 20px;  
 }
 
 
@@ -99,7 +97,7 @@
   
   width: 700px;
   height: 450px;
-  margin-bottom: 20px;
+  margin-bottom: 90px;
   margin-top: 30px;
   margin-right: 250px;
   text-align: center;
@@ -281,23 +279,23 @@
 
 /* Footer */
 .footer {
+  width: 100vw; 
+  height: 40px;
+  margin: 0;
+  padding: 30px; 
   display: flex;
-  margin-top: 40px;
-  margin-right: 50px;
   justify-content: space-between;
   align-items: center;
   background-color: #ffa726;
-  padding: 15px;
   font-size: 18px;
   font-weight: bold;
-  color: white;
-  width: 99%;
-  height: 15px;
-  border-radius: 1px;
+  border-radius: 0; /* Removes rounded corners */
+  box-sizing: border-box; /* Ensures padding doesn't add extra width */
 }
 
+
 .footerText {
-  margin-left: 50px;
+  margin-left: 0px;
   color: black;
 }
 
@@ -309,16 +307,16 @@
 }
 
 /* Media Queries for Mobile Screens */
-@media screen and (min-device-width:320px) and (orientation: portrait) {
+@media screen  and  (max-device-width:600px)  {
   .container{
     width: 100%;
     height: auto;
   }
   
-  .header {
+  .heading {
     margin: 0%;
     height: 35px;
-    width: 100%;
+    width: 100vh;
     display: flex;
     gap: 190px;
     flex-direction: row;
@@ -347,13 +345,25 @@
     margin: 0;
     flex-direction: row;
     display: flex;
+    gap: 5px;
     width: 100%;
     padding: 10px;
   }
 
-  .sidebar button {
-    width: 100%;
-    margin-bottom: 10px;
+  .sidebarButton {
+    background-color: #FFAB5B;
+    border: none;
+    padding: 8px;
+    text-align: center;
+    cursor: pointer;
+    font-size: 10px;
+    color: black;
+    font-weight: bold;
+    border-radius: 25px;
+    width: 100px;
+    height: 45px;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s ease-in-out;
   }
 
   .personalInfo, .customerCare {
