@@ -37,10 +37,10 @@ const MyAccount = () => {
                 <h1 className={styles.sectionTitle}>Personal Information</h1>
                 <div className={styles.formGroupInline}>
                   <div className={styles.formGroup}>
-                    <label>First Name</label>
+                    <label className={styles.Name}>First Name</label>
                   </div>
                   <div className={styles.formGroup}>
-                    <label>Last Name</label>
+                    <label className={styles.Name}>Last Name</label>
                   </div>
                   <a href="#" className={styles.editLink}>Edit</a>
                 </div>
@@ -56,8 +56,8 @@ const MyAccount = () => {
                   <label className={styles.genderLabel}>Gender</label>    
                 </div>
                 <div className={styles.radioGroup}>
-                  <label><input type="radio" name="gender" value="male"/> Male</label>
-                  <label><input type="radio" name="gender" value="female"/> Female</label>
+                  <label className={styles.radioLabel}><input type="radio" name="gender" value="male" className={styles.gender}/> Male</label>
+                  <label className={styles.radioLabel}><input type="radio" name="gender" value="female" className={styles.gender}/> Female</label>
                 </div>
                 <div className={styles.formGroup}>
                   <div className={styles.labelEditContainer}>
@@ -99,7 +99,7 @@ const MyAccount = () => {
           </div>
 
       
-      <footer className={styles.footer}>
+      <footer className={styles.foot}>
         <p className={styles.footerText}>Copyrights &copy; 2024 - DUZO</p>
         <div className={styles.socialIcons}>
           <a href="https://instagram.com" target="_blank" rel="noopener noreferrer">
