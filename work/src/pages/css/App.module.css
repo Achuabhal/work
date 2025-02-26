@@ -1,13 +1,19 @@
 /* General container */
-.container {
+@media (max-width: 480px) {
+  .container {
+    max-width: 95%; /* Further adjust for smaller phones */
+}
+
+.pageContainer {
   min-height: 100vh;
   background-color: #ffe4c8;
   display: flex;
   flex-direction: column;
 }
 
+ 
 /* Header Styles */
-.header {
+.pageHeader {
   background-color: #ffa439;
   padding: 0.2rem;
   display: flex;
@@ -15,15 +21,20 @@
   align-items: center;
 }
 
-.logo img {
+.logoContainer {
+  display: flex;
+  align-items: center;
+}
+
+.logoImage {
   width: auto;
-  height: 60px;
+  height: 100px;
   max-height: 100%;
   object-fit: contain;
   display: block;
 }
 
-.nav {
+.navContainer {
   display: flex;
   align-items: center;
   gap: 1rem;
@@ -35,13 +46,26 @@
   gap: 0.5rem;
 }
 
-.divider {
+.navDivider {
   color: white;
   font-weight: bold;
 }
 
+.accountText,
+.loginText,
+.signupText {
+  color: white;
+  font-weight: bold;
+}
+
+.loginIcon {
+  width: 20px;
+  height: 20px;
+  color: white;
+}
+
 /* Main Section */
-.main {
+.pageMain {
   flex: 1;
   display: flex;
   justify-content: center;
@@ -49,33 +73,26 @@
   padding: 2rem;
 }
 
-.content {
-  width: 50%;
+.formContainer {
+  width: 100%;
   max-width: 600px;
   display: flex;
   flex-direction: column;
   gap: 1.5rem;
 }
 
-.imageContainer {
-  width: 30%;
-  height: 30%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+.formLogo {
+  width: auto;
+  height: 150px;
+  padding-left: 50%;
+  align-self: center;
 }
 
-@media (min-width: 768px) {
-  .imageContainer {
-    width: 40%;
-  }
-}
-
-.image {
-  max-width: 100%;
-  height: auto;
- 
-  object-fit: cover;
+.headingText {
+  font-size: 1.5rem;
+  padding-left: 15%;
+  font-weight: bold;
+  color: #333;
 }
 
 .inputGroup {
@@ -87,10 +104,10 @@
   border-radius: 5px;
   padding: 10px;
   position: relative;
-  width: 80%;
+  width: 170%;
 }
 
-.input {
+.textInput {
   border: none;
   outline: none;
   flex-grow: 1;
@@ -98,19 +115,20 @@
   background: transparent;
 }
 
-.icon {
+.inputIcon {
   width: 24px;
   height: 24px;
+  padding: 1rem;
   margin-right: 10px;
-  background-color: or;
+  color: #ff8c00;
 }
 
-.button {
-  background-color: #ffb74d;
+.detectButton {
+  background-color: #ffa726;
   border: none;
   border-radius: 20px;
   padding: 10px 20px;
-  color: rgb(255, 135, 7);
+  color: rgb(17, 16, 15);
   font-size: 16px;
   cursor: pointer;
   position: absolute;
@@ -119,29 +137,49 @@
   transform: translateY(-50%);
 }
 
-.button:hover {
-  background-color: #ffa726;
+.detectButton:hover {
+  background-color: #f89604;
+}
+
+.imageSection {
+  width: 150%;
+  display: flex;
+  padding-left: 30%;
+  justify-content: center;
+  align-items: center;
+}
+
+.illustrationImage {
+  max-width: 120%;
+ 
+  object-fit: cover;
 }
 
 /* Footer */
-.footer {
-    background-color: #ffa439;
-    padding: 0.8rem;
-    text-align: center;
-    width: 98%;
-    height: auto;
-    border-radius: 0%;
-  }
-  
-  .footerContent {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  }
+.pageFooter {
+  background-color: #ffa439;
+  padding: 1rem;
+  width: 98%;
+  height: auto;
+  border-radius: 0%;
+  text-align: center;
+}
 
-.socialLinks {
+.footerContent {
   display: flex;
-  gap: 3rem;
+  justify-content: space-between;
+  align-items: center;
+}
+
+
+.footerContent,
+.copyrightText {
+   font-size: large;
+}
+
+.socialIcons {
+  display: flex;
+  gap: 4rem;
 }
 
 .socialLink {
@@ -152,16 +190,4 @@
 .socialLink:hover {
   transform: scale(1.1);
 }
-
-/* Styles for the Abdul image */
-.abdul {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-}
-
-.main .content img {
-  width: 600px; /* Reduce the width to 30px */
-  height: 100px; /* Reduce the height to 30px */
-  object-fit: contain; /* Ensure the image maintains its aspect ratio */
 }

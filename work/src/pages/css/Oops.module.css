@@ -1,167 +1,188 @@
 /* General container */
-.container {
-    min-height: 100vh;
-    background-color: #ffe4c8;
-    display: flex;
-    flex-direction: column;
-  }
-  
-  /* Header Styles */
-  .header {
-    background-color: #ffa439;
-    padding: 0.2rem;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  }
-  
-  .logo img {
-    width: auto;
-    height: 60px;
-    max-height: 100%;
-    object-fit: contain;
-    display: block;
-  }
-  
-  .nav {
-    display: flex;
-    align-items: center;
-    gap: 1rem;
-  }
-  
-  .navItems {
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-  }
-  
-  .divider {
-    color: white;
-    font-weight: bold;
-  }
-  
-  /* Main Section */
-  .main {
-    flex: 1;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 2rem;
-  }
-  
-  .content {
-    width: 50%;
-    max-width: 600px;
-    display: flex;
-    flex-direction: column;
-    gap: 1.5rem;
-  }
-  
-  .imageContainer {
-    width: 30%;
-    height: 30%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-  
-  @media (min-width: 768px) {
-    .imageContainer {
-      width: 40%;
-    }
-  }
-  
-  .image {
-    max-width: 100%;
-    height: auto;
- 
-    object-fit: cover;
-  }
-  
-  .inputGroup {
-    display: flex;
-    align-items: center;
-    margin-bottom: 15px;
-    background-color: #fff3e0;
-    border: 1px solid #ffcc80;
-    border-radius: 5px;
-    padding: 10px;
-    position: relative;
-    width: 80%;
-  }
-  
-  .input {
-    border: none;
-    outline: none;
-    flex-grow: 1;
-    font-size: 16px;
-    background: transparent;
-  }
-  
-  .icon {
-    width: 24px;
-    height: 24px;
-    margin-right: 10px;
-    background-color: or;
-  }
-  
-  .button {
-    background-color: #ffb74d;
-    border: none;
-    border-radius: 20px;
-    padding: 10px 20px;
-    color: rgb(255, 135, 7);
-    font-size: 16px;
-    cursor: pointer;
-    position: absolute;
-    right: 10px;
-    top: 50%;
-    transform: translateY(-50%);
-  }
-  
-  .button:hover {
-    background-color: #ffa726;
-  }
-  
-  /* Footer */
-  .footer {
-      background-color: #ffa439;
-      padding: 0.8rem;
-      text-align: center;
-      width: 98%;
-      height: auto;
-      border-radius: 0%;
-    }
-    
-    .footerContent {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-  
-  .socialLinks {
-    display: flex;
-    gap: 3rem;
-  }
-  
-  .socialLink {
-    color: black;
-    transition: transform 0.2s ease-in-out;
-  }
-  
-  .socialLink:hover {
-    transform: scale(1.1);
-  }
-  
-  /* Styles for the Abdul image */
-  .abdul {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-  }
-  
-  .main .content img {
-    width: 600px; /* Reduce the width to 30px */
-    height: 200px; /* Reduce the height to 30px */
-    object-fit: contain; /* Ensure the image maintains its aspect ratio */
-  }
+.pageContainer {
+  min-height: 100vh;
+  background-color: #ffe4c8;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Header Styles */
+.pageHeader {
+  background-color: #ffa439;
+  padding: 0.2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logoContainer {
+  display: flex;
+  align-items: center;
+}
+
+.logoImage {
+  width: auto;
+  height: 100px;
+  max-height: 100%;
+  object-fit: contain;
+  display: block;
+}
+
+.navContainer {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.navItems {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.navDivider {
+  color: white;
+  font-weight: bold;
+}
+
+.accountText,
+.loginText,
+.signupText {
+  color: white;
+  font-weight: bold;
+}
+
+.loginIcon {
+  width: 20px;
+  height: 20px;
+  color: white;
+}
+
+/* Main Section */
+.pageMain {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 2rem;
+}
+
+.formContainer {
+  width: 50%;
+  height: auto;
+  max-width: 600px;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.formLogo {
+  width: auto;
+  height: 250px;
+  padding-left: 10%;
+  align-self: center;
+}
+
+.headingText {
+  font-size: 1.5rem;
+  text-align: center;
+  padding-left: 0%;
+  font-weight: bold;
+  color: #333;
+}
+
+.inputGroup {
+  display: flex;
+  align-items: center;
+  margin-bottom: 15px;
+  background-color: #fff3e0;
+  border: 1px solid #ffcc80;
+  border-radius: 5px;
+  padding: 10px;
+  position: relative;
+  width: 170%;
+}
+
+.textInput {
+  border: none;
+  outline: none;
+  flex-grow: 1;
+  font-size: 16px;
+  background: transparent;
+}
+
+.inputIcon {
+  width: 24px;
+  height: 24px;
+  padding: 1rem;
+  margin-right: 10px;
+  color: #ff8c00;
+}
+
+.detectButton {
+  background-color: #ffa726;
+  border: none;
+  border-radius: 20px;
+  padding: 10px 20px;
+  color: rgb(17, 16, 15);
+  font-size: 16px;
+  cursor: pointer;
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.detectButton:hover {
+  background-color: #ffa726;
+}
+
+.imageSection {
+  width: 150%;
+  display: flex;
+  padding-left: 30%;
+  justify-content: center;
+  align-items: center;
+}
+
+.illustrationImage {
+  max-width: auto;
+  height: 390px;
+  object-fit: cover;
+}
+
+/* Footer */
+.pageFooter {
+  background-color: #ffa439;
+  padding: 1rem;
+  width: 98%;
+  height: auto;
+  border-radius: 0%;
+  text-align: center;
+}
+
+.footerContent {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+
+.footerContent,
+.copyrightText {
+   font-size: large;
+}
+
+.socialIcons {
+  display: flex;
+  gap: 4rem;
+}
+
+.socialLink {
+  color: black;
+  transition: transform 0.2s ease-in-out;
+}
+
+.socialLink:hover {
+  transform: scale(1.1);
+}
