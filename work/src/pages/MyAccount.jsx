@@ -1,10 +1,14 @@
-
-import React, { useState } from "react";
+import React, { useState } from "react"; 
 import { FaInstagram, FaFacebook, FaXTwitter } from "react-icons/fa6"; // Importing icons
 import styles from "./css/myaccount.module.css";
 
 const MyAccount = () => {
   const [activeSection, setActiveSection] = useState("personalInfo");
+  const [upiIds, setUpiIds] = useState(["egegegeg@okicicic", "egegegeg@okicicic"]);
+  const [cards, setCards] = useState([
+    { number: "**** **** **** 1234", expiry: "MM/YY", cvv: "***" },
+    { number: "**** **** **** 5678", expiry: "MM/YY", cvv: "***" },
+  ]);
 
   return (
     <div className={styles.container}>
@@ -14,8 +18,8 @@ const MyAccount = () => {
           </div>
           <div className={styles.accountTitle}>MY ACCOUNT</div>
         </header>
+
       <div className={styles.mainPage}>
-      
           <div className={styles.sidebar}>
             <button className={styles.sidebarButton} onClick={() => setActiveSection("personalInfo")}>
               Personal Information
@@ -56,8 +60,12 @@ const MyAccount = () => {
                   <label className={styles.genderLabel}>Gender</label>    
                 </div>
                 <div className={styles.radioGroup}>
-                  <label className={styles.radioLabel}><input type="radio" name="gender" value="male" className={styles.gender}/> Male</label>
-                  <label className={styles.radioLabel}><input type="radio" name="gender" value="female" className={styles.gender}/> Female</label>
+                  <label className={styles.radioLabel}>
+                    <input type="radio" name="gender" value="male" className={styles.gender}/> Male
+                  </label>
+                  <label className={styles.radioLabel}>
+                    <input type="radio" name="gender" value="female" className={styles.gender}/> Female
+                  </label>
                 </div>
                 <div className={styles.formGroup}>
                   <div className={styles.labelEditContainer}>
@@ -73,32 +81,85 @@ const MyAccount = () => {
                   </div>
                   <input type="tel" className={styles.inputField} />
                 </div>
-            </div>
-            
+              </div>
             )}
           </div>
-            <section className={styles.content}>
+
+          <section className={styles.content}>
             {activeSection === "customerCare" && (
               <div className={styles.customerCare}>
-                <h1 className={styles.sectionTitle}>Customer Care</h1>
+                <h1 className={styles.customerTitle}>Customer Care</h1>
                 <div className={styles.formGroup}>
                   <label>How Can We Help You?</label>
-                  <textarea className={styles.inputField} placeholder="Describe your issue here"></textarea>
+                  <textarea type="text" className={styles.issueField} placeholder="Describe your issue here"/>
                 </div>
-                <div className={styles.formGroup}>
-                  <input type="text" className={styles.inputField} placeholder="Name" />
-                  <input type="text" className={styles.inputField} placeholder="Contact Number" />
-                </div>
-                <div className={styles.formGroup}>
-                  <input type="email" className={styles.inputField} placeholder="Email" />
+                <div className={styles.customerInfo}>
+                  <input type="text" className={styles.customerDetails} placeholder="Name" />
+                  <input type="text" className={styles.customerDetails} placeholder="Contact Number" />
+                  <input type="email" className={styles.customerDetails} placeholder="Email" />
                 </div>
                 <button className={styles.submitButton}>Submit</button>
               </div>
             )}
-            </section>
-          </div>
+          </section>
+          <div classname={styles.content}>
+            {activeSection === "orders" && (
+              <div className={styles.ordersSection}>
+                <h1 className={styles.sectionTitle}>Your Orders</h1>
+                <div className={styles.ordersContainer}>
+                  <div className={styles.orderItem}>
+                    <div className={styles.orderImage}>
+                      <img src="/placeholder.png" alt="Order Thumbnail" />
+                    </div>
+                    <div className={styles.orderDetails}>
+                      <p><strong>Order Name</strong></p>
+                      <p>Amount Paid</p>
+                    </div>
+                    <div className={styles.orderMeta}>
+                      <p>Date</p>
+                      <button className={styles.rateReviewButton}>Rate and Review</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            )}
+          </div>  
+          <div className={styles.content}>    
+            {activeSection === "paymentMethods" && (
+              <div className={styles.paymentSection}>
+                <h1 className={styles.paymentTitle}>Saved Payment Details</h1>
 
-      
+                <div className={styles.savedUPI}>
+                  <h2 className={styles.subTitle}>Saved UPI ID’s</h2>
+                  {upiIds.map((id, index) => (
+                    <input key={index} type="text" value={id} className={styles.inputUPI} />
+                  ))}
+                </div>
+
+                <div className={styles.savedCards}>
+                  <h2 className={styles.subTitle}>Saved Debit Card / Credit Card</h2>
+                  {cards.map((card, index) => (
+                    <div key={index} className={styles.cardDetails}>
+                      <p classname={styles.cardTitles}>Card Number</p>
+                      <input type="text" value={card.number} className={styles.inputField} />
+                      <div className={styles.inlineFields}>
+                        <div>
+                          <p classname={styles.cardTitles}>Expiry Date</p>
+                          <input type="text" value={card.expiry} className={styles.smallInput} />
+                        </div>
+                        <div>
+                          <p classname={styles.cardTitles}>CVV</p>
+                          <input type="text" value={card.cvv} className={styles.smallInput} />
+                        </div>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            )}
+          </div>
+      </div>
+
       <footer className={styles.foot}>
         <p className={styles.footerText}>Copyrights &copy; 2024 - DUZO</p>
         <div className={styles.socialIcons}>

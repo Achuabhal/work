@@ -99,24 +99,7 @@
   text-align: center;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
-/* Customer care*/
-.customerCare{
-  background: #ffcc99; /* Light peach background */
-  padding: 20px;
-  border-radius: 15px; /* Rounded corners */
-  max-width:100%;
-  height: 450px;
-  margin-bottom: 20px;
-  margin-top: 30px;
-  margin-right: 200px;
-  text-align: center;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-}
 
-.sectionTitle {
-  padding: 10px;
-  font-family: Georgia, 'Times New Roman', Times, serif;
-}
 
 /* Form Fields */
 .formGroupInline {
@@ -249,21 +232,104 @@
   margin-bottom: 5px; /* Adds spacing between label row and input */
 }
 
-/* .label {
-  font-weight: bold;
-} */
 
 .editLink {
   text-decoration: none;
   color: #007bff;
 }
 
-.inputField {
+.formGroup .inputField {
   width: 150px;
   padding: 8px;
   border: none;
   border-radius: 20px;
   background-color: white;
+}
+
+/* customer module */
+.customerCare{
+  background: #ffcc99; /* Light peach background */
+  padding: 20px;
+  border-radius: 15px; /* Rounded corners */
+  width: 500px;
+  max-width:100%;
+  height: 450px;
+  margin-bottom: 20px;
+  margin-top: 30px;
+  margin-right: 200px;
+  text-align: center;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.customerTitle {
+  padding: 10px;
+  font-family: Georgia, 'Times New Roman', Times, serif;
+}
+
+
+.customerInfo {
+  width: 120vh;
+  display: flex;
+  flex-wrap: wrap; /* Allows items to wrap onto the next row */
+  gap: 20px; /* Adjust spacing between input fields */
+}
+
+.issueField {
+  width: 350px;
+  height: 20vh;
+  border-radius: 20px;
+  border: none;
+  padding: 0px; /* Ensures placeholder is positioned properly */
+  font-size: 16px;
+}
+
+.issueField::placeholder {
+  font-weight: bold;
+  text-align: left;
+  vertical-align: top;
+  padding-bottom: 10px; /* Moves the placeholder text to the top */
+  padding-left: 5px; /* Moves it slightly to the left */
+  color: #3a3a3a; /* Optional: Adjust the color */
+}
+
+.customerDetails {
+  margin-top: 20px;
+  margin-right:50px ;
+  width: calc(20% - 10px); /* Ensures two inputs fit in one row */
+  height: 20px; /* Adjust input height */
+  gap: 90px;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  border-radius: 25px;
+  border: none;
+  padding: 10px;
+}
+.customerDetails::placeholder{
+  color:black ;
+  font-weight: bold;
+}
+
+
+.customerDetails:nth-child(2) { 
+  margin-left: 10%; 
+}
+.customerDetails:nth-child(3) { 
+  width: 40vh; /* Email field takes full width on the next row */
+  margin-bottom: 20px;
+
+}
+
+.customerCare .submitButton{
+  background-color:#ff8c00;
+  color: #fff;
+  font-weight: bolder;
+  border: none;
+  width: 15vh;
+  height: 4vh;
+  border-radius: 30px;
+  padding-left: 5px;
+  padding-right: 5px;
 }
 
 .editLink {
@@ -288,6 +354,149 @@
   border-radius: 0; /* Removes rounded corners */
   box-sizing: border-box; /* Ensures padding doesn't add extra width */
 }
+/* Orders form */
+.ordersSection {
+  background-color: #fdd8b3; /* Light peach background */
+  padding: 30px;
+  
+  height: 500px;
+  border-radius: 20px;
+  text-align: center;
+  width: 500px;
+  margin-top: 20px;
+  margin-right: 300px;
+  
+}
+
+.sectionTitle {
+  font-size: 20px;
+  font-weight: bold;
+  color: #000;
+  margin-bottom: 15px;
+}
+
+.ordersContainer {
+  background-color: #fff; /* White card */
+  padding: 15px;
+  border-radius: 20px;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+  width: 70vh;
+  height: 12vh;
+  margin: auto;
+}
+
+.orderItem {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+}
+
+.orderImage img {
+  width: 50vh;
+  margin-right: 10px;
+  background-color: #948f8f;
+  border-radius: 5px;
+}
+
+.orderDetails {
+  flex-grow: 1;
+  text-align: center;
+}
+
+.orderDetails p {
+  margin: 2px 0;
+  font-size: 14px;
+  color: #333;
+}
+
+.orderMeta {
+  text-align: center;
+  color: #000;
+  font-size: 12px;
+  font-weight: bold;
+}
+
+
+.rateReviewButton {
+  background-color: #fff;
+  color: #000;
+  border: none;
+  padding: 6px 10px;
+  font-size: 12px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+/* Payment section */ 
+.paymentSection {
+  background-color: #fdd8b3; /* Light peach background */
+  padding: 20px;
+  border-radius: 10px;
+  width: 600px;
+  margin-right: 40px;
+  text-align: center;
+}
+
+.paymentTitle {
+  font-size: 20px;
+  font-weight: bold;
+  color: #000;
+  margin-bottom: 15px;
+}
+
+.subTitle {
+  font-size: 16px;
+  font-weight: bold;
+  color: #000;
+  margin-top: 15px;
+  text-align: left;
+}
+
+.savedUPI, .savedCards {
+  margin-top: 15px;
+  text-align: left;
+}
+
+.inputUPI {
+  width: 50%;
+  padding: 10px;
+  margin: 8px 0;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: #fff;
+}
+
+.cardDetails {
+  background-color: #fff;
+  padding: 15px;
+  border-radius: 10px;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+  margin-bottom: 10px;
+}
+
+.inlineFields {
+  display: flex;
+  justify-content: space-between;
+}
+
+.smallInput {
+  width: 80px;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: #fff;
+}
+
+.cardTitles {
+  margin: 5px 0;
+  font-size: 70px;
+  color: #070707;
+}
+
+
 
 
 .footerText {
