@@ -186,3 +186,29 @@
 .socialLink:hover {
   transform: scale(1.1);
 }
+/* Responsive Design */
+@media (max-width: 768px) {
+  .pageHeader {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .navContainer {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .pageMain {
+    flex-direction: column;
+  }
+
+  .formContainer {
+    width: 100%;
+    padding: 0 1rem;
+  }
+
+  .imageSection {
+    width: 100%;
+    max-width: 300px;
+  }
+}

@@ -1,9 +1,4 @@
 /* General container */
-@media (max-width: 480px) {
-  .container {
-    max-width: 95%; /* Further adjust for smaller phones */
-}
-
 .pageContainer {
   min-height: 100vh;
   background-color: #ffe4c8;
@@ -11,33 +6,34 @@
   flex-direction: column;
 }
 
- 
 /* Header Styles */
 .pageHeader {
   background-color: #ffa439;
-  padding: 0.2rem;
+  padding: 1rem;
   display: flex;
   justify-content: space-between;
   align-items: center;
+  flex-wrap: wrap;
 }
 
+/* Logo */
 .logoContainer {
   display: flex;
   align-items: center;
 }
 
 .logoImage {
-  width: auto;
-  height: 100px;
-  max-height: 100%;
+  width: 120px;
+  height: auto;
   object-fit: contain;
-  display: block;
 }
 
+/* Navigation */
 .navContainer {
   display: flex;
   align-items: center;
   gap: 1rem;
+  flex-wrap: wrap;
 }
 
 .navItems {
@@ -68,43 +64,45 @@
 .pageMain {
   flex: 1;
   display: flex;
+  flex-wrap: wrap;
   justify-content: center;
   align-items: center;
   padding: 2rem;
+  flex-wrap: wrap;
+  gap: 2rem;
 }
 
+/* Form Container */
 .formContainer {
   width: 100%;
-  max-width: 600px;
+  max-width: 500px;
   display: flex;
   flex-direction: column;
   gap: 1.5rem;
+  text-align: center;
 }
 
 .formLogo {
-  width: auto;
-  height: 150px;
-  padding-left: 50%;
+  width: 100px;
+  height: auto;
   align-self: center;
 }
 
 .headingText {
   font-size: 1.5rem;
-  padding-left: 15%;
   font-weight: bold;
   color: #333;
 }
 
+/* Input Groups */
 .inputGroup {
   display: flex;
   align-items: center;
-  margin-bottom: 15px;
   background-color: #fff3e0;
   border: 1px solid #ffcc80;
   border-radius: 5px;
   padding: 10px;
-  position: relative;
-  width: 170%;
+  width: auto;
 }
 
 .textInput {
@@ -118,40 +116,37 @@
 .inputIcon {
   width: 24px;
   height: 24px;
-  padding: 1rem;
   margin-right: 10px;
   color: #ff8c00;
 }
 
+/* Detect Button */
 .detectButton {
   background-color: #ffa726;
   border: none;
-  border-radius: 20px;
-  padding: 10px 20px;
-  color: rgb(17, 16, 15);
-  font-size: 16px;
+  border-radius: 5px;
+  padding: 8px 12px;
+  color: white;
+  font-size: 14px;
   cursor: pointer;
-  position: absolute;
-  right: 10px;
-  top: 50%;
-  transform: translateY(-50%);
 }
 
 .detectButton:hover {
   background-color: #f89604;
 }
 
+/* Image Section */
 .imageSection {
-  width: 150%;
+  width: 100%;
+  max-width: 400px;
   display: flex;
-  padding-left: 30%;
   justify-content: center;
   align-items: center;
 }
 
 .illustrationImage {
-  max-width: 120%;
- 
+  max-width: 100%;
+  height: auto;
   object-fit: cover;
 }
 
@@ -159,27 +154,26 @@
 .pageFooter {
   background-color: #ffa439;
   padding: 1rem;
-  width: 98%;
-  height: auto;
-  border-radius: 0%;
   text-align: center;
+  width: auto;
+ 
 }
 
 .footerContent {
   display: flex;
-  justify-content: space-between;
+  flex-direction: column;
   align-items: center;
+  gap: 10px;
 }
 
-
-.footerContent,
 .copyrightText {
-   font-size: large;
+  font-size: 14px;
+  font-weight: bold;
 }
 
 .socialIcons {
   display: flex;
-  gap: 4rem;
+  gap: 1rem;
 }
 
 .socialLink {
@@ -190,4 +184,104 @@
 .socialLink:hover {
   transform: scale(1.1);
 }
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+  .pageHeader {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .navContainer {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .pageMain {
+    flex-direction: column;
+  }
+
+  .formContainer {
+    width: 100%;
+    padding: 0 1rem;
+  }
+
+  .imageSection {
+    width: 100%;
+    max-width: 300px;
+  }
+}
+
+@media (max-width: 768px) {
+  .pageHeader {
+    flex-direction: column;
+    align-items: center;
+    padding: 1rem;
+  }
+
+  .navContainer {
+    flex-direction: column;
+    text-align: center;
+    gap: 0.5rem;
+  }
+
+  .pageMain {
+    flex-direction: column;
+    padding: 1rem;
+  }
+
+  .formContainer {
+    width: 100%;
+    padding: 0 1rem;
+  }
+
+  .headingText {
+    font-size: 1.2rem;
+  }
+
+  .textInput {
+    font-size: 14px;
+  }
+
+  .detectButton {
+    padding: 6px 10px;
+    font-size: 12px;
+  }
+
+  .imageSection {
+    width: 100%;
+    max-width: 250px;
+  }
+
+  .footerContent {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .socialIcons {
+    gap: 0.8rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .logoImage {
+    width: 90px;
+  }
+
+  .headingText {
+    font-size: 1rem;
+  }
+
+  .textInput {
+    font-size: 12px;
+  }
+
+  .detectButton {
+    padding: 5px 8px;
+    font-size: 10px;
+  }
+
+  .socialIcons {
+    gap: 0.6rem;
+  }
 }
