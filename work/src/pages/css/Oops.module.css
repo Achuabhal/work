@@ -187,10 +187,10 @@
   transform: scale(1.1);
 }
 /* Responsive Design */
-@media (max-width: 768px) {
+@media (max-width: 1024px) {
   .pageHeader {
     flex-direction: column;
-    align-items: center;
+    text-align: center;
   }
 
   .navContainer {
@@ -210,5 +210,79 @@
   .imageSection {
     width: 100%;
     max-width: 300px;
+  }
+}
+
+@media (max-width: 768px) {
+  .pageHeader {
+    flex-direction: column;
+    align-items: center;
+    padding: 1rem;
+  }
+
+  .navContainer {
+    flex-direction: column;
+    text-align: center;
+    gap: 0.5rem;
+  }
+
+  .pageMain {
+    flex-direction: column;
+    padding: 1rem;
+  }
+
+  .formContainer {
+    width: 100%;
+    padding: 0 1rem;
+  }
+
+  .headingText {
+    font-size: 1.2rem;
+  }
+
+  .textInput {
+    font-size: 14px;
+  }
+
+  .detectButton {
+    padding: 6px 10px;
+    font-size: 12px;
+  }
+
+  .imageSection {
+    width: 100%;
+    max-width: 250px;
+  }
+
+  .footerContent {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .socialIcons {
+    gap: 0.8rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .logoImage {
+    width: 90px;
+  }
+
+  .headingText {
+    font-size: 1rem;
+  }
+
+  .textInput {
+    font-size: 12px;
+  }
+
+  .detectButton {
+    padding: 5px 8px;
+    font-size: 10px;
+  }
+
+  .socialIcons {
+    gap: 0.6rem;
   }
 }
