@@ -4,11 +4,7 @@ import styles from "./css/myaccount.module.css";
 
 const MyAccount = () => {
   const [activeSection, setActiveSection] = useState("personalInfo");
-  const [upiIds, setUpiIds] = useState(["egegegeg@okicicic", "egegegeg@okicicic"]);
-  const [cards, setCards] = useState([
-    { number: "**** **** **** 1234", expiry: "MM/YY", cvv: "***" },
-    { number: "**** **** **** 5678", expiry: "MM/YY", cvv: "***" },
-  ]);
+  
 
   return (
     <div className={styles.container}>
@@ -124,40 +120,6 @@ const MyAccount = () => {
               </div>
             )}
           </div>  
-          <div className={styles.content}>    
-            {activeSection === "paymentMethods" && (
-              <div className={styles.paymentSection}>
-                <h1 className={styles.paymentTitle}>Saved Payment Details</h1>
-
-                <div className={styles.savedUPI}>
-                  <h2 className={styles.subTitle}>Saved UPI ID’s</h2>
-                  {upiIds.map((id, index) => (
-                    <input key={index} type="text" value={id} className={styles.inputUPI} />
-                  ))}
-                </div>
-
-                <div className={styles.savedCards}>
-                  <h2 className={styles.subTitle}>Saved Debit Card / Credit Card</h2>
-                  {cards.map((card, index) => (
-                    <div key={index} className={styles.cardDetails}>
-                      <p classname={styles.cardTitles}>Card Number</p>
-                      <input type="text" value={card.number} className={styles.inputField} />
-                      <div className={styles.inlineFields}>
-                        <div>
-                          <p classname={styles.cardTitles}>Expiry Date</p>
-                          <input type="text" value={card.expiry} className={styles.smallInput} />
-                        </div>
-                        <div>
-                          <p classname={styles.cardTitles}>CVV</p>
-                          <input type="text" value={card.cvv} className={styles.smallInput} />
-                        </div>
-                      </div>
-                    </div>
-                  ))}
-                </div>
-              </div>
-            )}
-          </div>
       </div>
 
       <footer className={styles.foot}>
