@@ -1,0 +1,258 @@
+.container {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    font-family: Arial, sans-serif;
+  }
+  
+  /* Header Styles */
+  .header {
+    background-color: #FFD699;
+    padding: 15px 10px;
+    border-radius: 10px;
+    margin-bottom: 15px;
+  }
+  
+  .headerContent {
+    display: flex;
+    align-items: center;
+ 
+    margin-bottom: 10px;
+  }
+  
+  .logoImage1 {
+    width: 120px;
+    height: auto;
+    object-fit: contain;
+  }
+
+  .searchBar {
+    display: flex;
+    flex: 1;
+    max-width: 500px;
+    margin: 0 20px;
+    background-color: #FFF;
+    border-radius: 20px;
+    overflow: hidden;
+  }
+  
+  .searchInput {
+    flex: 1;
+    border: none;
+    padding: 8px 15px;
+    font-size: 14px;
+    outline: none;
+    background-color: #f4b75d;
+    border-radius: 20px 0 0 20px;
+  }
+  
+  .searchButton {
+    background-color: #f4b75d;
+    border: none;
+    padding: 0 15px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .headerIcons {
+    display: flex;
+    gap: 15px;
+    margin-left: auto;
+  }
+  
+  .iconButton {
+    background: none;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #B45309;
+  }
+  
+  .navbar {
+    display: flex;
+    gap: 20px;
+    margin-left: 170px;
+  }
+  
+  .navItem {
+    text-decoration: none;
+    color: #333;
+    font-weight: bold;
+  }
+  
+   /* Hero Banner */
+  .heroBanner {
+    background-color: #FFD699;
+    border-radius: 10px;
+    padding: 20px;
+    position: relative;
+    margin-bottom: 15px;
+    height: 180px;
+    display: flex;
+    align-items: center;
+  }
+  
+  .bannerContent {
+    display: flex;
+    width: 100%;
+  }
+  
+  .bannerIllustration {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .bannerText {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  
+  .bannerHeading {
+    font-size: 28px;
+    font-weight: bold;
+    margin: 0;
+    line-height: 1.2;
+  }
+  
+  .logoImage {
+    max-width: 600px; /* Adjust this value based on your image size */
+    max-height: 200px; /* Adjust this value based on your image size */
+    margin-left: 0%;
+  }
+  
+  .carouselButton {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: none;
+    border: none;
+    cursor: pointer;
+    z-index: 2;
+  }
+  
+  .prevButton {
+    left: 10px;
+  }
+  
+  .nextButton {
+    right: 10px;
+  }
+  
+  .carouselDots {
+    position: absolute;
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 5px;
+  }
+  
+  .dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background-color: #DDD;
+  }
+  
+  .activeDot {
+    background-color: #B45309;
+  }
+  
+/* Services Section */
+.servicesSection {
+    background-color: #FFD699;
+    border-radius: 10px;
+    padding: 77px;
+    margin-bottom: 15px;
+    position: relative; /* Added to position the showcase rectangle */
+  }
+  
+  
+  .sectionTitle {
+    text-align: center;
+    margin-top: 0;
+    margin-bottom: 20px;
+    font-size: 32px; /* Increased font size */
+    font-weight: bold;
+  }
+  
+  .servicesGrid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* Three columns for service cards */
+    gap: 20px; /* Increased gap for better spacing */
+    margin-right: 350px; /* Adjusted to make space for the showcase rectangle */
+  }
+  
+  .serviceCard {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+  
+  .serviceIcon {
+    width: 100px; /* Increased width */
+    height: 100px; /* Increased height */
+    background-color: #B0B0B0; /* Adjusted to a darker shade for contrast */
+    border-radius: 15px; /* Rounded corners */
+    margin-bottom: 10px;
+  }
+  
+  .serviceTitle {
+    font-size: 16px; /* Increased font size */
+    margin: 0;
+  }
+  
+  .serviceShowcase {
+    position: absolute; /* Position the showcase rectangle */
+    top: 150px; /* Adjust top position */
+    right: 35px; /* Adjust right position */
+    width: 350px;
+    height: calc(67%); /* Calculate height to span the full height minus padding */
+    background-color: #D9D9D9; /* Lighter shade for contrast */
+    border-radius: 10px; /* Rounded corners */
+  }
+  
+
+  /* Hourly Service Section */
+  .hourlyServiceSection {
+    background-color: #DDD;
+    border-radius: 10px;
+    padding: 40px;
+    margin-bottom: 15px;
+    text-align: center;
+  }
+  
+  .hourlyServiceTitle {
+    margin: 0;
+    color: #555;
+  }
+  
+  /* Most Booked Section */
+  .mostBookedSection {
+    background-color: #FFD699;
+    border-radius: 10px;
+    padding: 20px;
+    margin-bottom: 15px;
+  }
+  
+  .mostBookedGrid {
+    display: flex;
+    justify-content: space-between;
+    gap: 15px;
+  }
+  
+  .mostBookedCard {
+    width: 80px;
+    height: 80px;
+    background-color: #CCC;
+    border-radius: 5px;
+  }
