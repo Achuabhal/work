@@ -80,24 +80,6 @@ const MyAccount = () => {
               </div>
             )}
           </div>
-
-          <section className={styles.content}>
-            {activeSection === "customerCare" && (
-              <div className={styles.customerCare}>
-                <h1 className={styles.customerTitle}>Customer Care</h1>
-                <div className={styles.formGroup}>
-                  <label>How Can We Help You?</label>
-                  <textarea type="text" className={styles.issueField} placeholder="Describe your issue here"/>
-                </div>
-                <div className={styles.customerInfo}>
-                  <input type="text" className={styles.customerDetails} placeholder="Name" />
-                  <input type="text" className={styles.customerDetails} placeholder="Contact Number" />
-                  <input type="email" className={styles.customerDetails} placeholder="Email" />
-                </div>
-                <button className={styles.submitButton}>Submit</button>
-              </div>
-            )}
-          </section>
           <div classname={styles.content}>
             {activeSection === "orders" && (
               <div className={styles.ordersSection}>
@@ -119,7 +101,66 @@ const MyAccount = () => {
                 </div>
               </div>
             )}
-          </div>  
+          </div>
+          <div className={styles.content}>
+            {activeSection === "paymentMethods" && (
+              <div className={styles.paymentMethods}>
+                <h1 className={styles.sectionTitle}>Saved Payment Details</h1>
+                
+                <h2 className={styles.paymentSubTitle}>Saved UPI ID’s</h2>
+                <input type="text" className={styles.inputField} value="egegegeg@okicicic"  />
+                <input type="text" className={styles.inputField} value="egegegeg@okicicic" />
+                
+                <h2 className={styles.paymentSubTitle}>Saved Debit Card / Credit Card</h2>
+                
+                <div className={styles.cardDetails}>
+                  <div className={styles.CardFields}>
+                  <label>Card Number</label>
+                  <input type="password" className={styles.inputField} />
+                  </div>
+
+                  <div className={styles.CardFields}>
+                  <label>Expiry Date</label>
+                  <input type="text" className={styles.inputField} />
+                  </div>
+                  
+                  <div className={styles.CardFields}>
+                    <label>CVV</label>
+                    <input type="password" className={styles.inputField} />
+                  </div>  
+                  <div className={styles.CardFields}>
+                    <label>Card Number</label>
+                    <input type="password" className={styles.inputField}  />
+                  </div>
+                  <div className={styles.CardFields}>  
+                    <label>Expiry Date</label>
+                    <input type="text" className={styles.inputField} />
+                  </div> 
+                  <div className={styles.CardFields}> 
+                    <label>CVV</label>
+                    <input type="password" className={styles.inputField} />
+                  </div>                
+                </div>
+              </div>
+            )}
+          </div>
+          <section className={styles.customer}>
+            {activeSection === "customerCare" && (
+              <div className={styles.customerCare}>
+                <h1 className={styles.customerTitle}>Customer Care</h1>
+                <div className={styles.formGroup}>
+                  <label>How Can We Help You?</label>
+                  <textarea type="text" className={styles.issueField} placeholder="Describe your issue here"/>
+                </div>
+                <div className={styles.customerInfo}>
+                  <input type="text" className={styles.customerDetails} placeholder="Name" />
+                  <input type="text" className={styles.customerDetails} placeholder="Contact Number" />
+                  <input type="email" className={styles.customerDetails} placeholder="Email" />
+                </div>
+                <button className={styles.submitButton}>Submit</button>
+              </div>
+            )}
+          </section>
       </div>
 
       <footer className={styles.foot}>

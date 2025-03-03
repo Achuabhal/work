@@ -425,66 +425,70 @@
   cursor: pointer;
 }
 /* Payment section */ 
-.paymentSection {
-  background-color: #fdd8b3; /* Light peach background */
+.paymentMethods {
+  width: 100vh;
+  background-color: #fdd8b3;
   padding: 20px;
   border-radius: 10px;
-  width: 600px;
-  margin-right: 40px;
+  height: 130vh;
+  margin-bottom: 20vh;
+}
+
+.sectionTitle {
+  font-size: 24px;
+  font-weight: bold;
   text-align: center;
+  margin-bottom: 20px;
 }
 
-.paymentTitle {
-  font-size: 20px;
+.paymentSubTitle {
+  font-size: 18px;
   font-weight: bold;
-  color: #000;
-  margin-bottom: 15px;
-}
-
-.subTitle {
-  font-size: 16px;
-  font-weight: bold;
-  color: #000;
-  margin-top: 15px;
   text-align: left;
-}
-
-.savedUPI, .savedCards {
   margin-top: 15px;
-  text-align: left;
+  color: #333;
 }
 
-.inputUPI {
-  width: 50%;
+.inputField {
+  width: 80%;
   padding: 10px;
-  margin: 8px 0;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  background-color: #fff;
-}
-.cardDetails {
-  background-color: #fff;
-  padding: 15px;
-  border-radius: 10px;
-  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
-  margin-bottom: 10px;
-}
-.inlineFields {
-  display: flex;
-  justify-content: space-between;
-}
-.smallInput {
-  width: 80px;
-  padding: 8px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  background-color: #fff;
-}
-.cardTitles {
   margin: 5px 0;
-  font-size: 70px;
-  color: #070707;
+  border: none;
+  border-radius: 18px;
+  background-color: #fff;
+  font-size: 16px;
 }
+
+.cardDetails {
+  padding: 15px;
+  display: flex;
+  flex-direction: column;
+  border-radius: 10px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  margin-top: 10px;
+}
+.CardFields{
+  display: flex;
+  flex-direction: row;
+}
+
+.cardDetails label {
+  display: flex;
+  font-weight: bold;
+  margin: 5px 0;
+  margin-right: 10px;
+  padding-right: 8px;
+}
+
+.cardDetails input {
+  width: 40%;
+  padding: 8px;
+  border: none;
+  border-radius: 15px;
+  background-color: #f9f9f9;
+  font-size: 16px;
+}
+
 .footerText {
   margin-left: 0px;
   color: black;
@@ -498,9 +502,11 @@
 @media (max-width: 1024px) {
   .container {
     padding: 0%;
+    width: 100%;
   }
 
   .heading {
+    width: 100%;
     flex-direction: row;
     height: auto;
     padding: 2vh;
@@ -519,8 +525,8 @@
 
   .mainPage {
     flex-direction: row;
-    
-    
+    margin-right: 0px;
+    width: 100%;   
   }
 
   .sidebar {
@@ -535,10 +541,10 @@
   }
 
   .content {
-    width: 80%;
+    width: 100%;
     margin: 0;
-    padding-top: 8vh;
-    margin-right: 5vh;
+    padding: 0%;
+    margin-right:0vh;
     height: auto;
   }
 
@@ -572,11 +578,13 @@
   .radioGroup {
     gap: 2vh;
   }
-
+  .customer{
+    margin-right: 90vh;
+  }
   .customerCare {
     margin-top: 2%;
-    width: 95vh;
-    margin-right: 20%;
+    width: 105vh;
+    margin-right: 5%;
   }
 
   .customerInfo {
@@ -603,7 +611,7 @@
   }
 
   .ordersSection {
-    margin-right: 46vh;
+    margin-right: 15vh;
     width: 89vh;
     
   }
@@ -617,9 +625,9 @@
     width: 10vh;
   }
 
-  .paymentSection {
-    width: 100%;
-    margin: 0;
+  .paymentMethods {
+    width: 70vh;
+    margin-right: 90vh;
   }
 
   .inputUPI {
@@ -638,8 +646,12 @@
     width: 100%;
   }
 
+  .socialIcons{
+    padding-top: 2px;
+  }
+
   .foot {
-    height: 8vh;
+    height: 10vh;
     width: 215vh;
     padding: 1vh;
   }
@@ -687,7 +699,7 @@
   }
 
   .content {
-    width: 90%;
+    width: 100%;
     margin: 0;
     align-items: center;
     padding: 0px;
@@ -725,8 +737,9 @@
   }
 
   .customerCare {
-    width: 100vh;
-    margin-left: 25vh;
+    width: 90vh;
+    height: 110vh;
+    margin-left: 40vh;
   }
 
   .customerInfo {
@@ -755,8 +768,9 @@
 
 
   .ordersSection {
-    width: 110vh;
-    margin-left: 20vh;
+    width: 55%;
+    margin-right: 5vh;
+    margin-left: 25vh;
   }
 
   .ordersContainer {
@@ -766,6 +780,9 @@
 
   .orderImage img {
     width: 100px;
+  }
+  .paymentMethods{
+    margin-left: 40vh;
   }
 
   .paymentSection {
@@ -791,12 +808,171 @@
 
   .foot {
     height: 10vh;
+    width: 100%;
     padding: 10px;
+    margin: 0px;
   }
   .foot .socialIcons{
     height: 5vh;
-    width: auto;
+     width: auto;
+     margin: 0px;
     padding-bottom: 1%;
     
+  }
+}
+
+/* Responsive styles for screens 480px and below */
+@media (max-width: 480px) {
+  .container {
+    padding: 0;
+    width: 100%;
+  }
+
+  .heading {
+    flex-direction: column;
+    align-items: center;
+    padding: 5vh;
+    width: 100%;
+    height: 5vh;
+    display: flex;
+    flex-direction: row;
+  }
+
+  .duzoLogo {
+    height: 50px;
+    margin-bottom: 10px;
+    margin-left: 0;
+  }
+
+  .accountTitle {
+    margin-top: 5px;
+    margin-right: 0;
+    font-size: 16px;
+  }
+
+  .mainPage {
+    flex-direction: column;
+    width: 100%;
+    padding: 10px;
+  }
+
+  .sidebar {
+    
+    margin-top: 10vh;
+    padding: 0;
+    width: 50%;
+  }
+
+  .sidebarButton {
+    width: 100%;
+    height: 40px;
+    font-size: 14px;
+  }
+
+  .content {
+    width: 100%;
+    margin: 0;
+    padding: 10px;
+    height: auto;
+  }
+
+  .personalInfo {
+    width: 100%;
+    padding: 10vh;
+
+    margin: 10px;
+    margin-right:10vh ;
+  }
+
+  .formGroupInline {
+    flex-direction: row;
+    gap: 2%;
+  }
+
+  .personalInfotextInp {
+    flex-direction: column;
+  }
+
+  .formGroup {
+    margin-bottom: 10px;
+  }
+
+  .nameInputField {
+    margin-right: 0;
+    width: 100%;
+  }
+
+  .genderContainer {
+    margin-left: 0;
+  }
+
+  .radioGroup {
+    gap: 10px;
+    flex-direction: column;
+  }
+
+  .customerCare {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+  }
+
+  .customerInfo {
+    width: 100%;
+    flex-direction: column;
+  }
+
+  .issueField {
+    width: 100%;
+    height: 100px;
+  }
+
+  .customerDetails {
+    width: 100%;
+    margin-right: 0;
+    margin-bottom: 10px;
+  }
+
+  .ordersSection {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+  }
+
+  .ordersContainer {
+    width: 100%;
+    height: auto;
+  }
+
+  .orderImage img {
+    width: 50px;
+  }
+
+  .paymentMethods {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+  }
+
+  .inputField {
+    width: 100%;
+  }
+
+  .cardDetails {
+    width: 100%;
+  }
+
+  .foot {
+    height: auto;
+    width: 100%;
+    padding: 10px;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .socialIcons {
+    margin-top: 10px;
+    width: 100%;
+    justify-content: center;
   }
 }
