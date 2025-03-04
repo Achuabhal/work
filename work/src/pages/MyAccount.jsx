@@ -144,7 +144,7 @@ const MyAccount = () => {
               </div>
             )}
           </div>
-          <section className={styles.customer}>
+          <div className={styles.customer}>
             {activeSection === "customerCare" && (
               <div className={styles.customerCare}>
                 <h1 className={styles.customerTitle}>Customer Care</h1>
@@ -160,7 +160,7 @@ const MyAccount = () => {
                 <button className={styles.submitButton}>Submit</button>
               </div>
             )}
-          </section>
+          </div>
       </div>
 
       <footer className={styles.foot}>
