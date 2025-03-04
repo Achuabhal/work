@@ -15,71 +15,71 @@ const MyAccount = () => {
           <div className={styles.accountTitle}>MY ACCOUNT</div>
         </header>
 
-      <div className={styles.mainPage}>
-          <div className={styles.sidebar}>
-            <button className={styles.sidebarButton} onClick={() => setActiveSection("personalInfo")}>
-              Personal Information
-            </button>
-            <button className={styles.sidebarButton} onClick={() => setActiveSection("orders")}>
-              Your Orders
-            </button>
-            <button className={styles.sidebarButton} onClick={() => setActiveSection("paymentMethods")}>
-              Saved Payment Methods
-            </button>
-            <button className={styles.sidebarButton} onClick={() => setActiveSection("customerCare")}>
-              Customer Care
-            </button>
-          </div>
-
-          <div className={styles.content}>
-            {activeSection === "personalInfo" && (
-              <div className={styles.personalInfo}>
-                <h1 className={styles.sectionTitle}>Personal Information</h1>
-                <div className={styles.formGroupInline}>
-                  <div className={styles.formGroup}>
-                    <label className={styles.Name}>First Name</label>
-                  </div>
-                  <div className={styles.formGroup}>
-                    <label className={styles.Name}>Last Name</label>
-                  </div>
-                  <a href="#" className={styles.editLink}>Edit</a>
-                </div>
-                <div className={styles.personalInfotextInp}>
-                  <div className={styles.formGroup}>
-                    <input type="text" className={styles.nameInputField} />
-                  </div>
-                  <div className={styles.formGroup}>
-                    <input type="text" className={styles.nameInputField} />
-                  </div>
-                </div>
-                <div className={styles.genderContainer}>
-                  <label className={styles.genderLabel}>Gender</label>    
-                </div>
-                <div className={styles.radioGroup}>
-                  <label className={styles.radioLabel}>
-                    <input type="radio" name="gender" value="male" className={styles.gender}/> Male
-                  </label>
-                  <label className={styles.radioLabel}>
-                    <input type="radio" name="gender" value="female" className={styles.gender}/> Female
-                  </label>
-                </div>
-                <div className={styles.formGroup}>
-                  <div className={styles.labelEditContainer}>
-                    <label>Email Address</label>
-                    <a href="#" className={styles.emailEditLink}>Edit</a>
-                  </div>
-                  <input type="email" className={styles.inputField} />
-                </div>
-                <div className={styles.formGroup}>
-                  <div className={styles.labelRow}>
-                    <label className={styles.label}>Phone Number</label>
-                    <a href="#" className={styles.editLink}>Edit</a>
-                  </div>
-                  <input type="tel" className={styles.inputField} />
-                </div>
-              </div>
-            )}
-          </div>
+                  <div className={styles.mainPage}>
+                    <div className={styles.sidebar}>
+                      <button className={styles.sidebarButton} onClick={() => setActiveSection("personalInfo")}>
+                        Personal Information
+                      </button>
+                      <button className={styles.sidebarButton} onClick={() => setActiveSection("orders")}>
+                        Your Orders
+                      </button>
+                      <button className={styles.sidebarButton} onClick={() => setActiveSection("paymentMethods")}>
+                        Saved Payment Methods
+                      </button>
+                      <button className={styles.sidebarButton} onClick={() => setActiveSection("customerCare")}>
+                        Customer Care
+                      </button>
+                    </div>
+ 
+                      <div className={styles.content}>
+                        {activeSection === "personalInfo" && (
+                          <div className={styles.personalInfo}>
+                            <h1 className={styles.sectionTitle}>Personal Information</h1>
+                            <div className={styles.formGroupInline}>
+                              <div className={styles.formGroup}>
+                                <label className={styles.Name}>First Name</label>
+                              </div>
+                              <div className={styles.formGroup}>
+                                <label className={styles.Name}>Last Name</label>
+                              </div>
+                              <a href="#" className={styles.editLink}>Edit</a>
+                            </div>
+                            <div className={styles.personalInfotextInp}>
+                              <div className={styles.formGroup}>
+                                <input type="text" className={styles.nameInputField} />
+                              </div>
+                              <div className={styles.formGroup}>
+                                <input type="text" className={styles.nameInputField} />
+                              </div>
+                            </div>
+                            <div className={styles.genderContainer}>
+                              <label className={styles.genderLabel}>Gender</label>    
+                            </div>
+                            <div className={styles.radioGroup}>
+                              <label className={styles.radioLabel}>
+                                <input type="radio" name="gender" value="male" className={styles.gender}/> Male
+                              </label>
+                              <label className={styles.radioLabel}>
+                                <input type="radio" name="gender" value="female" className={styles.gender}/> Female
+                              </label>
+                            </div>
+                            <div className={styles.formGroup}>
+                              <div className={styles.labelEditContainer}>
+                                <label className={styles.Email}>Email Address</label>
+                                <a href="#" className={styles.emailEditLink}>Edit</a>
+                              </div>
+                              <input type="email" className={styles.inputField} />
+                            </div>
+                            <div className={styles.formGroup}>
+                              <div className={styles.labelRow}>
+                                <label className={styles.label}>Phone Number</label>
+                                <a href="#" className={styles.editLink}>Edit</a>
+                              </div>
+                              <input type="tel" className={styles.inputField} />
+                            </div>
+                          </div>
+                        )}
+                      </div> 
           <div classname={styles.content}>
             {activeSection === "orders" && (
               <div className={styles.ordersSection}>
@@ -102,7 +102,7 @@ const MyAccount = () => {
               </div>
             )}
           </div>
-          <div className={styles.content}>
+           <div className={styles.content}>
             {activeSection === "paymentMethods" && (
               <div className={styles.paymentMethods}>
                 <h1 className={styles.sectionTitle}>Saved Payment Details</h1>
@@ -144,6 +144,7 @@ const MyAccount = () => {
               </div>
             )}
           </div>
+          
           <div className={styles.customer}>
             {activeSection === "customerCare" && (
               <div className={styles.customerCare}>
@@ -160,9 +161,9 @@ const MyAccount = () => {
                 <button className={styles.submitButton}>Submit</button>
               </div>
             )}
-          </div>
-      </div>
-
+          </div> 
+        </div>
+ 
       <footer className={styles.foot}>
         <p className={styles.footerText}>Copyrights &copy; 2024 - DUZO</p>
         <div className={styles.socialIcons}>
@@ -176,7 +177,7 @@ const MyAccount = () => {
             <FaXTwitter size={30} color="black" />
           </a>
         </div>
-      </footer>
+      </footer> 
     </div>
   );
 };
