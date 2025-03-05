@@ -29,7 +29,7 @@
   font-size: 18px;
   font-weight: bold;
   color: white;
-  width: 100%; /* Ensure full width */
+  width: 104%; /* Ensure full width */
   height: 70px; /* Make it full-screen height */
   border-radius: 0; /* Remove unnecessary border-radius */
 }
@@ -275,6 +275,13 @@
   gap: 20px; /* Adjust spacing between input fields */
 }
 
+.customerSubTitle{
+  margin-left: 3vh;
+  text-align: left;
+  font-weight: bolder;
+  font-family: Georgia, 'Times New Roman', Times, serif;
+}
+
 .issueField {
   width: 350px;
   height: 20vh;
@@ -439,11 +446,42 @@
   margin-top: 15px;
   color: #333;
 }
-
-.inputField {
+.inputField{
   width: 80%;
   padding: 10px;
   margin: 5px 0;
+  border: none;
+  border-radius: 18px;
+  background-color: #fff;
+  font-size: 16px;
+}
+.cardInput {
+  width: 80%;
+  padding: 10px;
+  margin: 5px 0;
+  border: none;
+  border-radius: 18px;
+  background-color: #fff;
+  font-size: 16px;
+}
+.expiryInput {
+  width: 80%;
+  padding: 10px;
+  margin: 5px 0;
+  margin-left: 15px;
+  border: none;
+  border-radius: 18px;
+  background-color: #fff;
+  font-size: 16px;
+}
+.CardFields1 .cvvInput{
+  margin-bottom: 30px;
+}
+.cvvInput {
+  width: 80%;
+  padding: 10px;
+  margin: 5px 0;
+  margin-left: 66px;
   border: none;
   border-radius: 18px;
   background-color: #fff;
@@ -458,11 +496,15 @@
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   margin-top: 10px;
 }
-.CardFields{
+.CardFields1{
+  display: flex;
+  flex-direction: row;
+
+}
+.CardFields2{
   display: flex;
   flex-direction: row;
 }
-
 .cardDetails label {
   display: flex;
   font-weight: bold;
@@ -481,7 +523,7 @@
 }
 /* Footer */
 .foot {
-  width: 102%; 
+  width: 104%; 
   height: 40px;
   margin: 0;
   padding: 30px; 
@@ -505,7 +547,7 @@
   margin-right: 20px;
   gap: 30px; /* Adds space between icons */
 }
-@media (max-width: 575px) {
+@media (min-width:480px)and (max-width: 575px) {
   .container {
     width: 100%;
     padding: 0px;
@@ -526,8 +568,9 @@
   }
 
   .accountTitle {
-    margin-top: 10px;
-    margin-left: 19rem;
+    margin-top: 2vh;
+    margin-left: 18rem;
+    margin-right: 2vh;
   }
 
   .mainPage {
@@ -614,7 +657,7 @@
     margin-right: 5vh;
     height: 70vh;
     margin-left: 15vh;
-
+    margin-bottom: 20vh;
   }
 
   .ordersContainer {
@@ -664,7 +707,7 @@
     text-align: center;
   }
   .customerCare {
-    width: 90vh;
+    width: 80vh;
     height: 110vh;
     text-align: left;
     font-size: 85%;
@@ -704,7 +747,7 @@
 
   .foot {
     height: 10vh;
-    width: 100%;
+    width: 104%;
     padding: 3%;
     font-size: 85%;
     margin: 0px;
@@ -721,8 +764,10 @@
 /* Responsive styles for screens 480px and below */
 @media (min-width:320px) and (max-width: 480px) {
   .container {
-    padding: 0;
+    padding: 0px;
     width: 100%;
+    height: 100%;
+    margin: 0px;
   }
 
   .heading {
@@ -743,8 +788,10 @@
 
   .accountTitle {
     margin-top: 5px;
-    margin-right: 0;
-    font-size: 16px;
+    margin-right: 2vh;
+    margin-left: 25vh;
+    margin-bottom: 2vh;
+    font-size: 85%;
   }
 
   .mainPage {
@@ -756,29 +803,43 @@
   .sidebar {
     
     margin-top: 10vh;
+    margin-left: 20vh;
+    padding-left: 10vh;
     padding: 0;
     width: 50%;
+    align-items: center;
   }
 
   .sidebarButton {
     width: 100%;
-    height: 40px;
+
+    height: 12vh;
     font-size: 14px;
   }
 
   .content {
     width: 100%;
     margin: 0;
-    padding: 10px;
+    padding: 2px;
     height: auto;
   }
 
   .personalInfo {
-    width: 100%;
-    padding: 10vh;
+    width:90%;
+    padding: 2vh;
+    margin-top: 8%;
+    margin-left: 0%;
+    margin-right:0% ;
+  }
 
-    margin: 10px;
-    margin-right:10vh ;
+
+  .Name{
+    font-size: 80%;
+  }
+
+  .sectionTitle{
+    font-size: 99%;
+    font-weight:bolder;
   }
 
   .formGroupInline {
@@ -787,16 +848,20 @@
   }
 
   .personalInfotextInp {
-    flex-direction: column;
+    flex-direction: row;
+    width: 40%;
   }
 
   .formGroup {
-    margin-bottom: 10px;
+    margin-bottom: 8px;
   }
 
   .nameInputField {
-    margin-right: 0;
+    margin-right: 2%;
     width: 100%;
+  }
+  .genderLabel{
+    font-size: 80%;
   }
 
   .genderContainer {
@@ -805,71 +870,156 @@
 
   .radioGroup {
     gap: 10px;
-    flex-direction: column;
+    flex-direction: row;
+  }
+  .radioLabel{
+    font-size: 80%;
+  }
+  .labelEditContainer{
+    
+    justify-content:space-around;
+
+  }
+  .labelEditContainer .Email{
+    font-size: 80%;
+    width:80vh;
+    margin-right: 0vh;
+    padding-right: 0%;
+  }
+  .labelEditContainer .emailEditLink{
+    text-align: right;
+    margin-right: 20vh;
+  }
+  .phoneLabel{
+    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif; 
+    font-size:80% ;
   }
 
   .customerCare {
-    width: 100%;
+    width: 90%;
     padding: 10px;
     margin: 10px 0;
+  }
+  .customerTitle{
+    font-size: 90%;
+  }
+  .customerSubTitle{
+    font-size: 85%;
   }
 
   .customerInfo {
     width: 100%;
+    gap:0px;
     flex-direction: column;
   }
 
   .issueField {
-    width: 100%;
+    width: 90%;
+    padding: 2vh;
     height: 100px;
   }
 
   .customerDetails {
-    width: 100%;
+    width: 50%;
     margin-right: 0;
-    margin-bottom: 10px;
+    margin-bottom: 0px;
   }
-
+  .customerDetails:nth-child(2) { 
+    margin-left: 0%; 
+  }
+  .customerDetails:nth-child(3) { 
+    width: 50%; /* Email field takes full width on the next row */
+    margin-bottom: 0px;
+  
+  }
+  .submitButton{
+    margin-top:5vh ;
+  }
+  /*Orders section */
   .ordersSection {
-    width: 100%;
+    width: 95%;
+    height: 80vh;
     padding: 10px;
-    margin: 10px 0;
+    margin-top: 8vh;
+    margin-right: 0%;
+  }
+  .ordersSection .sectionTitle{
+    font-size: 85%;;
   }
 
   .ordersContainer {
-    width: 100%;
-    height: auto;
+    width: 84%;
+    margin-left: 1vh;
+    margin-right: 1vh;
+    height: 20vh;
   }
 
-  .orderImage img {
-    width: 50px;
+  .orderItem .orderImage {
+    width: 7vh;
+    margin-right: 14%;
+    height: auto;
+  }
+  .orderItem{
+
+    gap: 0%;
+  }
+
+  .orderDetails p{
+    margin-left: 2%;
+    font-size:80% ;
+  }
+  .orderMeta{
+    align-items: flex-end;
+  }
+  .orderMeta p{
+    font-size: 95%;
+  }
+  .rateReviewButton{
+    padding-left: 0px;
+    padding-right: 0px;
   }
 
   .paymentMethods {
-    width: 100%;
+    width: 90%;
     padding: 10px;
     margin: 10px 0;
   }
-
+  .paymentSubTitle{
+    font-size: 80%;
+    margin-bottom: 5vh;
+  }
   .inputField {
-    width: 100%;
+    width: 70%;
+  }
+  .expiryInput{
+    margin-left: 2vh;
   }
 
+  .cvvInput{
+    margin-left: 12vh;
+  }
   .cardDetails {
     width: 100%;
+    font-size: 80%;
   }
-
   .foot {
-    height: auto;
-    width: 100%;
-    padding: 10px;
-    flex-direction: column;
-    align-items: center;
+    height: 10vh;
+    width: 113%;
+    padding: 3%;
+    font-size: 80%;
+    margin-top: 5vh;
   }
 
-  .socialIcons {
-    margin-top: 10px;
-    width: 100%;
-    justify-content: center;
+  .foot .socialIcons{
+    gap:8%;
+  }
+  .foot .socialIcons a{
+    height: 2%;
+     width: auto;
+     margin: 0px;
+    
+     padding-top: 4%;
+    padding-bottom: 4%;
+    
   }
 }
