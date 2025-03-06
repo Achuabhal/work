@@ -1,10 +1,15 @@
 /* General container */
+
+ 
+
 .pageContainer {
   min-height: 170vh;
   background-color: #ffe4c8;
   display: flex;
   min-width: 66vh;
   flex-direction: column;
+  padding: 0%;
+  margin: 0%;
 }
 
 /* Header Styles */
@@ -158,7 +163,6 @@
   padding: 1rem;
   text-align: center;
   width: auto;
- 
 }
 
 .footerContent {
@@ -214,7 +218,6 @@
   }
 }
 
-
 @media (max-width: 768px) {
   .pageHeader {
     flex-direction: column;
@@ -267,7 +270,6 @@
 }
 
 @media (max-width: 480px) {
-  
   .logoImage {
     width: 90px;
   }
@@ -287,5 +289,28 @@
 
   .socialIcons {
     gap: 0.6rem;
+  }
+}
+
+@media (max-width: 320px) {
+  .logoImage {
+    width: 70px;
+  }
+
+  .headingText {
+    font-size: 0.9rem;
+  }
+
+  .textInput {
+    font-size: 10px;
+  }
+
+  .detectButton {
+    padding: 4px 6px;
+    font-size: 8px;
+  }
+
+  .socialIcons {
+    gap: 0.4rem;
   }
 }
