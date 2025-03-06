@@ -1,57 +1,68 @@
-import React, { useState } from "react";
-import styles from "./css/homepage.module.css";
+import React from 'react'
+import styles from "./css/Oops1.module.css";
 
-const HomePage1 = () => {
+function App() {
   return (
-    <div className="pageContainer">
-      <div className="pageHeader">
-        <div className="logoContainer">
-   
+    <div className="container">
+      <h1 className="main-title">Need Appliances...Buy or Rent with Ease</h1>
+      
+      <div className="options-grid">
+        <div className="option-card">
+          <button className="action-button">Buy Appliances</button>
         </div>
-        <div className="navContainer">
-          <div className="navItems">
-            <button className="navButton">Buy Appliances</button>
-            <button className="navButton">Rent Appliances</button>
+        <div className="option-card">
+          <button className="action-button">Rent Appliances</button>
+        </div>
+      </div>
+
+      <div className="sell-section">
+        <h2>Sell your old Appliances and Earn</h2>
+        {/* Content for sell section */}
+      </div>
+
+      <div className="testimonials">
+        <h2>Happy Customers</h2>
+        <div className="testimonials-grid">
+          <div className="testimonial-card">
+            <blockquote>
+              {/* Testimonial content */}
+            </blockquote>
+          </div>
+          <div className="testimonial-card">
+            <blockquote>
+              {/* Testimonial content */}
+            </blockquote>
           </div>
         </div>
       </div>
 
-      <div className="pageMain">
-        <div className="imageSection">
-        
-        </div>
-        <div className="formContainer">
-        
-          <h1 className="headingText">Sell your old Appliances and Earn</h1>
-        </div>
-      </div>
-
-      <div className="pageMain">
-        <div className="testimonialsSection">
-          <h2 className="headingText">Happy Customers</h2>
-          <div className="testimonial">
-            <p className="quote">"Great service and fast delivery!"</p>
+      <div className="features">
+        <h2>Why Choose Us?</h2>
+        <div className="features-grid">
+          <div className="feature">
+            <div className="feature-icon"></div>
+            <p>Verified Appliances</p>
           </div>
-          <div className="testimonial">
-            <p className="quote">"I highly recommend this service."</p>
+          <div className="feature">
+            <div className="feature-icon"></div>
+            <p>Affordable Pricing</p>
           </div>
-        </div>
-      </div>
-
-      <div className="pageMain">
-        <div className="whyUsSection">
-          <h2 className="headingText">Why Choose Us?</h2>
-          <div className="features">
-            <div className="feature">World-class Appliances</div>
-            <div className="feature">Affordable Rates</div>
-            <div className="feature">Quick Response Time</div>
-            <div className="feature">24/7 Customer Support</div>
-            <div className="feature">Self-service portal</div>
+          <div className="feature">
+            <div className="feature-icon"></div>
+            <p>Quick Response Time</p>
+          </div>
+          <div className="feature">
+            <div className="feature-icon"></div>
+            <p>24/7 Customer Support</p>
+          </div>
+          <div className="feature">
+            <div className="feature-icon"></div>
+            <p>Satisfaction Guaranteed</p>
           </div>
         </div>
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default HomePage1;
+export default App
