@@ -1,0 +1,136 @@
+.pageContainer {
+    min-height: 170vh;
+    background-color: #ffe4c8;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .pageHeader {
+    background-color: #ffa439;
+    padding: 1rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+  }
+  
+  .logoContainer {
+    display: flex;
+    align-items: center;
+  }
+  
+  .logoImage {
+    width: 120px;
+    height: auto;
+    background-color: #ddd; /* Placeholder color */
+  }
+  
+  .navContainer {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+  
+  .navItems {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+  
+  .navButton {
+    background-color: #333;
+    color: white;
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .navButton:hover {
+    background-color: #555;
+  }
+  
+  .pageMain {
+    flex: 1;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    padding: 2rem;
+    gap: 2rem;
+  }
+  
+  .imageSection {
+    width: 100%;
+    max-width: 400px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .illustrationImage {
+    max-width: 100%;
+    height: auto;
+    background-color: #ddd; /* Placeholder color */
+  }
+  
+  .formContainer {
+    width: 100%;
+    max-width: 500px;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    text-align: center;
+  }
+  
+  .formLogo {
+    width: 160px;
+    height: auto;
+    align-self: center;
+    background-color: #ddd; /* Placeholder color */
+  }
+  
+  .headingText {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #333;
+  }
+  
+  .testimonialsSection {
+    width: 100%;
+    max-width: 600px;
+    text-align: center;
+  }
+  
+  .testimonial {
+    margin: 1rem 0;
+    padding: 1rem;
+    background-color: #ffb347;
+    border-radius: 10px;
+  }
+  
+  .quote {
+    font-size: 1.2rem;
+    font-style: italic;
+  }
+  
+  .whyUsSection {
+    width: 100%;
+    max-width: 600px;
+    text-align: center;
+  }
+  
+  .features {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1rem;
+  }
+  
+  .feature {
+    background-color: #ffe4c8;
+    padding: 0.5rem;
+    border-radius: 5px;
+  }
