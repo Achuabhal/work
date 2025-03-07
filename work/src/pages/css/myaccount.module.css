@@ -29,9 +29,11 @@
   font-size: 18px;
   font-weight: bold;
   color: white;
-  width: 104%; /* Ensure full width */
+  width: 100%; /* Ensure full width */
   height: 70px; /* Make it full-screen height */
   border-radius: 0; /* Remove unnecessary border-radius */
+  box-sizing: border-box;
+
 }
 .mainPage{
   display: flex;
@@ -40,6 +42,8 @@
   padding-right:0px ;
   width: 100%;
   height: auto; 
+  box-sizing: border-box;
+
 }
 
 
@@ -523,7 +527,7 @@
 }
 /* Footer */
 .foot {
-  width: 104%; 
+  width: 100%; 
   height: 40px;
   margin: 0;
   padding: 30px; 
