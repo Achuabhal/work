@@ -24,7 +24,6 @@ h2 {
 .optionCard {
   background-color: #f0f0f0;
   padding: 4rem;
-  border-radius: 28px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -48,7 +47,6 @@ h2 {
 .sellSection {
   background-color: #FFD699;
   padding: 2rem;
-  border-radius: 28px;
   margin-bottom: 2rem;
   text-align: center;
   height: auto;
@@ -58,7 +56,7 @@ h2 {
 .testimonials {
   background-color: #FFD699;
   padding: 2rem;
-  border-radius: 28px;
+ 
   margin-bottom: 2rem;
 }
 
@@ -96,7 +94,6 @@ h2 {
 .features {
   background-color: #FFD699;
   padding: 2rem;
-  border-radius: 28px;
   margin-bottom: 2rem;
 }
 
@@ -130,9 +127,9 @@ h2 {
 
 .container {
   width: 100%;
-  max-width: 1200px;
+  max-width: auto;
   margin: 0 auto;
-  padding: 0 1rem;
+  padding: 0rem;
   font-family: Arial, sans-serif;
   box-sizing: border-box;
 }
@@ -141,7 +138,6 @@ h2 {
 .header {
   background-color: #FFD699;
   padding: 15px 10px;
-  border-radius: 10px;
   margin-bottom: 15px;
 }
 
@@ -221,7 +217,6 @@ h2 {
 /* Hero Banner */
 .heroBanner {
   background-color: #FFD699;
-  border-radius: 10px;
   padding: 20px;
   position: relative;
   margin-bottom: 15px;
@@ -231,11 +226,38 @@ h2 {
   align-items: center;
 }
 
+.slideImageWrapper {
+  width: 200px; /* Match with your service icon width or adjust as needed */
+  height: 200px; /* Match with your service icon height or adjust as needed */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-right: 20px;
+}
+
+/* Slide image styles */
+.slideImage {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain; /* This maintains aspect ratio */
+}
+
+/* You can keep your existing .logoImage class for other images or update as needed */
+.logoImage {
+  max-width: 100%;
+  height: auto;
+  margin-left: 0%;
+}
+
+/* You might need to adjust the bannerContent to accommodate the new wrapper */
 .bannerContent {
   display: flex;
   width: 100%;
   flex-wrap: wrap;
+  align-items: center;
 }
+
+ 
 
 .bannerIllustration {
   flex: 1;
@@ -258,11 +280,6 @@ h2 {
   line-height: 1.2;
 }
 
-.logoImage {
-  max-width: 100%;
-  height: auto;
-  margin-left: 0%;
-}
 
 .carouselButton {
   position: absolute;
@@ -305,7 +322,6 @@ h2 {
 /* Services Section */
 .servicesSection {
   background-color: #FFD699;
-  border-radius: 10px;
   padding: 30px;
   margin-bottom: 15px;
   position: relative;
@@ -350,14 +366,12 @@ h2 {
   width: 100%;
   height: 250px;
   background-color: #D9D9D9;
-  border-radius: 10px;
   margin-top: 30px;
 }
 
 /* Hourly Service Section */
 .hourlyServiceSection {
   background-color: #DDD;
-  border-radius: 10px;
   padding: 40px;
   margin-bottom: 15px;
   text-align: center;
@@ -371,7 +385,6 @@ h2 {
 /* Most Booked Section */
 .mostBookedSection {
   background-color: #FFD699;
-  border-radius: 10px;
   padding: 20px;
   margin-bottom: 15px;
 }
@@ -395,9 +408,8 @@ h2 {
 .footerr {
   background-color: #FFD29E;
   padding: 3rem 2rem 1rem;
-  border-radius: 43.64px;
   margin: 2rem auto;
-  max-width: 1200px;
+  max-width: auto;
 }
 
 .footerContent {
@@ -474,7 +486,6 @@ h2 {
   margin-top: 0.6rem;
   padding: 0.7rem;
   background-color: #D28E26;
-  border-radius: 43.64px;
   font-size: 26px;
 }
 
