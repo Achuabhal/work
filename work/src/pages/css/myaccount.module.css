@@ -1202,37 +1202,33 @@
     height: 100%;
     margin: 0px;
   }
-
   .heading {
-    flex-direction: column;
+    display: grid;
+    grid-template-columns: auto 1fr; /* Create two columns: one for the logo and one for the rest */
     align-items: center;
-    padding-top: 5vh;
-  
+    padding-top: 0vh;
     padding-bottom: 2vh;
-    width: 100%;
-    height: 5vh;
-    display: flex;
-    flex-direction: row;
+    width: 104%;
+    height: 10vh;
   }
-
   .duzoLogo {
     height: 50px;
     margin-bottom: 10px;
     margin-left: 0;
   }
-
   .accountTitle {
+    margin-top: 0;
+    flex-grow: 1;
     width: fit-content;
-    margin-top: 3%;
-    margin-right: 0%;
-    margin-left: 30%;
-    margin-bottom: 2vh;
-    font-size: 75%;
+    align-self: center;
+    margin-left: 59%;
+    margin-right: 0vh; /* Adjust the margin to position the title */
+    font-size: 75%
   }
 
   .mainPage {
     flex-direction: column;
-    width: fit-content;
+    width: 100%;
     padding: 1vh;
   }
 
@@ -1240,7 +1236,7 @@
     display: grid;   
     grid-template-columns: 2;
     margin-top: 5vh;
-    margin-left: 1vh;
+    margin-left: 4vh;
     margin-right: 2vh;
     padding: 0;   
     width:fit-content;
@@ -1274,20 +1270,18 @@
   }
 
   .personalInfo {
-    width:59vh;
+    width:100%;
     height: auto;
-    padding: 2vh;
+    padding:0;
     margin-top: 8%;
     margin-left: 0%;
     margin-right:0% ;
   }
-
-
-
   .sectionTitle{
     font-size: 90%;
     margin-left: 18vh;
     margin-top: 5vh;
+    padding-top: 5vh;
     font-weight:bolder;
   }
 
@@ -1310,6 +1304,7 @@
   .lastName{
     width: 26vh;
     margin-left: 5vh;
+    flex-grow: 1;
     display: flex;
     gap:20%;
     
@@ -1353,26 +1348,34 @@
   .radioLabel{
     font-size: 80%;
   }
-  .emailGroup{
-    margin-left:0%;
+  .emailGroup {
+    display: flex;
+    align-items: center; /* Align items vertically in the center */
+    margin-left: 0%;
   }
-  .labelEditContainer{
-
-    margin-left: 3vh;
+  
+  .labelEditContainer {
+    width: 100%;
+    margin-left: 5vh;
+    display: flex;
+    gap: 10vh; /* Adjust the gap between elements */
   }
-  .labelEditContainer .Email{
+  
+  .labelEditContainer .Email {
     font-size: 80%;
-    width:fit-content;
-    
     margin-right: 0vh;
     padding-right: 0%;
+    flex-shrink: 0; /* Prevent the label from shrinking */
   }
-  .labelEditContainer .emailEditLink{
-    text-align: right;
+  
+  .emailEditLink {
     margin-right: 20vh;
+    align-self: flex-start; /* Align the link to the start of the cross axis */
   }
-  .emailInputField{
+  
+  .emailInputField {
     width: 30vh;
+    flex-grow: 1; /* Allow the input field to grow and take up remaining space */
   }
   .labelRow{
     margin-right: 0%;
@@ -1434,8 +1437,9 @@
   .ordersSection {
     width: 100%;
     height: 80vh;
-    padding: 10px;
+    padding: 1vh;
     margin-top: 8vh;
+    margin-left: 0vh;
     margin-right: 0%;
   }
   .ordersSection .sectionTitle{
@@ -1443,8 +1447,8 @@
   }
 
   .ordersContainer {
-    width: 90%;
-    margin-left: 1vh;
+    width: 89%;
+    margin-left: 0%;
     margin-right: 1vh;
     height: 20vh;
   }
@@ -1501,7 +1505,7 @@
     display: flex;
     flex-direction: column;
     height: auto;
-    width: 100%;
+    width: 104%;
     padding: 2%;
     font-size: 70%;
     margin-top: 5vh;
