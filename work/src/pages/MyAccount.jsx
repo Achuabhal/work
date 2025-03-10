@@ -34,15 +34,16 @@ const MyAccount = () => {
                       <div className={styles.content}>
                         {activeSection === "personalInfo" && (
                           <div className={styles.personalInfo}>
-                            <h1 className={styles.sectionTitle}>Personal Information</h1>
-                            <div className={styles.formGroupInline}>
-                              <div className={styles.formGroup}>
+                             <h1 className={styles.sectionTitle}>Personal Information</h1>
+                            <div className={styles.formGroupName}>
+                              <div className={styles.firstName}>
                                 <label className={styles.Name}>First Name</label>
                               </div>
-                              <div className={styles.formGroup}>
+                              <div className={styles.lastName}>
                                 <label className={styles.Name}>Last Name</label>
+                                <a href="#" className={styles.personaleditLink}>Edit</a>
                               </div>
-                              <a href="#" className={styles.editLink}>Edit</a>
+                              
                             </div>
                             <div className={styles.personalInfotextInp}>
                               <div className={styles.formGroup}>
@@ -63,27 +64,27 @@ const MyAccount = () => {
                                 <input type="radio" name="gender" value="female" className={styles.gender}/> Female
                               </label>
                             </div>
-                            <div className={styles.formGroup}>
+                            <div className={styles.emailGroup}>
                               <div className={styles.labelEditContainer}>
                                 <label className={styles.Email}>Email Address</label>
                                 <a href="#" className={styles.emailEditLink}>Edit</a>
                               </div>
-                              <input type="email" className={styles.inputField} />
+                              <input type="email" className={styles.emailInputField} />
                             </div>
-                            <div className={styles.formGroup}>
+                            <div className={styles.phoneGroup}>
                               <div className={styles.labelRow}>
                                 <label className={styles.phoneLabel}>Phone Number</label>
                                 <a href="#" className={styles.editLink}>Edit</a>
                               </div>
-                              <input type="tel" className={styles.inputField} />
-                            </div>
+                              <input type="tel" className={styles.phoneinputField} />
+                            </div> 
                           </div>
                         )}
                       </div> 
                       <div classname={styles.content}>
                         {activeSection === "orders" && (
                           <div className={styles.ordersSection}>
-                            <h1 className={styles.sectionTitle}>Your Orders</h1>
+                            <h1 className={styles.orderTitle}>Your Orders</h1>
                             <div className={styles.ordersContainer}>
                               <div className={styles.orderItem}>
                                 <div className={styles.orderImage}>
@@ -162,7 +163,7 @@ const MyAccount = () => {
                       </div>
                     )}
                   </div> 
-                </div>
+                </div> 
  
       <footer className={styles.foot}>
         <p className={styles.footerText}>Copyrights &copy; 2024 - DUZO</p>

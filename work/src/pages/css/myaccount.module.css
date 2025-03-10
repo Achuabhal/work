@@ -1,3 +1,4 @@
+ 
 /* General Styles */
 .container
 {
@@ -7,43 +8,39 @@
   height: auto;  
 }
 .duzoLogo {
-  padding-top: 10px;
-  height: 70px; /* Adjust size */
+  padding-top: 10%;
+  height: 10vh; /* Adjust size */
   width: auto;
-  margin-left: 8px; /* Space from the left */
+  margin-left: 4vh; /* Space from the left */
 }
 
 .accountTitle {
   color: black;
-  margin-right: 30px;
+  margin-left: 75%;
+  
 }
 
 /* Header */
 .heading {
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
+  margin: 0px;
   align-items: center;
   background-color: #ffa726;
-  padding: 5px;
   font-size: 18px;
   font-weight: bold;
-  color: white;
   width: 100%; /* Ensure full width */
-  height: 70px; /* Make it full-screen height */
+  height: 15vh; /* Make it full-screen height */
   border-radius: 0; /* Remove unnecessary border-radius */
-  box-sizing: border-box;
-
 }
 .mainPage{
   display: flex;
   flex-direction: row;
   padding: 30px;
   padding-right:0px ;
-  width: 100%;
+  
+  width:fit-content;
   height: auto; 
-  box-sizing: border-box;
-
 }
 
 
@@ -52,7 +49,8 @@
   display: flex;
   margin-top: 70px;
   margin-left: 100px;
-  margin-right: 100px;
+  
+  margin-right: 70px;
   flex-direction: column;
   gap: 20px;
   width: 200px;
@@ -76,7 +74,7 @@
 }
 .content{
   .content {
-    width: calc(100% - 40px); /* Adjust width dynamically */
+    width: calc(100% - 25px); /* Adjust width dynamically */
     
     padding: 20px;
     margin: 0 auto; /* Center content */
@@ -97,8 +95,8 @@
   padding: 20px;
   border-radius: 15px; /* Rounded corners */
   
-  width: 100%;
-  height: 450px;
+  width: 100vh;
+  height: auto;
   margin-bottom: 90px;
   margin-top: 30px;
   margin-right: 70px;
@@ -108,26 +106,38 @@
 
 
 /* Form Fields */
-.formGroupInline {
+.formGroupName {
   display: flex;
-  align-items: center;
-  gap: 20px;
+  width: 95%;
+  margin-top: 50px;
+  margin-left: 60px;
+  text-align: center;
+
+  gap:21%;
+}
+.firstName{
+  width: 100px;
+}
+.lastName{
+  display: flex;
+  gap:90px;
 }
 
 .personalInfotextInp {
   display: flex;
-  gap: 10px; /* Adds spacing between the inputs */
+  margin-left: 60px;
+  margin-top: 10px;
+  gap: 85px; /* Adds spacing between the inputs */
   justify-content: space-between; /* Ensures they stay on the same line */
   align-items: center;
-  width: 100%; /* Makes sure it takes full width */
+  width: 50%; /* Makes sure it takes full width */
 }
 .Name{
+
   text-align: left;
   font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }
-.formGroup {
-  flex: 1; /* Ensures both inputs take equal space */
-}
+
 
 .nameInputField {
   max-width: fit-content;
@@ -147,32 +157,28 @@
 }
 
 /* Labels */
-.formGroup .Email {
-  font-weight: bolder;
-  padding-right: 90px;
-  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-  font-size: 15px;
-  flex: 1;
-  text-align: left;
-}
+
 
 /* Input Fields */
-.formGroup .nameInputField {
+.nameInputField {
   display: inline-flex;
-  justify-content: space-between;
-  gap: 25px; /* Adjust space between input fields */
-  width: 100px;
+  justify-content:space-around;
+  gap: 10px; /* Adjust space between input fields */
+  width: 130px;
+  margin-right: 3%;
   border-radius: 70px;
   background-color: white;
 }
 
+
 /* Radio Buttons */
 .genderContainer {
   display: flex;
-  width: 100%;
+  width: 50%;
+  align-items: center;
   padding: 0px;
-  margin-left: 0px;
-  margin-top: 20px; /* Ensures it takes full width */
+  margin-right: 62px;
+  margin-top: 25px; /* Ensures it takes full width */
   margin-bottom: 10px; /* Adds spacing below */
 }
 
@@ -180,12 +186,14 @@
   font-weight: bolder;
   font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
   font-size: 16px;
-  margin-right: 150px;
+  margin-left: 63px;
 }
 
 .radioGroup {
   display: flex;
-  gap: 150px; /* Adds space between the radio buttons */
+  width: 50%;
+  margin-left: 80px;
+  gap: 100px; /* Adds space between the radio buttons */
   align-items: center; /* Aligns items properly */
 }
 
@@ -193,6 +201,7 @@
   display: flex;
   align-items: center;
   font-weight: bold;
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
   gap: 5px; /* Space between radio button and text */
   font-size: 16px; /* Adjust text size */
   cursor: pointer;
@@ -204,17 +213,36 @@
 }
 
 /* Email and Phone Number */
-.formGroup {
+.emailGroup {
   display: flex;
+  margin-left: 42px;
+  width: 60%;
   flex-direction: column; /* Ensures input stays on the next line */
 }
 
 .labelEditContainer {
   display: flex;
-  justify-content: space-between;
+  width: 400px;
   align-items: center;
-  margin-top: 15px;
+  gap:50px;
+  margin-left: 22px;
+  margin-top: 20px;
   margin-bottom: 5px; /* Adds slight spacing before the input box */
+}
+.Email{
+  display:inline-block;
+  width: auto;
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  flex-shrink: 1;
+}
+
+.emailInputField{
+  margin-top: 15px;
+  margin-left: 20px;
+  height: 30px;
+  border: none;
+  width:50%;
+  border-radius: 40px;
 }
 
 .emailEditLink {
@@ -226,18 +254,25 @@
 }
 
 /* Phone Number */
-.formGroup {
+.phoneGroup {
   display: flex;
   flex-direction: column;
-  width: 100%;
+  width: 70%;
+}
+.phoneLabel{
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  margin-left: 40px;
+  gap: 3px;
 }
 
 .labelRow {
   display: flex;
-  justify-content: space-between;
+  
   align-items: center;
-  width: 50%;
-  margin-top: 15px;
+  width: 70%;
+  gap: 47px;
+  margin-left: 20px;
+  margin-top: 20px;
   margin-bottom: 5px; /* Adds spacing between label row and input */
 }
 .editLink {
@@ -245,10 +280,13 @@
   color: #007bff;
 }
 
-.formGroup .inputField {
-  width: 150px;
+ .phoneinputField {
+  width: 40%;
   padding: 8px;
   border: none;
+  margin-top: 15px;
+  margin-left: 60px;
+  margin-bottom: 40px;
   border-radius: 20px;
   background-color: white;
 }
@@ -354,10 +392,9 @@
 
 /* Orders form */
 .ordersSection {
-  background-color: #fdd8b3; /* Light peach background */
-  padding: 30px;
-  
-  height: 500px;
+  background-color:#ffcc99; /* Light peach background */
+  padding: 30px; 
+  height: auto;
   border-radius: 20px;
   text-align: center;
   width: 500px;
@@ -366,10 +403,12 @@
   
 }
 
-.sectionTitle {
+
+.orderTitle {
   font-size: 20px;
   font-weight: bold;
   color: #000;
+  margin-left: 2vh;
   margin-bottom: 15px;
 }
 
@@ -380,8 +419,8 @@
   display: flex;
   flex-direction: column;
   box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
-  width: 70vh;
-  height: 12vh;
+  width: 80vh;
+  height: auto;
   margin: auto;
 }
 
@@ -438,9 +477,11 @@
 
 .sectionTitle {
   font-size: 24px;
+  width: fit-content;
   font-weight: bold;
   text-align: center;
   margin-bottom: 20px;
+  margin-left: 150px;
 }
 
 .paymentSubTitle {
@@ -547,313 +588,739 @@
 }
 
 .socialIcons {
+  height: 2%;
   display: flex;
-  margin-right: 20px;
+  margin-bottom: 2.5%;
+  margin-right: 47px;
   gap: 30px; /* Adds space between icons */
 }
-@media (min-width:480px)and (max-width: 575px) {
-  .container {
-    width: 100%;
-    padding: 0px;
-    margin: 0%;
-  }
 
-  .heading {
-    flex-direction: row;
-    height: 4rem;
-    width: 100%;
-    padding: 10px;
-    justify-content: space-evenly;
-  }
-
-  .duzoLogo {
-    height: 50px;
-    margin-left: 0;
-  }
-
-  .accountTitle {
-    margin-top: 2vh;
-    margin-left: 18rem;
-    margin-right: 2vh;
-  }
-
-  .mainPage {
-    flex-direction: column;
-    width: 100%;
-    padding: 0px;
-  }
-
-  .sidebar {
-    margin-top: 8vh;
-    margin-left: 10vh;
-    display: flex;
-    flex-direction: row;
-    flex-wrap:wrap;
-    padding-left: 30vh;
-    width: 50vh;
-    
-  }
-
-  .sidebarButton {
-    width: 90%;
-    padding: 2vh;
-    height: 12vh;
-  }
-
-  .content {
-    width: 100%;
-    margin: 0;
-    
-    align-items: center;
-    padding: 0px;
-    height: auto;
-  }
-
- .content .personalInfo {
-    width: 70%;
-    margin-left: 15vh; /* Push the form slightly to the right using percentage */
-    margin-right: 0%;
-  }
-  .personalInfo .Name , .genderLabel, .radioLabel {
-    font-size: 85%;
-  }
-  .formGroup{
-    justify-content:space-around;
-  }
-  .labelEditContainer .Email{
-        width:80%;
-        padding-right: 2vh;
-        font-size: 85%;
-         
-  }
-  .labelRow .Phone{
-    font-size: 85%;
-    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-    font-weight: bolder;
-  }
-
-  .formGroupInline {
-    flex-direction: row;
-  }
-
-  .personalInfotextInp {
-    flex-direction: row;
-  }
-
-  .formGroup {
-    margin-bottom: 10px;
-  }
-
-  .nameInputField {
-    margin-right: 0;
-  }
-
-  .genderContainer {
-    margin-left: 0;
-  }
-
-  .radioGroup {
-    gap: 10px;
-  }
-
-  .ordersSection {
-    width: 70%;
-    margin-right: 5vh;
-    height: 70vh;
-    margin-left: 15vh;
-    margin-bottom: 20vh;
-  }
-
-  .ordersContainer {
-    width: 90%;
-    height: auto;
-  }
-
-  .orderImage img {
-    width: 100px;
-  }
-  .paymentMethods{
-    margin-left: 10vh;
-    height: auto;
-    margin-top: 10vh;
-  }
-
-  .paymentSubTitle{
-    font-size: 85%;
-  }
-
-  .paymentMethods .inputField{
-    width: 50%;
-  }
-
-  .CardFields label{
-    font-size: 85%;
-  }
-  .CardFields .inputField{
-      margin-bottom: 4%;
-  }
-  .cardDetails {
-    width: 100%;
-  }
-
-  .inlineFields {
-    flex-direction: column;
-  }
-
-  .smallInput {
-    width: 100%;
-  }
-
-  .customer{
-    margin-right: 0vh;
-  }
-  .customerCare .customerTitle{
-    text-align: center;
-  }
-  .customerCare {
-    width: 80vh;
-    height: 110vh;
-    text-align: left;
-    font-size: 85%;
-    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-    margin-left: 15vh;
-    margin-right: 10vh;
-  }
-  .submitButton{
-    align-self: center;
-    margin-top: 10vh;
-    margin-left: 35vh;
-  }
-
-  .customerInfo {
-    width: 100%;
-  }
-
-  .issueField {
-    width: 70%;
-    height: 100px;
-  }
-
-  .customerDetails {
-    width: 30%;
-    
-    margin-right: 10vh;
-  }
-
-  .customerDetails:nth-child(2) {
-    margin-left: 0;
-  }
-
-  .customerDetails:nth-child(3) {
-    width: 40%;
-    margin-bottom: 10px;
-  }
-
-  .foot {
-    height: 10vh;
-    width: 104%;
-    padding: 3%;
-    font-size: 85%;
-    margin: 0px;
-  }
-  .foot .socialIcons{
-    height: 75%;
-     width: auto;
-     margin: 0px;
-    padding-bottom: 4%;
-    
-  }
+ @media (min-width: 1024px) and (max-width:1440px)
+ {  
+ 
+/* General Styles */
+.container
+{
+  padding: 0px;
+  margin: 0px;
+  width: 100%;
+  height: auto;  
+}
+.duzoLogo {
+  padding-top: 10%;
+  height: 10vh; /* Adjust size */
+  width: auto;
+  margin-left: 4vh; /* Space from the left */
 }
 
-/* Responsive styles for screens 480px and below */
-@media (min-width:320px) and (max-width: 480px) {
+.accountTitle {
+  color: black;
+  margin-left: 75%;
+  
+}
+
+/* Header */
+.heading {
+  display: flex;
+  flex-direction: row;
+  margin: 0px;
+  align-items: center;
+  background-color: #ffa726;
+  font-size: 18px;
+  font-weight: bold;
+  width: 100%; /* Ensure full width */
+  height: 15vh; /* Make it full-screen height */
+  border-radius: 0; /* Remove unnecessary border-radius */
+}
+.mainPage{
+  display: flex;
+  flex-direction: row;
+  padding: 30px;
+  padding-right:0px ;
+  
+  width:fit-content;
+  height: auto; 
+}
+
+
+/* Sidebar */
+.sidebar {
+  display: flex;
+  margin-top: 70px;
+  margin-left: 100px;
+  
+  margin-right: 70px;
+  flex-direction: column;
+  gap: 20px;
+  width: 200px;
+  padding: 0px;
+}
+
+.sidebarButton {
+  background-color: #FFAB5B;
+  border: none;
+  padding: 15px;
+  text-align: center;
+  cursor: pointer;
+  font-size: 16px;
+  color: black;
+  font-weight: bold;
+  border-radius: 25px;
+  width: 200px;
+  height: 70px;
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+  transition: all 0.3s ease-in-out;
+}
+.content{
+  .content {
+    width: calc(100% - 25px); /* Adjust width dynamically */
+    
+    padding: 20px;
+    margin: 0 auto; /* Center content */
+    text-align: center;
+    height: 600px;
+    overflow-x: hidden; /* Prevent horizontal scrolling */
+  }
+  
+}
+
+.sidebarButton:hover {
+  background-color: #ff9800;
+}
+
+/* Personal Info Section */
+.personalInfo {
+  background: #ffcc99; /* Light peach background */
+  padding: 20px;
+  border-radius: 15px; /* Rounded corners */
+  
+  width: 100vh;
+  height: auto;
+  margin-bottom: 90px;
+  margin-top: 30px;
+  margin-right: 70px;
+  text-align: center;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+
+/* Form Fields */
+.formGroupName {
+  display: flex;
+  width: 95%;
+  margin-top: 50px;
+  margin-left: 60px;
+  text-align: center;
+
+  gap:21%;
+}
+.firstName{
+  width: 100px;
+}
+.lastName{
+  display: flex;
+  gap:90px;
+}
+
+.personalInfotextInp {
+  display: flex;
+  margin-left: 60px;
+  margin-top: 10px;
+  gap: 85px; /* Adds spacing between the inputs */
+  justify-content: space-between; /* Ensures they stay on the same line */
+  align-items: center;
+  width: 50%; /* Makes sure it takes full width */
+}
+.Name{
+
+  text-align: left;
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+
+.nameInputField {
+  max-width: fit-content;
+  width: 100%; /* Adjusts input width to be responsive */
+  padding: 8px;
+  margin-right: 100px;
+  border: none;
+  border-radius: 70px;
+  background-color: white;
+}
+
+.editLink {
+  margin-left: 0px;
+  color: blue;
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+/* Labels */
+
+
+/* Input Fields */
+.nameInputField {
+  display: inline-flex;
+  justify-content:space-around;
+  gap: 10px; /* Adjust space between input fields */
+  width: 130px;
+  margin-right: 3%;
+  border-radius: 70px;
+  background-color: white;
+}
+
+
+/* Radio Buttons */
+.genderContainer {
+  display: flex;
+  width: 50%;
+  align-items: center;
+  padding: 0px;
+  margin-right: 62px;
+  margin-top: 25px; /* Ensures it takes full width */
+  margin-bottom: 10px; /* Adds spacing below */
+}
+
+.genderLabel {
+  font-weight: bolder;
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  font-size: 16px;
+  margin-left: 63px;
+}
+
+.radioGroup {
+  display: flex;
+  width: 50%;
+  margin-left: 80px;
+  gap: 100px; /* Adds space between the radio buttons */
+  align-items: center; /* Aligns items properly */
+}
+
+.radioLabel {
+  display: flex;
+  align-items: center;
+  font-weight: bold;
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  gap: 5px; /* Space between radio button and text */
+  font-size: 16px; /* Adjust text size */
+  cursor: pointer;
+}
+
+.gender {
+  transform: scale(1.2); /* Slightly increase size */
+  cursor: pointer;
+}
+
+/* Email and Phone Number */
+.emailGroup {
+  display: flex;
+  margin-left: 42px;
+  width: 60%;
+  flex-direction: column; /* Ensures input stays on the next line */
+}
+
+.labelEditContainer {
+  display: flex;
+  width: 400px;
+  align-items: center;
+  gap:50px;
+  margin-left: 22px;
+  margin-top: 20px;
+  margin-bottom: 5px; /* Adds slight spacing before the input box */
+}
+.Email{
+  display:inline-block;
+  width: auto;
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  flex-shrink: 1;
+}
+
+.emailInputField{
+  margin-top: 15px;
+  margin-left: 20px;
+  height: 30px;
+  border: none;
+  width:50%;
+  border-radius: 40px;
+}
+
+.emailEditLink {
+  color: blue;
+  text-decoration: underline;
+  margin-right: 200px;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+/* Phone Number */
+.phoneGroup {
+  display: flex;
+  flex-direction: column;
+  width: 70%;
+}
+.phoneLabel{
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  margin-left: 40px;
+  gap: 3px;
+}
+
+.labelRow {
+  display: flex;
+  
+  align-items: center;
+  width: 70%;
+  gap: 47px;
+  margin-left: 20px;
+  margin-top: 20px;
+  margin-bottom: 5px; /* Adds spacing between label row and input */
+}
+.editLink {
+  text-decoration: none;
+  color: #007bff;
+}
+
+ .phoneinputField {
+  width: 40%;
+  padding: 8px;
+  border: none;
+  margin-top: 15px;
+  margin-left: 60px;
+  margin-bottom: 40px;
+  border-radius: 20px;
+  background-color: white;
+}
+
+/* customer module */
+.customerCare{
+  background: #ffcc99; /* Light peach background */
+  padding: 20px;
+  border-radius: 15px; /* Rounded corners */
+  width: 500px;
+  max-width:100%;
+  height: 450px;
+  margin-bottom: 20px;
+  margin-top: 30px;
+  margin-right: 100px;
+  text-align: center;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.customerTitle {
+  padding: 10px;
+  font-family: Georgia, 'Times New Roman', Times, serif;
+}
+.customerInfo {
+  width: 120vh;
+  display: flex;
+  flex-wrap: wrap; /* Allows items to wrap onto the next row */
+  gap: 20px; /* Adjust spacing between input fields */
+}
+
+.customerSubTitle{
+  margin-left: 3vh;
+  text-align: left;
+  font-weight: bolder;
+  font-family: Georgia, 'Times New Roman', Times, serif;
+}
+
+.issueField {
+  width: 350px;
+  height: 20vh;
+  border-radius: 20px;
+  border: none;
+  padding: 0px; /* Ensures placeholder is positioned properly */
+  font-size: 16px;
+}
+
+.issueField::placeholder {
+  font-weight: bold;
+  text-align: left;
+  vertical-align: top;
+  padding-bottom: 10px; /* Moves the placeholder text to the top */
+  padding-left: 5px; /* Moves it slightly to the left */
+  color: #3a3a3a; /* Optional: Adjust the color */
+}
+
+.customerDetails {
+  margin-top: 20px;
+  margin-right:50px ;
+  width: calc(20% - 10px); /* Ensures two inputs fit in one row */
+  height: 20px; /* Adjust input height */
+  gap: 90px;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  border-radius: 25px;
+  border: none;
+  padding: 10px;
+}
+.customerDetails::placeholder{
+  color:black ;
+  font-weight: bold;
+}
+
+
+.customerDetails:nth-child(2) { 
+  margin-left: 10%; 
+}
+.customerDetails:nth-child(3) { 
+  width: 40vh; /* Email field takes full width on the next row */
+  margin-bottom: 20px;
+
+}
+
+.customerCare .submitButton{
+  background-color:#ff8c00;
+  color: #fff;
+  font-weight: bolder;
+  border: none;
+  width: 15vh;
+  height: 4vh;
+  border-radius: 30px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+.editLink {
+  color: blue;
+  text-decoration: underline;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+
+/* Orders form */
+.ordersSection {
+  background-color:#ffcc99; /* Light peach background */
+  padding: 30px; 
+  height: auto;
+  border-radius: 20px;
+  text-align: center;
+  width: 500px;
+  margin-top: 20px;
+  margin-right: 70px;
+  
+}
+
+
+.orderTitle {
+  font-size: 20px;
+  font-weight: bold;
+  color: #000;
+  margin-left: 2vh;
+  margin-bottom: 15px;
+}
+
+.ordersContainer {
+  background-color: #fff; /* White card */
+  padding: 15px;
+  border-radius: 20px;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+  width: 80vh;
+  height: auto;
+  margin: auto;
+}
+
+.orderItem {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+}
+
+.orderImage img {
+  width: 50vh;
+  margin-right: 10px;
+  background-color: #948f8f;
+  border-radius: 5px;
+}
+
+.orderDetails {
+  flex-grow: 1;
+  text-align: center;
+}
+
+.orderDetails p {
+  margin: 2px 0;
+  font-size: 14px;
+  color: #333;
+}
+
+.orderMeta {
+  text-align: center;
+  color: #000;
+  font-size: 12px;
+  font-weight: bold;
+}
+.rateReviewButton {
+  background-color: #fff;
+  color: #000;
+  border: none;
+  padding: 6px 10px;
+  font-size: 12px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+/* Payment section */ 
+.paymentMethods {
+  width: 100vh;
+  background-color: #fdd8b3;
+  padding: 20px;
+  border-radius: 10px;
+  height: 130vh;
+  margin-bottom: 20vh;
+}
+
+.sectionTitle {
+  font-size: 24px;
+  width: fit-content;
+  font-weight: bold;
+  text-align: center;
+  margin-bottom: 20px;
+  margin-left: 150px;
+}
+
+.paymentSubTitle {
+  font-size: 18px;
+  font-weight: bold;
+  text-align: left;
+  margin-top: 15px;
+  color: #333;
+}
+.inputField{
+  width: 80%;
+  padding: 10px;
+  margin: 5px 0;
+  border: none;
+  border-radius: 18px;
+  background-color: #fff;
+  font-size: 16px;
+}
+.cardInput {
+  width: 80%;
+  padding: 10px;
+  margin: 5px 0;
+  border: none;
+  border-radius: 18px;
+  background-color: #fff;
+  font-size: 16px;
+}
+.expiryInput {
+  width: 80%;
+  padding: 10px;
+  margin: 5px 0;
+  margin-left: 15px;
+  border: none;
+  border-radius: 18px;
+  background-color: #fff;
+  font-size: 16px;
+}
+.CardFields1 .cvvInput{
+  margin-bottom: 30px;
+}
+.cvvInput {
+  width: 80%;
+  padding: 10px;
+  margin: 5px 0;
+  margin-left: 66px;
+  border: none;
+  border-radius: 18px;
+  background-color: #fff;
+  font-size: 16px;
+}
+
+.cardDetails {
+  padding: 15px;
+  display: flex;
+  flex-direction: column;
+  border-radius: 10px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  margin-top: 10px;
+}
+.CardFields1{
+  display: flex;
+  flex-direction: row;
+
+}
+.CardFields2{
+  display: flex;
+  flex-direction: row;
+}
+.cardDetails label {
+  display: flex;
+  font-weight: bold;
+  margin: 5px 0;
+  margin-right: 10px;
+  padding-right: 8px;
+}
+
+.cardDetails input {
+  width: 40%;
+  padding: 8px;
+  border: none;
+  border-radius: 15px;
+  background-color: #f9f9f9;
+  font-size: 16px;
+}
+/* Footer */
+.foot {
+  width: 100%; 
+  height: 40px;
+  margin: 0;
+  padding: 30px; 
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #ffa726;
+  font-size: 18px;
+  font-weight: bold;
+  border-radius: 0; /* Removes rounded corners */
+  box-sizing: border-box; /* Ensures padding doesn't add extra width */
+}
+
+.footerText {
+  margin-left: 0px;
+  color: black;
+}
+
+.socialIcons {
+  height: 2%;
+  display: flex;
+  margin-bottom: 2.5%;
+  margin-right: 47px;
+  gap: 30px; /* Adds space between icons */
+}
+}
+/* Responsive Styles */
+@media (min-width:320px) and (max-width: 425px) {
   .container {
     padding: 0px;
     width: 100%;
     height: 100%;
     margin: 0px;
   }
-
   .heading {
-    flex-direction: column;
+    display: grid;
+    grid-template-columns: auto 1fr; /* Create two columns: one for the logo and one for the rest */
     align-items: center;
-    padding: 5vh;
-    width: 100%;
-    height: 5vh;
-    display: flex;
-    flex-direction: row;
+    padding-top: 0vh;
+    padding-bottom: 2vh;
+    width: 104%;
+    height: 10vh;
   }
-
   .duzoLogo {
     height: 50px;
     margin-bottom: 10px;
     margin-left: 0;
   }
-
   .accountTitle {
-    margin-top: 5px;
-    margin-right: 2vh;
-    margin-left: 25vh;
-    margin-bottom: 2vh;
-    font-size: 85%;
+    margin-top: 0;
+    flex-grow: 1;
+    width: fit-content;
+    align-self: center;
+    margin-left: 59%;
+    margin-right: 0vh; /* Adjust the margin to position the title */
+    font-size: 75%
   }
 
   .mainPage {
     flex-direction: column;
     width: 100%;
-    padding: 10px;
+    padding: 1vh;
   }
 
   .sidebar {
-    
-    margin-top: 10vh;
-    margin-left: 20vh;
-    padding-left: 10vh;
-    padding: 0;
-    width: 50%;
+    display: grid;   
+    grid-template-columns: 2;
+    margin-top: 5vh;
+    margin-left: 4vh;
+    margin-right: 2vh;
+    padding: 0;   
+    width:fit-content;
+    height: auto;
     align-items: center;
   }
 
   .sidebarButton {
-    width: 100%;
-
-    height: 12vh;
-    font-size: 14px;
+    width: 25vh;
+    grid-column: 1;
+    height: 10vh;
+    font-size: 2vh;
   }
-
+  .sidebarButton:nth-child(1)
+  {
+    grid-column: 1;
+  }
+  .sidebarButton:nth-child(2)
+  {
+    grid-column: 2;
+  }
+  .sidebarButton:nth-child(4)
+  {
+    grid-column: 2;
+  }
   .content {
     width: 100%;
     margin: 0;
-    padding: 2px;
+    padding:0;
     height: auto;
   }
 
   .personalInfo {
-    width:90%;
-    padding: 2vh;
+    width:100%;
+    height: auto;
+    padding:0;
     margin-top: 8%;
     margin-left: 0%;
     margin-right:0% ;
   }
+  .sectionTitle{
+    font-size: 90%;
+    margin-left: 18vh;
+    margin-top: 5vh;
+    padding-top: 5vh;
+    font-weight:bolder;
+  }
 
+  .formGroupName{
+    margin-left: 3%;
+    display: grid;
+    gap:10%;
+    grid-template-columns: 100px 2fr;
 
+  }
+  
   .Name{
     font-size: 80%;
   }
 
-  .sectionTitle{
-    font-size: 99%;
-    font-weight:bolder;
+  .firstName{
+    width: 15vh;
+    margin-left: 3vh;
   }
-
-  .formGroupInline {
-    flex-direction: row;
-    gap: 2%;
+  .lastName{
+    width: 26vh;
+    margin-left: 5vh;
+    flex-grow: 1;
+    display: flex;
+    gap:20%;
+    
+    margin-right:0vh;
+    grid-column: 2;
+  }
+  .personaleditLink{
+    font-size: 85%;
+    grid-column: 3;
   }
 
   .personalInfotextInp {
+    margin-left: 2vh;
     flex-direction: row;
-    width: 40%;
+    width: 90%;
+    gap: 10%;
   }
 
   .formGroup {
@@ -865,6 +1332,7 @@
     width: 100%;
   }
   .genderLabel{
+    margin-left: 3vh;
     font-size: 80%;
   }
 
@@ -873,30 +1341,56 @@
   }
 
   .radioGroup {
+    margin-left: 5vh;
     gap: 10px;
     flex-direction: row;
   }
   .radioLabel{
     font-size: 80%;
   }
-  .labelEditContainer{
-    
-    justify-content:space-around;
-
+  .emailGroup {
+    display: flex;
+    align-items: center; /* Align items vertically in the center */
+    margin-left: 0%;
   }
-  .labelEditContainer .Email{
+  
+  .labelEditContainer {
+    width: 100%;
+    margin-left: 5vh;
+    display: flex;
+    gap: 10vh; /* Adjust the gap between elements */
+  }
+  
+  .labelEditContainer .Email {
     font-size: 80%;
-    width:80vh;
     margin-right: 0vh;
     padding-right: 0%;
+    flex-shrink: 0; /* Prevent the label from shrinking */
   }
-  .labelEditContainer .emailEditLink{
-    text-align: right;
+  
+  .emailEditLink {
     margin-right: 20vh;
+    align-self: flex-start; /* Align the link to the start of the cross axis */
+  }
+  
+  .emailInputField {
+    width: 30vh;
+    flex-grow: 1; /* Allow the input field to grow and take up remaining space */
+  }
+  .labelRow{
+    margin-right: 0%;
+    display: flex;
+    gap: 16%;
   }
   .phoneLabel{
+    width: fit-content;
+    margin-left: 0vh;
     font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif; 
     font-size:80% ;
+  }
+  .phoneinputField{
+    margin-left: 4vh;
+    width: 30vh;
   }
 
   .customerCare {
@@ -941,10 +1435,11 @@
   }
   /*Orders section */
   .ordersSection {
-    width: 95%;
+    width: 100%;
     height: 80vh;
-    padding: 10px;
+    padding: 1vh;
     margin-top: 8vh;
+    margin-left: 0vh;
     margin-right: 0%;
   }
   .ordersSection .sectionTitle{
@@ -952,8 +1447,8 @@
   }
 
   .ordersContainer {
-    width: 84%;
-    margin-left: 1vh;
+    width: 89%;
+    margin-left: 0%;
     margin-right: 1vh;
     height: 20vh;
   }
@@ -1007,23 +1502,25 @@
     font-size: 80%;
   }
   .foot {
-    height: 10vh;
-    width: 113%;
-    padding: 3%;
-    font-size: 80%;
+    display: flex;
+    flex-direction: column;
+    height: auto;
+    width: 104%;
+    padding: 2%;
+    font-size: 70%;
     margin-top: 5vh;
   }
 
-  .foot .socialIcons{
-    gap:8%;
+ .socialIcons{
+    gap:15%;
   }
   .foot .socialIcons a{
     height: 2%;
      width: auto;
      margin: 0px;
     
-     padding-top: 4%;
-    padding-bottom: 4%;
+     padding-top: 2%;
+    padding-bottom: 2%;
     
   }
 }

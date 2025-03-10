@@ -6,6 +6,8 @@ import chef from "./assets/chef.png";
 import service from "./assets/logo.png";
 import cleaning from "./assets/oops1.png";
 import myImage1 from "./assets/logo.png";
+import { Link } from "react-router-dom";
+
 
 const HomePage = () => {
   const [slideIndex, setSlideIndex] = useState(0);
@@ -58,9 +60,15 @@ const HomePage = () => {
             <button className={styles.searchButton}><Search size={18} /></button>
           </div>
           <div className={styles.headerIcons}>
-            <button className={styles.iconButton}><MapPin size={isMobile ? 24 : 30} /></button>
+          <Link to="/abdul">
+          <button className={styles.iconButton}><MapPin size={isMobile ? 24 : 30} /></button>
+          </Link>
+            
             <button className={styles.iconButton}><ShoppingCart size={isMobile ? 24 : 30} /></button>
-            <button className={styles.iconButton}><User size={isMobile ? 24 : 30} /></button>
+             <Link to="/d">
+             <button className={styles.iconButton}><User size={isMobile ? 24 : 30} /></button>
+          </Link>
+          
           </div>
         </div>
         <nav className={styles.navbar}>
