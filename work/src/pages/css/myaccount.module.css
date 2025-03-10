@@ -1286,7 +1286,7 @@
   }
 
   .formGroupName{
-    margin-left: 1vh;
+    margin-left: 3%;
     display: grid;
     gap:10%;
     grid-template-columns: 100px 2fr;
