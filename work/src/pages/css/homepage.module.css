@@ -26,6 +26,7 @@ h2 {
   background-color: #f0f0f0;
   padding: 4rem;
   display: flex;
+  border-radius: 35px;
   justify-content: center;
   align-items: center;
 }
@@ -50,6 +51,7 @@ h2 {
   padding: 2rem;
   margin-bottom: 2rem;
   text-align: center;
+  border-radius: 35px;
   height: auto;
   min-height: 25vh;
 }
@@ -57,7 +59,7 @@ h2 {
 .testimonials {
   background-color: #FFD699;
   padding: 2rem;
- 
+  border-radius: 35px;
   margin-bottom: 2rem;
 }
 
@@ -96,6 +98,7 @@ h2 {
   background-color: #FFD699;
   padding: 2rem;
   margin-bottom: 2rem;
+  border-radius: 35px;
 }
 
 .featuresGrid {
@@ -130,7 +133,7 @@ h2 {
   width: 100%;
   max-width: auto;
   margin: 0 auto;
-  padding: 0rem;
+  padding: .3rem;
   font-family: Arial, sans-serif;
   box-sizing: border-box;
 }
@@ -139,6 +142,7 @@ h2 {
 .header {
   background-color: #FFD699;
   padding: 15px 10px;
+  border-radius: 35px;
   margin-bottom: 15px;
 }
 
@@ -221,6 +225,7 @@ h2 {
   padding: 20px;
   position: relative;
   margin-bottom: 15px;
+  border-radius: 35px;
   height: auto;
   min-height: 180px;
   display: flex;
@@ -325,6 +330,7 @@ h2 {
   background-color: #FFD699;
   padding: 30px;
   margin-bottom: 15px;
+  border-radius: 35px;
   position: relative;
 }
 
@@ -372,6 +378,7 @@ h2 {
 
 /* Hourly Service Section */
 .hourlyServiceSection {
+  border-radius: 35px;
   background-color: #DDD;
   padding: 40px;
   margin-bottom: 15px;
@@ -387,6 +394,7 @@ h2 {
 .mostBookedSection {
   background-color: #FFD699;
   padding: 20px;
+  border-radius: 35px;
   margin-bottom: 15px;
 }
 
@@ -410,6 +418,7 @@ h2 {
   background-color: #FFD29E;
   padding: 3rem 2rem 1rem;
   margin: 2rem auto;
+  border-radius: 35px;
   max-width: auto;
 }
 
@@ -485,6 +494,7 @@ h2 {
 .footerBottom {
   text-align: center;
   margin-top: 0.6rem;
+  border-radius: 35px;
   padding: 0.7rem;
   background-color: #D28E26;
   font-size: 26px;
