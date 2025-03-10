@@ -3,7 +3,7 @@ import { FaInstagram, FaFacebook, FaTwitter } from "react-icons/fa";
 import { motion } from "framer-motion";
 import { LogIn, MapPin, User, Search } from "lucide-react";
 import { useNavigate } from 'react-router-dom';
-import styles from "./css/App.module.css";
+import styles from "./css/App.module.css"; // Using the existing CSS module
 import myImage from "./assets/image1.png";
 import myImage1 from "./assets/logo.png";
 
@@ -23,7 +23,7 @@ const CombinedPage = () => {
         <div className={styles.logoContainer}>
           <img src={myImage1} alt="DUZO Logo" className={styles.logoImage} />
         </div>
-        <div className={styles.navContainer}>
+        <nav className={styles.navContainer}>
           <span className={styles.accountText}>My Account</span>
           <div className={styles.navItems}>
             <span className={styles.loginText}>Login</span>
@@ -31,7 +31,7 @@ const CombinedPage = () => {
             <span className={styles.signupText}>Signup</span>
             <LogIn className={styles.loginIcon} />
           </div>
-        </div>
+        </nav>
       </header>
 
       {/* Main Content */}
@@ -39,7 +39,8 @@ const CombinedPage = () => {
         <div className={styles.formContainer}>
           <img src={myImage1} alt="DUZO Logo" className={styles.formLogo} />
           <h2 className={styles.headingText}>
-            Pinpoint Your Place and Unlock Our Services.<br />Let's Get Started!
+            Pinpoint Your Place and Unlock Our Services.<br />
+            Let's Get Started!
           </h2>
 
           <div className={styles.inputGroup}>
@@ -50,6 +51,7 @@ const CombinedPage = () => {
               value={name}
               onChange={(e) => setName(e.target.value)}
               className={styles.textInput}
+              aria-label="Name"
             />
           </div>
 
@@ -61,17 +63,27 @@ const CombinedPage = () => {
               value={location}
               onChange={(e) => setLocation(e.target.value)}
               className={styles.textInput}
+              aria-label="Location"
             />
-            <button className={styles.detectButton} onClick={handleDetectMeClick}>
+            <button 
+              className={styles.detectButton} 
+              onClick={handleDetectMeClick}
+              aria-label="Detect location"
+            >
               <Search className={styles.searchIcon} />
-              DETECT ME
+              <span className={styles.buttonText}>DETECT ME</span>
             </button>
           </div>
         </div>
 
         {/* Image Section */}
         <div className={styles.imageSection}>
-          <img src={myImage} alt="Illustration" className={styles.illustrationImage} />
+          <img 
+            src={myImage} 
+            alt="Illustration" 
+            className={styles.illustrationImage}
+            loading="lazy" 
+          />
         </div>
       </main>
 
@@ -85,14 +97,14 @@ const CombinedPage = () => {
         <div className={styles.footerContent}>
           <div className={styles.copyrightText}>copyrights © 2024 - DUZO</div>
           <div className={styles.socialIcons}>
-            <a href="https://www.instagram.com" target="_blank" rel="noopener noreferrer" className={styles.socialLink}>
-              <FaInstagram size={32} />
+            <a href="https://www.instagram.com" target="_blank" rel="noopener noreferrer" className={styles.socialLink} aria-label="Instagram">
+              <FaInstagram size={24} />
             </a>
-            <a href="https://www.facebook.com" target="_blank" rel="noopener noreferrer" className={styles.socialLink}>
-              <FaFacebook size={32} />
+            <a href="https://www.facebook.com" target="_blank" rel="noopener noreferrer" className={styles.socialLink} aria-label="Facebook">
+              <FaFacebook size={24} />
             </a>
-            <a href="https://www.twitter.com" target="_blank" rel="noopener noreferrer" className={styles.socialLink}>
-              <FaTwitter size={32} />
+            <a href="https://www.twitter.com" target="_blank" rel="noopener noreferrer" className={styles.socialLink} aria-label="Twitter">
+              <FaTwitter size={24} />
             </a>
           </div>
         </div>

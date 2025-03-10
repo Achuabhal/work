@@ -1,10 +1,12 @@
 /* General container */
 .pageContainer {
-  min-height: 170vh;
+  min-height: 100vh;
   background-color: #ffe4c8;
   display: flex;
-  min-width: 66vh;
   flex-direction: column;
+  padding: 0;
+  margin: 0;
+  width: 100%;
 }
 
 /* Header Styles */
@@ -14,7 +16,8 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  flex-wrap: wrap;
+  width: 100%;
+  box-sizing: border-box;
 }
 
 /* Logo */
@@ -26,7 +29,7 @@
 .logoImage {
   width: 120px;
   height: auto;
-  object-fit: contain;
+  max-width: 100%;
 }
 
 /* Navigation */
@@ -34,7 +37,6 @@
   display: flex;
   align-items: center;
   gap: 1rem;
-  flex-wrap: wrap;
 }
 
 .navItems {
@@ -65,12 +67,13 @@
 .pageMain {
   flex: 1;
   display: flex;
-  flex-wrap: wrap;
   justify-content: center;
   align-items: center;
   padding: 2rem;
-  flex-wrap: wrap;
   gap: 2rem;
+  flex-wrap: wrap;
+  width: 100%;
+  box-sizing: border-box;
 }
 
 /* Form Container */
@@ -81,11 +84,14 @@
   flex-direction: column;
   gap: 1.5rem;
   text-align: center;
+  padding: 0 1rem;
+  box-sizing: border-box;
 }
 
 .formLogo {
   width: 160px;
   height: auto;
+  max-width: 100%;
   align-self: center;
 }
 
@@ -93,6 +99,7 @@
   font-size: 1.5rem;
   font-weight: bold;
   color: #333;
+  word-wrap: break-word;
 }
 
 /* Input Groups */
@@ -103,16 +110,18 @@
   border: 1px solid #ffcc80;
   border-radius: 5px;
   padding: 10px;
-  width: auto;
-  margin-right: 20px;
+  width: 100%;
+  box-sizing: border-box;
 }
 
 .textInput {
   border: none;
   outline: none;
-  flex-grow: 1;
+  flex: 1;
   font-size: 16px;
   background: transparent;
+  width: 100%;
+  min-width: 0; /* Prevents overflow in flex containers */
 }
 
 .inputIcon {
@@ -120,6 +129,7 @@
   height: 24px;
   margin-right: 10px;
   color: #ff8c00;
+  flex-shrink: 0;
 }
 
 /* Detect Button */
@@ -131,10 +141,25 @@
   color: white;
   font-size: 14px;
   cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  margin-left: 8px;
+  white-space: nowrap;
+  flex-shrink: 0;
 }
 
 .detectButton:hover {
   background-color: #f89604;
+}
+
+.buttonText {
+  display: inline-block;
+}
+
+.searchIcon {
+  width: 16px;
+  height: 16px;
 }
 
 /* Image Section */
@@ -149,7 +174,7 @@
 .illustrationImage {
   max-width: 100%;
   height: auto;
-  object-fit: cover;
+  object-fit: contain;
 }
 
 /* Footer */
@@ -157,8 +182,8 @@
   background-color: #ffa439;
   padding: 1rem;
   text-align: center;
-  width: auto;
- 
+  width: 100%;
+  box-sizing: border-box;
 }
 
 .footerContent {
@@ -189,87 +214,105 @@
 
 /* Responsive Design */
 @media (max-width: 1024px) {
-  .pageHeader {
-    flex-direction: column;
-    text-align: center;
-  }
-
-  .navContainer {
-    flex-direction: column;
-    text-align: center;
-  }
-
   .pageMain {
-    flex-direction: column;
-  }
-
-  .formContainer {
-    width: 100%;
-    padding: 0 1rem;
-  }
-
-  .imageSection {
-    width: 100%;
-    max-width: 300px;
+    padding: 1.5rem;
   }
 }
-
 
 @media (max-width: 768px) {
   .pageHeader {
     flex-direction: column;
-    align-items: center;
-    padding: 0rem;
-  }
-
-  .navContainer {
-    flex-direction: column;
-    text-align: center;
-    gap: 0.5rem;
-  }
-
-  .pageMain {
-    flex-direction: column;
+    gap: 1rem;
     padding: 1rem;
   }
 
-  .formContainer {
+  .navContainer {
     width: 100%;
-    padding: 0 1rem;
+    justify-content: center;
+  }
+
+  .pageMain {
+    padding: 1rem;
+  }
+
+  .headingText {
+    font-size: 1.3rem;
+  }
+  
+  .formLogo {
+    width: 140px;
+  }
+}
+
+@media (max-width: 576px) {
+  .inputGroup {
+    flex-wrap: wrap;
+  }
+  
+  .detectButton {
+    margin-top: 10px;
+    margin-left: 0;
+    width: 100%;
+    justify-content: center;
   }
 
   .headingText {
     font-size: 1.2rem;
   }
-
-  .textInput {
-    font-size: 14px;
+  
+  .formLogo {
+    width: 120px;
   }
-
-  .detectButton {
-    padding: 6px 10px;
-    font-size: 12px;
-  }
-
-  .imageSection {
-    width: 100%;
-    max-width: 250px;
-  }
-
-  .footerContent {
-    flex-direction: column;
-    text-align: center;
-  }
-
-  .socialIcons {
-    gap: 0.8rem;
+  
+  .socialIcons a {
+    transform: scale(0.9);
   }
 }
 
 @media (max-width: 480px) {
+  .logoImage {
+    width: 100px;
+  }
+
+  .navItems {
+    font-size: 14px;
+  }
+
+  .headingText {
+    font-size: 1.1rem;
+  }
+
+  .textInput {
+    font-size: 14px;
+  }
+  
+  .detectButton {
+    padding: 6px 10px;
+    font-size: 12px;
+  }
+  
+  .formLogo {
+    width: 100px;
+  }
+}
+
+@media (max-width: 320px) {
+  .pageHeader {
+    padding: 0.8rem;
+  }
   
   .logoImage {
-    width: 90px;
+    width: 80px;
+  }
+
+  .navItems {
+    font-size: 12px;
+    gap: 0.3rem;
+  }
+
+  .loginIcon {
+    width: 16px;
+    height: 16px;
   }
 
   .headingText {
@@ -279,13 +322,13 @@
   .textInput {
     font-size: 12px;
   }
-
-  .detectButton {
-    padding: 5px 8px;
-    font-size: 10px;
+  
+  .inputIcon {
+    width: 20px;
+    height: 20px;
   }
-
-  .socialIcons {
-    gap: 0.6rem;
+  
+  .formLogo {
+    width: 80px;
   }
 }

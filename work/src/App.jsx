@@ -5,6 +5,7 @@ import ABOUT from './pages/about';
 import ABDUL from './pages/abdul';
 import Oops from './pages/oops';
 import HomePage from './pages/HomePage';
+ 
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
 function App() {

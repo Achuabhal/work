@@ -39,7 +39,7 @@
   padding: 30px;
   padding-right:0px ;
   
-  width:100%;
+  width:fit-content;
   height: auto; 
 }
 
@@ -73,15 +73,15 @@
   transition: all 0.3s ease-in-out;
 }
 .content{
-  
-    width: 100%; /* Adjust width dynamically */
+  .content {
+    width: calc(100% - 25px); /* Adjust width dynamically */
     
     padding: 20px;
     margin: 0 auto; /* Center content */
     text-align: center;
     height: 600px;
     overflow-x: hidden; /* Prevent horizontal scrolling */
-  
+  }
   
 }
 
@@ -95,7 +95,7 @@
   padding: 20px;
   border-radius: 15px; /* Rounded corners */
   
-  width: 100%;
+  width: 100vh;
   height: auto;
   margin-bottom: 90px;
   margin-top: 30px;
@@ -1222,11 +1222,12 @@
   }
 
   .accountTitle {
-    margin-top: 5px;
-    margin-right: 2vh;
-    margin-left: 25vh;
+    width: fit-content;
+    margin-top: 3%;
+    margin-right: 0%;
+    margin-left: 30%;
     margin-bottom: 2vh;
-    font-size: 85%;
+    font-size: 75%;
   }
 
   .mainPage {
