@@ -1,5 +1,7 @@
 import React from "react";
 import styles from "./css/login.module.css";
+import { Link } from "react-router-dom";
+
 
 const CreateAccount = () => {
   return (
@@ -33,7 +35,9 @@ const CreateAccount = () => {
             </div>
           </div>
 
-          <button type="submit" className={styles.loginButton}>Login</button>
+          <Link to="/home">
+            <button type="submit" className={styles.loginButton}>Login</button>
+          </Link>
         </form>
       </div>
     </div>
