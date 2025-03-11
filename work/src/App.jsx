@@ -5,6 +5,7 @@ import ABOUT from './pages/about';
 import ABDUL from './pages/abdul';
 import Oops from './pages/oops';
 import HomePage from './pages/HomePage';
+import AboutUs from './pages/AboutUs';
  
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
@@ -19,6 +20,7 @@ function App() {
         <Route path="/a" element={<ABOUT/>} />
         <Route path="/abdul" element={<ABDUL/>} />
         <Route path="/oops" element={<Oops/>} />
+        <Route path='/about' element={<AboutUs/>}/>
       </Routes>
     </BrowserRouter>
   );
