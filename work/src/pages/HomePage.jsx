@@ -12,7 +12,7 @@ import { Link } from "react-router-dom";
 const HomePage = () => {
   const [slideIndex, setSlideIndex] = useState(0);
   const [isMobile, setIsMobile] = useState(false);
-  const slides = [chef, service, cleaning, chef, service];
+  const slides = [chef, service, cleaning];
   let autoPlayId;
 
   useEffect(() => {
@@ -79,15 +79,17 @@ const HomePage = () => {
         </nav>
       </header>
 
-      {/* Hero Banner */}
-      <div className={styles.heroBanner}>
+ {/* Hero Banner */}
+ <div className={styles.heroBanner}>
         {!isMobile && (
           <button className={`${styles.carouselButton} ${styles.prevButton}`} onClick={() => showSlides(slideIndex - 1)}>
             <ChevronLeft size={24} />
           </button>
         )}
         <div className={styles.bannerContent}>
-          <img src={slides[slideIndex]} alt="Slide Illustration" className={styles.logoImage} />
+          <div className={styles.slideImageWrapper}>
+            <img src={slides[slideIndex]} alt="Slide Illustration" className={styles.slideImage} />
+          </div>
           <div className={styles.bannerText}>
             <h2 className={styles.bannerHeading}>SOMETHING'S<br />COOKING UP!!</h2>
           </div>
