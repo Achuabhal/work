@@ -38,7 +38,6 @@
   flex-direction: row;
   padding: 30px;
   padding-right:0px ;
-  
   width:fit-content;
   height: auto; 
 }
@@ -72,37 +71,49 @@
   box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
   transition: all 0.3s ease-in-out;
 }
-.content{
-  .content {
-    width: calc(100% - 25px); /* Adjust width dynamically */
-    
-    padding: 20px;
-    margin: 0 auto; /* Center content */
-    text-align: center;
-    height: 600px;
-    overflow-x: hidden; /* Prevent horizontal scrolling */
-  }
-  
+.content {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr; /* Three columns */
+  gap: 20px; /* Adds space between columns */
+  width: calc(100% - 25px); /* Adjust width dynamically */
+  padding: 20px;
+  margin: 0 auto; /* Center content */
+  text-align: center;
+  height: auto;
+  overflow-x: hidden; /* Prevent horizontal scrolling */
 }
+
+.personalInfo, 
+.ordersSection, 
+.customerCare {
+  background: #ffcc99; /* Light peach background */
+  padding: 20px;
+  border-radius: 15px; /* Rounded corners */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  height: auto;
+  text-align: center;
+}
+
+.personalInfo {
+  grid-column: 1; /* First column */
+}
+
+.ordersSection {
+  grid-column: 2; /* Second column */
+}
+
+.customerCare {
+  grid-column: 3; /* Third column */
+  width: auto; /* Allow flexibility */
+  height: 450px; /* Maintain original height */
+}
+
 
 .sidebarButton:hover {
   background-color: #ff9800;
 }
 
 /* Personal Info Section */
-.personalInfo {
-  background: #ffcc99; /* Light peach background */
-  padding: 20px;
-  border-radius: 15px; /* Rounded corners */
-  
-  width: 100vh;
-  height: auto;
-  margin-bottom: 90px;
-  margin-top: 30px;
-  margin-right: 70px;
-  text-align: center;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-}
 
 
 /* Form Fields */
@@ -292,19 +303,6 @@
 }
 
 /* customer module */
-.customerCare{
-  background: #ffcc99; /* Light peach background */
-  padding: 20px;
-  border-radius: 15px; /* Rounded corners */
-  width: 500px;
-  max-width:100%;
-  height: 450px;
-  margin-bottom: 20px;
-  margin-top: 30px;
-  margin-right: 100px;
-  text-align: center;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-}
 
 .customerTitle {
   padding: 10px;
@@ -390,18 +388,7 @@
 }
 
 
-/* Orders form */
-.ordersSection {
-  background-color:#ffcc99; /* Light peach background */
-  padding: 30px; 
-  height: auto;
-  border-radius: 20px;
-  text-align: center;
-  width: 500px;
-  margin-top: 20px;
-  margin-right: 70px;
-  
-}
+
 
 
 .orderTitle {
@@ -595,605 +582,6 @@
   gap: 30px; /* Adds space between icons */
 }
 
- @media (min-width: 1024px) and (max-width:1440px)
- {  
- 
-/* General Styles */
-.container
-{
-  padding: 0px;
-  margin: 0px;
-  width: 100%;
-  height: auto;  
-}
-.duzoLogo {
-  padding-top: 10%;
-  height: 10vh; /* Adjust size */
-  width: auto;
-  margin-left: 4vh; /* Space from the left */
-}
-
-.accountTitle {
-  color: black;
-  margin-left: 75%;
-  
-}
-
-/* Header */
-.heading {
-  display: flex;
-  flex-direction: row;
-  margin: 0px;
-  align-items: center;
-  background-color: #ffa726;
-  font-size: 18px;
-  font-weight: bold;
-  width: 100%; /* Ensure full width */
-  height: 15vh; /* Make it full-screen height */
-  border-radius: 0; /* Remove unnecessary border-radius */
-}
-.mainPage{
-  display: flex;
-  flex-direction: row;
-  padding: 30px;
-  padding-right:0px ;
-  
-  width:fit-content;
-  height: auto; 
-}
-
-
-/* Sidebar */
-.sidebar {
-  display: flex;
-  margin-top: 70px;
-  margin-left: 100px;
-  
-  margin-right: 70px;
-  flex-direction: column;
-  gap: 20px;
-  width: 200px;
-  padding: 0px;
-}
-
-.sidebarButton {
-  background-color: #FFAB5B;
-  border: none;
-  padding: 15px;
-  text-align: center;
-  cursor: pointer;
-  font-size: 16px;
-  color: black;
-  font-weight: bold;
-  border-radius: 25px;
-  width: 200px;
-  height: 70px;
-  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
-  transition: all 0.3s ease-in-out;
-}
-.content{
-  .content {
-    width: calc(100% - 25px); /* Adjust width dynamically */
-    
-    padding: 20px;
-    margin: 0 auto; /* Center content */
-    text-align: center;
-    height: 600px;
-    overflow-x: hidden; /* Prevent horizontal scrolling */
-  }
-  
-}
-
-.sidebarButton:hover {
-  background-color: #ff9800;
-}
-
-/* Personal Info Section */
-.personalInfo {
-  background: #ffcc99; /* Light peach background */
-  padding: 20px;
-  border-radius: 15px; /* Rounded corners */
-  
-  width: 100vh;
-  height: auto;
-  margin-bottom: 90px;
-  margin-top: 30px;
-  margin-right: 70px;
-  text-align: center;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-}
-
-
-/* Form Fields */
-.formGroupName {
-  display: flex;
-  width: 95%;
-  margin-top: 50px;
-  margin-left: 60px;
-  text-align: center;
-
-  gap:21%;
-}
-.firstName{
-  width: 100px;
-}
-.lastName{
-  display: flex;
-  gap:90px;
-}
-
-.personalInfotextInp {
-  display: flex;
-  margin-left: 60px;
-  margin-top: 10px;
-  gap: 85px; /* Adds spacing between the inputs */
-  justify-content: space-between; /* Ensures they stay on the same line */
-  align-items: center;
-  width: 50%; /* Makes sure it takes full width */
-}
-.Name{
-
-  text-align: left;
-  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-}
-
-
-.nameInputField {
-  max-width: fit-content;
-  width: 100%; /* Adjusts input width to be responsive */
-  padding: 8px;
-  margin-right: 100px;
-  border: none;
-  border-radius: 70px;
-  background-color: white;
-}
-
-.editLink {
-  margin-left: 0px;
-  color: blue;
-  text-decoration: underline;
-  cursor: pointer;
-}
-
-/* Labels */
-
-
-/* Input Fields */
-.nameInputField {
-  display: inline-flex;
-  justify-content:space-around;
-  gap: 10px; /* Adjust space between input fields */
-  width: 130px;
-  margin-right: 3%;
-  border-radius: 70px;
-  background-color: white;
-}
-
-
-/* Radio Buttons */
-.genderContainer {
-  display: flex;
-  width: 50%;
-  align-items: center;
-  padding: 0px;
-  margin-right: 62px;
-  margin-top: 25px; /* Ensures it takes full width */
-  margin-bottom: 10px; /* Adds spacing below */
-}
-
-.genderLabel {
-  font-weight: bolder;
-  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-  font-size: 16px;
-  margin-left: 63px;
-}
-
-.radioGroup {
-  display: flex;
-  width: 50%;
-  margin-left: 80px;
-  gap: 100px; /* Adds space between the radio buttons */
-  align-items: center; /* Aligns items properly */
-}
-
-.radioLabel {
-  display: flex;
-  align-items: center;
-  font-weight: bold;
-  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-  gap: 5px; /* Space between radio button and text */
-  font-size: 16px; /* Adjust text size */
-  cursor: pointer;
-}
-
-.gender {
-  transform: scale(1.2); /* Slightly increase size */
-  cursor: pointer;
-}
-
-/* Email and Phone Number */
-.emailGroup {
-  display: flex;
-  margin-left: 42px;
-  width: 60%;
-  flex-direction: column; /* Ensures input stays on the next line */
-}
-
-.labelEditContainer {
-  display: flex;
-  width: 400px;
-  align-items: center;
-  gap:50px;
-  margin-left: 22px;
-  margin-top: 20px;
-  margin-bottom: 5px; /* Adds slight spacing before the input box */
-}
-.Email{
-  display:inline-block;
-  width: auto;
-  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-  flex-shrink: 1;
-}
-
-.emailInputField{
-  margin-top: 15px;
-  margin-left: 20px;
-  height: 30px;
-  border: none;
-  width:50%;
-  border-radius: 40px;
-}
-
-.emailEditLink {
-  color: blue;
-  text-decoration: underline;
-  margin-right: 200px;
-  cursor: pointer;
-  font-size: 14px;
-}
-
-/* Phone Number */
-.phoneGroup {
-  display: flex;
-  flex-direction: column;
-  width: 70%;
-}
-.phoneLabel{
-  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-  margin-left: 40px;
-  gap: 3px;
-}
-
-.labelRow {
-  display: flex;
-  
-  align-items: center;
-  width: 70%;
-  gap: 47px;
-  margin-left: 20px;
-  margin-top: 20px;
-  margin-bottom: 5px; /* Adds spacing between label row and input */
-}
-.editLink {
-  text-decoration: none;
-  color: #007bff;
-}
-
- .phoneinputField {
-  width: 40%;
-  padding: 8px;
-  border: none;
-  margin-top: 15px;
-  margin-left: 60px;
-  margin-bottom: 40px;
-  border-radius: 20px;
-  background-color: white;
-}
-
-/* customer module */
-.customerCare{
-  background: #ffcc99; /* Light peach background */
-  padding: 20px;
-  border-radius: 15px; /* Rounded corners */
-  width: 500px;
-  max-width:100%;
-  height: 450px;
-  margin-bottom: 20px;
-  margin-top: 30px;
-  margin-right: 100px;
-  text-align: center;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-}
-
-.customerTitle {
-  padding: 10px;
-  font-family: Georgia, 'Times New Roman', Times, serif;
-}
-.customerInfo {
-  width: 120vh;
-  display: flex;
-  flex-wrap: wrap; /* Allows items to wrap onto the next row */
-  gap: 20px; /* Adjust spacing between input fields */
-}
-
-.customerSubTitle{
-  margin-left: 3vh;
-  text-align: left;
-  font-weight: bolder;
-  font-family: Georgia, 'Times New Roman', Times, serif;
-}
-
-.issueField {
-  width: 350px;
-  height: 20vh;
-  border-radius: 20px;
-  border: none;
-  padding: 0px; /* Ensures placeholder is positioned properly */
-  font-size: 16px;
-}
-
-.issueField::placeholder {
-  font-weight: bold;
-  text-align: left;
-  vertical-align: top;
-  padding-bottom: 10px; /* Moves the placeholder text to the top */
-  padding-left: 5px; /* Moves it slightly to the left */
-  color: #3a3a3a; /* Optional: Adjust the color */
-}
-
-.customerDetails {
-  margin-top: 20px;
-  margin-right:50px ;
-  width: calc(20% - 10px); /* Ensures two inputs fit in one row */
-  height: 20px; /* Adjust input height */
-  gap: 90px;
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  border-radius: 25px;
-  border: none;
-  padding: 10px;
-}
-.customerDetails::placeholder{
-  color:black ;
-  font-weight: bold;
-}
-
-
-.customerDetails:nth-child(2) { 
-  margin-left: 10%; 
-}
-.customerDetails:nth-child(3) { 
-  width: 40vh; /* Email field takes full width on the next row */
-  margin-bottom: 20px;
-
-}
-
-.customerCare .submitButton{
-  background-color:#ff8c00;
-  color: #fff;
-  font-weight: bolder;
-  border: none;
-  width: 15vh;
-  height: 4vh;
-  border-radius: 30px;
-  padding-left: 5px;
-  padding-right: 5px;
-}
-
-.editLink {
-  color: blue;
-  text-decoration: underline;
-  cursor: pointer;
-  font-size: 14px;
-}
-
-
-/* Orders form */
-.ordersSection {
-  background-color:#ffcc99; /* Light peach background */
-  padding: 30px; 
-  height: auto;
-  border-radius: 20px;
-  text-align: center;
-  width: 500px;
-  margin-top: 20px;
-  margin-right: 70px;
-  
-}
-
-
-.orderTitle {
-  font-size: 20px;
-  font-weight: bold;
-  color: #000;
-  margin-left: 2vh;
-  margin-bottom: 15px;
-}
-
-.ordersContainer {
-  background-color: #fff; /* White card */
-  padding: 15px;
-  border-radius: 20px;
-  display: flex;
-  flex-direction: column;
-  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
-  width: 80vh;
-  height: auto;
-  margin: auto;
-}
-
-.orderItem {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  gap: 10px;
-  width: 100%;
-}
-
-.orderImage img {
-  width: 50vh;
-  margin-right: 10px;
-  background-color: #948f8f;
-  border-radius: 5px;
-}
-
-.orderDetails {
-  flex-grow: 1;
-  text-align: center;
-}
-
-.orderDetails p {
-  margin: 2px 0;
-  font-size: 14px;
-  color: #333;
-}
-
-.orderMeta {
-  text-align: center;
-  color: #000;
-  font-size: 12px;
-  font-weight: bold;
-}
-.rateReviewButton {
-  background-color: #fff;
-  color: #000;
-  border: none;
-  padding: 6px 10px;
-  font-size: 12px;
-  border-radius: 5px;
-  cursor: pointer;
-}
-/* Payment section */ 
-.paymentMethods {
-  width: 100vh;
-  background-color: #fdd8b3;
-  padding: 20px;
-  border-radius: 10px;
-  height: 130vh;
-  margin-bottom: 20vh;
-}
-
-.sectionTitle {
-  font-size: 24px;
-  width: fit-content;
-  font-weight: bold;
-  text-align: center;
-  margin-bottom: 20px;
-  margin-left: 150px;
-}
-
-.paymentSubTitle {
-  font-size: 18px;
-  font-weight: bold;
-  text-align: left;
-  margin-top: 15px;
-  color: #333;
-}
-.inputField{
-  width: 80%;
-  padding: 10px;
-  margin: 5px 0;
-  border: none;
-  border-radius: 18px;
-  background-color: #fff;
-  font-size: 16px;
-}
-.cardInput {
-  width: 80%;
-  padding: 10px;
-  margin: 5px 0;
-  border: none;
-  border-radius: 18px;
-  background-color: #fff;
-  font-size: 16px;
-}
-.expiryInput {
-  width: 80%;
-  padding: 10px;
-  margin: 5px 0;
-  margin-left: 15px;
-  border: none;
-  border-radius: 18px;
-  background-color: #fff;
-  font-size: 16px;
-}
-.CardFields1 .cvvInput{
-  margin-bottom: 30px;
-}
-.cvvInput {
-  width: 80%;
-  padding: 10px;
-  margin: 5px 0;
-  margin-left: 66px;
-  border: none;
-  border-radius: 18px;
-  background-color: #fff;
-  font-size: 16px;
-}
-
-.cardDetails {
-  padding: 15px;
-  display: flex;
-  flex-direction: column;
-  border-radius: 10px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  margin-top: 10px;
-}
-.CardFields1{
-  display: flex;
-  flex-direction: row;
-
-}
-.CardFields2{
-  display: flex;
-  flex-direction: row;
-}
-.cardDetails label {
-  display: flex;
-  font-weight: bold;
-  margin: 5px 0;
-  margin-right: 10px;
-  padding-right: 8px;
-}
-
-.cardDetails input {
-  width: 40%;
-  padding: 8px;
-  border: none;
-  border-radius: 15px;
-  background-color: #f9f9f9;
-  font-size: 16px;
-}
-/* Footer */
-.foot {
-  width: 100%; 
-  height: 40px;
-  margin: 0;
-  padding: 30px; 
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  background-color: #ffa726;
-  font-size: 18px;
-  font-weight: bold;
-  border-radius: 0; /* Removes rounded corners */
-  box-sizing: border-box; /* Ensures padding doesn't add extra width */
-}
-
-.footerText {
-  margin-left: 0px;
-  color: black;
-}
-
-.socialIcons {
-  height: 2%;
-  display: flex;
-  margin-bottom: 2.5%;
-  margin-right: 47px;
-  gap: 30px; /* Adds space between icons */
-}
-}
 /* Responsive Styles */
 @media (min-width:320px) and (max-width: 425px) {
   .container {
