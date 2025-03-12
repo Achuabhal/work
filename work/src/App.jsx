@@ -1,7 +1,7 @@
 import LOGO from './pages/login';
 import CONTACT from './pages/contact';
 import ACCOUNT from './pages/MyAccount';
-import ABOUT from './pages/about';
+
 import ABDUL from './pages/abdul';
 import Oops from './pages/oops';
 import HomePage from './pages/HomePage';
@@ -17,7 +17,7 @@ function App() {
         <Route path="/home" element={<HomePage />} />
         <Route path="/c" element={<CONTACT/>} />
         <Route path="/d" element={<ACCOUNT/>} />
-        <Route path="/a" element={<ABOUT/>} />
+     
         <Route path="/abdul" element={<ABDUL/>} />
         <Route path="/oops" element={<Oops/>} />
         <Route path='/about' element={<AboutUs/>}/>
