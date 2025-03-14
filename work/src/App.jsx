@@ -2,6 +2,7 @@ import React from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
 import LOGO from './pages/login';
+import Sample from './pages/Sample';
 import CONTACT from './pages/contact';
 import ACCOUNT from './pages/MyAccount';
 import ABDUL from './pages/abdul';
@@ -32,6 +33,8 @@ function App() {
         <Route path="/about" element={<AboutUs />} />
         {/* Route that shows a modal with the Slot component */}
         <Route path="/ooops" element={<ModalContent component={<Oops />} />} />
+        <Route path="/sample" element={<Sample/>}/>
+    
       </Routes>
     </BrowserRouter>
   );

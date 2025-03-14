@@ -1,4 +1,13 @@
 import React from 'react'
+import { Container, Row, Col, } from "react-bootstrap";
+import {
+  FaInstagram,
+  FaFacebook,
+  FaTwitter,
+  FaPhone,
+  FaEnvelope,
+} from "react-icons/fa";
+import "bootstrap/dist/css/bootstrap.min.css";
 
 function Footer() {
   return (

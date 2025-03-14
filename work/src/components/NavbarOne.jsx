@@ -1,6 +1,8 @@
 import React from 'react'
+import { Container, Row, Col, Form,Navbar,Nav } from "react-bootstrap";
+import "bootstrap/dist/css/bootstrap.min.css";
 
-function Navbar() {
+function NavbarOne() {
   return (
     <div>
        <Navbar style={{ backgroundColor: "#FFD29E" }} expand="lg" className="rounded-4 my-3 ">
@@ -82,4 +84,5 @@ function Navbar() {
   )
 }
 
-export default Navbar
+export default NavbarOne
+
