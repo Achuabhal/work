@@ -12,8 +12,8 @@ import "bootstrap/dist/css/bootstrap.min.css";
 const AboutUs = () => {
   return (
     <>
-      <div className="me-3 mx-3 w-98">
-        {/* Navbar */}
+<div className="me-3 ms-3 ps-2 pe-2 w-100">
+{/* Navbar */}
 
         <Navbar
           style={{ backgroundColor: "#FFD29E" }}
@@ -122,7 +122,7 @@ const AboutUs = () => {
         </Container>
 
         {/* Our Team*/}
-        <Container fluid className="my-5">
+        <Container fluid className="my-5 ms-0">
           <h2 className="text-center mb-4">OUR TEAM</h2>
           <Row className="g-12 text-center">
             {[...Array(4)].map((_, index) => (

@@ -1,5 +1,5 @@
 import React from 'react'
-import { Container, Row, Col, Form,Navbar,Nav } from "react-bootstrap";
+import { Container, Form,Navbar,Nav } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
 
 function NavbarOne() {
@@ -8,7 +8,7 @@ function NavbarOne() {
        <Navbar style={{ backgroundColor: "#FFD29E" }} expand="lg" className="rounded-4 my-3 ">
   <Container >  
     
-    <Navbar.Brand className="mb-5">
+    <Navbar.Brand >
       <img src="/duzo.png" alt="DUZO" width="100" />
     </Navbar.Brand>
 
@@ -68,14 +68,14 @@ function NavbarOne() {
         </div>
 
         
-        <div className="w-100 d-flex justify-content-start mt-2 px-3">
+        {/* <div className="w-100 d-flex justify-content-start mt-2 px-3">
           <Nav className="d-flex gap-3 flex-wrap">
             <Nav.Link href="#">Homes</Nav.Link>
             <Nav.Link href="#">Beauty</Nav.Link>
             <Nav.Link href="#">Automobile</Nav.Link>
             <Nav.Link href="#">Buy/Rent</Nav.Link>
           </Nav>
-        </div>
+        </div> */}
       </div>
     </Navbar.Collapse>
   </Container>
