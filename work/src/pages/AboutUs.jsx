@@ -12,7 +12,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 const AboutUs = () => {
   return (
     <>
-      <div className="me-3 w-100">
+      <div className="me-3 mx-3 w-98">
         {/* Navbar */}
 
         <Navbar
