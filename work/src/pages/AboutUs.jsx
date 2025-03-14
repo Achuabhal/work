@@ -12,9 +12,8 @@ import "bootstrap/dist/css/bootstrap.min.css";
 const AboutUs = () => {
   return (
     <>
-<div className="me-3 ms-3 ps-2 pe-2 w-100">
+<div className="me-3 ms-3 ps-2 pe-2 w-98">
 {/* Navbar */}
-
         <Navbar
           style={{ backgroundColor: "#FFD29E" }}
           expand="lg"
