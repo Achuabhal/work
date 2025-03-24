@@ -14,7 +14,7 @@ function Footer() {
     <div>
       <Container
           fluid
-          className="p-4 rounded-4 mt-1 text-center"
+          className="p-4 rounded-4 mt-2 text-center"
           style={{ backgroundColor: "#FFD29E" }}
         >
           <Row>
