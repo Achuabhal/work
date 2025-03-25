@@ -3,9 +3,10 @@ import { FaInstagram, FaFacebook, FaTwitter } from "react-icons/fa";
 import { motion } from "framer-motion";
 import { LogIn, MapPin, User, Search } from "lucide-react";
 import { useNavigate } from 'react-router-dom';
-import styles from "./css/App.module.css"; // Using the existing CSS module
+import styles from "./css/App.module.css"; // Keep using the existing CSS module
 import myImage from "./assets/image1.png";
 import myImage1 from "./assets/logo.png";
+import 'bootstrap/dist/css/bootstrap.min.css'; // Import Bootstrap
 
 const CombinedPage = () => {
   const [name, setName] = useState("");
@@ -17,15 +18,15 @@ const CombinedPage = () => {
   };
 
   return (
-    <div className={styles.pageContainer}>
+    <div className={`${styles.pageContainer} min-vh-100 d-flex flex-column`}>
       {/* Header */}
-      <header className={styles.pageHeader}>
-        <div className={styles.logoContainer}>
+      <header className={`${styles.pageHeader} p-3 d-flex justify-content-between align-items-center`}>
+        <div className={`${styles.logoContainer} d-flex align-items-center`}>
           <img src={myImage1} alt="DUZO Logo" className={styles.logoImage} />
         </div>
-        <nav className={styles.navContainer}>
+        <nav className={`${styles.navContainer} d-flex align-items-center`}>
           <span className={styles.accountText}>My Account</span>
-          <div className={styles.navItems}>
+          <div className={`${styles.navItems} d-flex align-items-center`}>
             <span className={styles.loginText}>Login</span>
             <span className={styles.navDivider}>|</span>
             <span className={styles.signupText}>Signup</span>
@@ -35,10 +36,10 @@ const CombinedPage = () => {
       </header>
 
       {/* Main Content */}
-      <main className={styles.pageMain}>
-        <div className={styles.formContainer}>
-          <img src={myImage1} alt="DUZO Logo" className={styles.formLogo} />
-          <h2 className={styles.headingText}>
+      <main className={`${styles.pageMain} flex-grow-1 d-flex justify-content-center align-items-center p-4`}>
+        <div className={`${styles.formContainer} d-flex flex-column text-center`}>
+          <img src={myImage1} alt="DUZO Logo" className={`${styles.formLogo} align-self-center`} />
+          <h2 className={`${styles.headingText} fw-bold`}>
             Pinpoint Your Place and Unlock Our Services.<br />
             Let's Get Started!
           </h2>
@@ -66,7 +67,7 @@ const CombinedPage = () => {
               aria-label="Location"
             />
             <button 
-              className={styles.detectButton} 
+              className={styles.detectButton}
               onClick={handleDetectMeClick}
               aria-label="Detect location"
             >
@@ -77,38 +78,37 @@ const CombinedPage = () => {
         </div>
 
         {/* Image Section */}
-        <div className={styles.imageSection}>
+        <div className={`${styles.imageSection} d-flex justify-content-center align-items-center`}>
           <img 
             src={myImage} 
             alt="Illustration" 
-            className={styles.illustrationImage}
+            className={`${styles.illustrationImage} img-fluid`}
             loading="lazy" 
           />
         </div>
       </main>
 
       {/* Footer */}
-      <motion.footer
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ duration: 0.5, delay: 0.4 }}
-        className={styles.pageFooter}
-      >
-        <div className={styles.footerContent}>
-          <div className={styles.copyrightText}>copyrights © 2024 - DUZO</div>
-          <div className={styles.socialIcons}>
-            <a href="https://www.instagram.com" target="_blank" rel="noopener noreferrer" className={styles.socialLink} aria-label="Instagram">
-              <FaInstagram size={24} />
-            </a>
-            <a href="https://www.facebook.com" target="_blank" rel="noopener noreferrer" className={styles.socialLink} aria-label="Facebook">
-              <FaFacebook size={24} />
-            </a>
-            <a href="https://www.twitter.com" target="_blank" rel="noopener noreferrer" className={styles.socialLink} aria-label="Twitter">
-              <FaTwitter size={24} />
-            </a>
+      <footer className={`py-3 ${styles.pageFooter}`}>
+        <div className="container">
+          <div className={`d-flex justify-content-between align-items-center ${styles.footerContent}`}>
+            <div className={styles.copyrightText}>
+              copyright © 2024-DUZO
+            </div>
+            <div className={styles.socialIcons}>
+              <a href="https://www.instagram.com" target="_blank" rel="noopener noreferrer" className={`me-4 ${styles.socialLink}`}>
+                <FaInstagram size={24} />
+              </a>
+              <a href="https://www.facebook.com" target="_blank" rel="noopener noreferrer" className={`me-4 ${styles.socialLink}`}>
+                <FaFacebook size={24} />
+              </a>
+              <a href="https://www.twitter.com" target="_blank" rel="noopener noreferrer" className={styles.socialLink}>
+                <FaTwitter size={24} />
+              </a>
+            </div>
           </div>
         </div>
-      </motion.footer>
+      </footer>
     </div>
   );
 };

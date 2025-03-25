@@ -111,8 +111,10 @@ const HomePage = () => {
       </div>
 
       {/* Services Section */}
+ 
       <section className={styles.servicesSection}>
         <h2 className={styles.sectionTitle}>OUR SERVICES</h2>
+        <main className={`${styles.pageMain} flex-grow-1 d-flex justify-content-center align-items-center p-4`}>
         <div className={styles.servicesGrid}>
           {["Household cleaning", "Chef and cook", "AC and appliances repair", "Beauty and Salon", "Electrician, Plumber and Carpenter", "Automobile cleaning", "Buy appliances", "Rent appliances", "Sell appliances"].map((service, index) => (
             <div key={index} className={styles.serviceCard}>
@@ -122,7 +124,9 @@ const HomePage = () => {
           ))}
         </div>
         <div className={styles.serviceShowcase}></div>
+        </main>
       </section>
+      
 
       {/* Hourly Service Poster */}
       <section className={styles.hourlyServiceSection}>
