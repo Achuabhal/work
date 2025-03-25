@@ -5,7 +5,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 function NavbarOne() {
   return (
     <div>
-       <Navbar style={{ backgroundColor: "#FFD29E" }} expand="lg" className="rounded-4 my-3 ">
+       <Navbar style={{ backgroundColor: "#FFD29E" }} expand="lg" className="rounded-4 my-0 ">
   <Container >  
     
     <Navbar.Brand >
