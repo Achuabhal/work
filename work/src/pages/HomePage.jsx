@@ -9,6 +9,7 @@ import myImage1 from "./assets/logo.png";
 import { Link } from "react-router-dom";
 
 
+
 const HomePage = () => {
   const [slideIndex, setSlideIndex] = useState(0);
   const [isMobile, setIsMobile] = useState(false);
@@ -73,7 +74,11 @@ const HomePage = () => {
         </div>
         <nav className={styles.navbar}>
           <a href="#" className={styles.navItem}>Homes</a>
+          <Link to="/salon">
+           
+       
           <a href="#" className={styles.navItem}>Beauty</a>
+          </Link>
           <a href="#" className={styles.navItem}>Automobile</a>
           <a href="#" className={styles.navItem}>Buy / Rent</a>
         </nav>
@@ -236,7 +241,11 @@ const HomePage = () => {
             <ul>
               <li><a href="#">Services</a></li>
               <li><a href="#">Hiring</a></li>
+              <Link to="/about">
+          
+        
               <li><a href="#">About Us</a></li>
+              </Link>
               <li><a href="#">Contact Us</a></li>
             </ul>
           </div>

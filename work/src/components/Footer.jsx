@@ -1,11 +1,20 @@
 import React from 'react'
+import { Container, Row, Col, } from "react-bootstrap";
+import {
+  FaInstagram,
+  FaFacebook,
+  FaTwitter,
+  FaPhone,
+  FaEnvelope,
+} from "react-icons/fa";
+import "bootstrap/dist/css/bootstrap.min.css";
 
 function Footer() {
   return (
     <div>
       <Container
           fluid
-          className="p-4 rounded-4 mt-1 text-center"
+          className="p-4 rounded-4 mt-2 text-center"
           style={{ backgroundColor: "#FFD29E" }}
         >
           <Row>
