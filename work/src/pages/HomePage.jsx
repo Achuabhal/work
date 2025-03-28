@@ -119,11 +119,25 @@ const HomePage = () => {
       <section className={styles.servicesSection}>
         <h2 className={styles.sectionTitle}>OUR SERVICES</h2>
         <div className={styles.servicesGrid}>
-          {["Household cleaning", "Chef and cook", "AC and appliances repair", "Beauty and Salon", "Electrician, Plumber and Carpenter", "Automobile cleaning", "Buy appliances", "Rent appliances", "Sell appliances"].map((service, index) => (
-            <div key={index} className={styles.serviceCard}>
+          {[
+            { name: "Household cleaning", path: "/household-cleaning" },
+            { name: "Chef and cook", path: "/chef-and-cook" },
+            { name: "AC and appliances repair", path: "/ac-repair" },
+            { name: "Beauty and Salon", path: "/salon" },
+            { name: "Electrician, Plumber and Carpenter", path: "/home-services" },
+            { name: "Automobile cleaning", path: "/automobile" },
+            { name: "Buy appliances", path: "/buy-appliances" },
+            { name: "Rent appliances", path: "/rent-appliances" },
+            { name: "Sell appliances", path: "/sell-appliances" }
+          ].map((service, index) => (
+            <Link 
+              key={index} 
+              to={service.path} 
+              className={styles.serviceCard}
+            >
               <div className={styles.serviceIcon}></div>
-              <p className={styles.serviceTitle}>{service}</p>
-            </div>
+              <p className={styles.serviceTitle}>{service.name}</p>
+            </Link>
           ))}
         </div>
         <div className={styles.serviceShowcase}></div>
