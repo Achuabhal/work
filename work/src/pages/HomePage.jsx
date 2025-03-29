@@ -8,13 +8,8 @@ import service from "./assets/logo.png";
 import cleaning from "./assets/oops1.png";
 import myImage1 from "./assets/logo.png";
 import { Link } from "react-router-dom";
-<<<<<<< HEAD
-import Footer from "../components/Footer";
-import Copyright from '../components/Copyright';
-=======
 import SalonPopUp from "../components/popup/SalonPopUp"; 
 
->>>>>>> cad2160f32c07d7ca7331b21e1603c239e5f1280
 
 const HomePage = () => {
   const [slideIndex, setSlideIndex] = useState(0);
@@ -312,9 +307,6 @@ const HomePage = () => {
 <Footer/>
   <Copyright/>     
 
-<<<<<<< HEAD
-      
-=======
       <footer className={styles.footerr}>
         <div className={styles.footerContent}>
           <div className={styles.footerLogoo}>
@@ -357,7 +349,6 @@ const HomePage = () => {
       <div className={styles.footerBottom}>
         <p>© 2024 - DUZO</p>
       </div>
->>>>>>> cad2160f32c07d7ca7331b21e1603c239e5f1280
     </div>
   );
 };
