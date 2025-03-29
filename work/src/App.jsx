@@ -12,7 +12,7 @@ import AboutUs from './pages/AboutUs';
 import modal from "./components/modal"; // Reusable Modal component using CSS modules
 import WomanSalon from './pages/WomanSalon';
 import CHEF from "./pages/chefforparty"
-import SalonPopUp from './components/SalonPopUp';
+import SalonPopUp from './components/popup/SalonPopUp';
 
 // ModalContent Component to wrap any component inside a Modal
 const ModalContent = ({ component }) => {

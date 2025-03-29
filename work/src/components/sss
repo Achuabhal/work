@@ -1,8 +1,3 @@
-// SalonPopUp.jsx
-import React, { useState } from "react";
-import { Modal } from "react-bootstrap";
-import "bootstrap/dist/css/bootstrap.min.css";
-
 function SalonPopUp() {
   // ✅ Modal State and Modal Type
   const [showModal, setShowModal] = useState(true);

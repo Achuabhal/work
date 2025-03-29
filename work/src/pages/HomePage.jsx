@@ -7,7 +7,7 @@ import service from "./assets/logo.png";
 import cleaning from "./assets/oops1.png";
 import myImage1 from "./assets/logo.png";
 import { Link } from "react-router-dom";
-
+import SalonPopUp from "../components/popup/SalonPopUp"; 
 
 
 const HomePage = () => {
@@ -49,6 +49,9 @@ const HomePage = () => {
       setSlideIndex((prevIndex) => (prevIndex + 1) % slides.length);
     }, 3000);
   };
+
+  const [showModal, setShowModal] = useState(false);
+
 
   return (
     <div className={styles.container}>
@@ -123,21 +126,32 @@ const HomePage = () => {
             { name: "Household cleaning", path: "/household-cleaning" },
             { name: "Chef and cook", path: "/chef-and-cook" },
             { name: "AC and appliances repair", path: "/ac-repair" },
-            { name: "Beauty and Salon", path: "/salon" },
+            {
+              name: "Beauty and Salon",
+              action: () => setShowModal(true),
+            },
             { name: "Electrician, Plumber and Carpenter", path: "/home-services" },
             { name: "Automobile cleaning", path: "/automobile" },
             { name: "Buy appliances", path: "/buy-appliances" },
             { name: "Rent appliances", path: "/rent-appliances" },
             { name: "Sell appliances", path: "/sell-appliances" }
           ].map((service, index) => (
-            <Link 
-              key={index} 
-              to={service.path} 
-              className={styles.serviceCard}
-            >
-              <div className={styles.serviceIcon}></div>
-              <p className={styles.serviceTitle}>{service.name}</p>
-            </Link>
+            <div
+            key={index}
+            className={styles.serviceCard}
+            onClick={() => {
+              if (service.action) {
+                service.action();
+              } else {
+                window.location.href = service.path;
+              }
+            }}
+            style={{ cursor: "pointer" }}
+          >
+            <div className={styles.serviceIcon}></div>
+            <p className={styles.serviceTitle}>{service.name}</p>
+          </div>
+          
           ))}
         </div>
         <div className={styles.serviceShowcase}></div>
@@ -261,6 +275,8 @@ const HomePage = () => {
           </div>
         </div>
       </footer>
+{/* SalonPopUp Modal */}
+<SalonPopUp show={showModal} onHide={() => setShowModal(false)} />
 
       <div className={styles.footerBottom}>
         <p>© 2024 - DUZO</p>
