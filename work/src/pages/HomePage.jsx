@@ -8,8 +8,13 @@ import service from "./assets/logo.png";
 import cleaning from "./assets/oops1.png";
 import myImage1 from "./assets/logo.png";
 import { Link } from "react-router-dom";
+<<<<<<< HEAD
 import Footer from "../components/Footer";
 import Copyright from '../components/Copyright';
+=======
+import SalonPopUp from "../components/popup/SalonPopUp"; 
+
+>>>>>>> cad2160f32c07d7ca7331b21e1603c239e5f1280
 
 const HomePage = () => {
   const [slideIndex, setSlideIndex] = useState(0);
@@ -50,6 +55,9 @@ const HomePage = () => {
       setSlideIndex((prevIndex) => (prevIndex + 1) % slides.length);
     }, 3000);
   };
+
+  const [showModal, setShowModal] = useState(false);
+
 
   return (
     <div className={styles.container}>
@@ -183,11 +191,36 @@ const HomePage = () => {
         <h2 className={styles.sectionTitle}>OUR SERVICES</h2>
         <main className={`${styles.pageMain} flex-grow-1 d-flex justify-content-center align-items-center p-4`}>
         <div className={styles.servicesGrid}>
-          {["Household cleaning", "Chef and cook", "AC and appliances repair", "Beauty and Salon", "Electrician, Plumber and Carpenter", "Automobile cleaning", "Buy appliances", "Rent appliances", "Sell appliances"].map((service, index) => (
-            <div key={index} className={styles.serviceCard}>
-              <div className={styles.serviceIcon}></div>
-              <p className={styles.serviceTitle}>{service}</p>
-            </div>
+          {[
+            { name: "Household cleaning", path: "/household-cleaning" },
+            { name: "Chef and cook", path: "/chef-and-cook" },
+            { name: "AC and appliances repair", path: "/ac-repair" },
+            {
+              name: "Beauty and Salon",
+              action: () => setShowModal(true),
+            },
+            { name: "Electrician, Plumber and Carpenter", path: "/home-services" },
+            { name: "Automobile cleaning", path: "/automobile" },
+            { name: "Buy appliances", path: "/buy-appliances" },
+            { name: "Rent appliances", path: "/rent-appliances" },
+            { name: "Sell appliances", path: "/sell-appliances" }
+          ].map((service, index) => (
+            <div
+            key={index}
+            className={styles.serviceCard}
+            onClick={() => {
+              if (service.action) {
+                service.action();
+              } else {
+                window.location.href = service.path;
+              }
+            }}
+            style={{ cursor: "pointer" }}
+          >
+            <div className={styles.serviceIcon}></div>
+            <p className={styles.serviceTitle}>{service.name}</p>
+          </div>
+          
           ))}
         </div>
         <div className={styles.serviceShowcase}></div>
@@ -279,7 +312,52 @@ const HomePage = () => {
 <Footer/>
   <Copyright/>     
 
+<<<<<<< HEAD
       
+=======
+      <footer className={styles.footerr}>
+        <div className={styles.footerContent}>
+          <div className={styles.footerLogoo}>
+            <div className={styles.footerLogo}>
+              <img src={myImage1} alt="DUZO" className={styles.footerLogo} />
+            </div>
+            <div className={styles.footerInfo}>
+              <p><FaPhone /> +1 (234) 567-8900</p>
+              <p><FaEnvelope /> info@duzo.com</p>
+              <div className={styles.socialLinks}>
+                <a href="#" className={styles.socialIcon}><FaInstagram size={24} /></a>
+                <a href="#" className={styles.socialIcon}><FaFacebook size={24} /></a>
+                <a href="#" className={styles.socialIcon}><FaTwitter size={24} /></a>
+              </div>
+            </div>
+          </div>
+          <div className={styles.footerLocation}>
+            <h3>Services Available At</h3>
+            <h3>Bengaluru</h3>
+            <button className={styles.bookNow}>BOOK NOW</button>
+          </div>
+          <div className={styles.footerLinks}>
+            <h3>Site Map</h3>
+            <ul>
+              <li><a href="#">Services</a></li>
+              <li><a href="#">Hiring</a></li>
+              <Link to="/about">
+          
+        
+              <li><a href="#">About Us</a></li>
+              </Link>
+              <li><a href="#">Contact Us</a></li>
+            </ul>
+          </div>
+        </div>
+      </footer>
+{/* SalonPopUp Modal */}
+<SalonPopUp show={showModal} onHide={() => setShowModal(false)} />
+
+      <div className={styles.footerBottom}>
+        <p>© 2024 - DUZO</p>
+      </div>
+>>>>>>> cad2160f32c07d7ca7331b21e1603c239e5f1280
     </div>
   );
 };

@@ -11,9 +11,9 @@ function WomanSalon() {
     <div className="d-flex flex-column p-2 m-2" style={{ minHeight: "100vh" }}>
      
       <NavbarOne />
+    <div className=""><Banner /></div>
       
-      <Banner />
-
+    
       <div className="flex-grow-1">
         <SalonServices />
       </div>

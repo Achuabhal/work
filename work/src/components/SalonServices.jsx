@@ -3,18 +3,19 @@ import { Container, Row, Col, Button } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
 
 const SalonServices = () => {
-  const scrollRef = useRef(null);
+  const sectionRefs = useRef([]);
 
-  useEffect(() => {
-    if (scrollRef.current) {
-      scrollRef.current.scrollTop = 0; 
+  // Scroll to the clicked section on the right
+  const scrollToSection = (idx) => {
+    if (sectionRefs.current[idx]) {
+      sectionRefs.current[idx].scrollIntoView({ behavior: "smooth", block: "start" });
     }
-  }, []);
+  };
 
   return (
     <Container fluid className="d-flex flex-column min-vh-100 p-0 m-0">
-<Row className="gx-0 d-flex flex-column flex-md-row flex-grow-1 main-wrapper h-100 p-0 m-0">
-          
+      <Row className="gx-0 d-flex flex-column flex-md-row flex-grow-1 main-wrapper h-100 p-0 m-0">
+        {/* Left Sidebar */}
         <Col
           md={3}
           xs={12}
@@ -37,7 +38,12 @@ const SalonServices = () => {
               { image: "/dye-kit.png", title: "Hair Bleach and Detan" },
               { image: "/threading.png", title: "Threading and Face Waxing" },
             ].map((service, index) => (
-              <div key={index} className="text-center cursor-pointer">
+              <div
+                key={index}
+                className="text-center cursor-pointer"
+                onClick={() => scrollToSection(index)} // 👈 Scroll on click
+                style={{ cursor: "pointer" }}
+              >
                 <img
                   src={service.image}
                   alt={service.title}
@@ -50,17 +56,18 @@ const SalonServices = () => {
           </div>
         </Col>
 
+        {/* Right Section - Main Content */}
         <Col
-  xs={12} 
-  md={9}  
-  className="p-2 main-content"
-  style={{
-    backgroundColor: "#FFBC7F",
-    overflowY: "auto",
-    maxHeight: "100vh",
-  }}
->
-          {[ 
+          xs={12}
+          md={9}
+          className="p-2 main-content"
+          style={{
+            backgroundColor: "#FFBC7F",
+            overflowY: "auto",
+            maxHeight: "100vh",
+          }}
+        >
+          {[
             {
               section: "Waxing",
               services: [
@@ -87,13 +94,14 @@ const SalonServices = () => {
               ],
             },
             {
-              section: "Clean Up",
-              services: [{ image: "/cleanup.png", title: "Full body cleanup" }],
-            },
-            {
               section: "Facial",
               services: [{ image: "/facial1.png", title: "Full face facial" }],
             },
+            {
+              section: "Clean Up",
+              services: [{ image: "/cleanup.png", title: "Full body cleanup" }],
+            },
+            
             {
               section: "Hair Bleach and Detan",
               services: [
@@ -114,10 +122,13 @@ const SalonServices = () => {
               ],
             },
           ].map((category, idx) => (
-            <div key={idx} className="mb-4">
+            <div
+              key={idx}
+              ref={(el) => (sectionRefs.current[idx] = el)} // 👈 Assign ref dynamically
+              className="mb-4"
+            >
               <h4 className="fw-bold">{category.section}</h4>
               <div
-                ref={scrollRef}
                 className="scroll-container"
                 style={{
                   maxHeight: "400px",
@@ -157,17 +168,17 @@ const SalonServices = () => {
         </Col>
       </Row>
 
-      
+      {/* Styling */}
       <style jsx>{`
         /* Hide Scrollbar but Keep Scroll */
         .scroll-container::-webkit-scrollbar {
-          display: none; /* Hide scrollbar for Webkit (Chrome, Safari) */
+          display: none;
         }
         .scroll-container {
-          -ms-overflow-style: none; /* Hide scrollbar for Internet Explorer/Edge */
-          scrollbar-width: none; /* Hide scrollbar for Firefox */
-          scroll-behavior: smooth; /* Smooth scrolling effect */
-          overflow-y: auto; /* Keep scroll functionality */
+          -ms-overflow-style: none;
+          scrollbar-width: none;
+          scroll-behavior: smooth;
+          overflow-y: auto;
         }
 
         /* Fixed Sidebar Scroll */

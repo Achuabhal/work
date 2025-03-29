@@ -9,15 +9,17 @@ import ABDUL from './pages/abdul';
 import Oops from './pages/oops';
 import HomePage from './pages/HomePage';
 import AboutUs from './pages/AboutUs';
-import Modal from "./components/modal"; // Reusable Modal component using CSS modules
+import modal from "./components/modal"; // Reusable Modal component using CSS modules
 import WomanSalon from './pages/WomanSalon';
+import CHEF from "./pages/chefforparty"
+import SalonPopUp from './components/popup/SalonPopUp';
 
 // ModalContent Component to wrap any component inside a Modal
 const ModalContent = ({ component }) => {
   return (
-    <Modal isOpen={true}>
+    <modal isOpen={true}>
       {component}
-    </Modal>
+    </modal>
   );
 };
 
@@ -36,6 +38,8 @@ function App() {
         <Route path="/ooops" element={<ModalContent component={<Oops />} />} />
         <Route path="/sample" element={<Sample/>}/>
         <Route path="/salon" element={<WomanSalon />} />
+        <Route path="/chef" element={<CHEF />} />
+        <Route path="/popup" element={<SalonPopUp />} />
 
     
       </Routes>
