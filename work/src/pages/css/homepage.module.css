@@ -531,11 +531,11 @@
   }
   
   .featuresGrid {
-    grid-template-columns: repeat(5, 1fr);
+    grid-template-columns: repeat(3, 1fr);
   }
   
   .servicesGrid {
-    grid-template-columns: repeat(5, 1fr);
+    grid-template-columns: repeat(3, 1fr);
   }
 
   .headerContent {

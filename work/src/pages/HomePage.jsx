@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import styles from './css/homepage.module.css';
+import { Container, Row, Col, Form, Navbar, Nav } from "react-bootstrap";
 import { ChevronLeft, ChevronRight, MapPin, Search, ShoppingCart, User } from 'lucide-react';
 import { FaInstagram, FaFacebook, FaTwitter, FaPhone, FaEnvelope } from "react-icons/fa";
 import chef from "./assets/chef.png";
@@ -7,8 +8,8 @@ import service from "./assets/logo.png";
 import cleaning from "./assets/oops1.png";
 import myImage1 from "./assets/logo.png";
 import { Link } from "react-router-dom";
-
-
+import Footer from "../components/Footer";
+import Copyright from '../components/Copyright';
 
 const HomePage = () => {
   const [slideIndex, setSlideIndex] = useState(0);
@@ -53,36 +54,97 @@ const HomePage = () => {
   return (
     <div className={styles.container}>
       {/* Header */}
-      <header className={styles.header}>
-        <div className={styles.headerContent}>
-          <img src={myImage1} alt="DUZO Logo" className={styles.logoImage1} />
-          <div className={styles.searchBar}>
-            <input type="text" placeholder="How can we help you with?" className={styles.searchInput} />
-            <button className={styles.searchButton}><Search size={18} /></button>
-          </div>
-          <div className={styles.headerIcons}>
-          <Link to="/abdul">
-          <button className={styles.iconButton}><MapPin size={isMobile ? 24 : 30} /></button>
-          </Link>
-            
-            <button className={styles.iconButton}><ShoppingCart size={isMobile ? 24 : 30} /></button>
-             <Link to="/d">
-             <button className={styles.iconButton}><User size={isMobile ? 24 : 30} /></button>
-          </Link>
-          
-          </div>
-        </div>
-        <nav className={styles.navbar}>
-          <a href="#" className={styles.navItem}>Homes</a>
-          <Link to="/salon">
-           
-       
-          <a href="#" className={styles.navItem}>Beauty</a>
-          </Link>
-          <a href="#" className={styles.navItem}>Automobile</a>
-          <a href="#" className={styles.navItem}>Buy / Rent</a>
-        </nav>
-      </header>
+      <Navbar
+          style={{ backgroundColor: "#FFD29E" }}
+          expand="lg"
+          className="rounded-4 my-3 "
+        >
+          <Container>
+            <Navbar.Brand className="mb-5">
+              <img src="/duzo.png" alt="DUZO" width="100" />
+            </Navbar.Brand>
+
+            <Navbar.Toggle aria-controls="basic-navbar-nav" className="mb-5" />
+
+            <Navbar.Collapse id="basic-navbar-nav">
+              <div className="d-flex flex-column w-100">
+                <div className="d-flex w-100 align-items-center justify-content-between gap-3 flex-wrap">
+                  <div className="flex-grow-1">
+                    <Form
+                      className="w-100"
+                      style={{ minWidth: "200px", maxWidth: "400px" }}
+                    >
+                      <Form.Group className="input-group">
+                        <div
+                          className="d-flex align-items-center w-100 rounded-pill px-2"
+                          style={{
+                            backgroundColor: "#FFBE5D",
+                            padding: "5px",
+                            border: "none",
+                          }}
+                        >
+                          <Form.Control
+                            type="search"
+                            placeholder="How can we help you?"
+                            className="form-control border-0 shadow-none bg-transparent"
+                          />
+                          <img
+                            src="/search.png"
+                            alt="Search"
+                            width="25"
+                            height="25"
+                            className="ms-2"
+                          />
+                        </div>
+                      </Form.Group>
+                    </Form>
+                  </div>
+
+                  <div style={{ minWidth: "150px", maxWidth: "200px" }}>
+                    <Form className="w-100">
+                      <Form.Group className="input-group">
+                        <div
+                          className="d-flex align-items-center w-100 rounded-pill px-2"
+                          style={{
+                            backgroundColor: "#FFBE5D",
+                            padding: "5px",
+                            border: "none",
+                          }}
+                        >
+                          <Form.Control
+                            type="text"
+                            className="form-control border-0 shadow-none bg-transparent"
+                          />
+                          <img
+                            src="/image.png"
+                            alt="Image"
+                            width="25"
+                            height="25"
+                            className="ms-2"
+                          />
+                        </div>
+                      </Form.Group>
+                    </Form>
+                  </div>
+
+                  <div className="d-flex align-items-center gap-2">
+                    <img src="/cart.png" width="26" height="26" alt="Cart" />
+                    <img src="/user.png" width="26" height="26" alt="Profile" />
+                  </div>
+                </div>
+
+                <div className="w-100 d-flex justify-content-start mt-2 px-3">
+                  <Nav className="d-flex gap-3 flex-wrap">
+                    <Nav.Link href="#">Homes</Nav.Link>
+                    <Nav.Link href="#">Beauty</Nav.Link>
+                    <Nav.Link href="#">Automobile</Nav.Link>
+                    <Nav.Link href="#">Buy/Rent</Nav.Link>
+                  </Nav>
+                </div>
+              </div>
+            </Navbar.Collapse>
+          </Container>
+        </Navbar>
 
  {/* Hero Banner */}
  <div className={styles.heroBanner}>
@@ -214,47 +276,10 @@ const HomePage = () => {
           </div>
         </div>
       </div>
+<Footer/>
+  <Copyright/>     
 
-      <footer className={styles.footerr}>
-        <div className={styles.footerContent}>
-          <div className={styles.footerLogoo}>
-            <div className={styles.footerLogo}>
-              <img src={myImage1} alt="DUZO" className={styles.footerLogo} />
-            </div>
-            <div className={styles.footerInfo}>
-              <p><FaPhone /> +1 (234) 567-8900</p>
-              <p><FaEnvelope /> info@duzo.com</p>
-              <div className={styles.socialLinks}>
-                <a href="#" className={styles.socialIcon}><FaInstagram size={24} /></a>
-                <a href="#" className={styles.socialIcon}><FaFacebook size={24} /></a>
-                <a href="#" className={styles.socialIcon}><FaTwitter size={24} /></a>
-              </div>
-            </div>
-          </div>
-          <div className={styles.footerLocation}>
-            <h3>Services Available At</h3>
-            <h3>Bengaluru</h3>
-            <button className={styles.bookNow}>BOOK NOW</button>
-          </div>
-          <div className={styles.footerLinks}>
-            <h3>Site Map</h3>
-            <ul>
-              <li><a href="#">Services</a></li>
-              <li><a href="#">Hiring</a></li>
-              <Link to="/about">
-          
-        
-              <li><a href="#">About Us</a></li>
-              </Link>
-              <li><a href="#">Contact Us</a></li>
-            </ul>
-          </div>
-        </div>
-      </footer>
-
-      <div className={styles.footerBottom}>
-        <p>© 2024 - DUZO</p>
-      </div>
+      
     </div>
   );
 };
