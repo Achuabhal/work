@@ -304,8 +304,7 @@ const HomePage = () => {
           </div>
         </div>
       </div>
-<Footer/>
-  <Copyright/>     
+  
 
       <footer className={styles.footerr}>
         <div className={styles.footerContent}>
