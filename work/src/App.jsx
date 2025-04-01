@@ -9,11 +9,12 @@ import ABDUL from './pages/abdul';
 import Oops from './pages/oops';
 import HomePage from './pages/HomePage';
 import AboutUs from './pages/AboutUs';
-import modal from "./components/modal"; // Reusable Modal component using CSS modules
+import ChefModal from "./pages/ChefModal";
 import WomanSalon from './pages/WomanSalon';
 import CHEF from "./pages/chefforparty";
 import SalonPopUp from './components/popup/SalonPopUp';
 import Chefformeal from "./pages/chefformeal";
+import Chefformonth from "./pages/chefformonth";
 // ModalContent Component to wrap any component inside a Modal
 const ModalContent = ({ component }) => {
   return (
@@ -41,7 +42,8 @@ function App() {
         <Route path="/chef" element={<CHEF />} />
         <Route path="/popup" element={<SalonPopUp />} />
         <Route path="/chef-meal" element={<Chefformeal />} />
-    
+        <Route path="/chef-and-cook" element={<ChefModal />} />
+        <Route path="/chef-month" element={<Chefformonth />} />
       </Routes>
     </BrowserRouter>
   );

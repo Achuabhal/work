@@ -15,7 +15,6 @@ const CookForOneMeal = () => {
     date: "",
     people: "",
     mealType: "", // Breakfast, Lunch, Dinner
-    timeSlot: "", // 7:00 AM, etc.
     starters: 0,
     mainCourse: 0,
     desserts: 0,
@@ -23,13 +22,6 @@ const CookForOneMeal = () => {
   });
   const [errors, setErrors] = useState({});
   const [submitted, setSubmitted] = useState(false);
-
-  // Available time slots based on meal type
-  const timeSlots = {
-    Breakfast: ["7:00 AM", "8:00 AM", "9:00 AM"],
-    Lunch: ["12:00 PM", "1:00 PM", "2:00 PM"],
-    Dinner: ["7:00 PM", "8:00 PM", "9:00 PM"]
-  };
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -44,14 +36,6 @@ const CookForOneMeal = () => {
         ...errors,
         [name]: null
       });
-    }
-    
-    // Reset time slot when meal type changes
-    if (name === "mealType") {
-      setFormData(prev => ({
-        ...prev,
-        timeSlot: ""
-      }));
     }
   };
 
@@ -82,10 +66,6 @@ const CookForOneMeal = () => {
 
     if (!formData.mealType) {
       newErrors.mealType = "Please select a meal type";
-    }
-
-    if (!formData.timeSlot) {
-      newErrors.timeSlot = "Please select a time slot";
     }
 
     const totalMeals = formData.starters + formData.mainCourse + formData.desserts + formData.sides;
@@ -196,7 +176,7 @@ const CookForOneMeal = () => {
 
       {/* Main Section */}
       <Container fluid className="p-3 p-md-4 rounded-4 mt-3 mb-4 text-center shadow" style={{ backgroundColor: "#ffbc7f" }}>
-        <h2 className="fw-bold">Cook For One Meal</h2>
+        <h2 className="fw-bold">Cook For One Month</h2>
         <p className="text-end fw-bold">Menu</p>
 
         <Form onSubmit={handleSubmit} className="w-100">
@@ -241,7 +221,7 @@ const CookForOneMeal = () => {
                 </div>
               </div>
 
-{/* Choose your meal - Circular Radio Buttons with Bootstrap */}
+              {/* Choose your meal - Box-shaped Radio Buttons with Bootstrap */}
 <div className="mt-2">
   <h4 className="fw-bold mb-3">Choose your Meal</h4>
   {submitted && errors.mealType && (
@@ -251,9 +231,9 @@ const CookForOneMeal = () => {
   <div className="d-flex flex-wrap gap-4 mb-4 justify-content-center">
     {["Breakfast", "Lunch", "Dinner"].map((meal) => (
       <div key={meal} className="text-center">
-        <div className="form-check">
+        <div className="form-check d-flex align-items-center">
           <input
-            className="form-check-input"
+            className="form-check-input me-2"
             type="radio"
             name="mealType"
             id={`meal-${meal}`}
@@ -263,95 +243,27 @@ const CookForOneMeal = () => {
             style={{
               cursor: 'pointer',
               width: '1.1em',
-              height: '1.1em'
+              height: '1.1em',
+              borderRadius: '0',
+              marginTop: '0' // Remove default margin-top that Bootstrap adds
             }}
           />
           <label
-            className="form-check-label ms-2 fw-medium"
+            className="form-check-label fw-medium"
             htmlFor={`meal-${meal}`}
-            style={{ cursor: 'pointer' }}
+            style={{ 
+              cursor: 'pointer',
+              marginBottom: '0' // Ensure no bottom margin
+            }}
           >
             {meal}
           </label>
         </div>
       </div>
-    ))}
+    ))} 
   </div>
 </div>
-
-{/* Choose your Slot - Always Visible with All Timings */}
-<div className="mt-2">
-  <h4 className="fw-bold mb-3">Choose your Slot</h4>
-  {submitted && errors.timeSlot && (
-    <Alert variant="danger">{errors.timeSlot}</Alert>
-  )}
-  
-  <div className="d-flex flex-column flex-md-row align-items-md-center gap-2 gap-md-3">
-    <Form.Label className="fw-bold w-100 w-md-50">Select Time Slot</Form.Label>
-    <div className="w-100 w-md-50">
-      <Form.Select
-        name="timeSlot"
-        value={formData.timeSlot}
-        onChange={handleInputChange}
-        isInvalid={submitted && errors.timeSlot}
-        style={{ 
-          borderRadius: '20px', 
-          padding: '0.35rem 0.715rem',
-          backgroundColor: formData.timeSlot ? "white" : "white",
-          border: "1px solid #FFBE5D"
-        }}
-      >
-        <option value="">Select a time slot</option>
-        
-        {/* Breakfast Time Slots */}
-        <optgroup label="Breakfast">
-          {timeSlots.Breakfast.map((time) => (
-            <option 
-              key={time} 
-              value={time}
-              disabled={formData.mealType && formData.mealType !== "Breakfast"}
-            >
-              {time}
-            </option>
-          ))}
-        </optgroup>
-        
-        {/* Lunch Time Slots */}
-        <optgroup label="Lunch">
-          {timeSlots.Lunch.map((time) => (
-            <option 
-              key={time} 
-              value={time}
-              disabled={formData.mealType && formData.mealType !== "Lunch"}
-            >
-              {time}
-            </option>
-          ))}
-        </optgroup>
-        
-        {/* Dinner Time Slots */}
-        <optgroup label="Dinner">
-          {timeSlots.Dinner.map((time) => (
-            <option 
-              key={time} 
-              value={time}
-              disabled={formData.mealType && formData.mealType !== "Dinner"}
-            >
-              {time}
-            </option>
-          ))}
-        </optgroup>
-      </Form.Select>
-      <Form.Control.Feedback type="invalid">{errors.timeSlot}</Form.Control.Feedback>
-      {/* {formData.mealType ? (
-        <small className="text-muted">Showing available times for {formData.mealType}</small>
-      ) : (
-        <small className="text-muted">Please select a meal type to enable relevant time slots</small>
-      )} */}
-    </div>
-  </div>
-</div>
-
+<h6 className="fw-bold mb-3">(Choose one or more options)</h6>
               {/* Meals Counter Section */}
               <div className="mt-2">
                 <h4 className="fw-bold mb-3">Choose Number of Meals</h4>
@@ -369,7 +281,7 @@ const CookForOneMeal = () => {
                           variant="outline-secondary"
                           size="sm"
                           style={{
-                            borderRadius: "20px 0 0 20px", 
+                            borderRadius: "20px 0 0 20px",
                             padding: '0 0.5rem',
                             borderRight: 'none',
                             background: 'white',
@@ -381,23 +293,23 @@ const CookForOneMeal = () => {
                         >
                           -
                         </Button>
-                        <Form.Control 
-                          className="text-center" 
-                          value={formData.starters} 
-                          readOnly 
+                        <Form.Control
+                          className="text-center"
+                          value={formData.starters}
+                          readOnly
                           style={{
-                            fontSize: "0.9rem", 
-                            borderRadius: '0', 
-                            borderLeft: 'none', 
+                            fontSize: "0.9rem",
+                            borderRadius: '0',
+                            borderLeft: 'none',
                             borderRight: 'none',
                             height: "35px"
-                          }} 
+                          }}
                         />
                         <Button
                           variant="outline-secondary"
                           size="sm"
                           style={{
-                            borderRadius: "0 20px 20px 0", 
+                            borderRadius: "0 20px 20px 0",
                             padding: '0 0.5rem',
                             borderLeft: 'none',
                             background: 'white',
@@ -422,7 +334,7 @@ const CookForOneMeal = () => {
                           variant="outline-secondary"
                           size="sm"
                           style={{
-                            borderRadius: "20px 0 0 20px", 
+                            borderRadius: "20px 0 0 20px",
                             padding: '0 0.5rem',
                             borderRight: 'none',
                             background: 'white',
@@ -434,23 +346,23 @@ const CookForOneMeal = () => {
                         >
                           -
                         </Button>
-                        <Form.Control 
-                          className="text-center" 
-                          value={formData.mainCourse} 
-                                                    readOnly 
+                        <Form.Control
+                          className="text-center"
+                          value={formData.mainCourse}
+                          readOnly
                           style={{
-                            fontSize: "0.9rem", 
-                            borderRadius: '0', 
-                            borderLeft: 'none', 
+                            fontSize: "0.9rem",
+                            borderRadius: '0',
+                            borderLeft: 'none',
                             borderRight: 'none',
                             height: "35px"
-                          }} 
+                          }}
                         />
                         <Button
                           variant="outline-secondary"
                           size="sm"
                           style={{
-                            borderRadius: "0 20px 20px 0", 
+                            borderRadius: "0 20px 20px 0",
                             padding: '0 0.5rem',
                             borderLeft: 'none',
                             background: 'white',
@@ -475,7 +387,7 @@ const CookForOneMeal = () => {
                           variant="outline-secondary"
                           size="sm"
                           style={{
-                            borderRadius: "20px 0 0 20px", 
+                            borderRadius: "20px 0 0 20px",
                             padding: '0 0.5rem',
                             borderRight: 'none',
                             background: 'white',
@@ -487,23 +399,23 @@ const CookForOneMeal = () => {
                         >
                           -
                         </Button>
-                        <Form.Control 
-                          className="text-center" 
+                        <Form.Control
+                                                    className="text-center"
                           value={formData.desserts}
                           readOnly
                           style={{
-                            fontSize: "0.9rem", 
-                            borderRadius: '0', 
-                            borderLeft: 'none', 
+                            fontSize: "0.9rem",
+                            borderRadius: '0',
+                            borderLeft: 'none',
                             borderRight: 'none',
                             height: "35px"
-                          }} 
+                          }}
                         />
                         <Button
                           variant="outline-secondary"
                           size="sm"
                           style={{
-                            borderRadius: "0 20px 20px 0", 
+                            borderRadius: "0 20px 20px 0",
                             padding: '0 0.5rem',
                             borderLeft: 'none',
                             background: 'white',
@@ -528,7 +440,7 @@ const CookForOneMeal = () => {
                           variant="outline-secondary"
                           size="sm"
                           style={{
-                            borderRadius: "20px 0 0 20px", 
+                            borderRadius: "20px 0 0 20px",
                             padding: '0 0.5rem',
                             borderRight: 'none',
                             background: 'white',
@@ -540,23 +452,23 @@ const CookForOneMeal = () => {
                         >
                           -
                         </Button>
-                        <Form.Control 
-                          className="text-center" 
-                          value={formData.sides} 
-                          readOnly 
+                        <Form.Control
+                          className="text-center"
+                          value={formData.sides}
+                          readOnly
                           style={{
-                            fontSize: "0.9rem", 
-                            borderRadius: '0', 
-                            borderLeft: 'none', 
+                            fontSize: "0.9rem",
+                            borderRadius: '0',
+                            borderLeft: 'none',
                             borderRight: 'none',
                             height: "35px"
-                          }} 
+                          }}
                         />
                         <Button
                           variant="outline-secondary"
                           size="sm"
                           style={{
-                            borderRadius: "0 20px 20px 0", 
+                            borderRadius: "0 20px 20px 0",
                             padding: '0 0.5rem',
                             borderLeft: 'none',
                             background: 'white',
@@ -585,7 +497,6 @@ const CookForOneMeal = () => {
 <div className="d-none">
   <Image src="/chef-.png" alt="Cook" fluid />
 </div>
-
 
           <div className="text-center mt-4">
             <Button type="submit" variant="dark" className="px-4">Continue</Button>
@@ -703,3 +614,4 @@ const CookForOneMeal = () => {
 };
 
 export default CookForOneMeal;
+

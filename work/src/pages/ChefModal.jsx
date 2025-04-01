@@ -7,7 +7,7 @@ const ModalContent = ({ Component }) => {
   return <div className="modal-content-wrapper">{Component}</div>;
 };
 
-const ChefCookPopupModal = ({ showOptionsModal, setShowOptionsModal, handleOptionSelect }) => {
+const ChefModal = ({ showOptionsModal, setShowOptionsModal, handleOptionSelect }) => {
   const [showModal, setShowModal] = useState(false);
   const [termsAccepted, setTermsAccepted] = useState(false);
 
@@ -198,4 +198,4 @@ const ChefCookPopupModal = ({ showOptionsModal, setShowOptionsModal, handleOptio
   );
 };
 
-export default ChefCookPopupModal;
+export default ChefModal;
