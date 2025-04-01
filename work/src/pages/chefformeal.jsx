@@ -241,75 +241,117 @@ const CookForOneMeal = () => {
                 </div>
               </div>
 
-              {/* Choose your meal */}
-              <div className="mt-2">
-                <h4 className="fw-bold mb-3">Choose your Meal</h4>
-                {submitted && errors.mealType && (
-                  <Alert variant="danger">{errors.mealType}</Alert>
-                )}
-                
-                <div className="d-flex flex-wrap gap-3 mb-4">
-                  {["Breakfast", "Lunch", "Dinner"].map((meal) => (
-                    <div key={meal} className="text-center">
-                      <input
-                        type="radio"
-                        className="btn-check"
-                        name="mealType"
-                        id={`meal-${meal}`}
-                        value={meal}
-                        checked={formData.mealType === meal}
-                        onChange={handleInputChange}
-                      />
-                      <label
-                        className="btn btn-outline-dark rounded-pill px-4"
-                        htmlFor={`meal-${meal}`}
-                        style={{
-                          backgroundColor: formData.mealType === meal ? "#FFBE5D" : "transparent",
-                          borderColor: "#FFBE5D"
-                        }}
-                      >
-                        {meal}
-                      </label>
-                    </div>
-                  ))}
-                </div>
-              </div>
+{/* Choose your meal - Circular Radio Buttons with Bootstrap */}
+<div className="mt-2">
+  <h4 className="fw-bold mb-3">Choose your Meal</h4>
+  {submitted && errors.mealType && (
+    <Alert variant="danger">{errors.mealType}</Alert>
+  )}
+  
+  <div className="d-flex flex-wrap gap-4 mb-4 justify-content-center">
+    {["Breakfast", "Lunch", "Dinner"].map((meal) => (
+      <div key={meal} className="text-center">
+        <div className="form-check">
+          <input
+            className="form-check-input"
+            type="radio"
+            name="mealType"
+            id={`meal-${meal}`}
+            value={meal}
+            checked={formData.mealType === meal}
+            onChange={handleInputChange}
+            style={{
+              cursor: 'pointer',
+              width: '1.1em',
+              height: '1.1em'
+            }}
+          />
+          <label
+            className="form-check-label ms-2 fw-medium"
+            htmlFor={`meal-${meal}`}
+            style={{ cursor: 'pointer' }}
+          >
+            {meal}
+          </label>
+        </div>
+      </div>
+    ))}
+  </div>
+</div>
 
-              {/* Choose your Slot */}
-              {formData.mealType && (
-                <div className="mt-2">
-                  <h4 className="fw-bold mb-3">Choose your Slot</h4>
-                  {submitted && errors.timeSlot && (
-                    <Alert variant="danger">{errors.timeSlot}</Alert>
-                  )}
-                  
-                  <div className="d-flex flex-wrap gap-3">
-                    {timeSlots[formData.mealType]?.map((time) => (
-                      <div key={time} className="text-center">
-                        <input
-                          type="radio"
-                          className="btn-check"
-                          name="timeSlot"
-                          id={`time-${time}`}
-                          value={time}
-                          checked={formData.timeSlot === time}
-                          onChange={handleInputChange}
-                        />
-                        <label
-                          className="btn btn-outline-dark rounded-pill px-4"
-                          htmlFor={`time-${time}`}
-                          style={{
-                            backgroundColor: formData.timeSlot === time ? "#FFBE5D" : "transparent",
-                            borderColor: "#FFBE5D"
-                          }}
-                        >
-                          {time}
-                        </label>
-                      </div>
-                    ))}
-                  </div>
-                </div>
-              )}
+{/* Choose your Slot - Always Visible with All Timings */}
+<div className="mt-2">
+  <h4 className="fw-bold mb-3">Choose your Slot</h4>
+  {submitted && errors.timeSlot && (
+    <Alert variant="danger">{errors.timeSlot}</Alert>
+  )}
+  
+  <div className="d-flex flex-column flex-md-row align-items-md-center gap-2 gap-md-3">
+    <Form.Label className="fw-bold w-100 w-md-50">Select Time Slot</Form.Label>
+    <div className="w-100 w-md-50">
+      <Form.Select
+        name="timeSlot"
+        value={formData.timeSlot}
+        onChange={handleInputChange}
+        isInvalid={submitted && errors.timeSlot}
+        style={{ 
+          borderRadius: '20px', 
+          padding: '0.35rem 0.715rem',
+          backgroundColor: formData.timeSlot ? "white" : "white",
+          border: "1px solid #FFBE5D"
+        }}
+      >
+        <option value="">Select a time slot</option>
+        
+        {/* Breakfast Time Slots */}
+        <optgroup label="Breakfast">
+          {timeSlots.Breakfast.map((time) => (
+            <option 
+              key={time} 
+              value={time}
+              disabled={formData.mealType && formData.mealType !== "Breakfast"}
+            >
+              {time}
+            </option>
+          ))}
+        </optgroup>
+        
+        {/* Lunch Time Slots */}
+        <optgroup label="Lunch">
+          {timeSlots.Lunch.map((time) => (
+            <option 
+              key={time} 
+              value={time}
+              disabled={formData.mealType && formData.mealType !== "Lunch"}
+            >
+              {time}
+            </option>
+          ))}
+        </optgroup>
+        
+        {/* Dinner Time Slots */}
+        <optgroup label="Dinner">
+          {timeSlots.Dinner.map((time) => (
+            <option 
+              key={time} 
+              value={time}
+              disabled={formData.mealType && formData.mealType !== "Dinner"}
+            >
+              {time}
+            </option>
+          ))}
+        </optgroup>
+      </Form.Select>
+      <Form.Control.Feedback type="invalid">{errors.timeSlot}</Form.Control.Feedback>
+      {/* {formData.mealType ? (
+        <small className="text-muted">Showing available times for {formData.mealType}</small>
+      ) : (
+        <small className="text-muted">Please select a meal type to enable relevant time slots</small>
+      )} */}
+    </div>
+  </div>
+</div>
+
 
               {/* Meals Counter Section */}
               <div className="mt-2">
@@ -536,13 +578,13 @@ const CookForOneMeal = () => {
             
             {/* Right Column - Image (visible only on desktop) */}
             <Col xs={12} md={6} className="mt-4 mt-md-0 d-none d-md-block">
-              <Image src="/cook.png" alt="Cook" fluid />
+              <Image src="/chef.png" alt="Cook" fluid />
             </Col>
           </Row>
           
           {/* Image - Visible only on mobile, after meals section */}
           <div className="d-block d-md-none mt-4">
-            <Image src="/cook.png" alt="Cook" fluid />
+            <Image src="/chef.png" alt="Cook" fluid />
           </div>
 
           <div className="text-center mt-4">
@@ -661,4 +703,3 @@ const CookForOneMeal = () => {
 };
 
 export default CookForOneMeal;
-

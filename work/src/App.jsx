@@ -11,9 +11,9 @@ import HomePage from './pages/HomePage';
 import AboutUs from './pages/AboutUs';
 import modal from "./components/modal"; // Reusable Modal component using CSS modules
 import WomanSalon from './pages/WomanSalon';
-import CHEF from "./pages/chefforparty"
+import CHEF from "./pages/chefforparty";
 import SalonPopUp from './components/popup/SalonPopUp';
-
+import Chefformeal from "./pages/chefformeal";
 // ModalContent Component to wrap any component inside a Modal
 const ModalContent = ({ component }) => {
   return (
@@ -40,7 +40,7 @@ function App() {
         <Route path="/salon" element={<WomanSalon />} />
         <Route path="/chef" element={<CHEF />} />
         <Route path="/popup" element={<SalonPopUp />} />
-
+        <Route path="/chef-meal" element={<Chefformeal />} />
     
       </Routes>
     </BrowserRouter>
