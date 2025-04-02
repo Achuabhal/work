@@ -9,7 +9,7 @@ import ABDUL from './pages/abdul';
 import Oops from './pages/oops';
 import HomePage from './pages/HomePage';
 import AboutUs from './pages/AboutUs';
-import ChefModal from "./pages/ChefModal";
+import ChefModal from "./components/popup/ChefModal";
 import WomanSalon from './pages/WomanSalon';
 import CHEF from "./pages/chefforparty";
 import SalonPopUp from './components/popup/SalonPopUp';
@@ -42,7 +42,7 @@ function App() {
         <Route path="/chef" element={<CHEF />} />
         <Route path="/popup" element={<SalonPopUp />} />
         <Route path="/chef-meal" element={<Chefformeal />} />
-        <Route path="/chef-and-cook" element={<ChefModal />} />
+        <Route path="/chef-modal" element={<ChefModal />} />
         <Route path="/chef-month" element={<Chefformonth />} />
       </Routes>
     </BrowserRouter>
