@@ -232,7 +232,7 @@ const HomePage = () => {
       <section className={styles.mostBookedSection}>
         <h2 className={styles.sectionTitle}>Most Booked Services</h2>
         <div className={styles.mostBookedGrid}>
-          {[...Array(5)].map((_, index) => (
+          {[...Array(4)].map((_, index) => (
             <div key={index} className={styles.mostBookedCard}></div>
           ))}
         </div>
