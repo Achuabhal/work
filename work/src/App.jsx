@@ -9,17 +9,24 @@ import ABDUL from './pages/abdul';
 import Oops from './pages/oops';
 import HomePage from './pages/HomePage';
 import AboutUs from './pages/AboutUs';
-import Modal from "./components/modal"; // Reusable Modal component using CSS modules
+import ChefModal from "./components/popup/ChefModal";
 import WomanSalon from './pages/WomanSalon';
 import CHEF from "./pages/chefforparty";
+<<<<<<< HEAD
 import CheckoutPage from './pages/checkoutPage';
 
+=======
+import SalonPopUp from './components/popup/SalonPopUp';
+import Chefformeal from "./pages/chefformeal";
+import Chefformonth from "./pages/chefformonth";
+import WomenSpa from './pages/WomenSpa';
+>>>>>>> 3333ad14b44a92f49dea7ef30e434fd1fee50a62
 // ModalContent Component to wrap any component inside a Modal
 const ModalContent = ({ component }) => {
   return (
-    <Modal isOpen={true}>
+    <modal isOpen={true}>
       {component}
-    </Modal>
+    </modal>
   );
 };
 
@@ -39,7 +46,16 @@ function App() {
         <Route path="/sample" element={<Sample/>}/>
         <Route path="/salon" element={<WomanSalon />} />
         <Route path="/chef" element={<CHEF />} />
+<<<<<<< HEAD
         <Route path="/checkout" element={<CheckoutPage />} />
+=======
+        <Route path="/popup" element={<SalonPopUp />} />
+        <Route path="/chef-meal" element={<Chefformeal />} />
+        <Route path="/chef-modal" element={<ChefModal />} />
+        <Route path="/chef-month" element={<Chefformonth />} />
+        <Route path="/spawomen" element={<WomenSpa/>} />
+
+>>>>>>> 3333ad14b44a92f49dea7ef30e434fd1fee50a62
       </Routes>
     </BrowserRouter>
   );

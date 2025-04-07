@@ -23,7 +23,7 @@
   justify-content: center;
   align-items: center;
 }
-
+  
 .actionButton {
   background-color: #333;
   color: white;
@@ -321,7 +321,7 @@
 /* Services Section */
 .servicesSection {
   background-color: #FFD699;
-  padding: 30px;
+  padding: 10px;
   margin-bottom: 15px;
   border-radius: 35px;
   position: relative;
@@ -333,6 +333,12 @@
   margin-bottom: 20px;
   font-size: 32px;
   font-weight: bold;
+}
+
+.pageMain {
+  gap: 1rem;
+  width: 100%;
+  box-sizing: border-box;
 }
 
 .servicesGrid {
@@ -350,21 +356,23 @@
 }
 
 .serviceIcon {
-  width: 100px;
-  height: 100px;
+  width: 60px;
+  height: 60px;
   background-color: #B0B0B0;
-  border-radius: 15px;
+  border-radius: 7px;
   margin-bottom: 10px;
 }
 
 .serviceTitle {
-  font-size: 16px;
+  font-size: 7px;
   margin: 0;
 }
 
 .serviceShowcase {
-  width: 100%;
-  height: 250px;
+  width: 60%;
+  height: 280px;
+  margin-bottom: 25px;
+  border-radius: 15px;
   background-color: #D9D9D9;
   margin-top: 30px;
 }
@@ -396,11 +404,12 @@
   justify-content: space-between;
   gap: 15px;
   flex-wrap: wrap;
+  justify-content: space-evenly;
 }
 
 .mostBookedCard {
-  width: 80px;
-  height: 80px;
+  width: 50px;
+  height: 50px;
   background-color: #CCC;
   border-radius: 5px;
   margin-bottom: 10px;
@@ -502,6 +511,11 @@
   .featuresGrid {
     grid-template-columns: repeat(3, 1fr);
     gap: 1.5rem;
+
+  }
+  
+  .mostBookedGrid {
+    justify-content: center;
   }
   
   .footerContent {
@@ -523,11 +537,11 @@
   }
   
   .featuresGrid {
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(3, 1fr);
   }
   
   .servicesGrid {
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(3, 1fr);
   }
 
   .headerContent {
@@ -591,6 +605,12 @@
   .optionCard {
     padding: 2rem;
   }
+  .mostBookedGrid {
+    display: flex;
+    justify-content: space-between;
+    gap: 15px;
+    flex-wrap: wrap;
+  }
 
   .actionButton {
     padding: 0.6rem 1.2rem;
@@ -598,12 +618,11 @@
   }
   
   .servicesGrid {
-    grid-template-columns: 1fr;
+    grid-template-columns: fr;
   }
 
   .featuresGrid {
-    grid-template-columns: 1fr;
-    gap: 1.5rem;
+    grid-template-columns: repeat(5, 1fr);
   }
 
   .featureItem {
@@ -611,12 +630,12 @@
   }
 
   .featureIcon {
-    width: 40px;
-    height: 40px;
+    width: 30px;
+    height: 30px;
   }
-
+ 
   .featureText {
-    font-size: 0.8rem;
+    font-size: 0.4rem;
   }
   
   .navItem {
@@ -652,7 +671,7 @@
   }
   
   .serviceIcon {
-    width: 80px;
-    height: 80px;
+    width: 40px;
+    height: 40px;
   }
 }

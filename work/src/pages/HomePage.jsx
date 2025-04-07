@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import styles from './css/homepage.module.css';
+import { Container, Row, Col, Form, Navbar, Nav } from "react-bootstrap";
 import { ChevronLeft, ChevronRight, MapPin, Search, ShoppingCart, User } from 'lucide-react';
 import { FaInstagram, FaFacebook, FaTwitter, FaPhone, FaEnvelope } from "react-icons/fa";
 import chef from "./assets/chef.png";
@@ -7,12 +8,13 @@ import service from "./assets/logo.png";
 import cleaning from "./assets/oops1.png";
 import myImage1 from "./assets/logo.png";
 import { Link } from "react-router-dom";
-
-
+import SalonPopUp from "../components/popup/SalonPopUp"; 
+import ChefModal from "../components/popup/ChefModal";
 
 const HomePage = () => {
   const [slideIndex, setSlideIndex] = useState(0);
   const [isMobile, setIsMobile] = useState(false);
+  const [showChefModal, setShowChefModal] = useState(false);
   const slides = [chef, service, cleaning];
   let autoPlayId;
 
@@ -50,39 +52,103 @@ const HomePage = () => {
     }, 3000);
   };
 
+  const [showModal, setShowModal] = useState(false);
+
+
   return (
     <div className={styles.container}>
       {/* Header */}
-      <header className={styles.header}>
-        <div className={styles.headerContent}>
-          <img src={myImage1} alt="DUZO Logo" className={styles.logoImage1} />
-          <div className={styles.searchBar}>
-            <input type="text" placeholder="How can we help you with?" className={styles.searchInput} />
-            <button className={styles.searchButton}><Search size={18} /></button>
-          </div>
-          <div className={styles.headerIcons}>
-          <Link to="/abdul">
-          <button className={styles.iconButton}><MapPin size={isMobile ? 24 : 30} /></button>
-          </Link>
-            
-            <button className={styles.iconButton}><ShoppingCart size={isMobile ? 24 : 30} /></button>
-             <Link to="/d">
-             <button className={styles.iconButton}><User size={isMobile ? 24 : 30} /></button>
-          </Link>
-          
-          </div>
-        </div>
-        <nav className={styles.navbar}>
-          <a href="#" className={styles.navItem}>Homes</a>
-          <Link to="/salon">
-           
-       
-          <a href="#" className={styles.navItem}>Beauty</a>
-          </Link>
-          <a href="#" className={styles.navItem}>Automobile</a>
-          <a href="#" className={styles.navItem}>Buy / Rent</a>
-        </nav>
-      </header>
+      <Navbar
+          style={{ backgroundColor: "#FFD29E" }}
+          expand="lg"
+          className="rounded-4 my-3 "
+        >
+          <Container>
+            <Navbar.Brand className="mb-5">
+              <img src="/duzo.png" alt="DUZO" width="100" />
+            </Navbar.Brand>
+
+            <Navbar.Toggle aria-controls="basic-navbar-nav" className="mb-5" />
+
+            <Navbar.Collapse id="basic-navbar-nav">
+              <div className="d-flex flex-column w-100">
+                <div className="d-flex w-100 align-items-center justify-content-between gap-3 flex-wrap">
+                  <div className="flex-grow-1">
+                    <Form
+                      className="w-100"
+                      style={{ minWidth: "200px", maxWidth: "400px" }}
+                    >
+                      <Form.Group className="input-group">
+                        <div
+                          className="d-flex align-items-center w-100 rounded-pill px-2"
+                          style={{
+                            backgroundColor: "#FFBE5D",
+                            padding: "5px",
+                            border: "none",
+                          }}
+                        >
+                          <Form.Control
+                            type="search"
+                            placeholder="How can we help you?"
+                            className="form-control border-0 shadow-none bg-transparent"
+                          />
+                          <img
+                            src="/search.png"
+                            alt="Search"
+                            width="25"
+                            height="25"
+                            className="ms-2"
+                          />
+                        </div>
+                      </Form.Group>
+                    </Form>
+                  </div>
+
+                  <div style={{ minWidth: "150px", maxWidth: "200px" }}>
+                    <Form className="w-100">
+                      <Form.Group className="input-group">
+                        <div
+                          className="d-flex align-items-center w-100 rounded-pill px-2"
+                          style={{
+                            backgroundColor: "#FFBE5D",
+                            padding: "5px",
+                            border: "none",
+                          }}
+                        >
+                          <Form.Control
+                            type="text"
+                            className="form-control border-0 shadow-none bg-transparent"
+                          />
+                          <img
+                            src="/image.png"
+                            alt="Image"
+                            width="25"
+                            height="25"
+                            className="ms-2"
+                          />
+                        </div>
+                      </Form.Group>
+                    </Form>
+                  </div>
+
+                  <div className="d-flex align-items-center gap-2">
+                    <img src="/cart.png" width="26" height="26" alt="Cart" />
+                    <img src="/user.png" width="26" height="26" alt="Profile" />
+                  </div>
+                </div>
+
+                <div className="w-100 d-flex justify-content-start mt-2 px-3">
+                  <Nav className="d-flex gap-3 flex-wrap">
+                    <Nav.Link href="#">Homes</Nav.Link>
+                    <Nav.Link href="#">Beauty</Nav.Link>
+                    <Nav.Link href="#">Automobile</Nav.Link>
+                    <Nav.Link href="#">Buy/Rent</Nav.Link>
+                  </Nav>
+                </div>
+              </div>
+            </Navbar.Collapse>
+          </Container>
+        </Navbar>
 
  {/* Hero Banner */}
  <div className={styles.heroBanner}>
@@ -116,18 +182,47 @@ const HomePage = () => {
       </div>
 
       {/* Services Section */}
+ 
       <section className={styles.servicesSection}>
         <h2 className={styles.sectionTitle}>OUR SERVICES</h2>
+        <main className={`${styles.pageMain} flex-grow-1 d-flex justify-content-center align-items-center p-4`}>
         <div className={styles.servicesGrid}>
-          {["Household cleaning", "Chef and cook", "AC and appliances repair", "Beauty and Salon", "Electrician, Plumber and Carpenter", "Automobile cleaning", "Buy appliances", "Rent appliances", "Sell appliances"].map((service, index) => (
-            <div key={index} className={styles.serviceCard}>
-              <div className={styles.serviceIcon}></div>
-              <p className={styles.serviceTitle}>{service}</p>
-            </div>
+          {[
+            { name: "Household cleaning", path: "/household-cleaning" },
+            { name: "Chef and cook",  action: () => setShowChefModal(true) }, // Update this line },
+            { name: "AC and appliances repair", path: "/ac-repair" },
+            {
+              name: "Beauty and Salon",
+              action: () => setShowModal(true),
+            },
+            { name: "Electrician, Plumber and Carpenter", path: "/home-services" },
+            { name: "Automobile cleaning", path: "/automobile" },
+            { name: "Buy appliances", path: "/buy-appliances" },
+            { name: "Rent appliances", path: "/rent-appliances" },
+            { name: "Sell appliances", path: "/sell-appliances" }
+          ].map((service, index) => (
+            <div
+            key={index}
+            className={styles.serviceCard}
+            onClick={() => {
+              if (service.action) {
+                service.action();
+              } else {
+                window.location.href = service.path;
+              }
+            }}
+            style={{ cursor: "pointer" }}
+          >
+            <div className={styles.serviceIcon}></div>
+            <p className={styles.serviceTitle}>{service.name}</p>
+          </div>
+          
           ))}
         </div>
         <div className={styles.serviceShowcase}></div>
+        </main>
       </section>
+      
 
       {/* Hourly Service Poster */}
       <section className={styles.hourlyServiceSection}>
@@ -138,7 +233,7 @@ const HomePage = () => {
       <section className={styles.mostBookedSection}>
         <h2 className={styles.sectionTitle}>Most Booked Services</h2>
         <div className={styles.mostBookedGrid}>
-          {[...Array(5)].map((_, index) => (
+          {[...Array(4)].map((_, index) => (
             <div key={index} className={styles.mostBookedCard}></div>
           ))}
         </div>
@@ -210,6 +305,7 @@ const HomePage = () => {
           </div>
         </div>
       </div>
+  
 
       <footer className={styles.footerr}>
         <div className={styles.footerContent}>
@@ -247,7 +343,9 @@ const HomePage = () => {
           </div>
         </div>
       </footer>
-
+{/* SalonPopUp Modal */}
+<SalonPopUp show={showModal} onHide={() => setShowModal(false)} />
+<ChefModal show={showChefModal} onHide={() => setShowChefModal(false)} />
       <div className={styles.footerBottom}>
         <p>© 2024 - DUZO</p>
       </div>
