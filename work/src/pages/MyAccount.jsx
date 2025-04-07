@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { FaInstagram, FaFacebook, FaXTwitter } from "react-icons/fa6";
 import "bootstrap/dist/css/bootstrap.min.css";
+import 'bootstrap/dist/js/bootstrap.bundle.min';
 
 const MyAccount = () => {
   const [activeSection, setActiveSection] = useState("personalInfo");
@@ -73,17 +74,79 @@ const MyAccount = () => {
   };
 
   return (
-    <div className="container-fluid p-0 m-0" style={{ fontFamily: "Outfit, sans-serif", fontWeight: "bold" }}>
+    <div className="container-fluid p-0 m-0" style={{ fontFamily: "Outfit" }}>
       {/* Header */}
-      <header className="d-flex justify-content-between align-items-center p-3 w-100" style={{ backgroundColor: "#FF9900A8" }}>
-        <img src="/duzo.png" alt="DUZO Logo" className="img-fluid" style={{ height: "50px" }} />
-        <h4 className="text-dark fw-bold">MY ACCOUNT</h4>
-      </header>
+      <header
+  className="d-flex justify-content-between align-items-center p-3 w-100 rounded-0 rounded-md-0 rounded-4"
+  style={{ backgroundColor: "#FDCC82" }}
+>
+  <img
+    src="/duzo.png"
+    alt="DUZO Logo"
+    className="img-fluid"
+    style={{ height: "50px" }}
+  />
+
+  {/* MY ACCOUNT for medium and up */}
+  <h4 className="text-dark fw-bold d-none d-md-block">MY ACCOUNT</h4>
+
+  {/* Dropdown Menu for small devices */}
+  <div className="dropdown d-block d-md-none">
+    <button
+      className="btn rounded-2"
+      type="button"
+      id="dropdownMenuButton"
+      data-bs-toggle="dropdown"
+      aria-expanded="false"
+      style={{ border: "none", fontSize: "24px" }}
+    >
+      ☰
+    </button>
+    <ul className="dropdown-menu dropdown-menu-end mt-2" aria-labelledby="dropdownMenuButton">
+  <li>
+    <button
+      className="dropdown-item fw-bold text-dark"
+      style={{ backgroundColor: "#FFAD62", border: "1px solid black" }}
+      onClick={() => setActiveSection("personalInfo")}
+    >
+      Personal Info
+    </button>
+  </li>
+  <li>
+    <button
+      className="dropdown-item fw-bold text-dark"
+      style={{ backgroundColor: "#FFAD62", border: "1px solid black" }}
+      onClick={() => setActiveSection("orders")}
+    >
+      Your Orders
+    </button>
+  </li>
+  <li>
+    <button
+      className="dropdown-item fw-bold text-dark"
+      style={{ backgroundColor: "#FFAD62", border: "1px solid black" }}
+      onClick={() => setActiveSection("paymentMethods")}
+    >
+      Payment Methods
+    </button>
+  </li>
+  <li>
+    <button
+      className="dropdown-item fw-bold text-dark"
+      style={{ backgroundColor: "#FFAD62", border: "1px solid black" }}
+      onClick={() => setActiveSection("customerCare")}
+    >
+      Customer Care
+    </button>
+  </li>
+</ul>
+  </div>
+</header>
 
       <div className="d-flex mt-4 flex-wrap justify-content-center">
         {/* Sidebar */}
-        <div
-          className="d-flex flex-column align-items-center justify-content-center p-3 rounded shadow-sm mt-5 me-lg-5 ms-md-0 me-md-0 mx-auto col-lg-3 col-md-6 h-100 align-self-stretch"
+                <div
+          className="d-none d-md-flex flex-column align-items-center justify-content-center p-3 rounded shadow-sm mt-5 me-lg-5 ms-md-0 me-md-0 mx-auto col-lg-3 col-md-6 h-100 align-self-stretch"
           style={{ backgroundColor: "white" }}
         >
           {/* Button Layout */}
@@ -145,59 +208,94 @@ const MyAccount = () => {
             </div>
           </div>
         </div>
+
         {/* Content Section */}
         <div className="flex-grow-1 d-flex justify-content-center">
-          {activeSection === "personalInfo" && (
-            <div className="p-4 rounded shadow-sm mx-auto col-lg-8 col-md-10 mt-5 mb-5 col-12"
-              style={{ backgroundColor: "#FFD6B0" }}
-            >
-              <h3 className="fw-bold text-center mb-4">Personal Information</h3>
-              <div className="row "> {/* Added g-4 for gap */}
-                <div className="col-md-4 col-lg-4 mb-3  me-md-4 me-lg-5">
-                  <label className="form-label">First Name</label>
-                  <input type="text" className="form-control rounded-pill" />
-                </div>
-                <div className="col-md-4 col-lg-4 mb-3">
-                  <div className="d-flex justify-content-between align-items-center">
-                    <label className="form-label mb-0">Last Name</label>
-                    <a href="#" className="text-primary ms-lg-4 ms-2">Edit</a>
-                  </div>
-                  <input type="text" className="form-control rounded-pill" />
-                </div>
+        {activeSection === "personalInfo" && (
+  <div
+    className="p-4 rounded-4 shadow-sm mx-auto col-lg-8 col-md-10 mt-md-5 mt-1 mb-5 col-12"
+    style={{ backgroundColor: "#FFD6B0" }}
+  >
+    <h3 className="fw-bold text-center mb-5">Personal Information</h3>
 
-              </div>
+    <div className="row">
+      <div className="col-md-4 col-lg-4 mb-3 me-md-4 me-lg-5">
+        <label className="form-label">First Name</label>
+        <div className=" col-10 col-md-11">
+          <input type="text" className="form-control rounded-pill" />
+        </div>
+      </div>
+      <div className="col-md-4 col-lg-4 mb-3">
+        <div className="d-flex justify-content-between align-items-center">
+          <label className="form-label mb-0">Last Name</label>
+          <a href="#" className="text-primary ms-lg-4 ms-2">Edit</a>
+        </div>
+        <div className=" col-10 col-md-11">
+          <input type="text" className="form-control rounded-pill" />
+        </div>
 
-              <label className="form-label">Gender</label>
-              <div className="d-flex gap-3 mb-3">
-                <div className="form-check">
-                  <input type="radio" className="form-check-input" name="gender" value="male" /> Male
-                </div>
-                <div className="form-check">
-                  <input type="radio" className="form-check-input" name="gender" value="female" /> Female
-                </div>
-              </div>
-              <div className="col">
-                <div className="col-md-6 col-lg-5 mb-3">
-                  <div className="d-flex justify-content-between align-items-center">
-                    <label className="form-label">Email Address</label>
-                    <a href="#" className="text-primary ">Edit</a>
-                  </div>
-                  <input type="email" className="form-control rounded-pill" onChange={(e) => validateEmail(e.target.value)} />
-                  {formErrors.email && <p className="text-danger">{formErrors.email}</p>}
-                </div>
-                <div className="col-md-6 col-lg-5 mb-3">
-                  <div className="d-flex justify-content-between align-items-center">
-                    <label className="form-label mb-0">Phone Number</label>
-                    <a href="#" className="text-primary">Edit</a>
-                  </div>
-                  <input type="tel" className="form-control rounded-pill" onChange={(e) => validatePhoneNumber(e.target.value)} />
-                  {formErrors.phoneNumber && <p className="text-danger">{formErrors.phoneNumber}</p>}
-                </div>
+      </div>
+    </div>
 
-              </div>
+    <div className="d-flex flex-sm-row flex-md-column gap-2 mb-3">
+  <label className="form-label mb-0">Gender</label>
+  <div className="d-flex gap-3">
+    <div className="form-check mb-0">
+      <input
+        type="radio"
+        className="form-check-input"
+        name="gender"
+        value="male"
+        id="genderMale"
+      />
+      <label className="form-check-label ms-1" htmlFor="genderMale">Male</label>
+    </div>
+    <div className="form-check mb-0">
+      <input
+        type="radio"
+        className="form-check-input"
+        name="gender"
+        value="female"
+        id="genderFemale"
+      />
+      <label className="form-check-label ms-1" htmlFor="genderFemale">Female</label>
+    </div>
+  </div>
+</div>
 
-            </div>
-          )}
+
+    <div className="col">
+      <div className="col-md-6 col-lg-5 mb-3">
+        <div className="d-flex justify-content-between align-items-center">
+          <label className="form-label">Email Address</label>
+          <a href="#" className="text-primary">Edit</a>
+        </div>
+        <div className=" col-10 col-md-11">
+        <input
+          type="email"
+          className="form-control rounded-pill"
+          onChange={(e) => validateEmail(e.target.value)}
+        />
+        </div>
+        {formErrors.email && <p className="text-danger">{formErrors.email}</p>}
+      </div>
+      <div className="col-md-6 col-lg-5 mb-3">
+        <div className="d-flex justify-content-between align-items-center">
+          <label className="form-label mb-0">Phone Number</label>
+          <a href="#" className="text-primary">Edit</a>
+        </div>
+        <div className=" col-10 col-md-11">
+        <input
+          type="tel"
+          className="form-control rounded-pill"
+          onChange={(e) => validatePhoneNumber(e.target.value)}
+        />
+        </div>
+        {formErrors.phoneNumber && <p className="text-danger">{formErrors.phoneNumber}</p>}
+      </div>
+    </div>
+  </div>
+)}
 
           {activeSection === "orders" && (
             <div
@@ -374,22 +472,26 @@ const MyAccount = () => {
 
       {/* Footer */}
       
-      <footer className="p-3 mt-4 rounded d-flex justify-content-between align-items-center position-fixed w-100 bottom-0"
-        style={{ backgroundColor: "#FF9900A8" }}
-      >
-        <p className="mb-0">Copyrights &copy; 2024 - DUZO</p>
-        <div className="d-flex gap-2">
-          <a href="https://instagram.com" target="_blank" rel="noopener noreferrer">
-            <FaInstagram size={30} color="black" />
-          </a>
-          <a href="https://facebook.com" target="_blank" rel="noopener noreferrer">
-            <FaFacebook size={30} color="black" />
-          </a>
-          <a href="https://twitter.com" target="_blank" rel="noopener noreferrer">
-            <FaXTwitter size={30} color="black" />
-          </a>
-        </div>
-      </footer>
+      <footer
+  className="p-3 mt-4 rounded d-flex justify-content-between align-items-center position-fixed w-100 bottom-0"
+  style={{ backgroundColor: "#FDCC82" }}
+>
+  <p className="mb-0">Copyrights &copy; 2024 - DUZO</p>
+
+  {/* Icons hidden on extra-small, visible on small+ */}
+  <div className="d-none d-sm-flex gap-2">
+    <a href="https://instagram.com" target="_blank" rel="noopener noreferrer">
+      <FaInstagram size={30} color="black" />
+    </a>
+    <a href="https://facebook.com" target="_blank" rel="noopener noreferrer">
+      <FaFacebook size={30} color="black" />
+    </a>
+    <a href="https://twitter.com" target="_blank" rel="noopener noreferrer">
+      <FaXTwitter size={30} color="black" />
+    </a>
+  </div>
+</footer>
+
     </div>
   );
 };

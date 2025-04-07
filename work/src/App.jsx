@@ -12,7 +12,7 @@ import AboutUs from './pages/AboutUs';
 import Modal from "./components/modal"; // Reusable Modal component using CSS modules
 import WomanSalon from './pages/WomanSalon';
 import CHEF from "./pages/chefforparty";
-
+import CheckoutPage from './pages/checkoutPage';
 
 // ModalContent Component to wrap any component inside a Modal
 const ModalContent = ({ component }) => {
@@ -39,7 +39,7 @@ function App() {
         <Route path="/sample" element={<Sample/>}/>
         <Route path="/salon" element={<WomanSalon />} />
         <Route path="/chef" element={<CHEF />} />
-        
+        <Route path="/checkout" element={<CheckoutPage />} />
       </Routes>
     </BrowserRouter>
   );
