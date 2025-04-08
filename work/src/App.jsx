@@ -19,6 +19,7 @@ import SalonPopUp from './components/popup/SalonPopUp';
 import Chefformeal from "./pages/chefformeal";
 import Chefformonth from "./pages/chefformonth";
 import WomenSpa from './pages/WomenSpa';
+import HairStudioo from './pages/HairStudioo';
 
 // ModalContent Component to wrap any component inside a Modal
 const ModalContent = ({ component }) => {
@@ -51,6 +52,8 @@ function App() {
         <Route path="/chef-modal" element={<ChefModal />} />
         <Route path="/chef-month" element={<Chefformonth />} />
         <Route path="/spawomen" element={<WomenSpa/>} />
+        <Route path="/hairstudio" element={<HairStudioo/>} />
+
 
       </Routes>
     </BrowserRouter>
