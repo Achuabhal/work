@@ -299,31 +299,38 @@ const MyAccount = () => {
 
           {activeSection === "orders" && (
             <div
-              className="p-2 p-md-4 p-lg-4 rounded shadow-sm mx-auto mt-md-5 mt-2 mb-5 col-xs-12 "
+              className="p-2 p-md-4 p-lg-4 rounded shadow-sm mt-md-5 mt-2 mb-5 col-xs-12 "
               style={{ backgroundColor: "#FFD6B0" }}
             >
               <h3 className="fw-bold text-center">Your Orders</h3>
 
               <div className="d-flex justify-content-center">
-                <div className="d-flex align-items-center gap-4 border p-3 rounded bg-white col-12">
+                <div className="d-flex align-items-center gap-4 border p-3 rounded bg-lg-white col-12">
                   {/* Adjusted the col-12 to make it full width on mobile */}
                   <img src="/placeholder.png" alt="Order Thumbnail"
                        className="img-thumbnail"
                        style={{ width: "100px", backgroundColor: "gray" }} />
 
-                  <div className="text-center">
-                    <p className="mb-1"><strong>Order Name</strong></p>
-                    <p className="mb-1">Amount Paid</p>
+                  <div className="d-lg-block text-center">
+                    {/* Row 1: Order Name and Date */}
+                    <div className="d-lg-flex mb-2">
+                      <p className="mb-1 me-lg-5"><strong>Order Name</strong></p>
+                      <p className="mb-1">Date</p>
+                    </div>
+
+                    {/* Row 2: Amount Paid and Rate Button */}
+                    <div className="d-lg-flex ">
+                      <p className="mb-1 me-lg-3">Amount paid</p>
+                      <button
+                        className="btn btn-primary btn-sm"
+                        style={{ backgroundColor:"#FFD6B0", borderColor: "white", color: "black" }}
+                        onClick={() => setActiveSection("ratings")}
+                      >
+                        Rate and Review
+                      </button>
+                    </div>
                   </div>
 
-                  <div className="text-center">
-                    <p className="mb-1">Date</p>
-                    <button className="btn btn-primary btn-sm"
-                            style={{ backgroundColor: "white", borderColor: "white", color: "black" }}
-                            onClick={() => setActiveSection("ratings")}>
-                      Rate and Review
-                    </button>
-                  </div>
                 </div>
               </div>
             </div>
@@ -426,7 +433,7 @@ const MyAccount = () => {
             </div>
           )}
           {activeSection === "customerCare" && (
-            <div className="p-4 rounded shadow-sm mx-auto col-lg-8 col-md-10 mt-5 mb-5 col-12"
+            <div className="p-4 rounded shadow-sm mx-auto col-lg-8 col-md-10 mt-1 mt-md-5 mb-5 col-12"
               style={{ backgroundColor: "#FFD6B0" }}
             >
               <h3 className="fw-bold text-center">Customer Care</h3>
@@ -479,7 +486,7 @@ const MyAccount = () => {
   <p className="mb-0">Copyrights &copy; 2024 - DUZO</p>
 
   {/* Icons hidden on extra-small, visible on small+ */}
-  <div className="d-none d-sm-flex gap-2">
+  <div className="d-sm-flex gap-2">
     <a href="https://instagram.com" target="_blank" rel="noopener noreferrer">
       <FaInstagram size={30} color="black" />
     </a>

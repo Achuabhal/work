@@ -7,58 +7,75 @@ const CheckoutPage = () => {
   return (
     <div className="bg-light" style={{ fontFamily: 'Outfit' }}>
     {/* Header */}
-    <div className="d-flex gap-3 align-items-center p-3 rounded-3" style={{ backgroundColor: '#ffd5a4' }}>
-      <img src="/duzo.png" alt="DUZO Logo" style={{ height: '40px' }} />
-      <h5 className="mb-0">CHECKOUT</h5>
-      <img src="/user.png" alt="user icon" className="ms-auto" style={{ height: '20px' }} />
-    </div>
-  
-
-      {/* Main Content */}
-      <div className="container mt-5" style={{ backgroundColor: '#FFC998', fontFamily: 'Outfit', fontWeight: 'bold' }}>
-      <div className="row gap-5 justify-content-between">
-  {/* Left Column */}
-  <div className="col-md-4 align-items-start ms-5 me-5"> {/* Increased ms-4 to ms-5 for more margin */}
-    <div className="p-3 rounded shadow-sm mb-3" style={{ fontFamily: 'Outfit', fontWeight: 'bolder' }}>
-      <select className="rounded-4 form-select mb-3" style={{ fontWeight: 'bold' }}>
-        <option>Send Booking Details To</option>
-      </select>
-      <select className="rounded-4 form-select mb-3" style={{ fontWeight: 'bold' }}>
-        <option>Address</option>
-      </select>
-      <select className="rounded-4 form-select mb-3" style={{ fontWeight: 'bold' }}>
-        <option>Payment Method</option>
-      </select>
-
-      <div className="d-flex flex-column align-items-start">
-        <button className="mt-4 btn btn-dark rounded-pill w-50 mb-2">Cancellation Policy</button>
-        <a href="#" className="text-decoration-none text-black mt-1">Learn More</a>
-      </div>
-    </div>
+    <div className="d-flex align-items-center justify-content-between px-3 py-2 rounded-3" style={{ backgroundColor: '#ffd5a4' }}>
+  <div className="d-flex align-items-center">
+    <img src="/duzo.png" alt="DUZO Logo" style={{ height: '40px' }} className="img-fluid" />
+    <h5 className="mb-0 ms-2">CHECKOUT</h5>
   </div>
+  <img src="/user.png" alt="user icon" className="img-fluid" style={{ width: '25px' }} />
+</div>
+<div className="container-fluid mt-2 p-3 rounded-4" style={{ backgroundColor: '#FFC998', fontFamily: 'Outfit', fontWeight: 'bold' }}>
+  <div className="row gy-4"> {/* Bootstrap's responsive row spacing */}
 
-  {/* Middle Column */}
-  <div className="col-md-3 align-items-start ms-3 ">
-    <div className="p-3 mt-4 bg-white ms-3 rounded shadow-sm mb-3">
-      <h6>Details</h6>
-      <p>Date      – xxx<br />Time     – xxx<br />Number of People      – xxx<br />Number of Dishes – xxx</p>
-    </div>
-    <div className="col-md-12">
-        <center><h6 className='ms-4'>BILL SUMMARY</h6></center>  
-      <div className="p-3 ms-4 bg-white rounded-3 shadow-sm mb-3">
-        {/* Right Column */}
-        
-        <div className="border p-2 mb-2">
-          <div>Total Amount</div>
-          <div>Token Amount</div>
-          <div>Remaining Amount</div>
+    {/* Left Column */}
+    <div className="col-12 col-md-5 px-4">
+      <div className="p-3 rounded shadow-sm mb-3">
+        <select className="rounded-4 form-select mb-3 fw-bold">
+          <option>Send Booking Details To</option>
+        </select>
+        <select className="rounded-4 form-select mb-3 fw-bold">
+          <option>Address</option>
+        </select>
+        <select className="rounded-4 form-select mb-3 fw-bold">
+          <option>Payment Method</option>
+        </select>
+
+        <div className="d-flex flex-column align-items-start">
+          <button className="mt-4 btn btn-dark rounded-pill col-sm-10 col-md-8 col-lg-6 mb-2">Cancellation Policy</button>
+          <a href="#" className="text-decoration-none text-black mt-1">Learn More</a>
         </div>
       </div>
     </div>
+
+    {/* Right Side Columns */}
+    <div className="col-12 col-md-7 px-5 d-flex flex-column align-items-lg-end">
+
+  {/* Details Section */}
+  <div className="p-3 bg-white rounded shadow-sm mb-3 col-12 col-lg-6">
+    <center><h6>Details</h6></center> 
+    <div className="d-flex justify-content-between mb-2">
+      <div>Date</div>
+      <div>– <span className="ms-2">xxx</span></div>
+    </div>
+    <div className="d-flex justify-content-between mb-2">
+      <div>Time</div>
+      <div>– <span className="ms-2">xxx</span></div>
+    </div>
+    <div className="d-flex justify-content-between mb-2">
+      <div>Number of People</div>
+      <div>– <span className="ms-2">xxx</span></div>
+    </div>
+    <div className="d-flex justify-content-between">
+      <div>Number of Dishes</div>
+      <div>– <span className="ms-2">xxx</span></div>
+    </div>
   </div>
 
+  {/* Bill Summary Section */}
+  <div className="p-3 rounded shadow-sm mb-3 col-12 col-lg-6">
+ <center><h6>BILL SUMMARY</h6></center>   
+  <div className="p-3 bg-white rounded shadow-sm mb-3 col-12 col-lg-12">
     
-    
+    <div className="border p-2 mb-2">
+      <div>Total Amount</div>
+      <div>Token Amount</div>
+      <div>Remaining Amount</div>
+    </div>
+  </div>
+  </div>  
+</div>
+
+
   </div>
 </div>
 
