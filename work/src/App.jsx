@@ -19,6 +19,7 @@ import SalonPopUp from './components/popup/SalonPopUp';
 import Chefformeal from "./pages/chefformeal";
 import Chefformonth from "./pages/chefformonth";
 import WomenSpa from './pages/WomenSpa';
+import HairStudioo from './pages/HairStudioo';
 import Appliance from './pages/Appliance';
 import ACRepair from './pages/ACRepair';
 
@@ -53,6 +54,9 @@ function App() {
         <Route path="/chef-modal" element={<ChefModal />} />
         <Route path="/chef-month" element={<Chefformonth />} />
         <Route path="/spawomen" element={<WomenSpa/>} />
+        <Route path="/hairstudio" element={<HairStudioo/>} />
+
+
         <Route path="/appliance" element={<Appliance/>} />
         <Route path="/acrepair" element={<ACRepair/>} />
       </Routes>
