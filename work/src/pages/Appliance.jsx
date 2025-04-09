@@ -1,5 +1,6 @@
 import React, { useRef, useEffect } from "react";
 import { Container, Row, Col, Button } from "react-bootstrap";
+import { useNavigate } from "react-router-dom"; // Import useNavigate
 import NavbarOne from "../components/NavbarOne";
 import Footer from "../components/Footer";
 import Copyright from "../components/Copyright";
@@ -8,12 +9,32 @@ import "bootstrap/dist/css/bootstrap.min.css";
 
 const Appliance = () => {
   const sectionRefs = useRef([]);
+  const navigate = useNavigate(); // Initialize useNavigate
 
   // Scroll to the clicked section on the right
   const scrollToSection = (idx) => {
     if (sectionRefs.current[idx]) {
       sectionRefs.current[idx].scrollIntoView({ behavior: "smooth", block: "start" });
     }
+  };
+
+  // Function to handle service click
+  const handleServiceClick = (serviceName) => {
+    // Navigate to the appropriate page based on service name
+    if (serviceName === "AC Repair") {
+      navigate("/acrepair");
+    }
+      else if (serviceName === "TV Repair") {
+        navigate("/tvrepair"); 
+      }// Navigate to TV Repair page
+      else if (serviceName === "Fan Repair") {
+        navigate("/fanrepair"); 
+      }
+      // Navigate to TV Repair page
+      else if (serviceName === "Washing Machine Repair") {
+        navigate("/washing"); 
+      }
+    // Add more conditions for other services as needed
   };
 
   // Array of additional repair services
@@ -157,14 +178,17 @@ const Appliance = () => {
                               e.target.src = "/appliance-default.jpg"; // Fallback image
                             }}
                           />
-                          <div>
+                          <div 
+                            onClick={() => handleServiceClick(service.title)}
+                            style={{ cursor: "pointer" }}
+                          >
                             <h5 className="fw-bold">{service.title}</h5>
-                            <p>Starts at Rs 399</p>
-                            
+                            <p>Starts at Rs xxx</p>
                           </div>
                           <Button 
                             variant="dark" 
                             className="ms-auto rounded-pill"
+                            onClick={() => handleServiceClick(service.title)}
                           >
                             ADD
                           </Button>

@@ -6,17 +6,12 @@ import Copyright from "../components/Copyright";
 import Banner from "../components/appliancebanner";
 import "bootstrap/dist/css/bootstrap.min.css";
 
-const ACRepair = () => {
-  // AC repair services
-  const acServices = [
-    
+const FanRepair = () => {
+  // Fan repair services
+  const tvServices = [
     { title: "Installation", description: "Start at Rs xxx" },
     { title: "Uninstallation", description: "Start at Rs xxx" },
-    { title: "Less/No Cooling", description: "Start at Rs xxx" },
-    { title: "Noise/Smell Repair", description: "Start at Rs xxx" },
-    { title: "Power Issue Repair", description: "Start at Rs xxx" },
-    { title: "Water Leakage Repair", description: "Start at Rs xxx" },
-    { title: "Gas Leak Repair/Refill", description: "Start at Rs xxx" },
+    { title: "Repair", description: "Start at Rs xxx" },
   ];
 
   return (
@@ -39,8 +34,12 @@ const ACRepair = () => {
                 maxHeight: "100vh",
               }}
             >
+              {/* Centered Fan Repair Heading */}
+              <div className="text-center mb-4">
+                <h2 className="fw-bold display-5">Fan Repair</h2>
+              </div>
+              
               <div className="mb-4">
-                <h4 className="fw-bold">AC Repair </h4>
                 <div
                   className="scroll-container"
                   style={{
@@ -48,7 +47,7 @@ const ACRepair = () => {
                     overflowY: "auto",
                   }}
                 >
-                  {acServices.map((service, index, arr) => (
+                  {tvServices.map((service, index, arr) => (
                     <div
                       key={index}
                       className={`p-3 ${
@@ -59,7 +58,7 @@ const ACRepair = () => {
                     >
                       <div className="d-flex align-items-center gap-3">
                         <img
-                          src="/air-conditioner.png"
+                          src="/fan.png"
                           alt={service.title}
                           width="80"
                           height="80"
@@ -135,4 +134,4 @@ const ACRepair = () => {
   );
 };
 
-export default ACRepair;
+export default FanRepair;
