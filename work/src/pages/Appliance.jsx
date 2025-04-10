@@ -34,6 +34,24 @@ const Appliance = () => {
       else if (serviceName === "Washing Machine Repair") {
         navigate("/washing"); 
       }
+      else if (serviceName === "Geyser Repair") {
+        navigate("/geyser"); 
+      }
+      else if (serviceName === "Invertor Repair") {
+        navigate("/inverter"); 
+      }
+      else if (serviceName === "Iron Repair") {
+        navigate("/iron"); 
+      }
+      else if (serviceName === "Laptops and Mobile Repair") {
+        navigate("/laptop"); 
+      }
+      else if (serviceName === "Chimney Repair") {
+        navigate("/chimney"); 
+      }
+      else if (serviceName === "Water-Purifier Repair") {
+        navigate("/water"); 
+      }
     // Add more conditions for other services as needed
   };
 

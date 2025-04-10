@@ -23,6 +23,12 @@ import ACRepair from './pages/ACRepair';
 import TVRepair from './pages/TVRepair';
 import FanRepair from './pages/FanRepair';
 import WashingMachineRepair from './pages/WashingMachineRepair';
+import GeyserRepair from './pages/GeyserRepair';
+import InverterRepair from './pages/InverterRepair';
+import IronRepair from './pages/IronRepair';
+import LaptopsAndMobileRepair from './pages/LaptopsAndMobileRepair';
+import ChimneyRepair from './pages/ChimneyRepair';
+import WaterPurifierRepair from './pages/WaterPurifierRepair';
 
 // ModalContent Component to wrap any component inside a Modal
 const ModalContent = ({ component }) => {
@@ -61,6 +67,12 @@ function App() {
         <Route path="/tvrepair" element={<TVRepair/>} />
         <Route path="/fanrepair" element={<FanRepair/>} />
         <Route path="/washing" element={<WashingMachineRepair/>} />
+        <Route path="/geyser" element={<GeyserRepair/>} />
+        <Route path="/inverter" element={<InverterRepair/>} />
+        <Route path="/iron" element={<IronRepair/>} />
+        <Route path="/laptop" element={<LaptopsAndMobileRepair/>} />
+        <Route path="/chimney" element={<ChimneyRepair/>} />
+        <Route path="/water" element={<WaterPurifierRepair/>} />
       </Routes>
     </BrowserRouter>
   );
