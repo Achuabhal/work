@@ -23,6 +23,7 @@ import ACRepair from './pages/ACRepair';
 import TVRepair from './pages/TVRepair';
 import FanRepair from './pages/FanRepair';
 import WashingMachineRepair from './pages/WashingMachineRepair';
+import Makeup from './pages/Makeup';
 
 // ModalContent Component to wrap any component inside a Modal
 const ModalContent = ({ component }) => {
@@ -61,6 +62,7 @@ function App() {
         <Route path="/tvrepair" element={<TVRepair/>} />
         <Route path="/fanrepair" element={<FanRepair/>} />
         <Route path="/washing" element={<WashingMachineRepair/>} />
+        <Route path="/makeup" element={<Makeup/>}/>
       </Routes>
     </BrowserRouter>
   );
