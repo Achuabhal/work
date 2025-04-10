@@ -3,7 +3,7 @@ import { FaInstagram, FaFacebook, FaTwitter, FaPhone, FaEnvelope } from "react-i
 import 'bootstrap/dist/css/bootstrap.min.css';
 import styles from './css/contact.module.css';
 
-const CheckoutPage = () => {
+const Checkouts = () => {
   return (
     <div className="bg-light" style={{ fontFamily: 'Outfit' }}>
     {/* Header */}
@@ -119,4 +119,4 @@ const CheckoutPage = () => {
   );
 };
 
-export default CheckoutPage;
+export default Checkouts;

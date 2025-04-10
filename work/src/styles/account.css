@@ -1,0 +1,24 @@
+.custom-responsive-bg {
+    background-color: white;
+  }
+  /* Default for large screens and up */
+.responsive-button {
+    background-color: white !important;
+    border-color: white !important;
+    color: black !important;
+  }
+  
+  
+
+  @media (max-width: 991.98px) {
+    .custom-responsive-bg {
+      background-color: #FFD6B0;
+    }
+    .responsive-button {
+        background-color: #FFD6B0 !important;
+        border-color: #FFD6B0 !important;
+        color: black !important; /* optional, in case you want to adjust text color */
+      }
+      
+  }
+ 
