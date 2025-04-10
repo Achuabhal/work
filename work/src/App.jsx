@@ -29,6 +29,12 @@ import IronRepair from './pages/IronRepair';
 import LaptopsAndMobileRepair from './pages/LaptopsAndMobileRepair';
 import ChimneyRepair from './pages/ChimneyRepair';
 import WaterPurifierRepair from './pages/WaterPurifierRepair';
+import GasStoveRepair from './pages/GasStoveRepair';
+import InductionRepair from './pages/InductionRepair';
+import RefrigeratorRepair from './pages/RefrigeratorRepair';
+import MixerRepair from './pages/MixerRepair';
+import MicrowaveRepair from './pages/MicrowaveRepair';
+import DishwasherRepair from './pages/DishwasherRepair';
 
 // ModalContent Component to wrap any component inside a Modal
 const ModalContent = ({ component }) => {
@@ -73,6 +79,12 @@ function App() {
         <Route path="/laptop" element={<LaptopsAndMobileRepair/>} />
         <Route path="/chimney" element={<ChimneyRepair/>} />
         <Route path="/water" element={<WaterPurifierRepair/>} />
+        <Route path="/gas" element={<GasStoveRepair/>} />
+        <Route path="/induction" element={<InductionRepair/>} />
+        <Route path="/fridge" element={<RefrigeratorRepair/>} />
+        <Route path="/mixer" element={<MixerRepair/>} />
+        <Route path="/oven" element={<MicrowaveRepair/>} />
+        <Route path="/dishwasher" element={<DishwasherRepair/>} />
       </Routes>
     </BrowserRouter>
   );

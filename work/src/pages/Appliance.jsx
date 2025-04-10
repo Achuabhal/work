@@ -52,6 +52,24 @@ const Appliance = () => {
       else if (serviceName === "Water-Purifier Repair") {
         navigate("/water"); 
       }
+      else if (serviceName === "Gas Stove Repair") {
+        navigate("/gas"); 
+      }
+      else if (serviceName === "Induction Repair") {
+        navigate("/induction"); 
+      }
+      else if (serviceName === "Refrigerator Repair") {
+        navigate("/fridge"); 
+      }
+      else if (serviceName === "Mixer Repair") {
+        navigate("/mixer"); 
+      }
+      else if (serviceName === "Microwave Repair") {
+        navigate("/oven"); 
+      }
+      else if (serviceName === "Dishwasher Repair") {
+        navigate("/dishwasher"); 
+      }
     // Add more conditions for other services as needed
   };
 
