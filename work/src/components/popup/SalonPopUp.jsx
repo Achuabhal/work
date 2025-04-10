@@ -232,6 +232,7 @@ function SalonPopUp({ show, onHide }) {
                 style={{ cursor: "pointer" }}
                 onClick={handleCloseModal}
               >
+               <Link className="text-decoration-none text-dark" to="/makeup">
                 <div
                   className="mx-auto mb-3"
                   style={{
@@ -252,6 +253,7 @@ function SalonPopUp({ show, onHide }) {
                 </div>
                 <p className="fw-bold">Makeup and
                 Styling</p>
+                </Link>
               </div>
             </div>
           </Modal.Body>
