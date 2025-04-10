@@ -12,13 +12,19 @@ import AboutUs from './pages/AboutUs';
 import ChefModal from "./components/popup/ChefModal";
 import WomanSalon from './pages/WomanSalon';
 import CHEF from "./pages/chefforparty";
-
 import CheckoutPage from './pages/checkoutPage';
 import Checkouts from './pages/checkoutPages';
 import SalonPopUp from './components/popup/SalonPopUp';
 import Chefformeal from "./pages/chefformeal";
 import Chefformonth from "./pages/chefformonth";
 import WomenSpa from './pages/WomenSpa';
+import HairStudioo from './pages/HairStudioo';
+import Appliance from './pages/Appliance';
+import ACRepair from './pages/ACRepair';
+import TVRepair from './pages/TVRepair';
+import FanRepair from './pages/FanRepair';
+import WashingMachineRepair from './pages/WashingMachineRepair';
+import Makeup from './pages/Makeup';
 
 // ModalContent Component to wrap any component inside a Modal
 const ModalContent = ({ component }) => {
@@ -52,7 +58,13 @@ function App() {
         <Route path="/chef-modal" element={<ChefModal />} />
         <Route path="/chef-month" element={<Chefformonth />} />
         <Route path="/spawomen" element={<WomenSpa/>} />
-
+        <Route path="/hairstudio" element={<HairStudioo/>} />
+        <Route path="/appliance" element={<Appliance/>} />
+        <Route path="/acrepair" element={<ACRepair/>} />
+        <Route path="/tvrepair" element={<TVRepair/>} />
+        <Route path="/fanrepair" element={<FanRepair/>} />
+        <Route path="/washing" element={<WashingMachineRepair/>} />
+        <Route path="/makeup" element={<Makeup/>}/>
       </Routes>
     </BrowserRouter>
   );

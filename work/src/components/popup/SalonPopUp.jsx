@@ -172,6 +172,8 @@ function SalonPopUp({ show, onHide }) {
                 style={{ cursor: "pointer" }}
                 onClick={handleCloseModal}
               >
+                                <Link className="text-decoration-none text-dark" to="/spawomen">
+
                 <div
                   className="mx-auto mb-3"
                   style={{
@@ -192,6 +194,7 @@ function SalonPopUp({ show, onHide }) {
                 </div>
                 <p className="fw-bold">Spa for
                 Women</p>
+                </Link>
               </div>
 
               <div
@@ -199,6 +202,8 @@ function SalonPopUp({ show, onHide }) {
                 style={{ cursor: "pointer" }}
                 onClick={handleCloseModal}
               >
+                                <Link className="text-decoration-none text-dark" to="/hairstudio">
+
                 <div
                   className="mx-auto mb-3"
                   style={{
@@ -219,6 +224,7 @@ function SalonPopUp({ show, onHide }) {
                 </div>
                 <p className="fw-bold">Hair Studio
                 for Women</p>
+                </Link>
               </div>
 
               <div
@@ -226,6 +232,7 @@ function SalonPopUp({ show, onHide }) {
                 style={{ cursor: "pointer" }}
                 onClick={handleCloseModal}
               >
+               <Link className="text-decoration-none text-dark" to="/makeup">
                 <div
                   className="mx-auto mb-3"
                   style={{
@@ -246,6 +253,7 @@ function SalonPopUp({ show, onHide }) {
                 </div>
                 <p className="fw-bold">Makeup and
                 Styling</p>
+                </Link>
               </div>
             </div>
           </Modal.Body>
