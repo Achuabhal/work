@@ -7,7 +7,8 @@ import "../styles/account.css";
 
 const MyAccount = () => {
   const [activeSection, setActiveSection] = useState("personalInfo");
-
+  
+  
   // Define state for payment details
   const [paymentDetails, setPaymentDetails] = useState({
     upiId1: "",
@@ -402,13 +403,14 @@ const MyAccount = () => {
               <div className="d-flex justify-content-center align-items-center">
                 <h1 className="mt-4 fw-bold fs-5">Ratings and review</h1>
               </div>
+
               <textarea 
                         className="form-control rounded-4 col-8 col-md-12" 
                         rows="3" 
                         placeholder="Describe your Experience"
                       ></textarea>
               </div>
-
+              
               <div className="d-flex justify-content-center">
                 <button
                   className="btn btn-primary rounded-pill mb-4"
@@ -513,7 +515,7 @@ const MyAccount = () => {
 )}
           {activeSection === "customerCare" && (
             <div
-              className="p-4 rounded shadow-sm mx-auto mt-md-5 mt-1 mb-5 w-75"
+              className="p-4 rounded shadow-sm mx-auto mt-md-5 mt-1 mb-5 w-100"
               style={{ backgroundColor: "#FFD6B0", maxWidth: "800px" }}
             >
               <h3 className="fw-bold text-center">Customer Care</h3>
