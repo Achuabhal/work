@@ -4,7 +4,6 @@ import { Modal } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { Link } from "react-router-dom";
 
-
 function SalonPopUp({ show, onHide }) {
   // ✅ State for selected option and modals
   const [selectedOption, setSelectedOption] = useState(null); // Stores Selected Option
@@ -130,7 +129,9 @@ function SalonPopUp({ show, onHide }) {
             className="border-0"
             style={{ backgroundColor: "#ffd5a4" }}
           >
-            <Modal.Title className="fw-bold w-100 text-center">Salon for women</Modal.Title>
+            <Modal.Title className="fw-bold w-100 text-center">
+              Salon for women
+            </Modal.Title>
           </Modal.Header>
           <Modal.Body
             className="p-3 p-md-4"
@@ -143,27 +144,27 @@ function SalonPopUp({ show, onHide }) {
                 onClick={handleCloseModal}
               >
                 <Link className="text-decoration-none text-dark" to="/salon">
-                <div
-                  className="mx-auto mb-3"
-                  style={{
-                    width: "161px",
-                    height: "161px",
-                    borderRadius: "19px",
-                    backgroundColor: "#ffffff",
-                    overflow: "hidden",
-                  }}
-                >
-                  <img
-                    src="/SalonWomen.png"
-                  
-                    alt="Birthday Party"
-                    width="161"
-                    height="161"
-                    style={{ objectFit: "cover" }}
-                  />
-                </div>
-                <p className="fw-bold text-decoration-none">Salon for
-                Women</p>
+                  <div
+                    className="mx-auto mb-3"
+                    style={{
+                      width: "161px",
+                      height: "161px",
+                      borderRadius: "19px",
+                      backgroundColor: "#ffffff",
+                      overflow: "hidden",
+                    }}
+                  >
+                    <img
+                      src="/SalonWomen.png"
+                      alt="Birthday Party"
+                      width="161"
+                      height="161"
+                      style={{ objectFit: "cover" }}
+                    />
+                  </div>
+                  <p className="fw-bold text-decoration-none">
+                    Salon for Women
+                  </p>
                 </Link>
               </div>
 
@@ -172,28 +173,26 @@ function SalonPopUp({ show, onHide }) {
                 style={{ cursor: "pointer" }}
                 onClick={handleCloseModal}
               >
-                                <Link className="text-decoration-none text-dark" to="/spawomen">
-
-                <div
-                  className="mx-auto mb-3"
-                  style={{
-                    width: "161px",
-                    height: "161px",
-                    borderRadius: "19px",
-                    backgroundColor: "#ffffff",
-                    overflow: "hidden",
-                  }}
-                >
-                  <img
-                    src="/spawomen.png"
-                    alt="Wedding Party"
-                    width="161"
-                    height="161"
-                    style={{ objectFit: "cover" }}
-                  />
-                </div>
-                <p className="fw-bold">Spa for
-                Women</p>
+                <Link className="text-decoration-none text-dark" to="/spawomen">
+                  <div
+                    className="mx-auto mb-3"
+                    style={{
+                      width: "161px",
+                      height: "161px",
+                      borderRadius: "19px",
+                      backgroundColor: "#ffffff",
+                      overflow: "hidden",
+                    }}
+                  >
+                    <img
+                      src="/spawomen.png"
+                      alt="Wedding Party"
+                      width="161"
+                      height="161"
+                      style={{ objectFit: "cover" }}
+                    />
+                  </div>
+                  <p className="fw-bold">Spa for Women</p>
                 </Link>
               </div>
 
@@ -202,28 +201,29 @@ function SalonPopUp({ show, onHide }) {
                 style={{ cursor: "pointer" }}
                 onClick={handleCloseModal}
               >
-                                <Link className="text-decoration-none text-dark" to="/hairstudio">
-
-                <div
-                  className="mx-auto mb-3"
-                  style={{
-                    width: "161px",
-                    height: "161px",
-                    borderRadius: "19px",
-                    backgroundColor: "#ffffff",
-                    overflow: "hidden",
-                  }}
+                <Link
+                  className="text-decoration-none text-dark"
+                  to="/hairstudio"
                 >
-                  <img
-                    src="/hairstudiowomen.png"
-                    alt="Wedding Party"
-                    width="161"
-                    height="161"
-                    style={{ objectFit: "cover" }}
-                  />
-                </div>
-                <p className="fw-bold">Hair Studio
-                for Women</p>
+                  <div
+                    className="mx-auto mb-3"
+                    style={{
+                      width: "161px",
+                      height: "161px",
+                      borderRadius: "19px",
+                      backgroundColor: "#ffffff",
+                      overflow: "hidden",
+                    }}
+                  >
+                    <img
+                      src="/hairstudiowomen.png"
+                      alt="Wedding Party"
+                      width="161"
+                      height="161"
+                      style={{ objectFit: "cover" }}
+                    />
+                  </div>
+                  <p className="fw-bold">Hair Studio for Women</p>
                 </Link>
               </div>
 
@@ -232,27 +232,26 @@ function SalonPopUp({ show, onHide }) {
                 style={{ cursor: "pointer" }}
                 onClick={handleCloseModal}
               >
-               <Link className="text-decoration-none text-dark" to="/makeup">
-                <div
-                  className="mx-auto mb-3"
-                  style={{
-                    width: "161px",
-                    height: "161px",
-                    borderRadius: "19px",
-                    backgroundColor: "#ffffff",
-                    overflow: "hidden",
-                  }}
-                >
-                  <img
-                    src="/makeupwomen.png"
-                    alt="Wedding Party"
-                    width="161"
-                    height="161"
-                    style={{ objectFit: "cover" }}
-                  />
-                </div>
-                <p className="fw-bold">Makeup and
-                Styling</p>
+                <Link className="text-decoration-none text-dark" to="/makeup">
+                  <div
+                    className="mx-auto mb-3"
+                    style={{
+                      width: "161px",
+                      height: "161px",
+                      borderRadius: "19px",
+                      backgroundColor: "#ffffff",
+                      overflow: "hidden",
+                    }}
+                  >
+                    <img
+                      src="/makeupwomen.png"
+                      alt="Wedding Party"
+                      width="161"
+                      height="161"
+                      style={{ objectFit: "cover" }}
+                    />
+                  </div>
+                  <p className="fw-bold">Makeup and Styling</p>
                 </Link>
               </div>
             </div>
@@ -275,8 +274,9 @@ function SalonPopUp({ show, onHide }) {
             className="border-0"
             style={{ backgroundColor: "#ffd5a4" }}
           >
-            <Modal.Title className="fw-bold w-100 text-center">Salon and Massage
-            for Men</Modal.Title>
+            <Modal.Title className="fw-bold w-100 text-center">
+              Salon and Massage for Men
+            </Modal.Title>
           </Modal.Header>
           <Modal.Body
             className="p-3 p-md-4"
@@ -288,25 +288,27 @@ function SalonPopUp({ show, onHide }) {
                 style={{ cursor: "pointer" }}
                 onClick={handleCloseModal}
               >
-                <div
-                  className="mx-auto mb-3"
-                  style={{
-                    width: "161px",
-                    height: "161px",
-                    borderRadius: "19px",
-                    backgroundColor: "#ffffff",
-                    overflow: "hidden",
-                  }}
-                >
-                  <img
-                    src="/menbeard.png"
-                    alt="Vegetarian Meal"
-                    width="161"
-                    height="161"
-                    style={{ objectFit: "cover" }}
-                  />
-                </div>
-                <p className="fw-bold">Salon for Men</p>
+                <Link className="text-decoration-none text-dark" to="/mensalon">
+                  <div
+                    className="mx-auto mb-3"
+                    style={{
+                      width: "161px",
+                      height: "161px",
+                      borderRadius: "19px",
+                      backgroundColor: "#ffffff",
+                      overflow: "hidden",
+                    }}
+                  >
+                    <img
+                      src="/menbeard.png"
+                      alt="Vegetarian Meal"
+                      width="161"
+                      height="161"
+                      style={{ objectFit: "cover" }}
+                    />
+                  </div>
+                  <p className="fw-bold">Salon for Men</p>
+                </Link>
               </div>
 
               <div
@@ -314,25 +316,30 @@ function SalonPopUp({ show, onHide }) {
                 style={{ cursor: "pointer" }}
                 onClick={handleCloseModal}
               >
-                <div
-                  className="mx-auto mb-3"
-                  style={{
-                    width: "161px",
-                    height: "161px",
-                    borderRadius: "19px",
-                    backgroundColor: "#ffffff",
-                    overflow: "hidden",
-                  }}
+                <Link
+                  className="text-decoration-none text-dark"
+                  to="/menmassage"
                 >
-                  <img
-                    src="/menmassage.png"
-                    alt="Non-Vegetarian Meal"
-                    width="161"
-                    height="161"
-                    style={{ objectFit: "cover" }}
-                  />
-                </div>
-                <p className="fw-bold">Massage for Men</p>
+                  <div
+                    className="mx-auto mb-3"
+                    style={{
+                      width: "161px",
+                      height: "161px",
+                      borderRadius: "19px",
+                      backgroundColor: "#ffffff",
+                      overflow: "hidden",
+                    }}
+                  >
+                    <img
+                      src="/menmassage.png"
+                      alt="Non-Vegetarian Meal"
+                      width="161"
+                      height="161"
+                      style={{ objectFit: "cover" }}
+                    />
+                  </div>
+                  <p className="fw-bold">Massage for Men</p>
+                </Link>
               </div>
 
               <div

@@ -36,6 +36,8 @@ import MixerRepair from './pages/MixerRepair';
 import MicrowaveRepair from './pages/MicrowaveRepair';
 import DishwasherRepair from './pages/DishwasherRepair';
 import ApplianceModal from './components/popup/ApplianceModal';
+import MenSalon from './pages/MenSalon';
+import MenMassage from './pages/MenMassage';
 
 // ModalContent Component to wrap any component inside a Modal
 const ModalContent = ({ component }) => {
@@ -87,6 +89,10 @@ function App() {
         <Route path="/oven" element={<MicrowaveRepair/>} />
         <Route path="/dishwasher" element={<DishwasherRepair/>} />
         <Route path="/appliance-modal" element={<ApplianceModal/>} />
+        <Route path="/mensalon" element={<MenSalon/>} />
+        <Route path="/menmassage" element={<MenMassage/>} />
+
+
       </Routes>
     </BrowserRouter>
   );
