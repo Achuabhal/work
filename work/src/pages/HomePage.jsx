@@ -10,6 +10,8 @@ import myImage1 from "./assets/logo.png";
 import { Link } from "react-router-dom";
 import SalonPopUp from "../components/popup/SalonPopUp"; 
 import ChefModal from "../components/popup/ChefModal";
+import NavbarOne from "../components/navbarhome";
+import ApplianceModal from "../components/popup/ApplianceModal";
 
 const HomePage = () => {
   const [slideIndex, setSlideIndex] = useState(0);
