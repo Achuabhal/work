@@ -137,7 +137,7 @@ const HomePage = () => {
           
           ))}
         </div>
-        <div className={styles.serviceShowcase}></div>
+        <div className={`${styles.serviceShowcase} d-none d-sm-block`}> </div>
         </main>
       </section>
       
