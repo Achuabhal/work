@@ -12,6 +12,9 @@ import SalonPopUp from "../components/popup/SalonPopUp";
 import ChefModal from "../components/popup/ChefModal";
 import NavbarOne from "../components/navbarhome";
 import ApplianceModal from "../components/popup/ApplianceModal";
+import Footer from "../components/Footer";
+import Copyright from "../components/Copyright";
+
 
 const HomePage = () => {
   const [slideIndex, setSlideIndex] = useState(0);
@@ -222,49 +225,13 @@ const HomePage = () => {
       </div>
   
 
-      <footer className={styles.footerr}>
-        <div className={styles.footerContent}>
-          <div className={styles.footerLogoo}>
-            <div className={styles.footerLogo}>
-              <img src={myImage1} alt="DUZO" className={styles.footerLogo} />
-            </div>
-            <div className={styles.footerInfo}>
-              <p><FaPhone /> +1 (234) 567-8900</p>
-              <p><FaEnvelope /> info@duzo.com</p>
-              <div className={styles.socialLinks}>
-                <a href="#" className={styles.socialIcon}><FaInstagram size={24} /></a>
-                <a href="#" className={styles.socialIcon}><FaFacebook size={24} /></a>
-                <a href="#" className={styles.socialIcon}><FaTwitter size={24} /></a>
-              </div>
-            </div>
-          </div>
-          <div className={styles.footerLocation}>
-            <h3>Services Available At</h3>
-            <h3>Bengaluru</h3>
-            <button className={styles.bookNow}>BOOK NOW</button>
-          </div>
-          <div className={styles.footerLinks}>
-            <h3>Site Map</h3>
-            <ul>
-              <li><a href="#">Services</a></li>
-              <li><a href="#">Hiring</a></li>
-              <Link to="/about">
-          
-        
-              <li><a href="#">About Us</a></li>
-              </Link>
-              <li><a href="#">Contact Us</a></li>
-            </ul>
-          </div>
-        </div>
-      </footer>
+      < Footer/>
+      
 {/* SalonPopUp Modal */}
 <SalonPopUp show={showModal} onHide={() => setShowModal(false)} />
 <ChefModal show={showChefModal} onHide={() => setShowChefModal(false)} />
 <ApplianceModal show={showApplianceModal} onHide={() => setShowApplianceModal(false)} />
-      <div className={styles.footerBottom}>
-        <p>© 2024 - DUZO</p>
-      </div>
+< Copyright/>
     </div>
   );
 };
