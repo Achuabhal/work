@@ -1,6 +1,6 @@
 import React, { useRef, useEffect } from "react";
 import { Container, Row, Col, Button } from "react-bootstrap";
-import { useNavigate } from "react-router-dom"; // Import useNavigate
+import { useNavigate, useLocation } from "react-router-dom"; // Added useLocation
 import NavbarOne from "../components/NavbarOne";
 import Footer from "../components/Footer";
 import Copyright from "../components/Copyright";
@@ -9,7 +9,11 @@ import "bootstrap/dist/css/bootstrap.min.css";
 
 const Appliance = () => {
   const sectionRefs = useRef([]);
-  const navigate = useNavigate(); // Initialize useNavigate
+  const navigate = useNavigate();
+  
+  // Added useLocation hook to access navigation state
+  const location = useLocation();
+  const { category, option } = location.state || {};
 
   // Scroll to the clicked section on the right
   const scrollToSection = (idx) => {
@@ -17,6 +21,21 @@ const Appliance = () => {
       sectionRefs.current[idx].scrollIntoView({ behavior: "smooth", block: "start" });
     }
   };
+
+  // Added useEffect to handle scrolling based on navigation state
+  useEffect(() => {
+    // If category and option are passed, scroll to the appropriate section
+    if (category && option) {
+      // Find the index of the category
+      const categoryIndex = category === "Home" ? 1 : 0; // Assuming Kitchen is index 0 and Home is index 1
+      
+      // Scroll to the category section
+      scrollToSection(categoryIndex);
+      
+      // You could also highlight the selected option if needed
+      // This could be done by setting some state to track the selected option
+    }
+  }, [category, option]);
 
   // Function to handle service click
   const handleServiceClick = (serviceName) => {

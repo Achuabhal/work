@@ -10,13 +10,13 @@ import myImage1 from "./assets/logo.png";
 import { Link } from "react-router-dom";
 import SalonPopUp from "../components/popup/SalonPopUp"; 
 import ChefModal from "../components/popup/ChefModal";
-import NavbarOne from "../components/navbarhome";
-
 
 const HomePage = () => {
   const [slideIndex, setSlideIndex] = useState(0);
   const [isMobile, setIsMobile] = useState(false);
   const [showChefModal, setShowChefModal] = useState(false);
+  const [showApplianceModal, setShowApplianceModal] = useState(false);
+
   const slides = [chef, service, cleaning];
   let autoPlayId;
 
@@ -103,7 +103,7 @@ const HomePage = () => {
           {[
             { name: "Household cleaning", path: "/household-cleaning" },
             { name: "Chef and cook",  action: () => setShowChefModal(true) }, // Update this line },
-            { name: "AC and appliances repair", path: "/ac-repair" },
+            { name: "AC and appliances repair",action: () => setShowApplianceModal(true) },
             {
               name: "Beauty and Salon",
               action: () => setShowModal(true),
@@ -259,6 +259,7 @@ const HomePage = () => {
 {/* SalonPopUp Modal */}
 <SalonPopUp show={showModal} onHide={() => setShowModal(false)} />
 <ChefModal show={showChefModal} onHide={() => setShowChefModal(false)} />
+<ApplianceModal show={showApplianceModal} onHide={() => setShowApplianceModal(false)} />
       <div className={styles.footerBottom}>
         <p>© 2024 - DUZO</p>
       </div>
