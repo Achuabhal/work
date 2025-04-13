@@ -3,11 +3,19 @@ import React, { useState } from "react";
 import { FaInstagram, FaFacebook, FaXTwitter } from "react-icons/fa6";
 import "bootstrap/dist/css/bootstrap.min.css";
 import 'bootstrap/dist/js/bootstrap.bundle.min';
+import { styled } from '@mui/material/styles';
+import Box from '@mui/material/Box';
+import Rating from '@mui/material/Rating';
 import "../styles/account.css";
 
 const MyAccount = () => {
   const [activeSection, setActiveSection] = useState("personalInfo");
-  
+  const StyledRating = styled(Rating)({
+    
+    '& .MuiRating-iconHover': {
+      color: '#ff3d47',
+    },
+  });
   
   // Define state for payment details
   const [paymentDetails, setPaymentDetails] = useState({
@@ -410,6 +418,11 @@ const MyAccount = () => {
                         placeholder="Describe your Experience"
                       ></textarea>
               </div>
+              <Box sx={{ '& > legend': { mt: 2 } }}>
+      
+      <center> <Rating defaultValue={0} className="mb-2" max={5} size="large" />
+      </center>
+         </Box>
               
               <div className="d-flex justify-content-center">
                 <button

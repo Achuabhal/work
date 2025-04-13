@@ -13,6 +13,7 @@ import ChefModal from "./components/popup/ChefModal";
 import WomanSalon from './pages/WomanSalon';
 import CHEF from "./pages/chefforparty";
 import CheckoutPage from './pages/checkoutPage';
+import CheckoutPages from './pages/checkoutPages';
 import SalonPopUp from './components/popup/SalonPopUp';
 import Chefformeal from "./pages/chefformeal";
 import Chefformonth from "./pages/chefformonth";
@@ -65,6 +66,7 @@ function App() {
         <Route path="/salon" element={<WomanSalon />} />
         <Route path="/chef" element={<CHEF />} />
         <Route path="/checkout" element={<CheckoutPage />} />
+        <Route path="/checkout2" element={<CheckoutPages />} />
         <Route path="/popup" element={<SalonPopUp />} />
         <Route path="/chef-meal" element={<Chefformeal />} />
         <Route path="/chef-modal" element={<ChefModal />} />

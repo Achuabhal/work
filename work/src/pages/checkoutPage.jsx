@@ -1,7 +1,7 @@
 import React from 'react';
-import { FaInstagram, FaFacebook, FaTwitter, FaPhone, FaEnvelope } from "react-icons/fa";
 import 'bootstrap/dist/css/bootstrap.min.css';
-import styles from './css/contact.module.css';
+import Footer from "../components/Footer";
+import Copyright from "../components/Copyright";
 
 const CheckoutPage = () => {
   return (
@@ -80,41 +80,11 @@ const CheckoutPage = () => {
 </div>
 
       {/* Footer */}
-      <footer className={styles.footerr}>
-              <div className={styles.footerContent}>
-                <div className={styles.footerLogoo}>
-                  <div className={styles.footerLogo}>
-                    <img src="/duzo.png" alt="DUZO" className={styles.footerLogo} />
-                  </div>
-                  <div className={styles.footerInfo}>
-                    <p><FaPhone /> Phone number</p>
-                    <p><FaEnvelope /> E-mail address</p>
-                    <div className={styles.socialLinks}>
-                      <a href="#" className={styles.socialIcon}><FaInstagram /></a>
-                      <a href="#" className={styles.socialIcon}><FaFacebook /></a>
-                      <a href="#" className={styles.socialIcon}><FaTwitter /></a>
-                    </div>
-                  </div>
-                </div>
-                <div className={styles.footerLocation}>
-                  <h3>Services Available At</h3>
-                  <h3>Bengaluru</h3>
-                  <button className={styles.bookNow}>BOOK NOW</button>
-                </div>
-                <div className={styles.footerLinks}>
-                  <h3>Site Map</h3>
-                  <ul>
-                    <li><a href="#">Services</a></li>
-                    <li><a href="#">Hiring</a></li>
-                    <li><a href="#">About Us</a></li>
-                    <li><a href="#">Contact Us</a></li>
-                  </ul>
-                </div>
-              </div>
-            </footer>
-            <div className={styles.footerBottom}>
-              <p>© 2024 - DUZO</p>
-            </div>
+       {/* Footer Components */}
+       <div className="mt-0 pt-0">
+        <Footer />
+      </div>
+      <Copyright />
     </div>
   );
 };
