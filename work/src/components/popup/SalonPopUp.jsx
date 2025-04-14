@@ -342,7 +342,7 @@ function SalonPopUp({ show, onHide }) {
                 </Link>
               </div>
 
-              <div
+              {/* <div
                 className="text-center"
                 style={{ cursor: "pointer" }}
                 onClick={handleCloseModal}
@@ -366,7 +366,7 @@ function SalonPopUp({ show, onHide }) {
                   />
                 </div>
                 <p className="fw-bold">Spa for men</p>
-              </div>
+              </div> */}
             </div>
           </Modal.Body>
         </div>
