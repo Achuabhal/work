@@ -40,6 +40,10 @@ import ApplianceModal from './components/popup/ApplianceModal';
 import MenSalon from './pages/MenSalon';
 import MenMassage from './pages/MenMassage';
 import Checkout from "./pages/checkoutPages"
+import Makeup from './pages/Makeup';
+import FourWheeler from './pages/FourWheeler';
+import TwoWheeler from './pages/TwoWheeler';
+import TwoWheelerPopUp from './components/popup/TwoWheelerPopUp';
 
 
 // ModalContent Component to wrap any component inside a Modal
@@ -96,6 +100,11 @@ function App() {
         <Route path="/mensalon" element={<MenSalon/>} />
         <Route path="/menmassage" element={<MenMassage/>} />
         <Route path="/checkout" element={<Checkout />} />
+        <Route path="/makeup" element={<Makeup />} />
+        <Route path='/fourwheeler' element={<FourWheeler/>}/>
+        <Route path='/twowheeler' element={<TwoWheeler/>}/>   
+        <Route path='/twowheelerpopup' element={<TwoWheelerPopUp/>}/> 
+
         {/* Add more routes as needed */}
 
 

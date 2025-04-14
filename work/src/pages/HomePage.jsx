@@ -14,6 +14,7 @@ import NavbarOne from "../components/navbarhome";
 import ApplianceModal from "../components/popup/ApplianceModal";
 import Footer from "../components/Footer";
 import Copyright from "../components/Copyright";
+import AutoMobilePopUp from '../components/popup/AutoMobilePopUp';
 
 
 const HomePage = () => {
@@ -60,6 +61,8 @@ const HomePage = () => {
   };
 
   const [showModal, setShowModal] = useState(false);
+  const [showModalAuto, setShowModalAuto] = useState(false);
+
 
 
   return (
@@ -114,7 +117,10 @@ const HomePage = () => {
               action: () => setShowModal(true),
             },
             { name: "Electrician, Plumber and Carpenter", path: "/home-services" },
-            { name: "Automobile cleaning", path: "/automobile" },
+            { name: "Automobile cleaning",
+              action: () => setShowModalAuto(true),
+
+             },
             { name: "Buy appliances", path: "/buy-appliances" },
             { name: "Rent appliances", path: "/rent-appliances" },
             { name: "Sell appliances", path: "/sell-appliances" }
@@ -231,6 +237,8 @@ const HomePage = () => {
 <SalonPopUp show={showModal} onHide={() => setShowModal(false)} />
 <ChefModal show={showChefModal} onHide={() => setShowChefModal(false)} />
 <ApplianceModal show={showApplianceModal} onHide={() => setShowApplianceModal(false)} />
+<AutoMobilePopUp show={showModalAuto} onHide={() => setShowModalAuto(false)} />
+
 < Copyright/>
     </div>
   );
