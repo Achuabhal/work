@@ -1,10 +1,8 @@
-
 import React, { useState } from 'react';
 import { FaCaretDown } from "react-icons/fa";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Copyright from "../components/Copyright";
 import "../styles/checkout.css";
-
 
 const CustomDropdown = ({ title, options, value, onChange, placeholder }) => {
   const [isOpen, setIsOpen] = useState(false);
@@ -113,6 +111,7 @@ const Checkouts = () => {
     netBanking: '',
     upiId: ''
   });
+  const [showPaymentSection, setShowPaymentSection] = useState(true);
 
   const handleUPIPayment = () => {
     alert(`UPI payment initiated for ${paymentDetails.upiId}`);
@@ -128,7 +127,7 @@ const Checkouts = () => {
   ];
 
   return (
-    <div className="bg-light" style={{ fontFamily: 'Outfit' }}>
+    <div className="bg-light" style={{ fontFamily: 'Outfit'}}>
       {/* Header */}
       <div className="d-flex align-items-center justify-content-between px-3 py-2 rounded-3" style={{ backgroundColor: '#ffd5a4' }}>
         <div className="d-flex align-items-center">
@@ -138,7 +137,7 @@ const Checkouts = () => {
         <img src="/user.png" alt="user icon" className="img-fluid" style={{ width: '25px' }} />
       </div>
       
-      <div className="container-fluid mt-2 p-3 rounded-4" style={{ backgroundColor: '#FFC998', fontFamily: 'fit', fontWeight: 'bold' }}>
+      <div className="container-fluid mt-2 mb-4 p-3 rounded-4" style={{ backgroundColor: '#FFC998', fontFamily: 'fit', fontWeight: 'bold' }}>
         <div className="row gy-4">
           {/* Left Column */}
           <div className="col-12 col-md-5 px-0 px-md-4 ">
@@ -167,167 +166,181 @@ const Checkouts = () => {
 
               {/* Payment Method Section */}
               <div className="mb-3 custom-mobile-bg" style={{ backgroundColor: '#fff', borderRadius: '10px', padding: '15px', boxShadow: '0 0 10px rgba(0, 0, 0, 0.1)' }}>
-                <h5 className="mb-3">Payment Method</h5>
-                
-                <div className="mb-3 p-3 rounded-3" style={{ backgroundColor: '#FFC998' }}>
-                  <div className="form-check">
-                    <input 
-                      className="form-check-input" 
-                      type="radio" 
-                      name="paymentMethod" 
-                      id="upi" 
-                      checked={paymentMethod === 'upi'}
-                      onChange={() => setPaymentMethod('upi')}
-                    />
-                    <label className="form-check-label" htmlFor="upi">
-                      UPI
-                    </label>
-                    {paymentMethod === 'upi' && (
-                      <div className="mt-3 row">
-                        <label className="form-check-label">
-                      Enter your UPI
-                    </label>
-                    <div className="row">
-                      <div className="col-12 col-md-12 col-lg-8">
-                        <input
-                          type="text"
-                          className="form-control rounded-4 mb-2"
-                          placeholder="UPI ID"
-                          value={paymentDetails.upiId}
-                          onChange={(e) => setPaymentDetails(prev => ({
-                            ...prev,
-                            upiId: e.target.value
-                          }))}
+                <div className="d-flex justify-content-between align-items-center mb-3">
+                  <h5 className="mb-0">Payment Method</h5>
+                  <button 
+                    className="btn btn-outline-dark d-flex align-items-center gap-2" 
+                    onClick={() => setShowPaymentSection(!showPaymentSection)}
+                    style={{ padding: '8px 15px' }}
+                  >
+                    {showPaymentSection ? '' : ''}
+                    <FaCaretDown className={showPaymentSection ? 'rotate-180' : ''} 
+                      style={{ transition: 'transform 0.3s ease' }}/>
+                  </button>
+                </div>
+
+                {showPaymentSection && (
+                  <div>
+                    {/* UPI Section */}
+                    <div className="mb-3 p-3 rounded-3" style={{ backgroundColor: '#FFC998' }}>
+                      <div className="form-check">
+                        <input 
+                          className="form-check-input" 
+                          type="radio" 
+                          name="paymentMethod" 
+                          id="upi" 
+                          checked={paymentMethod === 'upi'}
+                          onChange={() => setPaymentMethod('upi')}
                         />
-                      </div>
-                      <div className="col-6 col-md-10 col-lg-4">
-                        <button 
-                          className="btn w-100 rounded-4 bg-white rounded-pill text-black fw-bold"
-                          style={{border: 'none'}}
-                          onClick={handleUPIPayment}
-                          disabled={!paymentDetails.upiId}
-                        >
-                          Pay
-                        </button>
+                        <label className="form-check-label" htmlFor="upi">
+                          UPI
+                        </label>
+                        {paymentMethod === 'upi' && (
+                          <div className="mt-3 row">
+                            <label className="form-check-label">Enter your UPI</label>
+                            <div className="row">
+                              <div className="col-12 col-md-12 col-lg-8">
+                                <input
+                                  type="text"
+                                  className="form-control rounded-4 mb-2"
+                                  placeholder="UPI ID"
+                                  value={paymentDetails.upiId}
+                                  onChange={(e) => setPaymentDetails(prev => ({
+                                    ...prev,
+                                    upiId: e.target.value
+                                  }))}
+                                />
+                              </div>
+                              <div className="col-6 col-md-10 col-lg-4">
+                                <button 
+                                  className="btn w-100 rounded-4 bg-white rounded-pill text-black fw-bold"
+                                  style={{border: 'none'}}
+                                  onClick={handleUPIPayment}
+                                  disabled={!paymentDetails.upiId}
+                                >
+                                  Pay
+                                </button>
+                              </div>
+                            </div>
+                          </div>
+                        )}
                       </div>
                     </div>
+
+                    {/* Card Section */}
+                    <div className="mb-3 ps-1 p-3 rounded-3" style={{ backgroundColor: '#FFC998' }}>
+                      <div className="form-check">
+                        <input 
+                          className="form-check-input" 
+                          type="radio" 
+                          name="paymentMethod" 
+                          id="card"
+                          checked={paymentMethod === 'card'}
+                          onChange={() => setPaymentMethod('card')}
+                        />
+                        <label className="form-check-label" htmlFor="card">
+                          Debit Card / Credit Card
+                        </label>
+                        {paymentMethod === 'card' && (
+                          <div className="mt-3">
+                            <div className="row align-items-center mb-3">
+                              <div className="col-lg-5 pe-0">
+                                <label className="form-label mb-1">Card Number</label>
+                              </div>
+                              <div className="col-lg-7">
+                                <input
+                                  type="text"
+                                  className="form-control rounded-4"
+                                  placeholder="Card Number"
+                                  id="cardNumber"
+                                  value={paymentDetails.cardNumber}
+                                  onChange={(e) => setPaymentDetails(prev => ({...prev, cardNumber: e.target.value}))}
+                                />
+                              </div>
+                            </div>
+
+                            <div className="row align-items-center mb-3">
+                              <div className="col-lg-5">
+                                <label className="form-label mb-0">Expiry Date</label>
+                              </div>
+                              <div className="col-lg-7">
+                                <input
+                                  type="text"
+                                  className="form-control rounded-4"
+                                  placeholder="Expiry Date"
+                                  id="expiryDate"
+                                  value={paymentDetails.expiry}
+                                  onChange={(e) => setPaymentDetails(prev => ({...prev, expiry: e.target.value}))}
+                                />
+                              </div>
+                            </div>
+
+                            <div className="row align-items-center mb-3">
+                              <div className="col-lg-5">
+                                <label className="form-label mb-0">CVV</label>
+                              </div>
+                              <div className="col-6">
+                                <input
+                                  type="text"
+                                  className="form-control rounded-4"
+                                  placeholder="CVV"
+                                  id="cvv"
+                                  value={paymentDetails.cvv}
+                                  onChange={(e) => setPaymentDetails(prev => ({...prev, cvv: e.target.value}))}
+                                />
+                              </div>
+                            </div>
+                          </div>
+                        )}
                       </div>
-                    )}
+                    </div>
+
+                    {/* Net Banking Section */}
+                    <div className="mb-3 p-3 rounded-3" style={{ backgroundColor: '#FFC998' }}>
+                      <div className="form-check">
+                        <input 
+                          className="form-check-input" 
+                          type="radio" 
+                          name="paymentMethod" 
+                          id="netbanking"
+                          checked={paymentMethod === 'netbanking'}
+                          onChange={() => setPaymentMethod('netbanking')}
+                        />
+                        <label className="form-check-label" htmlFor="netbanking">
+                          Net Banking
+                        </label>
+                        {paymentMethod === 'netbanking' && (
+                          <select 
+                            className="form-select rounded-4 mt-3"
+                            value={paymentDetails.netBanking}
+                            onChange={(e) => setPaymentDetails(prev => ({...prev, netBanking: e.target.value}))}
+                          >
+                            <option>Choose an option</option>
+                            <option>Bank 1</option>
+                            <option>Bank 2</option>
+                          </select>
+                        )}
+                      </div>
+                    </div>
+
+                    {/* COD Section */}
+                    <div className="p-3 rounded-3" style={{ backgroundColor: '#FFC998' }}>
+                      <div className="form-check">
+                        <input 
+                          className="form-check-input" 
+                          type="radio" 
+                          name="paymentMethod" 
+                          id="cod"
+                          checked={paymentMethod === 'cod'}
+                          onChange={() => setPaymentMethod('cod')}
+                        />
+                        <label className="form-check-label" htmlFor="cod">
+                          Cash on Delivery
+                        </label>
+                      </div>
+                    </div>
                   </div>
-                </div>
-
-                <div className="mb-3 ps-1 p-3 rounded-3" style={{ backgroundColor: '#FFC998' }}>
-  <div className="form-check">
-    <input 
-      className="form-check-input" 
-      type="radio" 
-      name="paymentMethod" 
-      id="card"
-      checked={paymentMethod === 'card'}
-      onChange={() => setPaymentMethod('card')}
-    />
-    <label className="form-check-label" htmlFor="card">
-      Debit Card / Credit Card
-    </label>
-    {paymentMethod === 'card' && (
-      <div className="mt-3">
-        {/* Card Number Row */}
-        <div className="row align-items-center mb-3">
-          <div className="col-lg-5 pe-0">
-            <label className="form-label mb-1">Card Number</label>
-          </div>
-          <div className="col-lg-7">
-            <input
-              type="text"
-              className="form-control rounded-4"
-              placeholder="Card Number"
-              id="cardNumber"
-              value={paymentDetails.cardNumber}
-              onChange={(e) => setPaymentDetails(prev => ({...prev, cardNumber: e.target.value}))}
-            />
-          </div>
-        </div>
-
-        {/* Expiry Date Row */}
-        <div className="row align-items-center mb-3">
-          <div className="col-lg-5">
-            <label className="form-label mb-0">Expiry Date</label>
-          </div>
-          <div className="col-lg-7">
-            <input
-              type="text"
-              className="form-control rounded-4"
-              placeholder="Expiry Date"
-              id="expiryDate"
-              value={paymentDetails.expiry}
-              onChange={(e) => setPaymentDetails(prev => ({...prev, expiry: e.target.value}))}
-            />
-          </div>
-        </div>
-
-        {/* CVV Row */}
-        <div className="row align-items-center mb-3">
-          <div className="col-lg-5">
-            <label className="form-label mb-0">CVV</label>
-          </div>
-          <div className="col-6">
-            <input
-              type="text"
-              className="form-control rounded-4"
-              placeholder="CVV"
-              id="cvv"
-              value={paymentDetails.cvv}
-              onChange={(e) => setPaymentDetails(prev => ({...prev, cvv: e.target.value}))}
-            />
-          </div>
-        </div>
-      </div>
-    )}
-  </div>
-</div>
-
-                <div className="mb-3 p-3 rounded-3" style={{ backgroundColor: '#FFC998' }}>
-                  <div className="form-check">
-                    <input 
-                      className="form-check-input" 
-                      type="radio" 
-                      name="paymentMethod" 
-                      id="netbanking"
-                      checked={paymentMethod === 'netbanking'}
-                      onChange={() => setPaymentMethod('netbanking')}
-                    />
-                    <label className="form-check-label" htmlFor="netbanking">
-                      Net Banking
-                    </label>
-                    {paymentMethod === 'netbanking' && (
-                      <select 
-                        className="form-select rounded-4 mt-3"
-                        value={paymentDetails.netBanking}
-                        onChange={(e) => setPaymentDetails(prev => ({...prev, netBanking: e.target.value}))}
-                      >
-                        <option>Choose an option</option>
-                        <option>Bank 1</option>
-                        <option>Bank 2</option>
-                      </select>
-                    )}
-                  </div>
-                </div>
-
-                <div className="p-3 rounded-3" style={{ backgroundColor: '#FFC998' }}>
-                  <div className="form-check">
-                    <input 
-                      className="form-check-input" 
-                      type="radio" 
-                      name="paymentMethod" 
-                      id="cod"
-                      checked={paymentMethod === 'cod'}
-                      onChange={() => setPaymentMethod('cod')}
-                    />
-                    <label className="form-check-label" htmlFor="cod">
-                      Cash on Delivery
-                    </label>
-                  </div>
-                </div>
+                )}
               </div>
 
               <div className="d-flex flex-column align-items-start">
@@ -375,9 +388,8 @@ const Checkouts = () => {
       
       {/* Footer Components */}
       <div className="mt-0 pt-0">
-      <Copyright />
+        <Copyright />
       </div>
-    
     </div>
   );
 };
