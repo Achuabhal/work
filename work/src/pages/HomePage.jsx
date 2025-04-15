@@ -10,19 +10,14 @@ import myImage1 from "./assets/logo.png";
 import { Link } from "react-router-dom";
 import SalonPopUp from "../components/popup/SalonPopUp"; 
 import ChefModal from "../components/popup/ChefModal";
-import NavbarOne from "../components/navbarhome";
 import ApplianceModal from "../components/popup/ApplianceModal";
-import Footer from "../components/Footer";
-import Copyright from "../components/Copyright";
-import AutoMobilePopUp from '../components/popup/AutoMobilePopUp';
-
-
+import { useNavigate } from 'react-router-dom';
 const HomePage = () => {
   const [slideIndex, setSlideIndex] = useState(0);
   const [isMobile, setIsMobile] = useState(false);
   const [showChefModal, setShowChefModal] = useState(false);
   const [showApplianceModal, setShowApplianceModal] = useState(false);
-
+  const navigate = useNavigate();
   const slides = [chef, service, cleaning];
   let autoPlayId;
 
@@ -61,15 +56,102 @@ const HomePage = () => {
   };
 
   const [showModal, setShowModal] = useState(false);
-  const [showModalAuto, setShowModalAuto] = useState(false);
-
 
 
   return (
     <div className={styles.container}>
       {/* Header */}
-      <NavbarOne />
+      <Navbar
+          style={{ backgroundColor: "#FFD29E" }}
+          expand="lg"
+          className="rounded-4 my-3 "
+        >
+          <Container>
+            <Navbar.Brand className="mb-5">
+              <img src="/duzo.png" alt="DUZO" width="100" />
+            </Navbar.Brand>
 
+            <Navbar.Toggle aria-controls="basic-navbar-nav" className="mb-5" />
+
+            <Navbar.Collapse id="basic-navbar-nav">
+              <div className="d-flex flex-column w-100">
+                <div className="d-flex w-100 align-items-center justify-content-between gap-3 flex-wrap">
+                  <div className="flex-grow-1">
+                    <Form
+                      className="w-100"
+                      style={{ minWidth: "200px", maxWidth: "400px" }}
+                    >
+                      <Form.Group className="input-group">
+                        <div
+                          className="d-flex align-items-center w-100 rounded-pill px-2"
+                          style={{
+                            backgroundColor: "#FFBE5D",
+                            padding: "5px",
+                            border: "none",
+                          }}
+                        >
+                          <Form.Control
+                            type="search"
+                            placeholder="How can we help you?"
+                            className="form-control border-0 shadow-none bg-transparent"
+                          />
+                          <img
+                            src="/search.png"
+                            alt="Search"
+                            width="25"
+                            height="25"
+                            className="ms-2"
+                          />
+                        </div>
+                      </Form.Group>
+                    </Form>
+                  </div>
+
+                  <div style={{ minWidth: "150px", maxWidth: "200px" }}>
+                    <Form className="w-100">
+                      <Form.Group className="input-group">
+                        <div
+                          className="d-flex align-items-center w-100 rounded-pill px-2"
+                          style={{
+                            backgroundColor: "#FFBE5D",
+                            padding: "5px",
+                            border: "none",
+                          }}
+                        >
+                          <Form.Control
+                            type="text"
+                            className="form-control border-0 shadow-none bg-transparent"
+                          />
+                          <img
+                            src="/image.png"
+                            alt="Image"
+                            width="25"
+                            height="25"
+                            className="ms-2"
+                          />
+                        </div>
+                      </Form.Group>
+                    </Form>
+                  </div>
+
+                  <div className="d-flex align-items-center gap-2">
+                    <img src="/cart.png" width="26" height="26" alt="Cart" />
+                    <img src="/user.png" width="26" height="26" alt="Profile" />
+                  </div>
+                </div>
+
+                <div className="w-100 d-flex justify-content-start mt-2 px-3">
+                  <Nav className="d-flex gap-3 flex-wrap">
+                    <Nav.Link href="#">Homes</Nav.Link>
+                    <Nav.Link href="#">Beauty</Nav.Link>
+                    <Nav.Link href="#">Automobile</Nav.Link>
+                    <Nav.Link href="#">Buy/Rent</Nav.Link>
+                  </Nav>
+                </div>
+              </div>
+            </Navbar.Collapse>
+          </Container>
+        </Navbar>
 
  {/* Hero Banner */}
  <div className={styles.heroBanner}>
@@ -116,11 +198,8 @@ const HomePage = () => {
               name: "Beauty and Salon",
               action: () => setShowModal(true),
             },
-            { name: "Electrician, Plumber and Carpenter", path: "/home-services" },
-            { name: "Automobile cleaning",
-              action: () => setShowModalAuto(true),
-
-             },
+            { name: "Electrician, Plumber and Carpenter", action: () => navigate("/homeservices") },
+            { name: "Automobile cleaning", path: "/automobile" },
             { name: "Buy appliances", path: "/buy-appliances" },
             { name: "Rent appliances", path: "/rent-appliances" },
             { name: "Sell appliances", path: "/sell-appliances" }
@@ -143,7 +222,7 @@ const HomePage = () => {
           
           ))}
         </div>
-        <div className={`${styles.serviceShowcase} d-none d-sm-block`}> </div>
+        <div className={styles.serviceShowcase}></div>
         </main>
       </section>
       
@@ -231,15 +310,49 @@ const HomePage = () => {
       </div>
   
 
-      < Footer/>
-      
+      <footer className={styles.footerr}>
+        <div className={styles.footerContent}>
+          <div className={styles.footerLogoo}>
+            <div className={styles.footerLogo}>
+              <img src={myImage1} alt="DUZO" className={styles.footerLogo} />
+            </div>
+            <div className={styles.footerInfo}>
+              <p><FaPhone /> +1 (234) 567-8900</p>
+              <p><FaEnvelope /> info@duzo.com</p>
+              <div className={styles.socialLinks}>
+                <a href="#" className={styles.socialIcon}><FaInstagram size={24} /></a>
+                <a href="#" className={styles.socialIcon}><FaFacebook size={24} /></a>
+                <a href="#" className={styles.socialIcon}><FaTwitter size={24} /></a>
+              </div>
+            </div>
+          </div>
+          <div className={styles.footerLocation}>
+            <h3>Services Available At</h3>
+            <h3>Bengaluru</h3>
+            <button className={styles.bookNow}>BOOK NOW</button>
+          </div>
+          <div className={styles.footerLinks}>
+            <h3>Site Map</h3>
+            <ul>
+              <li><a href="#">Services</a></li>
+              <li><a href="#">Hiring</a></li>
+              <Link to="/about">
+          
+        
+              <li><a href="#">About Us</a></li>
+              </Link>
+              <li><a href="#">Contact Us</a></li>
+            </ul>
+          </div>
+        </div>
+      </footer>
 {/* SalonPopUp Modal */}
 <SalonPopUp show={showModal} onHide={() => setShowModal(false)} />
 <ChefModal show={showChefModal} onHide={() => setShowChefModal(false)} />
 <ApplianceModal show={showApplianceModal} onHide={() => setShowApplianceModal(false)} />
-<AutoMobilePopUp show={showModalAuto} onHide={() => setShowModalAuto(false)} />
-
-< Copyright/>
+      <div className={styles.footerBottom}>
+        <p>© 2024 - DUZO</p>
+      </div>
     </div>
   );
 };

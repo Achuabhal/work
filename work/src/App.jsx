@@ -44,6 +44,7 @@ import Makeup from './pages/Makeup';
 import FourWheeler from './pages/FourWheeler';
 import TwoWheeler from './pages/TwoWheeler';
 import TwoWheelerPopUp from './components/popup/TwoWheelerPopUp';
+import HomeServices from './pages/HomeServices';
 
 
 // ModalContent Component to wrap any component inside a Modal
@@ -104,7 +105,7 @@ function App() {
         <Route path='/fourwheeler' element={<FourWheeler/>}/>
         <Route path='/twowheeler' element={<TwoWheeler/>}/>   
         <Route path='/twowheelerpopup' element={<TwoWheelerPopUp/>}/> 
-
+        <Route path='/homeservices' element={<HomeServices/>}/>
         {/* Add more routes as needed */}
 
 
