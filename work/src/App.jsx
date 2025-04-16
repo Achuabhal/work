@@ -45,6 +45,7 @@ import FourWheeler from './pages/FourWheeler';
 import TwoWheeler from './pages/TwoWheeler';
 import TwoWheelerPopUp from './components/popup/TwoWheelerPopUp';
 import Household from './pages/Household';
+import PopupBox from './components/popup/HouseholdPopUp';
 
 // ModalContent Component to wrap any component inside a Modal
 const ModalContent = ({ component }) => {
@@ -80,6 +81,7 @@ function App() {
         <Route path="/spawomen" element={<WomenSpa/>} />
         <Route path="/hairstudio" element={<HairStudioo/>} />
         <Route path="/household" element={<Household/>}/>
+        <Route path="/householdpopup" element={<PopupBox/>}/>
         <Route path="/appliance" element={<Appliance/>} />
         <Route path="/acrepair" element={<ACRepair/>} />
         <Route path="/tvrepair" element={<TVRepair/>} />
