@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react"; 
+import React, { useState, useEffect } from "react";
 import { Modal } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { Link } from "react-router-dom";
@@ -11,12 +11,11 @@ function BuyAppliances({ show, onHide }) {
   // Reset state when main modal is closed
   useEffect(() => {
     if (!show) {
-      // Don't reset selectedOption here!
+      setSelectedOption(null); // Reset selectedOption only when the main modal is closed
       setShowFirstSubModal(false);
       setShowSecondSubModal(false);
     }
   }, [show]);
-  
 
   const handleOptionSelect = (option) => {
     setSelectedOption(option);
@@ -25,22 +24,15 @@ function BuyAppliances({ show, onHide }) {
 
   // Open the corresponding submodal based on the selected option after main modal closes
   useEffect(() => {
-    let timeout;
-    if (selectedOption && !show) {
-      timeout = setTimeout(() => {
-        if (selectedOption === "Option A") {
-          setShowFirstSubModal(true);
-        } else if (selectedOption === "Option B") {
-          setShowSecondSubModal(true);
-        }
-        setSelectedOption(null); // ✅ Reset only after using it
-      }, 300);
+    if (selectedOption) {
+      if (selectedOption === "Option A") {
+        setShowFirstSubModal(true);
+      } else if (selectedOption === "Option B") {
+        setShowSecondSubModal(true);
+      }
+      setSelectedOption(null); // Reset the selectedOption after opening the submodal
     }
-  
-    return () => clearTimeout(timeout);
-  }, [selectedOption, show]);
-  
-  
+  }, [selectedOption]); // Only trigger when selectedOption changes
 
   const handleCloseAll = () => {
     onHide();
@@ -57,34 +49,38 @@ function BuyAppliances({ show, onHide }) {
       contentClassName="p-0 border-0 bg-transparent"
     >
       <div className="rounded-4 overflow-hidden">
-        <Modal.Header closeButton className="border-0" style={{ backgroundColor: "#e0f7fa" }}>
+        <Modal.Header closeButton className="border-0" style={{ backgroundColor: "#FFD5A4" }}>
           <Modal.Title className="fw-bold w-100 text-center">{title}</Modal.Title>
         </Modal.Header>
-        <Modal.Body className="p-3 p-md-4" style={{ backgroundColor: "#e0f7fa" }}>
-          <div className="d-flex justify-content-center flex-wrap gap-4">
-            {services.map(({ name, path }, index) => (
-              <Link
-                key={index}
-                to={path}
-                className="text-decoration-none text-dark"
-                onClick={handleClose}
-              >
-                <div className="text-center">
-                  <div
-                    className="mx-auto mb-2"
-                    style={{
-                      width: "161px",
-                      height: "161px",
-                      backgroundColor: "#ffffff",
-                      borderRadius: "19px",
-                    }}
-                  />
-                  <p className="fw-bold">{name}</p>
-                </div>
-              </Link>
-            ))}
-          </div>
-        </Modal.Body>
+        <Modal.Body className="p-3 p-md-3" style={{ backgroundColor: "#FFD5A4" }}>
+  <div className="container">
+    <div className="row justify-content-start">
+      {services.map(({ name, path }, index) => (
+        <div key={index} className="col-12 col-sm-6 col-md-4 mb-4 d-flex justify-content-center">
+          <Link
+            to={path}
+            className="text-decoration-none text-dark"
+            onClick={handleClose}
+          >
+            <div className="text-center">
+              <div
+                className="mb-2"
+                style={{
+                  width: "161px",
+                  height: "161px",
+                  backgroundColor: "#D9D9D9",
+                  borderRadius: "19px",
+                }}
+              />
+              <p className="fw-bold">{name}</p>
+            </div>
+          </Link>
+        </div>
+      ))}
+    </div>
+  </div>
+</Modal.Body>
+
       </div>
     </Modal>
   );
@@ -117,7 +113,7 @@ function BuyAppliances({ show, onHide }) {
                     width: "161px",
                     height: "161px",
                     borderRadius: "19px",
-                    backgroundColor: "#ffffff",
+                    backgroundColor: "#FFD5A4",
                     overflow: "hidden",
                   }}
                 >
@@ -137,7 +133,7 @@ function BuyAppliances({ show, onHide }) {
                     width: "161px",
                     height: "161px",
                     borderRadius: "19px",
-                    backgroundColor: "#ffffff",
+                    backgroundColor: "#FFD5A4",
                     overflow: "hidden",
                   }}
                 >
@@ -156,12 +152,12 @@ function BuyAppliances({ show, onHide }) {
         handleClose={handleCloseAll}
         title="Option A Services"
         services={[
-          { name: "A1 Service", path: "/optionA1" },
-          { name: "A2 Service", path: "/optionA2" },
-          { name: "A3 Service", path: "/optionA3" },
-          { name: "A4 Service", path: "/optionA4" },
-          { name: "A5 Service", path: "/optionA5" },
-          { name: "A6 Service", path: "/optionA6" },
+          { name: "Rent a Bed", path: "/optionA1" },
+          { name: "Rent Bedroom Storage", path: "/optionA2" },
+          { name: "Rent Tables and Chairs", path: "/optionA3" },
+          { name: "Rent Bean Bag", path: "/optionA4" },
+          { name: "Rent Dining Tables", path: "/optionA5" },
+          { name: "Rent Sofas", path: "/optionA6" },
         ]}
       />
 
@@ -170,12 +166,11 @@ function BuyAppliances({ show, onHide }) {
         handleClose={handleCloseAll}
         title="Option B Services"
         services={[
-          { name: "B1 Service", path: "/optionB1" },
-          { name: "B2 Service", path: "/optionB2" },
-          { name: "B3 Service", path: "/optionB3" },
-          { name: "B4 Service", path: "/optionB4" },
-          { name: "B5 Service", path: "/optionB5" },
-          { name: "B6 Service", path: "/optionB6" },
+          { name: "Rent a Refrigerator", path: "/optionB1" },
+          { name: "Rent a Washing Machine", path: "/optionB2" },
+          { name: "Rent a water purifier", path: "/optionB3" },
+          { name: "Rent a Air Cooler", path: "/optionB4" },
+          
         ]}
       />
     </>
