@@ -1,0 +1,39 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,100..700;1,100..700&family=Salsa&display=swap');
+/* Card Styling */
+.cleaning-card img {
+    height: 150px;
+    width: 100%;
+    object-fit: contain;
+    object-position: center;
+    transition: transform 0.3s ease;
+  }
+  
+  .cleaning-card img:hover {
+    transform: scale(1.05);
+  }
+  
+  .cleaning-card h6 {
+    font-size: 1rem;
+    font-family: 'Salsa', cursive;
+    margin-top: 0.5rem;
+    font-weight: 600;
+    color: #212529;
+  }
+  
+  /* Mobile Adjustments */
+  @media (max-width: 576px) {
+    .cleaning-card img {
+      height: 120px;
+    }
+  
+    .cleaning-card h6 {
+      font-size: 0.9rem;
+    }
+  }
+  
+  /* XL Screens */
+  @media (min-width: 1200px) {
+    .cleaning-card img {
+      height: 180px;
+    }
+  }

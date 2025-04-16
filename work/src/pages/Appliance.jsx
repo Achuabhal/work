@@ -277,7 +277,7 @@ const Appliance = () => {
               scrollbar-width: none;
               overflow-y: auto;
             }
-            /* Main Content Scroll */
+            /* Main Content Scroll */ fixes
             .main-content::-webkit-scrollbar {
               display: none;
             }
