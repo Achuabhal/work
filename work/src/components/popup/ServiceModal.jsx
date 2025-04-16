@@ -11,23 +11,23 @@ const ServiceModal = ({ show = true, onHide = () => window.history.back(), servi
 
   // Service type icons and pricing
   const serviceDetails = {
-    Electrician: { 
-      icon: <FaBolt size={24} />, 
+    Electrician: {
+      icon: <FaBolt size={24} />,
       price: "xxx",
       options: [
         { title: "Electrical ", image: "/electrician-repair.png" },
       ]
     },
-    Plumber: { 
-      icon: <FaWrench size={24} />, 
+    Plumber: {
+      icon: <FaWrench size={24} />,
       price: "xxx",
       options: [
         { title: "Plumber", image: "/plumber-pipe.png" },
         
       ]
     },
-    Carpenter: { 
-      icon: <FaTools size={24} />, 
+    Carpenter: {
+      icon: <FaTools size={24} />,
       price: "xxx",
       options: [
         { title: "Carpenter", image: "/carpenter-furniture.png" },
@@ -85,9 +85,9 @@ const ServiceModal = ({ show = true, onHide = () => window.history.back(), servi
             <Modal.Body className="p-3 p-md-4" style={{ backgroundColor: "#ffd5a4" }}>
               <div className="d-flex flex-column gap-4">
                 {currentService.options.map((option, index) => (
-                  <div 
-                    key={index} 
-                    className="d-flex align-items-center rounded-4 p-2 cursor-pointer" 
+                  <div
+                    key={index}
+                    className="d-flex align-items-center rounded-4 p-2 cursor-pointer"
                     style={{ cursor: 'pointer', backgroundColor: '#ffd5a4' }} // Semi-transparent instead of white
                     onClick={() => handleOptionSelect(option.title)}
                   >
@@ -122,8 +122,8 @@ const ServiceModal = ({ show = true, onHide = () => window.history.back(), servi
                           <h6 className="text-bold">Starts at</h6>
                           <span className="fw-bold ms-1">{currentService.price}</span>
                         </div>
-                        <Button 
-                          variant="warning" 
+                        <Button
+                          variant="warning"
                           size="sm"
                           className="rounded-pill px-2 py-1" // Reduced padding
                         >
@@ -284,7 +284,7 @@ const ServiceModal = ({ show = true, onHide = () => window.history.back(), servi
         
         /* Custom width for modal */
         .custom-width-modal {
-          max-width: 450px !important;
+          max-width: 500px !important; /* Increased from 450px to 500px */
           margin: 1.75rem auto;
         }
         

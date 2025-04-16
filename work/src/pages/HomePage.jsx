@@ -208,7 +208,7 @@ const HomePage = () => {
               name: "Beauty and Salon",
               action: () => setShowModal(true),
             },
-            { name: "Electrician, Plumber and Carpenter", path: "/home-services" },
+            { name: "Electrician, Plumber and Carpenter", path: "/homeservices" },
             { name: "Automobile cleaning",
               action: () => setShowModalAuto(true),
 
