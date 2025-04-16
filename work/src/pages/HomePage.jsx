@@ -191,7 +191,7 @@ const HomePage = () => {
         <main className={`${styles.pageMain} flex-grow-1 d-flex justify-content-center align-items-center p-4`}>
         <div className={styles.servicesGrid}>
           {[
-            { name: "Household cleaning", path: "/household-cleaning" },
+            { name: "Household cleaning", action: () => navigate("/household") },
             { name: "Chef and cook",  action: () => setShowChefModal(true) }, // Update this line },
             { name: "AC and appliances repair",action: () => setShowApplianceModal(true) },
             {
