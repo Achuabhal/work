@@ -130,7 +130,7 @@ const Checkouts = () => {
     <div className="bg-light" style={{ fontFamily: 'Outfit'}}>
       {/* Header */}
       <div className="d-flex align-items-center justify-content-between px-3 py-2 rounded-3" style={{ backgroundColor: '#ffd5a4' }}>
-        <div className="d-flex align-items-center">
+        <div className="d-flex mt-2 align-items-center">
           <img src="/duzo.png" alt="DUZO Logo" style={{ height: '40px' }} className="img-fluid" />
           <h5 className="mb-0 ms-2">CHECKOUT</h5>
         </div>
@@ -140,7 +140,7 @@ const Checkouts = () => {
       <div className="container-fluid mt-2 mb-4 p-3 rounded-4" style={{ backgroundColor: '#FFC998', fontFamily: 'fit', fontWeight: 'bold' }}>
         <div className="row gy-4">
           {/* Left Column */}
-          <div className="col-12 col-md-5 px-0 px-md-4 ">
+          <div className="col-12 mt-4 col-md-5 px-0 px-md-4 ">
             <div className="p-md-3 rounded shadow-sm mb-3 ">
               <CustomDropdown
                 title=" "
@@ -351,7 +351,7 @@ const Checkouts = () => {
           </div>
 
           {/* Right Side Columns */}
-          <div className="col-12 col-md-7 px-5 d-flex flex-column align-items-lg-end">
+          <div className="col-12 mt-5 col-md-7 px-5 d-flex flex-column align-items-lg-end">
             <div className="p-3 bg-white rounded shadow-sm mb-3 col-12 col-lg-6 npm custom-mobile-bg">
               <center><h4 className="fw-bold">Details</h4></center> 
               <div className="d-flex justify-content-between mb-2">
