@@ -44,13 +44,10 @@ import Makeup from './pages/Makeup';
 import FourWheeler from './pages/FourWheeler';
 import TwoWheeler from './pages/TwoWheeler';
 import TwoWheelerPopUp from './components/popup/TwoWheelerPopUp';
-<<<<<<< HEAD
 import Household from './pages/Household';
 import PopupBox from './components/popup/HouseholdPopUp';
-=======
 import HomeServices from './pages/HomeServices';
 
->>>>>>> 0ee01d47926fa71d59a7530a40ca8e8fede6dff8
 
 // ModalContent Component to wrap any component inside a Modal
 const ModalContent = ({ component }) => {
