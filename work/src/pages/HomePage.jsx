@@ -210,14 +210,8 @@ const HomePage = () => {
             },
             { name: "Electrician, Plumber and Carpenter", path: "/homeservices" },
             { name: "Automobile cleaning",
-              action: () => setShowModalAuto(true),
-
-             },
+              action: () => setShowModalAuto(true),},
              { name: "Buy appliances", action: () => setShowModalbuy(true) },
-
-            { name: "Electrician, Plumber and Carpenter", action: () => navigate("/homeservices") },
-            { name: "Automobile cleaning", path: "/automobile" },
-            { name: "Buy appliances", path: "/buy-appliances" },
             { name: "Rent appliances", path: "/rent-appliances" },
             { name: "Sell appliances", path: "/sell-appliances" }
           ].map((service, index) => (
