@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState,useRef } from 'react';
 import styles from './css/homepage.module.css';
 import { Container, Row, Col, Form, Navbar, Nav } from "react-bootstrap";
 import { ChevronLeft, ChevronRight, MapPin, Search, ShoppingCart, User } from 'lucide-react';
@@ -25,7 +25,7 @@ const HomePage = () => {
   const [showApplianceModal, setShowApplianceModal] = useState(false);
   const navigate = useNavigate();
   const slides = [chef, service, cleaning];
-  let autoPlayId;
+  const autoPlayId = useRef(null);
 
   useEffect(() => {
     // Check if screen is mobile
@@ -44,7 +44,7 @@ const HomePage = () => {
 
     // Cleanup
     return () => {
-      clearInterval(autoPlayId);
+      clearInterval(autoPlayId.current);
       window.removeEventListener('resize', checkMobile);
     };
   }, []);
@@ -56,10 +56,11 @@ const HomePage = () => {
   };
 
   const autoPlay = () => {
-    autoPlayId = setInterval(() => {
+    autoPlayId.current = setInterval(() => {
       setSlideIndex((prevIndex) => (prevIndex + 1) % slides.length);
     }, 3000);
   };
+  
 
   const [showModal, setShowModal] = useState(false);
   const [showModalAuto, setShowModalAuto] = useState(false);
@@ -215,9 +216,6 @@ const HomePage = () => {
              },
              { name: "Buy appliances", action: () => setShowModalbuy(true) },
 
-            { name: "Electrician, Plumber and Carpenter", action: () => navigate("/homeservices") },
-            { name: "Automobile cleaning", path: "/automobile" },
-            { name: "Buy appliances", path: "/buy-appliances" },
             { name: "Rent appliances", path: "/rent-appliances" },
             { name: "Sell appliances", path: "/sell-appliances" }
           ].map((service, index) => (
