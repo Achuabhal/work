@@ -3,6 +3,7 @@ import styles from './css/homepage.module.css';
 import { Container, Row, Col, Form, Navbar, Nav } from "react-bootstrap";
 import { ChevronLeft, ChevronRight, MapPin, Search, ShoppingCart, User } from 'lucide-react';
 import { FaInstagram, FaFacebook, FaTwitter, FaPhone, FaEnvelope } from "react-icons/fa";
+import 'bootstrap/dist/css/bootstrap.min.css';
 import chef from "./assets/chef.png";
 import service from "./assets/logo.png";
 import cleaning from "./assets/oops1.png";
@@ -64,17 +65,17 @@ const HomePage = () => {
       <Navbar
           style={{ backgroundColor: "#FFD29E" }}
           expand="lg"
-          className="rounded-4 my-3 "
+          className="rounded-4 mt-0 mb-3 "
         >
           <Container>
-            <Navbar.Brand className="mb-5">
+            <Navbar.Brand className="mb-2">
               <img src="/duzo.png" alt="DUZO" width="100" />
             </Navbar.Brand>
 
             <Navbar.Toggle aria-controls="basic-navbar-nav" className="mb-5" />
 
             <Navbar.Collapse id="basic-navbar-nav">
-              <div className="d-flex flex-column w-100">
+              <div className="d-flex flex-column w-100 pt-4">
                 <div className="d-flex w-100 align-items-center justify-content-between gap-3 flex-wrap">
                   <div className="flex-grow-1">
                     <Form
@@ -186,46 +187,76 @@ const HomePage = () => {
 
       {/* Services Section */}
  
-      <section className={styles.servicesSection}>
-        <h2 className={styles.sectionTitle}>OUR SERVICES</h2>
-        <main className={`${styles.pageMain} flex-grow-1 d-flex justify-content-center align-items-center p-4`}>
-        <div className={styles.servicesGrid}>
+      <section className="py-5 rounded-5 mb-3" style={{ backgroundColor: '#FFC998' }}>
+  <div className="container">
+    <h2 className="text-center mb-4">OUR SERVICES</h2>
+    
+    <div className="row">
+      {/* Left side: services */}
+      <div className="col-lg-9">
+        <div className="row row-cols-3 row-cols-sm-2 row-cols-md-3 g-4">
           {[
-            { name: "Household cleaning", action: () => navigate("/household") },
-            { name: "Chef and cook",  action: () => setShowChefModal(true) }, // Update this line },
-            { name: "AC and appliances repair",action: () => setShowApplianceModal(true) },
-            {
-              name: "Beauty and Salon",
-              action: () => setShowModal(true),
-            },
-            { name: "Electrician, Plumber and Carpenter", action: () => navigate("/homeservices") },
-            { name: "Automobile cleaning", path: "/automobile" },
-            { name: "Buy appliances", path: "/buy-appliances" },
-            { name: "Rent appliances", path: "/rent-appliances" },
-            { name: "Sell appliances", path: "/sell-appliances" }
+            { name: "Household cleaning", action: () => navigate("/household"), image: "/housecleaning.png" },
+            { name: "Chef and cook",  action: () => setShowChefModal(true), image: "/chefCooking.png" },
+            { name: "AC and appliances repair", action: () => setShowApplianceModal(true), image: "/acRepair.png" },
+            { name: "Beauty and Salon", action: () => setShowModal(true), image: "/beautySalon.png" },
+            { name: "Electrician, Plumber and Carpenter", action: () => navigate("/homeservices"), image: "/electrician_Plumber_carpenter.png" },
+            { name: "Automobile cleaning", path: "/automobile", image: "/carCleaning.png" },
+            { name: "Buy appliances", path: "/buy-appliances", image: "/electricalAppliances.png" },
+            { name: "Rent appliances", path: "/rent-appliances", image: "/rentAppliance.png" },
+            { name: "Sell appliances", path: "/sell-appliances", image: "/sellAppliance.png" }
           ].map((service, index) => (
-            <div
-            key={index}
-            className={styles.serviceCard}
-            onClick={() => {
-              if (service.action) {
-                service.action();
-              } else {
-                window.location.href = service.path;
-              }
-            }}
-            style={{ cursor: "pointer" }}
-          >
-            <div className={styles.serviceIcon}></div>
-            <p className={styles.serviceTitle}>{service.name}</p>
-          </div>
-          
+            <div key={index} className="col">
+              <div 
+                className="card h-100 border-0 bg-transparent"
+                onClick={() => {
+                  if (service.action) {
+                    service.action();
+                  } else {
+                    window.location.href = service.path;
+                  }
+                }}
+                style={{ cursor: 'pointer' }}
+              >
+                <div 
+                  className="d-flex align-items-center justify-content-center" 
+                  style={{ height: '150px', backgroundColor: 'transparent' }}
+                >
+                  <img 
+                    src={service.image} 
+                    alt={service.name} 
+                    className="img-fluid p-0 p-md-3" 
+                    style={{ 
+                      maxHeight: '100%', 
+                      maxWidth: '80%', 
+                      objectFit: 'contain',
+                      transition: 'transform 0.3s ease'
+                    }}
+                    onMouseOver={(e) => e.currentTarget.style.transform = 'scale(1.05)'}
+                    onMouseOut={(e) => e.currentTarget.style.transform = 'scale(1)'}
+                  />
+                </div>
+                <div className="card-body p-0 text-center rounded-bottom">
+                  <h5 className="card-title mb-0" style={{ fontSize: '0.9rem' }}>
+                    {service.name}
+                  </h5>
+                </div>
+              </div>
+            </div>
           ))}
         </div>
-        <div className={styles.serviceShowcase}></div>
-        </main>
-      </section>
-      
+      </div>
+
+      {/* Right side: gray div */}
+      <div className="col-lg-3 mt-4 mt-lg-0 d-none d-lg-block">
+        <div style={{ backgroundColor: '#D9D9D9', height: '100%', borderRadius: '10px', padding: '1rem' }}>
+          {/* Content inside the gray box, or leave it empty */}
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
 
       {/* Hourly Service Poster */}
       <section className={styles.hourlyServiceSection}>
@@ -282,32 +313,38 @@ const HomePage = () => {
           </div>
         </div>
       </div>
-
-      <div className={styles.features}>
-        <h2>Why Choose Us?</h2>
-        <div className={styles.featuresGrid}>
-          <div className={styles.featureItem}>
-            <div className={styles.featureIcon}></div>
-            <p className={styles.featureText}>Verified Professionals</p>
-          </div>
-          <div className={styles.featureItem}>
-            <div className={styles.featureIcon}></div>
-            <p className={styles.featureText}>Affordable Pricing</p>
-          </div>
-          <div className={styles.featureItem}>
-            <div className={styles.featureIcon}></div>
-            <p className={styles.featureText}>Quick Response Time</p>
-          </div>
-          <div className={styles.featureItem}>
-            <div className={styles.featureIcon}></div>
-            <p className={styles.featureText}>24/7 Customer Support</p>
-          </div>
-          <div className={styles.featureItem}>
-            <div className={styles.featureIcon}></div>
-            <p className={styles.featureText}>Satisfaction guaranteed</p>
-          </div>
+      <div className="py-3 py-md-5 rounded-5" style={{ backgroundColor: '#FFD29E' }}>
+  <h2 className="text-center mb-5">Why Choose Us?</h2>
+  <div className="container">
+    <div className="row row-cols-2 row-cols-sm-3 row-cols-lg-5 g-3 g-md-4 justify-content-center">
+      {[
+        { img: "verified.png", text: "Verified Professionals" },
+        { img: "affordable.png", text: "Affordable Pricing" },
+        { img: "quickResponse.png", text: "Quick Response Time" },
+        { img: "24_7.png", text: "24/7 Customer Support" },
+        { img: "satisfaction.png", text: "Satisfaction guaranteed" }
+      ].map((item, index) => (
+        <div className="col text-center" key={index}>
+          <img 
+            src={item.img} 
+            className="img-fluid mb-2 mb-md-3" 
+            alt={item.text} 
+            style={{ 
+              width: '60px', 
+              height: '60px',
+              // Media query for larger screens
+              '@media (min-width: 426px)': {
+                width: '80px',
+                height: '80px'
+              }
+            }}
+          />
+          <p className="fs-6 fs-md-5">{item.text}</p>
         </div>
-      </div>
+      ))}
+    </div>
+  </div>
+</div>     
   
 
       <footer className={styles.footerr}>

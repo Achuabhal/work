@@ -320,40 +320,62 @@
 
 /* Services Section */
 .servicesSection {
-  background-color: #FFD699;
-  padding: 10px;
-  margin-bottom: 15px;
+  background-color: #FFC998;
   border-radius: 35px;
-  position: relative;
+  padding: 1.5rem 0;
+  margin-bottom: 15px;
 }
 
 .sectionTitle {
   text-align: center;
-  margin-top: 0;
-  margin-bottom: 20px;
-  font-size: 32px;
-  font-weight: bold;
-}
-
-.pageMain {
-  gap: 1rem;
-  width: 100%;
-  box-sizing: border-box;
+  color: #333;
+  margin-bottom: 1.2rem;
+  font-size: 1.8rem;
 }
 
 .servicesGrid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 20px;
-  width: 100%;
+  gap: 16px;
+  padding: 0 15px;
+  margin: 0 auto;
 }
 
 .serviceCard {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
+  background: transparent;
+  border-radius: 10px;
+  overflow: hidden;
+  cursor: pointer;
+  aspect-ratio: 1/1.2;
 }
+
+.imageContainer {
+  width: 55%;
+  height: auto;
+  background: transparent;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 4px;
+}
+
+.serviceImage {
+  max-width: 80%;
+  max-height: 80%;
+  object-fit: contain;
+}
+
+.labelContainer {
+  height: 30%;
+  padding: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  background: transparent;
+  border-radius: 0 0 8px 8px;
+}
+
 
 .serviceIcon {
   width: 60px;
@@ -364,7 +386,7 @@
 }
 
 .serviceTitle {
-  font-size: 7px;
+  font-size: 16px;
   margin: 0;
 }
 
@@ -539,9 +561,13 @@
   .featuresGrid {
     grid-template-columns: repeat(3, 1fr);
   }
-  
   .servicesGrid {
-    grid-template-columns: repeat(3, 1fr);
+    max-width: 768px;
+    gap: 14px;
+  }
+  
+  .serviceTitle {
+    font-size: 0.85rem;
   }
 
   .headerContent {
@@ -601,6 +627,20 @@
   .mainTitle {
     font-size: 1.5rem;
   }
+  .servicesGrid {
+    max-width: 480px;
+    gap: 10px;
+    padding: 0 10px;
+  }
+  
+  .serviceTitle {
+    font-size: 0.72rem;
+    padding-bottom: 8px;
+  }
+  
+  .imageContainer {
+    padding: 4px;
+  }
   
   .optionCard {
     padding: 2rem;
@@ -617,9 +657,6 @@
     font-size: 0.9rem;
   }
   
-  .servicesGrid {
-    grid-template-columns: fr;
-  }
 
   .featuresGrid {
     grid-template-columns: repeat(5, 1fr);
@@ -673,5 +710,58 @@
   .serviceIcon {
     width: 40px;
     height: 40px;
+  }
+}
+/* 375px Devices */
+@media (max-width: 375px) {
+  .servicesGrid {
+    max-width: 375px;
+    gap: 8px;
+    padding: 0 8px;
+  }
+  
+  .serviceTitle {
+    font-size: 0.68rem;
+    padding: 0 2px;
+    padding-bottom: 10px;
+  }
+  
+  .labelContainer {
+    padding: 6px 2px;
+  }
+  
+  .serviceImage {
+    max-width: 85%;
+    max-height: 85%;
+  }
+}
+
+/* 320px Devices */
+@media (max-width: 320px) {
+  .servicesGrid {
+    max-width: 320px;
+    gap: 6px;
+    padding: 0 6px;
+  }
+  
+  .serviceTitle {
+    font-size: 0.62rem;
+    line-clamp: 2;
+    padding-bottom: 10px;
+  }
+  
+  .imageContainer {
+    height: 65%;
+    padding: 3px;
+  }
+  
+  .labelContainer {
+    height: 35%;
+    padding: 4px 1px;
+  }
+  
+  .sectionTitle {
+    font-size: 1.3rem;
+    margin-bottom: 0.8rem;
   }
 }
