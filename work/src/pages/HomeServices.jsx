@@ -1,13 +1,16 @@
 import React, { useState } from "react";
-import { Container, Row, Col, Form, Button, Card, Navbar } from "react-bootstrap";
+import { Container, Row, Col, Form, Button, Card, Navbar, Modal } from "react-bootstrap";
 import { FaBolt, FaWrench, FaTools, FaInstagram, FaFacebook } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
-import HomeServicesBanner from "../components/HomeServicesBanner"; // Added import
+import HomeServicesBanner from "../components/HomeServicesBanner";
+import ServiceModal from "../components/popup/ServiceModal";
 import "bootstrap/dist/css/bootstrap.min.css";
 
 const HomeServices = () => {
   const navigate = useNavigate();
   const [selectedService, setSelectedService] = useState("");
+  const [showServiceModal, setShowServiceModal] = useState(false);
+  const [selectedServiceType, setSelectedServiceType] = useState("");
 
   // Service type icons
   const serviceIcons = {
@@ -16,21 +19,20 @@ const HomeServices = () => {
     Carpenter: <FaTools size={30} />
   };
 
+  // Service pricing information
+  const servicePricing = {
+    Electrician: { startPrice: 499, icon: <FaBolt size={24} /> },
+    Plumber: { startPrice: 399, icon: <FaWrench size={24} /> },
+    Carpenter: { startPrice: 599, icon: <FaTools size={24} /> }
+  };
+
   const handleServiceSelect = (service) => {
     setSelectedService(service);
   };
 
   const handleServiceClick = (serviceName) => {
-    // Navigate to the appropriate page based on service name
-    if (serviceName === "Electrician") {
-      navigate("/electrician");
-    }
-    else if (serviceName === "Plumber") {
-      navigate("/plumber"); 
-    }
-    else if (serviceName === "Carpenter") {
-      navigate("/carpenter"); 
-    }
+    setSelectedServiceType(serviceName);
+    setShowServiceModal(true);
   };
 
   return (
@@ -129,9 +131,9 @@ const HomeServices = () => {
           <div 
             style={{ 
               width: "504px", 
-              height: "120px", // Increased height to accommodate two lines
+              height: "120px",
               position: "relative",
-              marginLeft: "20px" // Added left margin instead of centering
+              marginLeft: "20px"
             }}
           >
             <h2 className="fw-bold position-absolute" style={{ left: "0", top: "0" }}>
@@ -149,7 +151,7 @@ const HomeServices = () => {
           </Col>
         </Row>
 
-        {/* Service Images in Row */}
+        {/* Service Images in Row - REDUCED SIZE AND MADE CONSISTENT */}
         <Row className="justify-content-center g-4">
           {[
             { image: "/electrician.png", title: "Electrician" },
@@ -165,8 +167,8 @@ const HomeServices = () => {
                 <div 
                   className="rounded-4 overflow-hidden mb-3" 
                   style={{ 
-                    width: '200px', 
-                    height: '200px',
+                    width: '140px',  // REDUCED from 160px
+                    height: '140px', // REDUCED from 160px
                     border: selectedService === service.title ? '3px solid #D28E26' : 'none',
                     boxShadow: '0 4px 8px rgba(0,0,0,0.1)'
                   }}
@@ -185,22 +187,28 @@ const HomeServices = () => {
                   />
                 </div>
                 <h5 className="fw-bold">{service.title}</h5>
+                <p className="text-muted">
+                  Starts at ₹{servicePricing[service.title].startPrice}
+                </p>
               </div>
             </Col>
           ))}
         </Row>
 
-        {/* Image Section */}
+        {/* Image Section - REDUCED SIZE */}
         <Row className="mt-5">
           <Col xs={12} className="text-center">
             <img 
               src="/handyman.png" 
               alt="Home Services" 
-              style={{ maxHeight: '300px' }}
+              style={{ 
+                maxHeight: '200px', // REDUCED from 240px
+                width: 'auto'
+              }}
               className="img-fluid mx-auto d-block"
               onError={(e) => {
                 e.target.onerror = null;
-                e.target.src = "https://via.placeholder.com/300x200?text=Home+Services";
+                e.target.src = "https://via.placeholder.com/200x140?text=Home+Services";
               }}
             />
           </Col>
@@ -321,6 +329,15 @@ const HomeServices = () => {
         </div>
         2024 - DUZO
       </div>
+
+      {/* Service Modal */}
+      {showServiceModal && (
+        <ServiceModal 
+          show={showServiceModal}
+          onHide={() => setShowServiceModal(false)}
+          serviceType={selectedServiceType}
+        />
+      )}
     </div>
   );
 };

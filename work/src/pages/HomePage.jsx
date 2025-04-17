@@ -12,6 +12,12 @@ import { Link } from "react-router-dom";
 import SalonPopUp from "../components/popup/SalonPopUp"; 
 import ChefModal from "../components/popup/ChefModal";
 import ApplianceModal from "../components/popup/ApplianceModal";
+import Footer from "../components/Footer";
+import Copyright from "../components/Copyright";
+import AutoMobilePopUp from '../components/popup/AutoMobilePopUp';
+import BuyAppliances from '../components/popup/BuyAppliances';
+
+
 import { useNavigate } from 'react-router-dom';
 const HomePage = () => {
   const [slideIndex, setSlideIndex] = useState(0);
@@ -57,6 +63,10 @@ const HomePage = () => {
   };
 
   const [showModal, setShowModal] = useState(false);
+  const [showModalAuto, setShowModalAuto] = useState(false);
+  const [showModalbuy, setShowModalbuy] = useState(false);
+
+
 
 
   return (
@@ -276,23 +286,24 @@ const HomePage = () => {
       <h1 className={styles.mainTitle}>Need Appliances...Buy or Rent with Ease</h1>
       
       <div className={styles.optionsGrid}>
-        <div className={styles.optionCard}>
-          <button 
-            className={styles.actionButton}
-            onClick={() => console.log('Navigate to buy')}
-          >
-            Buy Appliances
-          </button>
-        </div>
-        <div className={styles.optionCard}>
-          <button 
-            className={styles.actionButton}
-            onClick={() => console.log('Navigate to rent')}
-          >
-            Rent Appliances
-          </button>
-        </div>
-      </div>
+  <div className={styles.optionCard}>
+  <button 
+  className={styles.actionButton}
+  onClick={() => setShowModalbuy(true)}  // This opens the first modal
+>
+  Buy Appliances
+</button>
+
+  </div>
+  <div className={styles.optionCard}>
+    <button 
+      className={styles.actionButton}
+      onClick={() => window.location.href = "/rent-appliances"}
+    >
+      Rent Appliances
+    </button>
+  </div>
+</div>
 
       <div className={styles.sellSection}>
         <h2>Sell your old Appliances and Earn</h2>
@@ -387,6 +398,12 @@ const HomePage = () => {
 <SalonPopUp show={showModal} onHide={() => setShowModal(false)} />
 <ChefModal show={showChefModal} onHide={() => setShowChefModal(false)} />
 <ApplianceModal show={showApplianceModal} onHide={() => setShowApplianceModal(false)} />
+<AutoMobilePopUp show={showModalAuto} onHide={() => setShowModalAuto(false)} />
+<BuyAppliances show={showModalbuy} onHide={() => setShowModalbuy(false)} />
+
+
+
+< Copyright/>
       <div className={styles.footerBottom}>
         <p>© 2024 - DUZO</p>
       </div>
