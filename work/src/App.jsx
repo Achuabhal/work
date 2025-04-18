@@ -12,8 +12,7 @@ import AboutUs from './pages/AboutUs';
 import ChefModal from "./components/popup/ChefModal";
 import WomanSalon from './pages/WomanSalon';
 import CHEF from "./pages/chefforparty";
-import CheckoutPage from './pages/checkoutPage';
-import CheckoutPages from './pages/checkoutPages';
+import Checkouts from './pages/checkoutPages';
 import SalonPopUp from './components/popup/SalonPopUp';
 import Chefformeal from "./pages/chefformeal";
 import Chefformonth from "./pages/chefformonth";
@@ -39,13 +38,12 @@ import DishwasherRepair from './pages/DishwasherRepair';
 import ApplianceModal from './components/popup/ApplianceModal';
 import MenSalon from './pages/MenSalon';
 import MenMassage from './pages/MenMassage';
-import Checkout from "./pages/checkoutPages"
 import Makeup from './pages/Makeup';
 import FourWheeler from './pages/FourWheeler';
 import TwoWheeler from './pages/TwoWheeler';
 import TwoWheelerPopUp from './components/popup/TwoWheelerPopUp';
 import Household from './pages/Household';
-import PopupBox from './components/popup/HouseholdPopUp';
+
 import HomeServices from './pages/HomeServices';
 import RentalModal from './components/popup/RentalModal';
 import BedRental from './pages/BedRental';
@@ -76,8 +74,7 @@ function App() {
         <Route path="/sample" element={<Sample/>}/>
         <Route path="/salon" element={<WomanSalon />} />
         <Route path="/chef" element={<CHEF />} />
-        <Route path="/checkout" element={<CheckoutPage />} />
-        <Route path="/checkout2" element={<CheckoutPages />} />
+        <Route path="/checkout" element={<Checkouts />} />
         <Route path="/popup" element={<SalonPopUp />} />
         <Route path="/chef-meal" element={<Chefformeal />} />
         <Route path="/chef-modal" element={<ChefModal />} />
@@ -85,7 +82,6 @@ function App() {
         <Route path="/spawomen" element={<WomenSpa/>} />
         <Route path="/hairstudio" element={<HairStudioo/>} />
         <Route path="/household" element={<Household/>}/>
-        <Route path="/householdpopup" element={<PopupBox/>}/>
         <Route path="/appliance" element={<Appliance/>} />
         <Route path="/acrepair" element={<ACRepair/>} />
         <Route path="/tvrepair" element={<TVRepair/>} />
@@ -106,7 +102,6 @@ function App() {
         <Route path="/appliance-modal" element={<ApplianceModal/>} />
         <Route path="/mensalon" element={<MenSalon/>} />
         <Route path="/menmassage" element={<MenMassage/>} />
-        <Route path="/checkout" element={<Checkout />} />
         <Route path="/makeup" element={<Makeup />} />
         <Route path='/fourwheeler' element={<FourWheeler/>}/>
         <Route path='/twowheeler' element={<TwoWheeler/>}/>   

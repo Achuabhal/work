@@ -8,10 +8,10 @@ function Navbarab() {
        <Navbar
                 style={{ backgroundColor: "#FFD29E" }}
                 expand="lg"
-                className="rounded-4 my-3 "
+                className="rounded-4 mt-0 mb-3"
               >
                 <Container>
-                  <Navbar.Brand className="mb-5">
+                  <Navbar.Brand className="mb-3">
                     <img src="/duzo.png" alt="DUZO" width="100" />
                   </Navbar.Brand>
       
