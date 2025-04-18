@@ -404,9 +404,7 @@ const HomePage = () => {
 
 
 < Copyright/>
-      <div className={styles.footerBottom}>
-        <p>© 2024 - DUZO</p>
-      </div>
+    
     </div>
   );
 };
