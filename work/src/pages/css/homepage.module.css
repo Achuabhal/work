@@ -256,8 +256,6 @@
   align-items: center;
 }
 
- 
-
 .bannerIllustration {
   flex: 1;
   display: flex;
@@ -270,10 +268,12 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
+  margin-right: 120px;
+  align-items: end;
 }
 
 .bannerHeading {
-  font-size: 28px;
+  font-size: 48px;
   font-weight: bold;
   margin: 0;
   line-height: 1.2;
@@ -604,12 +604,20 @@
   .bannerText {
     text-align: center;
     margin-top: 1rem;
+    margin-bottom: 10px;
+    margin-right: 20px;
   }
   
   .bannerHeading {
     font-size: 24px;
   }
-  
+  .slideImage{
+    height: 100px;
+  }
+  .slideImageWrapper{
+    height: fit-content;
+  }
+
   .mostBookedGrid {
     justify-content: center;
   }
@@ -710,58 +718,5 @@
   .serviceIcon {
     width: 40px;
     height: 40px;
-  }
-}
-/* 375px Devices */
-@media (max-width: 375px) {
-  .servicesGrid {
-    max-width: 375px;
-    gap: 8px;
-    padding: 0 8px;
-  }
-  
-  .serviceTitle {
-    font-size: 0.68rem;
-    padding: 0 2px;
-    padding-bottom: 10px;
-  }
-  
-  .labelContainer {
-    padding: 6px 2px;
-  }
-  
-  .serviceImage {
-    max-width: 85%;
-    max-height: 85%;
-  }
-}
-
-/* 320px Devices */
-@media (max-width: 320px) {
-  .servicesGrid {
-    max-width: 320px;
-    gap: 6px;
-    padding: 0 6px;
-  }
-  
-  .serviceTitle {
-    font-size: 0.62rem;
-    line-clamp: 2;
-    padding-bottom: 10px;
-  }
-  
-  .imageContainer {
-    height: 65%;
-    padding: 3px;
-  }
-  
-  .labelContainer {
-    height: 35%;
-    padding: 4px 1px;
-  }
-  
-  .sectionTitle {
-    font-size: 1.3rem;
-    margin-bottom: 0.8rem;
   }
 }
