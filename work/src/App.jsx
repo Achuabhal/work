@@ -47,6 +47,8 @@ import TwoWheelerPopUp from './components/popup/TwoWheelerPopUp';
 import Household from './pages/Household';
 import PopupBox from './components/popup/HouseholdPopUp';
 import HomeServices from './pages/HomeServices';
+import RentalModal from './components/popup/RentalModal';
+import BedRental from './pages/BedRental';
 
 
 // ModalContent Component to wrap any component inside a Modal
@@ -111,8 +113,8 @@ function App() {
         <Route path='/twowheelerpopup' element={<TwoWheelerPopUp/>}/> 
         <Route path='/homeservices' element={<HomeServices/>}/>
         {/* Add more routes as needed */}
-
-
+        <Route path='/rentalmodal' element={<RentalModal/>}/>
+        <Route path='/bedrental' element={<BedRental/>}/>
       </Routes>
     </BrowserRouter>
   );
