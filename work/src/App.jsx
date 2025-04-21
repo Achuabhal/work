@@ -47,16 +47,14 @@ import Household from './pages/Household';
 import HomeServices from './pages/HomeServices';
 import RentalModal from './components/popup/RentalModal';
 import BedRental from './pages/BedRental';
-<<<<<<< HEAD
 import ComingSoonModal from './components/popup/ComingSoonModal';
-=======
 import Dashboard from './pages/Dashboard';
 import PartnerManagement from './pages/PartnerManagement';
 import ServiceManagement from './pages/ServiceManagement';
 import OrderManagement from './pages/OrderManagement';
 import CustomerSupport from './pages/CustomerSupport';
 import Analytics from './pages/Analytics';
->>>>>>> 21888ad94e24fa37d78e90046c16ac26363dc6cd
+
 
 
 // ModalContent Component to wrap any component inside a Modal
@@ -120,9 +118,7 @@ function App() {
         {/* Add more routes as needed */}
         <Route path='/rentalmodal' element={<RentalModal/>}/>
         <Route path='/bedrental' element={<BedRental/>}/>
-<<<<<<< HEAD
         <Route path='/comingsoon' element={<ComingSoonModal/>}/>
-=======
         <Route path='/dashboard' element={<Dashboard/>}/>
         <Route path='/partner' element={<PartnerManagement/>}/>
         <Route path='/service' element={<ServiceManagement/>}/>
@@ -130,7 +126,7 @@ function App() {
         <Route path='/CustomerSupport' element={<CustomerSupport/>}/>
         <Route path='/analytics' element={<Analytics/>}/>
 
->>>>>>> 21888ad94e24fa37d78e90046c16ac26363dc6cd
+
       </Routes>
     </BrowserRouter>
   );
