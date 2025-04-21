@@ -36,28 +36,30 @@ const HomeServices = () => {
   };
 
   return (
-    <div className="me-2 ms-2 ps-2 pe-2 w-98">
-      {/* Navbar */}
+    <div className="container-fluid px-2 px-md-3 px-lg-4">
+      {/* Navbar - Improved responsiveness */}
       <Navbar
         style={{ backgroundColor: "#FFD29E" }}
         expand="lg"
-        className="rounded-4 mt-3 mb-3"
+        className="rounded-4 my-3"
       >
-        <Container>
-          <Navbar.Brand className="mb-5">
-            <img src="/duzo.png" alt="DUZO" width="100" />
+        <Container fluid>
+          <Navbar.Brand className="py-2">
+            <img 
+              src="/duzo.png" 
+              alt="DUZO" 
+              className="img-fluid"
+              style={{ maxWidth: "100px", height: "auto" }} 
+            />
           </Navbar.Brand>
 
-          <Navbar.Toggle aria-controls="basic-navbar-nav" className="mb-5" />
+          <Navbar.Toggle aria-controls="basic-navbar-nav" />
 
           <Navbar.Collapse id="basic-navbar-nav">
             <div className="d-flex flex-column w-100">
               <div className="d-flex w-100 align-items-center justify-content-between gap-3 flex-wrap">
-                <div className="flex-grow-1">
-                  <Form
-                    className="w-100"
-                    style={{ minWidth: "200px", maxWidth: "400px" }}
-                  >
+                <div className="flex-grow-1 my-2 my-lg-0">
+                  <Form className="w-100">
                     <Form.Group className="input-group">
                       <div
                         className="d-flex align-items-center w-100 rounded-pill px-2"
@@ -84,7 +86,7 @@ const HomeServices = () => {
                   </Form>
                 </div>
 
-                <div style={{ minWidth: "150px", maxWidth: "200px" }}>
+                <div className="my-2 my-lg-0" style={{ minWidth: "150px", maxWidth: "200px" }}>
                   <Form className="w-100">
                     <Form.Group className="input-group">
                       <div
@@ -111,7 +113,7 @@ const HomeServices = () => {
                   </Form>
                 </div>
 
-                <div className="d-flex align-items-center gap-2">
+                <div className="d-flex align-items-center gap-2 my-2 my-lg-0">
                   <img src="/cart.png" width="26" height="26" alt="Cart" />
                   <img src="/user.png" width="26" height="26" alt="Profile" />
                 </div>
@@ -124,51 +126,41 @@ const HomeServices = () => {
       {/* Added HomeServicesBanner */}
       <HomeServicesBanner />
 
-      {/* Main Section */}
-      <Container fluid className="p-3 p-md-4 rounded-4 mt-3 mb-4 shadow position-relative" style={{ backgroundColor: "#ffbc7f" }}>
-        {/* Custom Header with specific dimensions */}
-        <div className="position-relative" style={{ marginBottom: "60px" }}>
-          <div 
-            style={{ 
-              width: "504px", 
-              height: "120px",
-              position: "relative",
-              marginLeft: "20px"
-            }}
-          >
-            <h2 className="fw-bold position-absolute" style={{ left: "0", top: "0" }}>
-              Electrician Plumber
-            </h2>
-            <h2 className="fw-bold position-absolute" style={{ left: "0", top: "50px" }}>
-              And Carpenter
-            </h2>
+      {/* Main Section - Improved responsiveness */}
+      <Container fluid className="p-3 p-md-4 rounded-4 my-3 shadow position-relative" style={{ backgroundColor: "#ffbc7f" }}>
+        {/* Custom Header with responsive dimensions */}
+        <div className="position-relative mb-4 mb-md-5">
+          <div className="px-2 px-md-4">
+            <h2 className="fw-bold text-center text-md-start">Electrician Plumber</h2>
+            <h2 className="fw-bold text-center text-md-start">And Carpenter</h2>
           </div>
         </div>
 
-        <Row className="mt-5 pt-4">
+        <Row className="mt-3 mt-md-5 pt-2 pt-md-4">
           <Col xs={12}>
             <h4 className="fw-bold mb-4 text-center">Choose your Service</h4>
           </Col>
         </Row>
 
-        {/* Service Images in Row - REDUCED SIZE AND MADE CONSISTENT */}
+        {/* Service Images in Row - Responsive grid */}
         <Row className="justify-content-center g-4">
           {[
             { image: "/electrician.png", title: "Electrician" },
             { image: "/plumber.png", title: "Plumber" },
             { image: "/carpenter.png", title: "Carpenter" },
           ].map((service, index) => (
-            <Col key={index} xs={12} sm={6} md={4} className="d-flex justify-content-center">
+            <Col key={index} xs={6} sm={6} md={4} className="d-flex justify-content-center">
               <div 
                 className="text-center" 
                 style={{ cursor: 'pointer' }}
                 onClick={() => handleServiceClick(service.title)}
               >
                 <div 
-                  className="rounded-4 overflow-hidden mb-3" 
+                  className="rounded-4 overflow-hidden mb-3 mx-auto" 
                   style={{ 
-                    width: '140px',  // REDUCED from 160px
-                    height: '140px', // REDUCED from 160px
+                    width: '120px',
+                    height: '120px',
+                    maxWidth: '100%',
                     border: selectedService === service.title ? '3px solid #D28E26' : 'none',
                     boxShadow: '0 4px 8px rgba(0,0,0,0.1)'
                   }}
@@ -195,15 +187,16 @@ const HomeServices = () => {
           ))}
         </Row>
 
-        {/* Image Section - REDUCED SIZE */}
-        <Row className="mt-5">
+        {/* Image Section - Responsive */}
+        <Row className="mt-4 mt-md-5">
           <Col xs={12} className="text-center">
             <img 
               src="/handyman.png" 
               alt="Home Services" 
               style={{ 
-                maxHeight: '200px', // REDUCED from 240px
-                width: 'auto'
+                maxHeight: '180px',
+                maxWidth: '100%',
+                height: 'auto'
               }}
               className="img-fluid mx-auto d-block"
               onError={(e) => {
@@ -230,14 +223,14 @@ const HomeServices = () => {
         )}
       </Container>
 
-      {/* Footer */}
+      {/* Footer - Improved responsiveness */}
       <Container
         fluid
-        className="p-4 rounded-4 mt-1 text-center"
+        className="p-3 p-md-4 rounded-4 mt-1 text-center"
         style={{ backgroundColor: "#FFD29E" }}
       >
-        <Row>
-          <Col md={4}>
+        <Row className="gy-4">
+          <Col xs={12} md={4} className="text-center text-md-start">
             <img src="/duzo.png" alt="DUZO" width="100" className="mb-2" />
             <p>
               <svg
@@ -263,7 +256,7 @@ const HomeServices = () => {
               </svg>{" "}
               E-mail address
             </p>
-            <div className="d-flex justify-content-center gap-3">
+            <div className="d-flex justify-content-center justify-content-md-start gap-3">
               <FaInstagram size={24} color="black" />
               <FaFacebook size={24} color="black" />
               <img
@@ -275,7 +268,7 @@ const HomeServices = () => {
             </div>
           </Col>
 
-          <Col md={4}>
+          <Col xs={12} md={4}>
             <h3>Services Available At</h3>
             <h3>Bengaluru</h3>
             <button
@@ -286,7 +279,7 @@ const HomeServices = () => {
             </button>
           </Col>
 
-          <Col md={4}>
+          <Col xs={12} md={4} className="text-center text-md-start">
             <h3>Site Map</h3>
             <ul className="list-unstyled">
               <li>
@@ -316,8 +309,8 @@ const HomeServices = () => {
 
       {/* Copyright Section */}
       <div
-        className="mt-1 rounded-4 text-center d-flex justify-content-center align-items-center"
-        style={{ backgroundColor: "#D28E26", height: "2rem" }}
+        className="mt-1 rounded-4 text-center d-flex justify-content-center align-items-center py-2"
+        style={{ backgroundColor: "#D28E26", height: "auto", minHeight: "2rem" }}
       >
         <div>
           <img
@@ -327,7 +320,7 @@ const HomeServices = () => {
             height="26"
           />
         </div>
-        2024 - DUZO
+        <span className="ms-2">2024 - DUZO</span>
       </div>
 
       {/* Service Modal */}

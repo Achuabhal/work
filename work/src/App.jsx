@@ -47,6 +47,7 @@ import Household from './pages/Household';
 import HomeServices from './pages/HomeServices';
 import RentalModal from './components/popup/RentalModal';
 import BedRental from './pages/BedRental';
+import ComingSoonModal from './components/popup/ComingSoonModal';
 
 
 // ModalContent Component to wrap any component inside a Modal
@@ -110,6 +111,7 @@ function App() {
         {/* Add more routes as needed */}
         <Route path='/rentalmodal' element={<RentalModal/>}/>
         <Route path='/bedrental' element={<BedRental/>}/>
+        <Route path='/comingsoon' element={<ComingSoonModal/>}/>
       </Routes>
     </BrowserRouter>
   );

@@ -1,17 +1,30 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Modal, Form, Button, Row, Col } from 'react-bootstrap';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useLocation } from 'react-router-dom';
 
-const ApplianceModal = ({ show = true, onHide = () => window.history.back() }) => {
+const ApplianceModal = ({ show = true, onHide = () => window.history.back(), initialCategory = null }) => {
   const navigate = useNavigate();
+  const location = useLocation();
   const [showOptionsModal, setShowOptionsModal] = useState(true);
-  const [selectedCategory, setSelectedCategory] = useState(null);
+  const [selectedCategory, setSelectedCategory] = useState(initialCategory);
   const [selectedOption, setSelectedOption] = useState(null);
   const [termsAccepted, setTermsAccepted] = useState(false);
 
+  // Check if we're coming from the appliance page with a category selection
+  useEffect(() => {
+    if (location.state?.category) {
+      setSelectedCategory(location.state.category);
+      setShowOptionsModal(false);
+    } else if (initialCategory) {
+      setSelectedCategory(initialCategory);
+      setShowOptionsModal(false);
+    }
+  }, [location.state, initialCategory]);
+
   const handleCategorySelect = (category) => {
-    setSelectedCategory(category);
-    setShowOptionsModal(false);
+    // Instead of showing options, navigate directly to appliance page
+    onHide(); // Close the modal
+    navigate('/appliance', { state: { selectedCategory: category } });
   };
 
   const handleOptionSelect = (option) => {
@@ -73,10 +86,11 @@ const ApplianceModal = ({ show = true, onHide = () => window.history.back() }) =
     }
   };
 
-  // Function to handle "Back to Home" button click
+  // Function to handle "Back to Home" button click - Updated to go back instead of navigating to home
   const handleBackToHome = () => {
-    onHide(); // Close the modal
-    navigate('/'); // Navigate to home page
+    // Simply close the modal and let the onHide function handle the navigation
+    // This will use window.history.back() as defined in the default onHide prop
+    onHide();
   };
 
   const homeOptions = [
@@ -195,10 +209,10 @@ const ApplianceModal = ({ show = true, onHide = () => window.history.back() }) =
                 </div>
               </div>
               
-              {/* Back button - Updated to navigate to home */}
+              {/* Back button - Updated to go back instead of navigating to home */}
               <div className="text-center mt-4">
                 <Button variant="dark" className="px-4 rounded-pill" onClick={handleBackToHome}>
-                  Back to Home
+                  Back
                 </Button>
               </div>
             </Modal.Body>
@@ -206,7 +220,7 @@ const ApplianceModal = ({ show = true, onHide = () => window.history.back() }) =
         ) : (
           <>
             <Modal.Header closeButton className="border-0" style={{ backgroundColor: "#ffd5a4" }}>
-              <Modal.Title className="fw-bold">{selectedCategory}</Modal.Title>
+              <Modal.Title className="fw-bold">{selectedCategory} Appliance Repair</Modal.Title>
             </Modal.Header>
             <Modal.Body className="p-3 p-md-4" style={{ backgroundColor: "#ffd5a4" }}>
               <Row className="g-3">
