@@ -40,10 +40,10 @@ const CustomDropdown = ({ title, options, value, onChange, placeholder }) => {
   const displayValue = options.find(opt => opt.value === (typeof value === 'object' ? value?.method : value))?.label || placeholder;
 
   return (
-    <div className="mb-3 custom-mobile-bg" style={{ backgroundColor: '#fff', borderRadius: '10px', padding: '15px', boxShadow: '0 0 10px rgba(0, 0, 0, 0.1)' }}>
+    <div className="mb-3 custom-mobile-bg rounded-4" style={{ backgroundColor: '#fff', padding: '15px', boxShadow: '0 0 10px rgba(0, 0, 0, 0.1)' }}>
       <h5 className="mb-2">{title}</h5>
       {isEditing ? (
-        <div className="d-flex flex-column ">
+        <div className="d-flex align-items-center flex-column ">
           {options.map((option) => (
             <input
               key={option.value}
@@ -54,7 +54,7 @@ const CustomDropdown = ({ title, options, value, onChange, placeholder }) => {
               onChange={(e) => setInputValues(prev => ({ ...prev, [option.value]: e.target.value }))}
             />
           ))}
-          <button className="btn btn-primary" onClick={handleSave}>
+          <button className=" col-3 btn btn-outline-secondary bg-dark text-light rounded-pill" onClick={handleSave}>
             Save
           </button>
         </div>
@@ -83,8 +83,8 @@ const CustomDropdown = ({ title, options, value, onChange, placeholder }) => {
                 cursor: 'pointer', 
                 padding: '8px 10px',
                 backgroundColor: '#f8f9fa',
-                marginBottom: '2px',
-                borderRadius: '4px'
+                marginBottom: '5px',
+                borderRadius: '20px'
               }}
             >
               {option.label}
@@ -129,7 +129,7 @@ const Checkouts = () => {
   return (
     <div className="bg-light" style={{ fontFamily: 'Outfit'}}>
       {/* Header */}
-      <div className="d-flex align-items-center justify-content-between px-3 py-2 rounded-3" style={{ backgroundColor: '#ffd5a4' }}>
+      <div className="mt-2 ms-2 me-2 d-flex align-items-center justify-content-between px-3 py-2 rounded-4" style={{ backgroundColor: '#ffd5a4' }}>
         <div className="d-flex mt-2 align-items-center">
           <img src="/duzo.png" alt="DUZO Logo" style={{ height: '40px' }} className="img-fluid" />
           <h5 className="mb-0 ms-2">CHECKOUT</h5>
@@ -137,11 +137,11 @@ const Checkouts = () => {
         <img src="/user.png" alt="user icon" className="img-fluid" style={{ width: '25px' }} />
       </div>
       
-      <div className="container-fluid mt-2 mb-4 p-3 rounded-4" style={{ backgroundColor: '#FFC998', fontFamily: 'fit', fontWeight: 'bold' }}>
-        <div className="row gy-4">
+      <div className=" mx-2 mt-2 mb-4 p-3 pe-0 rounded-4" style={{ backgroundColor: '#FFC998', fontFamily: 'fit', fontWeight: 'bold' }}>
+        <div className="container-fluid row pe-0 me-0">
           {/* Left Column */}
-          <div className="col-12 mt-4 col-md-5 px-0 px-md-4 ">
-            <div className="p-md-3 rounded shadow-sm mb-3 ">
+          <div className="col-12 mt-4 col-md-6 col-lg-5 px-0 px-lg-4 pe-md-4 ">
+            <div className="p-md-3 rounded-4 shadow-sm mb-3 ">
               <CustomDropdown
                 title=" "
                 options={contactOptions}
@@ -165,7 +165,7 @@ const Checkouts = () => {
               />
 
               {/* Payment Method Section */}
-              <div className="mb-3 custom-mobile-bg" style={{ backgroundColor: '#fff', borderRadius: '10px', padding: '15px', boxShadow: '0 0 10px rgba(0, 0, 0, 0.1)' }}>
+              <div className="mb-3 rounded-4 custom-mobile-bg" style={{ backgroundColor: '#fff', borderRadius: '10px', padding: '15px', boxShadow: '0 0 10px rgba(0, 0, 0, 0.1)' }}>
                 <div className="d-flex justify-content-between align-items-center mb-3">
                   <h5 className="mb-0">Payment Method</h5>
                   <button 
@@ -182,7 +182,7 @@ const Checkouts = () => {
                 {showPaymentSection && (
                   <div>
                     {/* UPI Section */}
-                    <div className="mb-3 p-3 rounded-3" style={{ backgroundColor: '#FFC998' }}>
+                    <div className="mb-3 p-3 rounded-5" style={{ backgroundColor: '#FFC998' }}>
                       <div className="form-check">
                         <input 
                           className="form-check-input" 
@@ -228,8 +228,8 @@ const Checkouts = () => {
                     </div>
 
                     {/* Card Section */}
-                    <div className="mb-3 ps-1 p-3 rounded-3" style={{ backgroundColor: '#FFC998' }}>
-                      <div className="form-check">
+                    <div className="mb-3 ps-1 p-3 rounded-5" style={{ backgroundColor: '#FFC998' }}>
+                      <div className="form-check ps-md-5">
                         <input 
                           className="form-check-input" 
                           type="radio" 
@@ -296,7 +296,7 @@ const Checkouts = () => {
                     </div>
 
                     {/* Net Banking Section */}
-                    <div className="mb-3 p-3 rounded-3" style={{ backgroundColor: '#FFC998' }}>
+                    <div className="mb-3 p-3 rounded-5" style={{ backgroundColor: '#FFC998' }}>
                       <div className="form-check">
                         <input 
                           className="form-check-input" 
@@ -324,7 +324,7 @@ const Checkouts = () => {
                     </div>
 
                     {/* COD Section */}
-                    <div className="p-3 rounded-3" style={{ backgroundColor: '#FFC998' }}>
+                    <div className="p-3 rounded-5" style={{ backgroundColor: '#FFC998' }}>
                       <div className="form-check">
                         <input 
                           className="form-check-input" 
@@ -343,16 +343,16 @@ const Checkouts = () => {
                 )}
               </div>
 
-              <div className="d-flex flex-column align-items-start">
+              <div className="ps-4 d-flex flex-column align-items-start">
                 <button className="mt-4 btn btn btn-dark rounded-pill col-sm-10 col-md-8 col-lg-6 mb-2">Cancellation Policy</button>
-                <a href="#" className="text-decoration-none text-black mt-1">Learn More</a>
+                <a href="#" className="text-decoration-none text-black mb-2 mt-1">Learn More</a>
               </div>
             </div>
           </div>
 
           {/* Right Side Columns */}
-          <div className="col-12 mt-5 col-md-7 px-5 d-flex flex-column align-items-lg-end">
-            <div className="p-3 bg-white rounded shadow-sm mb-3 col-12 col-lg-6 npm custom-mobile-bg">
+          <div className="col-12 mt-5 ms-lg-5 col-md-6 px-2 d-flex flex-column align-items-lg-end">
+            <div className="p-3 bg-white rounded-5 shadow-sm mb-3 col-12 ms-md-4 col-md-10 col-lg-7 npm custom-mobile-bg">
               <center><h4 className="fw-bold">Details</h4></center> 
               <div className="d-flex justify-content-between mb-2">
                 <div>Date</div>
@@ -372,9 +372,9 @@ const Checkouts = () => {
               </div>
             </div>
 
-            <div className="p-3 rounded shadow-sm mb-3 col-12 col-lg-6">
+            <div className="p-3 rounded-4 shadow-sm mb-3 ms-md-4 col-12 col-md-10 col-lg-7">
               <center><h4 className="fw-bold">BILL SUMMARY</h4></center>   
-              <div className="p-3 bg-white rounded shadow-sm mb-3 col-12 col-lg-12 custom-mobile-bg">
+              <div className="p-3 bg-white rounded-5 shadow-sm mb-3 col-12 col-lg-12 custom-mobile-bg">
                 <div className="border-0 p-2 mb-2">
                   <div>Total Amount</div>
                   <div>Token Amount</div>

@@ -211,8 +211,8 @@ const HomePage = () => {
             { name: "AC and appliances repair", action: () => setShowApplianceModal(true), image: "/acRepair.png" },
             { name: "Beauty and Salon", action: () => setShowModal(true), image: "/beautySalon.png" },
             { name: "Electrician, Plumber and Carpenter", action: () => navigate("/homeservices"), image: "/electrician_Plumber_carpenter.png" },
-            { name: "Automobile cleaning", path: "/automobile", image: "/carCleaning.png" },
-            { name: "Buy appliances", path: "/buy-appliances", image: "/electricalAppliances.png" },
+            { name: "Automobile cleaning", action: () => setShowModalAuto(true), image: "/carCleaning.png" },
+            { name: "Buy appliances", action: () => setShowModalbuy(true), image: "/electricalAppliances.png" },
             { name: "Rent appliances", path: "/rent-appliances", image: "/rentAppliance.png" },
             { name: "Sell appliances", path: "/sell-appliances", image: "/sellAppliance.png" }
           ].map((service, index) => (
