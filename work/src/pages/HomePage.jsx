@@ -16,7 +16,7 @@ import Footer from "../components/Footer";
 import Copyright from "../components/Copyright";
 import AutoMobilePopUp from '../components/popup/AutoMobilePopUp';
 import BuyAppliances from '../components/popup/BuyAppliances';
-
+import ComingSoonModal from "../components/popup/ComingSoonModal";
 
 import { useNavigate } from 'react-router-dom';
 const HomePage = () => {
@@ -24,6 +24,8 @@ const HomePage = () => {
   const [isMobile, setIsMobile] = useState(false);
   const [showChefModal, setShowChefModal] = useState(false);
   const [showApplianceModal, setShowApplianceModal] = useState(false);
+  const [showComingSoonModal, setShowComingSoonModal] = useState(false);
+
   const navigate = useNavigate();
   const slides = [chef, service, cleaning];
   let autoPlayId;
@@ -43,6 +45,8 @@ const HomePage = () => {
     // Start autoplay for carousel
     autoPlay();
 
+
+    
     // Cleanup
     return () => {
       clearInterval(autoPlayId);
@@ -65,7 +69,7 @@ const HomePage = () => {
   const [showModal, setShowModal] = useState(false);
   const [showModalAuto, setShowModalAuto] = useState(false);
   const [showModalbuy, setShowModalbuy] = useState(false);
-
+  
 
 
 
@@ -123,7 +127,7 @@ const HomePage = () => {
             { name: "Electrician, Plumber and Carpenter", action: () => navigate("/homeservices"), image: "/electrician_Plumber_carpenter.png" },
             { name: "Automobile cleaning", action: () => setShowModalAuto(true), image: "/carCleaning.png" },
             { name: "Buy appliances", action: () => setShowModalbuy(true), image: "/electricalAppliances.png" },
-            { name: "Rent appliances", path: "/rent-appliances", image: "/rentAppliance.png" },
+            { name: "Rent appliances",  action: () => setShowComingSoonModal(true), image: "/rentAppliance.png" },
             { name: "Sell appliances", path: "/sell-appliances", image: "/sellAppliance.png" }
           ].map((service, index) => (
             <div key={index} className="col">
@@ -275,7 +279,7 @@ const HomePage = () => {
 <ApplianceModal show={showApplianceModal} onHide={() => setShowApplianceModal(false)} />
 <AutoMobilePopUp show={showModalAuto} onHide={() => setShowModalAuto(false)} />
 <BuyAppliances show={showModalbuy} onHide={() => setShowModalbuy(false)} />
-
+<ComingSoonModal show={showComingSoonModal} onHide={() => setShowComingSoonModal(false)} />
 
        <div className="mt-0 mx-2 pt-0"> 
                   <Footer />
