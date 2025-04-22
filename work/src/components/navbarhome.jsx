@@ -1,11 +1,29 @@
-import React from 'react'
+import React, { useState } from 'react';
 import { Container, Form, Navbar, Nav } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { Link } from "react-router-dom";
+import SalonPopUp from "../components/popup/SalonPopUp"; 
+import AutoMobilePopUp from '../components/popup/AutoMobilePopUp';
 
 function Navbarab() {
+  // State for controlling popup visibility
+  const [showSalonModal, setShowSalonModal] = useState(false);
+  const [showAutoModal, setShowAutoModal] = useState(false);
+
   return (
     <div>
+      {/* Salon Popup */}
+      <SalonPopUp 
+        show={showSalonModal} 
+        onHide={() => setShowSalonModal(false)} 
+      />
+      
+      {/* Automobile Popup */}
+      <AutoMobilePopUp 
+        show={showAutoModal} 
+        onHide={() => setShowAutoModal(false)} 
+      />
+
       <Navbar
         style={{ backgroundColor: "#FFD29E" }}
         expand="lg"
@@ -95,26 +113,36 @@ function Navbarab() {
                   <img src="/user.png" width="26" height="26" alt="Profile" />
                 </div>
               </div>
-               {/* User icon - visible only on mobile */}
-          <div className="mt-2 d-lg-none ms-2">
-            <img src="/user.png" width="26" height="26" alt="Profile" />
-          </div>
+              
+              {/* User icon - visible only on mobile */}
+              <div className="mt-2 d-lg-none ms-2">
+                <img src="/user.png" width="26" height="26" alt="Profile" />
+              </div>
+              
               <div className="w-100 d-flex justify-content-start mt-2 px-3">
                 <Nav className="d-flex gap-3 flex-wrap">
-                  <Nav.Link as={Link} to="/household">Homes</Nav.Link>
-                  <Nav.Link onClick={() => setShowModal(true)} style={{ cursor: 'pointer' }}>Beauty</Nav.Link>
-                  <Nav.Link onClick={() => setShowModalAuto(true)} style={{ cursor: 'pointer' }}>Automobile</Nav.Link>
+                  <Nav.Link as={Link} to="/home">Homes</Nav.Link>
+                  <Nav.Link 
+                    onClick={() => setShowSalonModal(true)} 
+                    style={{ cursor: 'pointer' }}
+                  >
+                    Beauty
+                  </Nav.Link>
+                  <Nav.Link 
+                    onClick={() => setShowAutoModal(true)} 
+                    style={{ cursor: 'pointer' }}
+                  >
+                    Automobile
+                  </Nav.Link>
                   <Nav.Link href="#">Buy/Rent</Nav.Link>
                 </Nav>
               </div>
             </div>
           </Navbar.Collapse>
-
-         
         </Container>
       </Navbar>
     </div>
   )
 }
 
-export default Navbarab
+export default Navbarab;
