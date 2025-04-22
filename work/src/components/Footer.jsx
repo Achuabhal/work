@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom';
 import { Container, Row, Col, } from "react-bootstrap";
 import {
   FaInstagram,
@@ -77,26 +78,28 @@ function Footer() {
 
             <Col md={4}>
               <h3>Site Map</h3>
+              
+
               <ul className="list-unstyled">
                 <li>
-                  <a href="#" className="text-decoration-none">
+                  <Link to="/home" className="text-decoration-none">
                     Services
-                  </a>
+                  </Link>
                 </li>
                 <li>
-                  <a href="#" className="text-decoration-none">
+                  <Link to="/hiring" className="text-decoration-none">
                     Hiring
-                  </a>
+                  </Link>
                 </li>
                 <li>
-                  <a href="#" className="text-decoration-none">
+                  <Link to="/about" className="text-decoration-none">
                     About Us
-                  </a>
+                  </Link>
                 </li>
                 <li>
-                  <a href="#" className="text-decoration-none">
+                  <Link to="/contact" className="text-decoration-none">
                     Contact Us
-                  </a>
+                  </Link>
                 </li>
               </ul>
             </Col>

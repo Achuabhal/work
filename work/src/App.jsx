@@ -72,8 +72,8 @@ function App() {
       <Routes>
         <Route path="/" element={<LoginPage />} />
         <Route path="/home" element={<HomePage />} />
-        <Route path="/c" element={<CONTACT />} />
-        <Route path="/d" element={<ACCOUNT />} />
+        <Route path="/contact" element={<CONTACT />} />
+        <Route path="/account" element={<ACCOUNT />} />
         <Route path="/abdul" element={<ABDUL />} />
         <Route path="/oops" element={<Oops />} />
         <Route path="/about" element={<AboutUs />} />

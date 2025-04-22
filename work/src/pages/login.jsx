@@ -1,6 +1,8 @@
 import React, { useRef, useState } from 'react';
 import { Container, Form, Button, Row, Col } from 'react-bootstrap';
 import { X } from 'react-bootstrap-icons';
+import { Link } from "react-router-dom";
+
 
 const LoginPage = () => {
   const [otp, setOtp] = useState(['', '', '', '']);
@@ -104,12 +106,18 @@ const LoginPage = () => {
           {/* Login Button - Centered */}
           <Row className="justify-content-center">
             <Col xs={6} sm={6}>
+            <Link to="/home">
+                      
+                    
+                         
+                      
               <Button 
                 variant="dark" 
                 className="w-100 rounded-pill py-2 fw-bold"
               >
                 Login
               </Button>
+              </Link>
             </Col>
           </Row>
         </Form>
