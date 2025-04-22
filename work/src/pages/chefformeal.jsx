@@ -114,7 +114,7 @@ const CookForOneMeal = () => {
       <Navbar
         style={{ backgroundColor: "#FFD29E" }}
         expand="lg"
-        className="rounded-4 mt-3 mb-3"
+        className="rounded-4 mt-2 mb-2"
       >
         <Container>
           <Navbar.Brand className="mb-5">
@@ -195,7 +195,7 @@ const CookForOneMeal = () => {
       </Navbar>
 
       {/* Main Section */}
-      <Container fluid className="p-3 p-md-4 rounded-4 mt-3 mb-4 text-center shadow" style={{ backgroundColor: "#ffbc7f" }}>
+      <Container fluid className="p-3 p-md-4 rounded-4 mt-2 mb-2 text-center shadow" style={{ backgroundColor: "#ffbc7f" }}>
         <h2 className="fw-bold">Cook For One Meal</h2>
         <p className="text-end fw-bold">Menu</p>
 
@@ -402,7 +402,7 @@ const CookForOneMeal = () => {
                             borderLeft: 'none',
                             background: 'white',
                             color: 'black',
-                            height: "35px",
+                                                        height: "35px",
                             border: "1px solid #ced4da"
                           }}
                           onClick={() => handleMealChange("starters", formData.starters + 1)}
@@ -437,7 +437,7 @@ const CookForOneMeal = () => {
                         <Form.Control 
                           className="text-center" 
                           value={formData.mainCourse} 
-                                                    readOnly 
+                          readOnly 
                           style={{
                             fontSize: "0.9rem", 
                             borderRadius: '0', 
@@ -596,7 +596,7 @@ const CookForOneMeal = () => {
       {/* Footer */}
       <Container
         fluid
-        className="p-4 rounded-4 mt-1 text-center"
+        className="p-4 rounded-4 mt-2 text-center"
         style={{ backgroundColor: "#FFD29E" }}
       >
         <Row>
@@ -685,7 +685,7 @@ const CookForOneMeal = () => {
 
       {/* Copyright Section */}
       <div
-        className="mt-1 rounded-4 text-center d-flex justify-content-center align-items-center"
+        className="mt-2 rounded-4 text-center d-flex justify-content-center align-items-center"
         style={{ backgroundColor: "#D28E26", height: "2rem" }}
       >
         <div>
@@ -703,3 +703,4 @@ const CookForOneMeal = () => {
 };
 
 export default CookForOneMeal;
+
