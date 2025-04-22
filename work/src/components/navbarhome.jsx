@@ -39,8 +39,9 @@ function Navbarab() {
           {/* This div will contain both toggle and cart icon for mobile */}
           <div className="d-flex align-items-center">
             {/* Cart icon - visible only on mobile */}
-            <div className="d-lg-none me-3">
+            <div className="d-lg-none d-flex gap-2 me-3">
               <img src="/cart.png" width="26" height="26" alt="Cart" />
+              <img src="/user.png" width="26" height="26" alt="Profile" />
             </div>
             {/* Navbar toggle */}
             <Navbar.Toggle aria-controls="basic-navbar-nav" />
@@ -114,10 +115,6 @@ function Navbarab() {
                 </div>
               </div>
               
-              {/* User icon - visible only on mobile */}
-              <div className="mt-2 d-lg-none ms-2">
-                <img src="/user.png" width="26" height="26" alt="Profile" />
-              </div>
               
               <div className="w-100 d-flex justify-content-start mt-2 px-3">
                 <Nav className="d-flex gap-3 flex-wrap">

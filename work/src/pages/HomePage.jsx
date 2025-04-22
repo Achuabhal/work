@@ -98,8 +98,7 @@ const HomePage = () => {
             <ChevronRight size={24} />
           </button>
         )}
-    </div>
-      <div className={styles.carouselDots}>
+        <div className={styles.carouselDots}>
           {slides.map((_, index) => (
             <span 
               key={index} 
@@ -108,6 +107,8 @@ const HomePage = () => {
             ></span>
           ))}
         </div>
+    </div>
+      
 
       {/* Services Section */}
  
