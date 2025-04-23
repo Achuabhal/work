@@ -61,7 +61,7 @@ const PartnerNotifications = () => {
               <Card className="mb-2" style={{ borderRadius: '10px' }} key={idx}>
                 <Card.Body className="d-flex justify-content-between align-items-center">
                   <div>
-                    <strong>From customer name</strong> &nbsp; <strong>Their query</strong>
+                    <strong>From Partner name</strong> &nbsp; <strong>Their query</strong>
                   </div>
                   <Button variant="light" style={{ backgroundColor: "#D9D9D9", borderRadius: "12px" }}>Reply</Button>
                 </Card.Body>
