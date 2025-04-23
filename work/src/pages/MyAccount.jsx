@@ -6,6 +6,7 @@ import { styled } from '@mui/material/styles';
 import Box from '@mui/material/Box';
 import Rating from '@mui/material/Rating';
 import "../styles/account.css";
+import { Link } from "react-router-dom";
 
 const MyAccount = () => {
   const [activeSection, setActiveSection] = useState("personalInfo");
@@ -104,12 +105,14 @@ const MyAccount = () => {
     borderRadius: "0"  // Removed curves for box-type appearance
   }}
 >
+   <Link to="/home">         
         <img
           src="/duzo.png"
           alt="DUZO Logo"
           className="img-fluid"
           style={{ height: "50px" }}
         />
+         </Link>
 
         {/* MY ACCOUNT for medium and up */}
         <h4 className="text-dark fw-bold d-none d-md-none d-lg-block">MY ACCOUNT</h4>

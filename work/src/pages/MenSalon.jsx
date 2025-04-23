@@ -27,7 +27,7 @@ function MenSalon() {
         <Col
           md={3}
           xs={12}
-          className="p-3 border-end border-black fixed-sidebar m-0"
+          className="p-3 border-end border-black rounded-start-4 fixed-sidebar m-0"
           style={{
             backgroundColor: "#FFBC7F",
             overflowY: "auto",
@@ -51,7 +51,7 @@ function MenSalon() {
               <div
                 key={index}
                 className="text-center cursor-pointer"
-                onClick={() => scrollToSection(index)} // 👈 Scroll on click
+                onClick={() => scrollToSection(index)} //  Scroll on click
                 style={{ cursor: "pointer" }}
               >
                 <img
@@ -70,7 +70,7 @@ function MenSalon() {
         <Col
           xs={12}
           md={9}
-          className="p-2 main-content"
+          className="p-2 rounded-end-4 main-content"
           style={{
             backgroundColor: "#FFBC7F",
             overflowY: "auto",

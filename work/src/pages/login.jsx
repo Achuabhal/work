@@ -1,8 +1,34 @@
-import React from 'react';
+import React, { useRef, useState } from 'react';
 import { Container, Form, Button, Row, Col } from 'react-bootstrap';
 import { X } from 'react-bootstrap-icons';
+import { Link } from "react-router-dom";
+
 
 const LoginPage = () => {
+  const [otp, setOtp] = useState(['', '', '', '']);
+  const otpInputs = useRef([]);
+
+  const handleOtpChange = (index, value) => {
+    // Only allow digits
+    if (value && !/^\d+$/.test(value)) return;
+    
+    const newOtp = [...otp];
+    newOtp[index] = value;
+    setOtp(newOtp);
+    
+    // Move focus to next input if a digit was entered
+    if (value && index < 3) {
+      otpInputs.current[index + 1].focus();
+    }
+  };
+
+  const handleKeyDown = (index, e) => {
+    // Move focus to previous input on backspace if current input is empty
+    if (e.key === 'Backspace' && !otp[index] && index > 0) {
+      otpInputs.current[index - 1].focus();
+    }
+  };
+
   return (
     <div 
       className="d-flex justify-content-center align-items-center min-vh-100 py-3" 
@@ -63,8 +89,12 @@ const LoginPage = () => {
               {[...Array(4)].map((_, i) => (
                 <Col xs={3} sm={2} key={i} className="d-flex justify-content-center">
                   <Form.Control
+                    ref={(el) => (otpInputs.current[i] = el)}
                     type="text"
                     maxLength={1}
+                    value={otp[i]}
+                    onChange={(e) => handleOtpChange(i, e.target.value)}
+                    onKeyDown={(e) => handleKeyDown(i, e)}
                     className="rounded-pill border-0 text-center py-2 shadow-sm"
                     style={{ height: '40px' }}
                   />
@@ -76,12 +106,18 @@ const LoginPage = () => {
           {/* Login Button - Centered */}
           <Row className="justify-content-center">
             <Col xs={6} sm={6}>
+            <Link to="/home">
+                      
+                    
+                         
+                      
               <Button 
                 variant="dark" 
                 className="w-100 rounded-pill py-2 fw-bold"
               >
                 Login
               </Button>
+              </Link>
             </Col>
           </Row>
         </Form>

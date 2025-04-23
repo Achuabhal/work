@@ -1,6 +1,5 @@
 import React from 'react';
 import styles from './css/contact.module.css';
-import { FaInstagram, FaFacebook, FaTwitter, FaPhone, FaEnvelope, FaBell, FaShoppingCart, FaUser } from "react-icons/fa";
 import NavbarOne from "../components/navbarhome";
 import Copyright from "../components/Copyright";
 import Footer from "../components/Footer";

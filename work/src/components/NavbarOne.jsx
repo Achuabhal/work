@@ -1,6 +1,7 @@
 import React from 'react'
 import { Container, Form,Navbar,Nav } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
+import { Link } from "react-router-dom";
 
 function NavbarOne() {
   return (
@@ -8,9 +9,11 @@ function NavbarOne() {
        <Navbar style={{ backgroundColor: "#FFD29E" }} expand="lg" className="rounded-4 my-0 ">
   <Container >  
     
-    <Navbar.Brand >
-      <img src="/duzo.png" alt="DUZO" width="100" />
-    </Navbar.Brand>
+    <Navbar.Brand className="mb-2">
+                <Link to="/home">
+                  <img src="/duzo.png" alt="DUZO" width="100" />
+                </Link>
+              </Navbar.Brand>
 
   
     <Navbar.Toggle aria-controls="basic-navbar-nav" className="mb-5" />
