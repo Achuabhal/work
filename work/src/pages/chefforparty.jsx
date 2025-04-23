@@ -90,7 +90,7 @@ const ChefForParty = () => {
   };
 
   return (
-    <div className="me-2 ms-2 ps-2 pe-2 w-98">
+    <div className="mx-1 px-1">
       {/* Main Content */}
       {showMainContent && (
         <>
@@ -382,9 +382,9 @@ const ChefForParty = () => {
                             </Button>
                             <Form.Control 
                               className="text-center" 
-                                                          value={formData.desserts}
+                              value={formData.desserts}
                               readOnly
-                              style={{
+                                                           style={{
                                 fontSize: "0.9rem", 
                                 borderRadius: '0', 
                                 borderLeft: 'none', 
@@ -598,4 +598,3 @@ const ChefForParty = () => {
 };
 
 export default ChefForParty;
-

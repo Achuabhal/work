@@ -57,6 +57,7 @@ import Analytics from './pages/Analytics';
 import PartnerLocation from './pages/PartnerLocation';
 import PartnerPayments from './pages/PartnerPayments';
 import PartnerNotifications from './pages/PartnerNotifications';
+import Faq from './pages/Faq';
 
 
 
@@ -131,7 +132,7 @@ function App() {
         <Route path='/partnerLocation' element={<PartnerLocation/>}/>
         <Route path='/partnerpayment' element={<PartnerPayments/>}/>
         <Route path='/partnernotifications' element={<PartnerNotifications/>}/>
-
+        <Route path='/faq' element={<Faq/>}/> 
 
 
       </Routes>

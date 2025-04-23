@@ -110,12 +110,14 @@ const Appliance = () => {
   ];
 
   return (
-    <div className="me-2 ms-2 ps-2 pe-2 w-98">
+    <div className="mx-1 px-1">
       {/* Navbar */}
       <NavbarOne />
       
-      {/* Banner */}
-      <Banner />
+      {/* Banner with mt-2 and mb-2 margins */}
+      <div className="mt-2 mb-2">
+        <Banner />
+      </div>
       
       {/* Main Content */}
       <Container fluid className="p-3 p-md-4 rounded-4 mt-2 mb-2 shadow" style={{ backgroundColor: "#ffbc7f" }}>

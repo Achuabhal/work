@@ -89,7 +89,7 @@ const ChefForMonth = () => {
   };
 
   return (
-    <div className="me-2 ms-2 ps-2 pe-2 w-98">
+    <div className="mx-1 px-1">
       {/* Navbar */}
       <Navbar
         style={{ backgroundColor: "#FFD29E" }}
@@ -392,10 +392,10 @@ const ChefForMonth = () => {
                             borderRight: 'none',
                             background: 'white',
                             color: 'black',
-                                                     height: "35px",
+                            height: "35px",
                             border: "1px solid #ced4da"
                           }}
-                          onClick={() => handleMealChange("desserts", formData.desserts - 1)}
+                                                  onClick={() => handleMealChange("desserts", formData.desserts - 1)}
                         >
                           -
                         </Button>
@@ -614,4 +614,3 @@ const ChefForMonth = () => {
 };
 
 export default ChefForMonth;
-
