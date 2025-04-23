@@ -1,6 +1,7 @@
 import React from 'react';
 import { Container, Row, Col, Card, ListGroup } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import { Link } from 'react-router-dom';
 
 const Dashboard = () => {
   return (
@@ -18,11 +19,11 @@ const Dashboard = () => {
         </div>
         <ListGroup variant="flush" className='m-2'>
           <ListGroup.Item>Dashboard</ListGroup.Item>
-          <ListGroup.Item>Partner Management</ListGroup.Item>
-          <ListGroup.Item>Service Management</ListGroup.Item>
-          <ListGroup.Item>Order Management</ListGroup.Item>
-          <ListGroup.Item>Customer Support</ListGroup.Item>
-          <ListGroup.Item>Analytics and Insights</ListGroup.Item>
+          <Link style={{textDecoration:"none"}} to={"/partner"}><ListGroup.Item>Partner Management</ListGroup.Item></Link>
+          <Link style={{textDecoration:"none"}} to={"/service"}><ListGroup.Item>Service Management</ListGroup.Item></Link>
+          <Link style={{textDecoration:"none"}} to={"/order"}><ListGroup.Item>Order Management</ListGroup.Item></Link>
+          <Link style={{textDecoration:"none"}} to={"/CustomerSupport"}><ListGroup.Item>Customer Support</ListGroup.Item></Link>
+          <Link style={{textDecoration:"none"}} to={"/analytics"}><ListGroup.Item>Analytics and Insights</ListGroup.Item></Link>
         </ListGroup>
       </div>
 
