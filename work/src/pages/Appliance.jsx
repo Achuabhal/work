@@ -110,209 +110,222 @@ const Appliance = () => {
   ];
 
   return (
-    <div className="d-flex flex-column p-2 m-2" style={{ minHeight: "100vh" }}>
-      {/* Header Components */}
+    <div className="me-2 ms-2 ps-2 pe-2 w-98">
+      {/* Navbar */}
       <NavbarOne />
-      <div className=""><Banner /></div>
+      
+      {/* Banner */}
+      <Banner />
       
       {/* Main Content */}
-      <div className="flex-grow-1">
-        <Container fluid className="d-flex flex-column p-0 m-0">
-          <Row className="gx-0 d-flex flex-column flex-md-row flex-grow-1 main-wrapper h-100 p-0 m-0">
-            {/* Left Sidebar */}
-            <Col
-              md={3}
-              xs={12}
-              className="p-3 border-end border-black fixed-sidebar m-0"
-              style={{
-                backgroundColor: "#ffbc7f",
-                overflowY: "auto",
-                maxHeight: "100vh",
-              }}
-            >
-              <h4 className="fw-bold text-center">Appliances Repair</h4>
-              <p className="text-center">Select your service</p>
-              <div className="d-flex flex-wrap justify-content-center gap-5">
-                {[
-                  { image: "/kitchen-table.png", title: "Kitchen " },
-                  { image: "/living-room.png", title: "Home " },
-                  
-                ].map((service, index) => (
-                  <div
-                    key={index}
-                    className="text-center cursor-pointer"
-                    onClick={() => scrollToSection(index)}
-                    style={{ cursor: "pointer" }}
-                  >
-                    <img
-                      src={service.image}
-                      alt={service.title}
-                      width="50"
-                      className="img-fluid"
-                      onError={(e) => {
-                        e.target.src = "/appliance-default.jpg"; // Fallback image
-                      }}
-                    />
-                    <p>{service.title}</p>
-                  </div>
-                ))}
-              </div>
-            </Col>
-
-            {/* Right Section - Main Content */}
-            <Col
-              xs={12}
-              md={9}
-              className="p-2 main-content"
-              style={{
-                backgroundColor: "#ffbc7f",
-                overflowY: "auto",
-                maxHeight: "100vh",
-              }}
-            >
+      <Container fluid className="p-3 p-md-4 rounded-4 mt-2 mb-2 shadow" style={{ backgroundColor: "#ffbc7f" }}>
+        <Row className="gx-0 d-flex flex-column flex-md-row flex-grow-1 main-wrapper h-100 p-0 m-0">
+          {/* Left Sidebar */}
+          <Col
+            md={3}
+            xs={12}
+            className="p-3 border-end border-black fixed-sidebar m-0"
+            style={{
+              backgroundColor: "#ffbc7f",
+              overflowY: "auto",
+              maxHeight: "calc(100vh - 200px)",
+            }}
+          >
+            <h4 className="fw-bold text-center">Appliances Repair</h4>
+            <p className="text-center">Select your service</p>
+            <div className="d-flex flex-wrap justify-content-center gap-5">
               {[
-                {
-                  section: "Kitchen ",
-                  services: [
-                    { image: "/chemny.png", title: "Chimney Repair" },
-                    { image: "/appliance.png", title: "Water-Purifier Repair" },
-                    { image: "/stove.png", title: "Gas Stove Repair" },
-                    { image: "/induction-stove.png", title: "Induction Repair" },
-                    { image: "/fridge.png", title: "Refrigerator Repair" },
-                    { image: "/oven.png", title: "Microwave Repair" },
-                    { image: "/mixer-blender.png", title: "Mixer Repair" },
-                    { image: "/dishwasher.png", title: "Dishwasher Repair" },
-                  ],
-                },
-                {
-                  section: "Home",
-                  services: [
-                    { image: "/air-conditioner.png", title: "AC Repair" },
-                    { image: "/television.png", title: "TV Repair" },
-                    { image: "/fan.png", title: "Fan Repair" },
-                    { image: "/washing-machine.png", title: "Washing Machine Repair" },
-                    { image: "/water-boiler.png", title: "Geyser Repair" },
-                    { image: "/battery.png", title: "Invertor Repair" },
-                    { image: "/iron.png", title: "Iron Repair" },
-                    { image: "/phone-tablet-and-laptop.png", title: "Laptops and Mobile Repair" },
-                  ],
-                },
-                //
-              ].map((category, idx) => (
+                { image: "/kitchen-table.png", title: "Kitchen " },
+                { image: "/living-room.png", title: "Home " },
+                
+              ].map((service, index) => (
                 <div
-                  key={idx}
-                  ref={(el) => (sectionRefs.current[idx] = el)}
-                  className="mb-4"
+                  key={index}
+                  className="text-center cursor-pointer"
+                  onClick={() => scrollToSection(index)}
+                  style={{ cursor: "pointer" }}
                 >
-                  <h4 className="fw-bold">{category.section}</h4>
-                  <div
-                    className="scroll-container"
-                    style={{
-                      maxHeight: "400px",
-                      overflowY: "auto",
+                  <img
+                    src={service.image}
+                    alt={service.title}
+                    width="50"
+                    className="img-fluid"
+                    onError={(e) => {
+                      e.target.src = "/appliance-default.jpg"; // Fallback image
                     }}
-                  >
-                    {category.services.map((service, index, arr) => (
-                      <div
-                        key={index}
-                        className={`p-3 ${
-                          index !== arr.length - 1
-                            ? "border-bottom border-black"
-                            : ""
-                        }`}
-                      >
-                        <div className="d-flex align-items-center gap-3">
-                          <img
-                            src={service.image}
-                            alt={service.title}
-                            width="80"
-                            height="80"
-                            className="img-fluid rounded-4"
-                            style={{ objectFit: "cover" }}
-                            onError={(e) => {
-                              e.target.src = "/appliance-default.jpg"; // Fallback image
-                            }}
-                          />
-                          <div 
-                            onClick={() => handleServiceClick(service.title)}
-                            style={{ cursor: "pointer" }}
-                          >
-                            <h5 className="fw-bold">{service.title}</h5>
-                            <p>Starts at Rs xxx</p>
-                          </div>
-                          <Button 
-                            variant="dark" 
-                            className="ms-auto rounded-pill"
-                            onClick={() => handleServiceClick(service.title)}
-                          >
-                            ADD
-                          </Button>
-                        </div>
-                      </div>
-                    ))}
-                  </div>
+                  />
+                  <p>{service.title}</p>
                 </div>
               ))}
-            </Col>
-          </Row>
+            </div>
+          </Col>
 
-          {/* Styling */}
-          <style jsx>{`
-            /* Hide Scrollbar but Keep Scroll */
-            .scroll-container::-webkit-scrollbar {
-              display: none;
-            }
-            .scroll-container {
-              -ms-overflow-style: none;
-              scrollbar-width: none;
-              scroll-behavior: smooth;
-              overflow-y: auto;
-            }
-            /* Fixed Sidebar Scroll */
-            .fixed-sidebar::-webkit-scrollbar {
-              display: none;
+          {/* Right Section - Main Content */}
+          <Col
+            xs={12}
+            md={9}
+            className="p-2 main-content m-0"
+            style={{
+              backgroundColor: "#ffbc7f",
+              overflowY: "auto",
+              maxHeight: "calc(100vh - 200px)",
+            }}
+          >
+            {[
+              {
+                section: "Kitchen ",
+                services: [
+                  { image: "/chemny.png", title: "Chimney Repair" },
+                  { image: "/appliance.png", title: "Water-Purifier Repair" },
+                  { image: "/stove.png", title: "Gas Stove Repair" },
+                  { image: "/induction-stove.png", title: "Induction Repair" },
+                  { image: "/fridge.png", title: "Refrigerator Repair" },
+                  { image: "/oven.png", title: "Microwave Repair" },
+                  { image: "/mixer-blender.png", title: "Mixer Repair" },
+                  { image: "/dishwasher.png", title: "Dishwasher Repair" },
+                ],
+              },
+              {
+                section: "Home",
+                services: [
+                  { image: "/air-conditioner.png", title: "AC Repair" },
+                  { image: "/television.png", title: "TV Repair" },
+                  { image: "/fan.png", title: "Fan Repair" },
+                  { image: "/washing-machine.png", title: "Washing Machine Repair" },
+                  { image: "/water-boiler.png", title: "Geyser Repair" },
+                  { image: "/battery.png", title: "Invertor Repair" },
+                  { image: "/iron.png", title: "Iron Repair" },
+                  { image: "/phone-tablet-and-laptop.png", title: "Laptops and Mobile Repair" },
+                ],
+              },
+              //
+            ].map((category, idx) => (
+              <div
+                key={idx}
+                ref={(el) => (sectionRefs.current[idx] = el)}
+                className="mb-4"
+              >
+                <h4 className="fw-bold">{category.section}</h4>
+                <div
+                  className="scroll-container"
+                  style={{
+                    maxHeight: "350px",
+                    overflowY: "auto",
+                  }}
+                >
+                  {category.services.map((service, index, arr) => (
+                    <div
+                      key={index}
+                      className={`p-3 ${
+                        index !== arr.length - 1
+                          ? "border-bottom border-black"
+                          : ""
+                      }`}
+                    >
+                      <div className="d-flex align-items-center gap-3">
+                        <img
+                          src={service.image}
+                          alt={service.title}
+                          width="80"
+                          height="80"
+                          className="img-fluid rounded-4"
+                          style={{ objectFit: "cover" }}
+                          onError={(e) => {
+                            e.target.src = "/appliance-default.jpg"; // Fallback image
+                          }}
+                        />
+                        <div 
+                          onClick={() => handleServiceClick(service.title)}
+                          style={{ cursor: "pointer" }}
+                        >
+                          <h5 className="fw-bold">{service.title}</h5>
+                          <p>Starts at Rs xxx</p>
+                        </div>
+                        <Button 
+                          variant="dark" 
+                          className="ms-auto rounded-pill"
+                          onClick={() => handleServiceClick(service.title)}
+                        >
+                          ADD
+                        </Button>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            ))}
+          </Col>
+        </Row>
+
+        {/* Styling */}
+        <style jsx>{`
+          /* Hide Scrollbar but Keep Scroll */
+          .scroll-container::-webkit-scrollbar {
+            display: none;
+          }
+          .scroll-container {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+            scroll-behavior: smooth;
+            overflow-y: auto;
+          }
+          /* Fixed Sidebar Scroll */
+          .fixed-sidebar::-webkit-scrollbar {
+            display: none;
+          }
+          .fixed-sidebar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+            overflow-y: auto;
+          }
+          /* Main Content Scroll */
+          .main-content::-webkit-scrollbar {
+            display: none;
+          }
+          .main-content {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+            overflow-y: auto;
+          }
+          /* Media Queries for Mobile */
+          @media (max-width: 768px) {
+            .main-wrapper {
+              flex-direction: column !important;
             }
             .fixed-sidebar {
-              -ms-overflow-style: none;
-              scrollbar-width: none;
-              overflow-y: auto;
-            }
-            /* Main Content Scroll */ fixes
-            .main-content::-webkit-scrollbar {
-              display: none;
+              height: auto !important;
+              max-height: none !important;
+              border-right: none;
+              border-bottom: 1px solid black;
             }
             .main-content {
-              -ms-overflow-style: none;
-              scrollbar-width: none;
-              overflow-y: auto;
+              height: auto !important;
+              max-height: none !important;
+              padding-top: 10px;
             }
-            /* Media Queries for Mobile */
-            @media (max-width: 768px) {
-              .main-wrapper {
-                flex-direction: column !important;
-              }
-              .fixed-sidebar {
-                height: auto !important;
-                border-right: none;
-                border-bottom: 1px solid black;
-              }
-              .main-content {
-                height: auto !important;
-                padding-top: 10px;
-              }
-              .scroll-container {
-                max-height: 300px !important;
-              }
+            .scroll-container {
+              max-height: 300px !important;
             }
-          `}</style>
-        </Container>
-      </div>
+          }
+        `}</style>
+      </Container>
       
-      {/* Footer Components */}
-      <div className="mt-0 pt-0">
+      {/* Footer */}
+      <Container
+        fluid
+        className="p-4 rounded-4 mt-2 text-center"
+        style={{ backgroundColor: "#FFD29E" }}
+      >
         <Footer />
+      </Container>
+
+      {/* Copyright Section */}
+      <div
+        className="mt-2 rounded-4 text-center d-flex justify-content-center align-items-center"
+        style={{ backgroundColor: "#D28E26", height: "2rem" }}
+      >
+        <Copyright />
       </div>
-      <Copyright />
     </div>
   );
 };
