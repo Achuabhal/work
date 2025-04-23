@@ -1,6 +1,8 @@
 import React from 'react';
 import { Container, Row, Col, Card, Form, Button, ListGroup } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import { Link } from 'react-router-dom';
+
 
 const OrderManagement = () => {
   return (
@@ -17,14 +19,14 @@ const OrderManagement = () => {
        <div className='mx-0'>
          <img src="duzo_logo.png" width="150px" alt="" />
         </div>
-        <ListGroup variant="flush" className='m-2'>
-          <ListGroup.Item>Dashboard</ListGroup.Item>
-          <ListGroup.Item >Partner Management</ListGroup.Item>
-          <ListGroup.Item>Service Management</ListGroup.Item>
-          <ListGroup.Item>Order Management</ListGroup.Item>
-          <ListGroup.Item>Customer Support</ListGroup.Item>
-          <ListGroup.Item>Analytics and Insights</ListGroup.Item>
-        </ListGroup>
+       <ListGroup variant="flush" className='m-2'>
+               <Link style={{textDecoration:"none"}} to={"/dashboard"}><ListGroup.Item>Dashboard</ListGroup.Item></Link>
+               <Link style={{textDecoration:"none"}} to={"/partner"}><ListGroup.Item>Partner Management</ListGroup.Item></Link>
+               <Link style={{textDecoration:"none"}} to={"/service"}><ListGroup.Item>Service Management</ListGroup.Item></Link>
+                         <ListGroup.Item>Order Management</ListGroup.Item>
+                         <Link style={{textDecoration:"none"}} to={"/CustomerSupport"}><ListGroup.Item>Customer Support</ListGroup.Item></Link>
+                         <Link style={{textDecoration:"none"}} to={"/analytics"}><ListGroup.Item>Analytics and Insights</ListGroup.Item></Link>
+                       </ListGroup>
       </div>
 
       {/* Main Content */}

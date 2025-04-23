@@ -1,6 +1,7 @@
 import React from 'react';
 import { Container, Row, Col, Card, Form, Button, ListGroup } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import { Link } from 'react-router-dom';
 
 const PartnerManagement = () => {
   return (
@@ -18,13 +19,13 @@ const PartnerManagement = () => {
          <img src="duzo_logo.png" width="150px" alt="" />
         </div>
         <ListGroup variant="flush" className='m-2'>
-          <ListGroup.Item>Dashboard</ListGroup.Item>
-          <ListGroup.Item >Partner Management</ListGroup.Item>
-          <ListGroup.Item>Service Management</ListGroup.Item>
-          <ListGroup.Item>Order Management</ListGroup.Item>
-          <ListGroup.Item>Customer Support</ListGroup.Item>
-          <ListGroup.Item>Analytics and Insights</ListGroup.Item>
-        </ListGroup>
+        <Link style={{textDecoration:"none"}} to={"/dashboard"}><ListGroup.Item>Dashboard</ListGroup.Item></Link>
+                  <ListGroup.Item>Partner Management</ListGroup.Item>
+                  <Link style={{textDecoration:"none"}} to={"/service"}><ListGroup.Item>Service Management</ListGroup.Item></Link>
+                  <Link style={{textDecoration:"none"}} to={"/order"}><ListGroup.Item>Order Management</ListGroup.Item></Link>
+                  <Link style={{textDecoration:"none"}} to={"/CustomerSupport"}><ListGroup.Item>Customer Support</ListGroup.Item></Link>
+                  <Link style={{textDecoration:"none"}} to={"/analytics"}><ListGroup.Item>Analytics and Insights</ListGroup.Item></Link>
+                </ListGroup>
       </div>
 
       {/* Main Content */}
@@ -41,9 +42,9 @@ const PartnerManagement = () => {
         {/* Tabs */}
         <div style={{ marginTop: '15px', marginBottom: '20px' }}>
           <span style={{ fontWeight: 'bold', textDecoration: 'underline', marginRight: '20px' }}>Partner Table</span>
-          <span style={{ marginRight: '20px',textDecoration: 'underline' }}>Location</span>
-          <span style={{ marginRight: '20px',textDecoration: 'underline' }}>Payments</span>
-          <span style={{ marginRight: '20px',textDecoration: 'underline' }}>Notifications</span>
+          <Link to={"/partnerLocation"}><span style={{ marginRight: '20px',textDecoration: 'underline',color:"black" }}>Location</span></Link>
+          <Link to={"/partnerpayment"}><span style={{ marginRight: '20px',textDecoration: 'underline',color:"black" }}>Payments</span></Link>
+          <Link to={"/partnernotifications"}><span style={{ marginRight: '20px',textDecoration: 'underline',color:"black" }}>Notifications</span></Link>
         </div>
 
         {/* Search Input */}

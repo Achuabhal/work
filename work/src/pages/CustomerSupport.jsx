@@ -1,6 +1,8 @@
 import React from 'react';
 import { Card, Button, ListGroup } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import { Link } from 'react-router-dom';
+
 
 const CustomerSupport = () => {
   return (
@@ -10,13 +12,13 @@ const CustomerSupport = () => {
       {/* Sidebar */}
       <div style={{ width: '250px', backgroundColor: '#F5F5F5', padding: '20px', borderRight: '1px solid #ccc' }}>
         <img src="duzo_logo.png" alt="DUZO Logo" width="150px" className="mb-4" />
-        <ListGroup variant="flush" className='mb-2'>
-          <ListGroup.Item>Dashboard</ListGroup.Item>
-          <ListGroup.Item>Partner Management</ListGroup.Item>
-          <ListGroup.Item>Service Management</ListGroup.Item>
-          <ListGroup.Item>Order Management</ListGroup.Item>
-          <ListGroup.Item>Customer Support</ListGroup.Item>
-          <ListGroup.Item>Analytics and Insights</ListGroup.Item>
+        <ListGroup variant="flush" className='m-2'>
+        <Link style={{textDecoration:"none"}} to={"/dashboard"}><ListGroup.Item>Dashboard</ListGroup.Item></Link>
+          <Link style={{textDecoration:"none"}} to={"/partner"}><ListGroup.Item>Partner Management</ListGroup.Item></Link>
+          <Link style={{textDecoration:"none"}} to={"/service"}><ListGroup.Item>Service Management</ListGroup.Item></Link>
+          <Link style={{textDecoration:"none"}} to={"/order"}><ListGroup.Item>Order Management</ListGroup.Item></Link>
+         <ListGroup.Item>Customer Support</ListGroup.Item>
+          <Link style={{textDecoration:"none"}} to={"/analytics"}><ListGroup.Item>Analytics and Insights</ListGroup.Item></Link>
         </ListGroup>
       </div>
 
@@ -28,8 +30,8 @@ const CustomerSupport = () => {
         <hr style={{ borderTop: '1px solid black' }} />
 
         {/* Message Box */}
-        <Card className="mb-4" style={{ height: '200px', borderRadius: '10px', backgroundColor: '#F4F4F4' }}>
-          <Card.Body className="d-flex flex-column justify-content-center gap-4">
+        <Card className="mb-4" style={{ height: '400px', borderRadius: '10px', backgroundColor: '#F4F4F4' }}>
+          <Card.Body className="d-flex flex-column justify-content-start gap-4">
             
             {/* Their message */}
             <div className='d-flex align-items-center gap-3'>

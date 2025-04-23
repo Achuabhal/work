@@ -54,6 +54,9 @@ import ServiceManagement from './pages/ServiceManagement';
 import OrderManagement from './pages/OrderManagement';
 import CustomerSupport from './pages/CustomerSupport';
 import Analytics from './pages/Analytics';
+import PartnerLocation from './pages/PartnerLocation';
+import PartnerPayments from './pages/PartnerPayments';
+import PartnerNotifications from './pages/PartnerNotifications';
 
 
 
@@ -124,7 +127,11 @@ function App() {
         <Route path='/service' element={<ServiceManagement/>}/>
         <Route path='/order' element={<OrderManagement/>}/> 
         <Route path='/CustomerSupport' element={<CustomerSupport/>}/>
-        <Route path='/analytics' element={<Analytics/>}/>
+        <Route path='/analytics' element={<Analytics/>}/>  
+        <Route path='/partnerLocation' element={<PartnerLocation/>}/>
+        <Route path='/partnerpayment' element={<PartnerPayments/>}/>
+        <Route path='/partnernotifications' element={<PartnerNotifications/>}/>
+
 
 
       </Routes>
