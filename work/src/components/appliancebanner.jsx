@@ -7,11 +7,11 @@ const Banner = () => {
   return (
     <Container 
       fluid 
-      className="d-flex align-items-center justify-content-center my-3 rounded-4"
+      className="d-flex align-items-center justify-content-center my-2 rounded-4"
       style={{
         backgroundColor: "#FDCC82",
-minHeight:"300px",
- textAlign: "right",
+        minHeight:"300px",
+        textAlign: "right",
       }}
     >
       <div className="d-flex align-items-center w-100">

@@ -109,7 +109,7 @@ const CookForOneMeal = () => {
   };
 
   return (
-    <div className="me-2 ms-2 ps-2 pe-2 w-98">
+    <div className="mx-1 px-1">
       {/* Navbar */}
       <Navbar
         style={{ backgroundColor: "#FFD29E" }}
@@ -401,8 +401,8 @@ const CookForOneMeal = () => {
                             padding: '0 0.5rem',
                             borderLeft: 'none',
                             background: 'white',
-                            color: 'black',
-                                                        height: "35px",
+                                                        color: 'black',
+                            height: "35px",
                             border: "1px solid #ced4da"
                           }}
                           onClick={() => handleMealChange("starters", formData.starters + 1)}
@@ -489,8 +489,8 @@ const CookForOneMeal = () => {
                         </Button>
                         <Form.Control 
                           className="text-center" 
-                          value={formData.desserts}
-                          readOnly
+                          value={formData.desserts} 
+                          readOnly 
                           style={{
                             fontSize: "0.9rem", 
                             borderRadius: '0', 
@@ -582,10 +582,9 @@ const CookForOneMeal = () => {
           </Row>
           
           {/* Mobile image section - now hidden */}
-<div className="d-none">
-  <Image src="/chef-.png" alt="Cook" fluid />
-</div>
-
+          <div className="d-none">
+            <Image src="/chef-.png" alt="Cook" fluid />
+          </div>
 
           <div className="text-center mt-4">
             <Button type="submit" variant="dark" className="px-4">Continue</Button>

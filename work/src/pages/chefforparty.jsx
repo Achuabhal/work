@@ -90,7 +90,7 @@ const ChefForParty = () => {
   };
 
   return (
-    <div className="me-2 ms-2 ps-2 pe-2 w-98">
+    <div className="mx-1 px-1">
       {/* Main Content */}
       {showMainContent && (
         <>
@@ -98,7 +98,7 @@ const ChefForParty = () => {
           <Navbar
             style={{ backgroundColor: "#FFD29E" }}
             expand="lg"
-            className="rounded-4 mt-3 mb-3"
+            className="rounded-4 mt-2 mb-2"
           >
             <Container>
               <Navbar.Brand className="mb-5">
@@ -179,7 +179,7 @@ const ChefForParty = () => {
           </Navbar>
 
           {/* Main Section */}
-          <Container fluid className="p-3 p-md-4 rounded-4 mt-3 mb-4 text-center shadow" style={{ backgroundColor: "#ffbc7f" }}>
+          <Container fluid className="p-3 p-md-4 rounded-4 mt-2 mb-2 text-center shadow" style={{ backgroundColor: "#ffbc7f" }}>
             <h2 className="fw-bold">Chef For Party</h2>
             <p className="text-end fw-bold">Menu</p>
 
@@ -382,8 +382,9 @@ const ChefForParty = () => {
                             </Button>
                             <Form.Control 
                               className="text-center" 
-                              value={formData.desserts}                              readOnly
-                              style={{
+                              value={formData.desserts}
+                              readOnly
+                                                           style={{
                                 fontSize: "0.9rem", 
                                 borderRadius: '0', 
                                 borderLeft: 'none', 
@@ -488,7 +489,7 @@ const ChefForParty = () => {
           {/* Footer */}
           <Container
             fluid
-            className="p-4 rounded-4 mt-1 text-center"
+            className="p-4 rounded-4 mt-2 text-center"
             style={{ backgroundColor: "#FFD29E" }}
           >
             <Row>
@@ -577,7 +578,7 @@ const ChefForParty = () => {
 
           {/* Copyright Section */}
           <div
-            className="mt-1 rounded-4 text-center d-flex justify-content-center align-items-center"
+            className="mt-2 rounded-4 text-center d-flex justify-content-center align-items-center"
             style={{ backgroundColor: "#D28E26", height: "2rem" }}
           >
             <div>
@@ -597,4 +598,3 @@ const ChefForParty = () => {
 };
 
 export default ChefForParty;
-

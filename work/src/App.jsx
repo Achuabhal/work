@@ -58,6 +58,7 @@ import PartnerLocation from './pages/PartnerLocation';
 import PartnerPayments from './pages/PartnerPayments';
 import PartnerNotifications from './pages/PartnerNotifications';
 import RentBed from './pages/RentBed';
+import Faq from './pages/Faq';
 
 
 
@@ -135,6 +136,7 @@ function App() {
         <Route path='/rentbed' element={<RentBed/>}/>
 
 
+        <Route path='/faq' element={<Faq/>}/> 
 
 
       </Routes>
