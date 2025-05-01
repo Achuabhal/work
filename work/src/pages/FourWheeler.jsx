@@ -34,38 +34,37 @@ minHeight:"300px",
 
 
 
-    <Container fluid className="d-flex flex-column min-vh-100 p-0 m-0">
-  <div className="gx-0 d-flex flex-column flex-md-row flex-grow-1 main-wrapper h-100 p-0 m-0">
+    <Container fluid className="d-flex flex-column vh-100 p-0 m-0">
+  <div className="d-flex flex-column flex-md-row flex-grow-1 main-wrapper p-0 m-0" style={{ height: "100%" }}>
     <div
-      className="p-3 border-end border-black fixed-sidebar m-0 w-100"
+      className="p-3 rounded-4 border-black w-100"
       style={{
         backgroundColor: "#FFBC7F",
         overflowY: "auto",
-        maxHeight: "100vh",
+        height: "100%", // fixed height
       }}
     >
-      <h4 className="fw-bold text-center mb-4" style={{marginTop:"35px"}}>Four Wheeler Services</h4>
+      <h4 className="fw-bold text-center mb-4" style={{ marginTop: "35px" }}>Four Wheeler Services</h4>
 
-      <Row className="g-4 px-2 "style={{marginTop:"77px"}}>
+      <Row className="g-4 px-2" style={{ marginTop: "77px" }}>
         {[
           { image: "/exterior.png", title: <><span>Exterior And Interior </span><br /><span>Service(Pressure)</span></> },
           { image: "/Seatdeep.png", title: <><span>Seat Deep </span><br /><span>Cleaning</span></> },
           { image: "/waterless.png", title: <><span>Full Deep Cleaning</span><br /><span>And Coating</span></> },
           { image: "/fullldeep.png", title: <><span>Waterless Exterior</span><br /><span>And Interior Service</span></> },
-          { image: "/exterior1.png", title:<><span>Exterior And Interior</span><br /><span>Service</span></> },
+          { image: "/exterior1.png", title: <><span>Exterior And Interior</span><br /><span>Service</span></> },
           { image: "/interior.png", title: <><span>Interior Service </span><br /><span>Only</span></> },
           { image: "/exterioronly.png", title: <><span>Exterior Service</span><br /><span>Only</span></>},
           { image: "/underbody.png", title: <><span>Exterior And Interior</span><br /><span> And Underbody </span></> },
         ].map((service, index) => (
           <Col key={index} xs={12} sm={6} md={3} className="text-center">
             <div
-              className="cursor-pointer"
               onClick={() => scrollToSection(index)}
               style={{ cursor: "pointer" }}
             >
               <img
                 src={service.image}
-                alt={typeof service.title === "string" ? service.title : "Service"}
+                alt="Service"
                 width="60"
                 className="img-fluid mb-2"
               />
@@ -77,6 +76,7 @@ minHeight:"300px",
     </div>
   </div>
 </Container>
+
 
       <Footer/>
       <Copyright/>

@@ -59,6 +59,11 @@ import PartnerPayments from './pages/PartnerPayments';
 import PartnerNotifications from './pages/PartnerNotifications';
 import RentBed from './pages/RentBed';
 import Faq from './pages/Faq';
+import BedStorage from './pages/BedStorage';
+import RentTable from './pages/RentTable';
+import DiningTable from './pages/DiningTable';
+import RentBean from './pages/RentBean';
+import RentSofa from './pages/RentSofa';
 
 
 
@@ -134,6 +139,15 @@ function App() {
         <Route path='/partnerpayment' element={<PartnerPayments/>}/>
         <Route path='/partnernotifications' element={<PartnerNotifications/>}/>
         <Route path='/rentbed' element={<RentBed/>}/>
+        <Route path='/bedstorage' element={<BedStorage/>}/>
+        <Route path='/renttable' element={<RentTable/>}/>
+        <Route path='/diningtable' element={<DiningTable/>}/>
+        <Route path='/rentbean' element={<RentBean/>}/>
+        <Route path='/rentsofa' element={<RentSofa/>}/>
+
+
+
+
 
 
         <Route path='/faq' element={<Faq/>}/> 
