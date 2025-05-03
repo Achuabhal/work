@@ -19,6 +19,7 @@ import BuyAppliances from '../components/popup/BuyAppliances';
 import ComingSoonModal from "../components/popup/ComingSoonModal";
 
 import { useNavigate } from 'react-router-dom';
+import BuyAppliances1PopUp from '../components/popup/BuyAppliances1PopUp';
 const HomePage = () => {
   const [slideIndex, setSlideIndex] = useState(0);
   const [isMobile, setIsMobile] = useState(false);
@@ -69,7 +70,8 @@ const HomePage = () => {
   const [showModal, setShowModal] = useState(false);
   const [showModalAuto, setShowModalAuto] = useState(false);
   const [showModalbuy, setShowModalbuy] = useState(false);
-  
+  const [showModalbuy1, setShowModalbuy1] = useState(false);
+
 
 
 
@@ -127,7 +129,7 @@ const HomePage = () => {
             { name: "Beauty and Salon", action: () => setShowModal(true), image: "/beautySalon.png" },
             { name: "Electrician, Plumber and Carpenter", action: () => navigate("/homeservices"), image: "/electrician_Plumber_carpenter.png" },
             { name: "Automobile cleaning", action: () => setShowModalAuto(true), image: "/carCleaning.png" },
-            { name: "Buy appliances", action: () => setShowModalbuy(true), image: "/electricalAppliances.png" },
+            { name: "Buy appliances", action: () => setShowModalbuy1(true), image: "/electricalAppliances.png" },
             { name: "Rent appliances",  action: () => setShowComingSoonModal(true), image: "/rentAppliance.png" },
             { name: "Sell appliances", path: "/sell-appliances", image: "/sellAppliance.png" }
           ].map((service, index) => (
@@ -279,7 +281,7 @@ const HomePage = () => {
 <ChefModal show={showChefModal} onHide={() => setShowChefModal(false)} />
 <ApplianceModal show={showApplianceModal} onHide={() => setShowApplianceModal(false)} />
 <AutoMobilePopUp show={showModalAuto} onHide={() => setShowModalAuto(false)} />
-<BuyAppliances show={showModalbuy} onHide={() => setShowModalbuy(false)} />
+<BuyAppliances1PopUp show={showModalbuy1} onHide={() => setShowModalbuy1(false)} />
 <ComingSoonModal show={showComingSoonModal} onHide={() => setShowComingSoonModal(false)} />
 
        <div className="mt-0 mx-2 pt-0"> 

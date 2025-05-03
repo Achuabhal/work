@@ -152,12 +152,12 @@ function BuyAppliances({ show, onHide }) {
         handleClose={handleCloseAll}
         title="Option A Services"
         services={[
-          { name: "Rent a Bed", path: "/optionA1" },
-          { name: "Rent Bedroom Storage", path: "/optionA2" },
-          { name: "Rent Tables and Chairs", path: "/optionA3" },
-          { name: "Rent Bean Bag", path: "/optionA4" },
-          { name: "Rent Dining Tables", path: "/optionA5" },
-          { name: "Rent Sofas", path: "/optionA6" },
+          { name: "Rent a Bed", path: "/rentbed" },
+          { name: "Rent Bedroom Storage", path: "/bedstorage" },
+          { name: "Rent Tables and Chairs", path: "/renttable" },
+          { name: "Rent Bean Bag", path: "/rentbean" },
+          { name: "Rent Dining Tables", path: "/diningtable" },
+          { name: "Rent Sofas", path: "/rentsofa" },
         ]}
       />
 
