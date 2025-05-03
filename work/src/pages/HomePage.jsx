@@ -131,7 +131,7 @@ const HomePage = () => {
             { name: "Automobile cleaning", action: () => setShowModalAuto(true), image: "/carCleaning.png" },
             { name: "Buy appliances", action: () => setShowModalbuy1(true), image: "/electricalAppliances.png" },
             { name: "Rent appliances",  action: () => setShowComingSoonModal(true), image: "/rentAppliance.png" },
-            { name: "Sell appliances", path: "/sell-appliances", image: "/sellAppliance.png" }
+            { name: "Sell appliances", action: () => setShowComingSoonModal(true), image: "/sellAppliance.png" }
           ].map((service, index) => (
             <div key={index} className="col">
               <div 
