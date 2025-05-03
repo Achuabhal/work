@@ -114,7 +114,7 @@ const HomePage = () => {
 
       {/* Services Section */}
  
-      <section className="py-5 rounded-5 mx-2 mt-md-4 mb-3" style={{ backgroundColor: '#FFC998' }}>
+      <section className="py-5 rounded-5 mx-2  mb-3" style={{ backgroundColor: '#FFC998', marginTop: '-8px' }}>
      <div className="container">
     <h2 className="text-center mb-4">OUR SERVICES</h2>
     

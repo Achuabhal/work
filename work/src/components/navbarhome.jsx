@@ -110,8 +110,12 @@ function Navbarab() {
 
                 {/* Cart and user icons - visible only on desktop */}
                 <div className="d-none d-lg-flex align-items-center gap-2">
+                <Link to="/checkout">
                   <img src="/cart.png" width="26" height="26" alt="Cart" />
+                </Link>
+                <Link to="/account">
                   <img src="/user.png" width="26" height="26" alt="Profile" />
+                  </Link>
                 </div>
               </div>
               
