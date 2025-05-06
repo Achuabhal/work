@@ -1,7 +1,7 @@
 import React from "react";
 import { Modal, Button } from "react-bootstrap";
 
-const TwoWheelerPopUp = ({ show, onHide, service }) => {
+const FourWHeelerpopup = ({ show, onHide, service }) => {
   if (!service) return null;
 
   return (
@@ -63,4 +63,4 @@ const TwoWheelerPopUp = ({ show, onHide, service }) => {
   );
 };
 
-export default TwoWheelerPopUp;
+export default FourWHeelerpopup;

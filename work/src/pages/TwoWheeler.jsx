@@ -8,7 +8,20 @@ import TwoWheelerPopUp from '../components/popup/TwoWheelerPopUp';
 
 function TwoWheeler() {
   const sectionRefs = useRef([]);
-  const [showModalTwo, setShowModalTwo] = useState(false);
+ const [showModal, setShowModal] = useState(false);
+   const [selectedService, setSelectedService] = useState(null);
+ 
+   const handleServiceClick = (service) => {
+     setSelectedService(service);
+     setShowModal(true);
+   };
+ 
+   const services = [
+     { image: "/exterior.png", title: "Cleaning And Coating" },
+     { image: "/Seatdeep.png", title: "Cleaning Only" },
+     { image: "/waterless.png", title: "Coating Only" },
+     
+   ];
 
   const scrollToSection = (index) => {
     const section = sectionRefs.current[index];
@@ -53,68 +66,54 @@ function TwoWheeler() {
             <h4 className="fw-bold text-center mb-4" style={{ marginTop: "35px" }}>Four Wheeler Services</h4>
 
             <Row className="g-4 justify-content-start px-2" style={{ marginTop: "77px" }}>
-            {[
-  {
-    title: (
-      <>
-        <span className="text-decoration-none text-dark">Cleaning And <br /> Coating</span>
-      </>
-    ),
-    onClick: () => setShowModalTwo(true),
-  },
-  {
-    title: (
-      <>
-        <span>Cleaning Only </span>
-      </>
-    ),
-  },
-  {
-    image: "/waterless.png",
-    title: (
-      <>
-        <span>Coating Only</span>
-      </>
-    ),
-  },
-].map((service, index) => (
-  <Col key={index} xs={12} sm={6} md={3} className="text-center d-flex flex-column align-items-center">
-    {index < 2 ? (
-      <div
-        className="cursor-pointer d-flex align-items-center justify-content-center mb-2"
-        onClick={service.onClick || (() => scrollToSection(index))}
-        style={{
-          height: "180px",
-          width: "180px",
-          backgroundColor: "#D9D9D9",
-          borderRadius: "30px",
-          cursor: "pointer",
-        }}
-      >
-        {/* Placeholder box content */}
-      </div>
-    ) : (
-      <img
-        src={service.image}
-        alt="Service"
-        width="70"
-        className="img-fluid mb-2"
-        onClick={() => scrollToSection(index)}
-        style={{ cursor: "pointer", height: "180px", width: "auto" }}
-      />
-    )}
-    <p className="fw-bold mt-2">{service.title}</p>
-  </Col>
-))}
+  {services.map((service, index) => (
+    <Col
+      key={index}
+      xs={12}
+      sm={6}
+      md={3}
+      className="text-center d-flex flex-column align-items-center"
+    >
+      {service.title === "Coating Only" ? (
+        // Only Image, no box
+        <img
+          src={service.image}
+          alt={service.title}
+          width="180"
+          height="180"
+          className="img-fluid mb-2"
+          style={{ cursor: "pointer" }}
+          onClick={() => handleServiceClick(service)}
+        />
+      ) : (
+        // Box with no image
+        <div
+          className="cursor-pointer d-flex align-items-center justify-content-center mb-2"
+          onClick={() => handleServiceClick(service)}
+          style={{
+            height: "180px",
+            width: "180px",
+            backgroundColor: "#D9D9D9",
+            borderRadius: "30px",
+            cursor: "pointer",
+          }}
+        >
+          {/* No image inside */}
+        </div>
+      )}
+      <p className="fw-bold mt-2">{service.title}</p>
+    </Col>
+  ))}
+</Row>
 
-            </Row>
+
           </div>
         </div>
 
         {/* Sections to Scroll To */}
       </Container>
 
-      <TwoWheelerPopUp show={showModalTwo} onHide={() => setShowModalTwo(false)} />
+      <TwoWheelerPopUp show={showModal} onHide={() => setShowModal(false)} service={selectedService} />
       <Footer />
       <Copyright />
     </div>
