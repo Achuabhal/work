@@ -64,6 +64,12 @@ import RentTable from './pages/RentTable';
 import DiningTable from './pages/DiningTable';
 import RentBean from './pages/RentBean';
 import RentSofa from './pages/RentSofa';
+import BuyBed from './pages/BuyBed';
+import BuyBedStorage from './pages/BuyBedStorage';
+import BuyTable from './pages/BuyTable';
+import BuyDining from './pages/BuyDining';
+import BuyBean from './pages/BuyBean';
+import BuySofaa from './pages/BuySofaa';
 
 
 
@@ -144,6 +150,17 @@ function App() {
         <Route path='/diningtable' element={<DiningTable/>}/>
         <Route path='/rentbean' element={<RentBean/>}/>
         <Route path='/rentsofa' element={<RentSofa/>}/>
+        <Route path='/buybed' element={<BuyBed/>}/>
+        <Route path='/buybedstorage' element={<BuyBedStorage/>}/>
+        <Route path='/buytable' element={<BuyTable/>}/>
+        <Route path='/buydining' element={<BuyDining/>}/>
+        <Route path='/buybean' element={<BuyBean/>}/>
+        <Route path='/buysofa' element={<BuySofaa/>}/>
+
+
+
+
+
 
 
 
