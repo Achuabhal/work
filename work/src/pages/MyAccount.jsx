@@ -147,14 +147,10 @@ const MyAccount = () => {
       color: "black",
       fontWeight: isActive ? "bold" : "normal",
       borderRadius: "15px",
-      padding: "8px 12px",
-      fontSize: windowWidth < 375 ? "14px" : "16px",
-      flex: "1",
-      minWidth: "0",
-      textAlign: "center",
-      whiteSpace: "nowrap",
-      overflow: "hidden",
-      textOverflow: "ellipsis"
+      padding: "10px 15px",
+      marginBottom: "8px",
+      width: "100%",
+      textAlign: "center"
     };
   };
 
@@ -183,7 +179,7 @@ const MyAccount = () => {
 
       <div className="d-flex flex-column flex-lg-row mt-4 justify-content-center align-items-start gap-3 flex-grow-1 px-2 px-sm-3">
         {/* Mobile Navigation - Visible only on small and medium screens */}
-        <div className="d-flex d-lg-none flex-row flex-wrap justify-content-between gap-2 w-100 mb-3 px-2">
+        <div className="d-flex d-lg-none flex-column w-100 mb-3 px-2">
           <button
             className="btn fw-bold"
             style={getMobileNavButtonStyle("personalInfo")}
@@ -382,7 +378,7 @@ const MyAccount = () => {
               <h3 className="fw-bold text-center mb-4 mb-md-5">Your Orders</h3>
               <div className="container-fluid d-flex align-items-stretch justify-content-center mb-4">
                 <div className="container-fluid custom-responsive-bg d-flex flex-column flex-md-row align-items-center justify-content-evenly gap-3 gap-md-4 border p-3 rounded w-100">
-                  <img
+                                    <img
                     src="/placeholder.png"
                     alt="Order Thumbnail"
                     className="img-thumbnail mb-3 mb-md-0"
@@ -661,5 +657,3 @@ const MyAccount = () => {
 };
 
 export default MyAccount;
-
-              
