@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { FaInstagram, FaFacebook, FaXTwitter } from "react-icons/fa6";
 import "bootstrap/dist/css/bootstrap.min.css";
 import 'bootstrap/dist/js/bootstrap.bundle.min';
@@ -10,8 +10,21 @@ import { Link } from "react-router-dom";
 
 const MyAccount = () => {
   const [activeSection, setActiveSection] = useState("personalInfo");
-  const StyledRating = styled(Rating)({
+  const [windowWidth, setWindowWidth] = useState(window.innerWidth);
+  
+  // Add window resize listener
+  useEffect(() => {
+    const handleResize = () => {
+      setWindowWidth(window.innerWidth);
+    };
     
+    window.addEventListener('resize', handleResize);
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    };
+  }, []);
+  
+  const StyledRating = styled(Rating)({
     '& .MuiRating-iconHover': {
       color: '#ff3d47',
     },
@@ -84,136 +97,123 @@ const MyAccount = () => {
     }
   };
 
-  // Common container style for all sections with reduced height
-  const containerStyle = {
-    width: "767px",
-    height: "650px",  // Reduced from 729px to 650px
-    borderRadius: "30px",
-    backgroundColor: "#FFD6B0",
-    overflowY: "auto",
-    margin: "0 auto",
-    padding: "30px"
+  // Responsive container style with dynamic width
+  const getContainerStyle = () => {
+    let containerWidth = "95%"; // Default for smallest screens
+    let containerHeight = "650px";
+    
+    if (windowWidth >= 576) {
+      containerWidth = "90%";
+    }
+    if (windowWidth >= 768) {
+      containerWidth = "767px";
+    }
+    
+    // Adjust height for very small screens
+    if (windowWidth <= 375) {
+      containerHeight = "600px";
+    }
+    
+    return {
+      width: containerWidth,
+      height: containerHeight,
+      borderRadius: "30px",
+      backgroundColor: "#FFD6B0",
+      overflowY: "auto",
+      margin: "0 auto",
+      padding: windowWidth < 576 ? "20px" : "30px"
+    };
+  };
+
+  // Get navigation button style based on active state
+  const getNavButtonStyle = (section) => {
+    const isActive = activeSection === section;
+    return {
+      backgroundColor: isActive ? "#FF9900" : "#FFAD62",
+      borderColor: isActive ? "#FF9900" : "#FFAD62",
+      color: "black",
+      fontWeight: isActive ? "bold" : "normal",
+      boxShadow: isActive ? "0 4px 8px rgba(0,0,0,0.1)" : "none",
+      transition: "all 0.3s ease"
+    };
+  };
+
+  // Get mobile navigation button style
+  const getMobileNavButtonStyle = (section) => {
+    const isActive = activeSection === section;
+    return {
+      backgroundColor: isActive ? "#FF9900" : "#FFAD62",
+      borderColor: isActive ? "#FF9900" : "#FFAD62",
+      color: "black",
+      fontWeight: isActive ? "bold" : "normal",
+      borderRadius: "15px",
+      padding: "8px 12px",
+      fontSize: windowWidth < 375 ? "14px" : "16px",
+      flex: "1",
+      minWidth: "0",
+      textAlign: "center",
+      whiteSpace: "nowrap",
+      overflow: "hidden",
+      textOverflow: "ellipsis"
+    };
   };
 
   return (
     <div className="container-fluid p-0 m-0 d-flex flex-column min-vh-100" style={{ fontFamily: "Outfit" }}>
       {/* Header */}
       <header
-  className="d-flex justify-content-between align-items-center p-3 w-100"
-  style={{ 
-    backgroundColor: "#ffbc57",
-    borderRadius: "0"  // Removed curves for box-type appearance
-  }}
->
-   <Link to="/home">         
-        <img
-          src="/duzo.png"
-          alt="DUZO Logo"
-          className="img-fluid"
-          style={{ height: "50px" }}
-        />
-         </Link>
+        className="d-flex justify-content-between align-items-center p-3 w-100"
+        style={{ 
+          backgroundColor: "#ffbc57",
+          borderRadius: "0"
+        }}
+      >
+        <Link to="/home">         
+          <img
+            src="/duzo.png"
+            alt="DUZO Logo"
+            className="img-fluid"
+            style={{ height: windowWidth < 375 ? "30px" : "40px" }}
+          />
+        </Link>
 
         {/* MY ACCOUNT for medium and up */}
-        <h4 className="text-dark fw-bold d-none d-md-none d-lg-block">MY ACCOUNT</h4>
-
-        {/* Dropdown Menu for small devices */}
-        <div className="dropdown d-block d-lg-none position-relative">
-          <button
-            className="btn rounded-2"
-            type="button"
-            id="dropdownMenuButton"
-            data-bs-toggle="dropdown"
-            aria-expanded="false"
-            style={{ border: "none", fontSize: "24px" }}
-          >
-            ☰
-          </button>
-          <ul 
-            className="dropdown-menu mt-2 border-0" 
-            aria-labelledby="dropdownMenuButton"
-            style={{ 
-              width: "475px", 
-              height: "150px", 
-              top: "158px", 
-              left: "46px", 
-              borderRadius: "30px",
-              display: "flex",
-              flexDirection: "row",
-              flexWrap: "wrap",
-              padding: "15px",
-              backgroundColor: "#FFAD62"
-            }}
-          >
-            <li className="w-50 px-1">
-              <button
-                className="dropdown-item fw-bold text-dark py-2 h-100"
-                style={{ 
-                  backgroundColor: "#FFAD62", 
-                  border: "1px solid black",
-                  borderRadius: "20px",
-                  display: "flex",
-                  alignItems: "center",
-                  justifyContent: "center"
-                }}
-                onClick={() => setActiveSection("personalInfo")}
-              >
-                Personal Info
-              </button>
-            </li>
-            <li className="w-50 px-1">
-              <button
-                className="dropdown-item fw-bold text-dark py-2 h-100"
-                style={{ 
-                  backgroundColor: "#FFAD62", 
-                  border: "1px solid black",
-                  borderRadius: "20px",
-                  display: "flex",
-                  alignItems: "center",
-                  justifyContent: "center"
-                }}
-                onClick={() => setActiveSection("orders")}
-              >
-                Your Orders
-              </button>
-            </li>
-            <li className="w-50 px-1">
-              <button
-                className="dropdown-item fw-bold text-dark py-2 h-100"
-                style={{ 
-                  backgroundColor: "#FFAD62", 
-                  border: "1px solid black",
-                  borderRadius: "20px",
-                  display: "flex",
-                  alignItems: "center",
-                  justifyContent: "center"
-                }}
-                onClick={() => setActiveSection("paymentMethods")}
-              >
-                Payment Methods
-              </button>
-            </li>
-            <li className="w-50 px-1">
-              <button
-                className="dropdown-item fw-bold text-dark py-2 h-100"
-                style={{ 
-                  backgroundColor: "#FFAD62", 
-                  border: "1px solid black",
-                  borderRadius: "20px",
-                  display: "flex",
-                  alignItems: "center",
-                  justifyContent: "center"
-                }}
-                onClick={() => setActiveSection("customerCare")}
-              >
-                Customer Care
-              </button>
-            </li>
-          </ul>
-        </div>
+        <h4 className="text-dark fw-bold d-none d-md-block">MY ACCOUNT</h4>
       </header>
 
-      <div className="d-flex flex-column flex-lg-row mt-4 justify-content-center align-items-start gap-3 flex-grow-1">
+      <div className="d-flex flex-column flex-lg-row mt-4 justify-content-center align-items-start gap-3 flex-grow-1 px-2 px-sm-3">
+        {/* Mobile Navigation - Visible only on small and medium screens */}
+        <div className="d-flex d-lg-none flex-row flex-wrap justify-content-between gap-2 w-100 mb-3 px-2">
+          <button
+            className="btn fw-bold"
+            style={getMobileNavButtonStyle("personalInfo")}
+            onClick={() => setActiveSection("personalInfo")}
+          >
+            Personal Info
+          </button>
+          <button
+            className="btn fw-bold"
+            style={getMobileNavButtonStyle("orders")}
+            onClick={() => setActiveSection("orders")}
+          >
+            Your Orders
+          </button>
+          <button
+            className="btn fw-bold"
+            style={getMobileNavButtonStyle("paymentMethods")}
+            onClick={() => setActiveSection("paymentMethods")}
+          >
+            Payment Methods
+          </button>
+          <button
+            className="btn fw-bold"
+            style={getMobileNavButtonStyle("customerCare")}
+            onClick={() => setActiveSection("customerCare")}
+          >
+            Customer Care
+          </button>
+        </div>
+
         {/* Sidebar - Hidden on small and medium screens */}
         <div
           className="d-none d-lg-flex flex-column align-items-center justify-content-between p-3 rounded shadow-sm mt-5 me-lg-5 ms-md-0 me-md-0 mx-auto col-lg-3 col-md-6 h-100 align-self-stretch"
@@ -224,11 +224,7 @@ const MyAccount = () => {
             <div className="col-lg-12 col-md-12 col-12">
               <button
                 className="btn btn-lg w-100 py-4 fs-5 fw-bold rounded-3"
-                style={{
-                  backgroundColor: "#FFAD62",
-                  borderColor: "#FFAD62",
-                  color: "black"
-                }}
+                style={getNavButtonStyle("personalInfo")}
                 onClick={() => setActiveSection("personalInfo")}
               >
                 Personal Info
@@ -238,11 +234,7 @@ const MyAccount = () => {
             <div className="col-lg-12 col-md-12 col-12">
               <button
                 className="btn btn-lg w-100 py-4 fs-5 fw-bold rounded-3"
-                style={{
-                  backgroundColor: "#FFAD62",
-                  borderColor: "#FFAD62",
-                  color: "black",
-                }}
+                style={getNavButtonStyle("orders")}
                 onClick={() => setActiveSection("orders")}
               >
                 Your Orders
@@ -252,11 +244,7 @@ const MyAccount = () => {
             <div className="col-lg-12 col-md-12 col-12">
               <button
                 className="btn btn-lg w-100 py-4 fs-5 fw-bold rounded-3"
-                style={{
-                  backgroundColor: "#FFAD62",
-                  borderColor: "#FFAD62",
-                  color: "black",
-                }}
+                style={getNavButtonStyle("paymentMethods")}
                 onClick={() => setActiveSection("paymentMethods")}
               >
                 Payment Methods
@@ -266,11 +254,7 @@ const MyAccount = () => {
             <div className="col-lg-12 col-md-12 col-12">
               <button
                 className="btn btn-lg w-100 py-4 fs-5 fw-bold rounded-3"
-                style={{
-                  backgroundColor: "#FFAD62",
-                  borderColor: "#FFAD62",
-                  color: "black",
-                }}
+                style={getNavButtonStyle("customerCare")}
                 onClick={() => setActiveSection("customerCare")}
               >
                 Customer Care
@@ -279,11 +263,11 @@ const MyAccount = () => {
           </div>
         </div>
 
-        {/* Content Section - Using fixed dimensions */}
-        <div className="flex-grow-1 d-flex justify-content-center">
+        {/* Content Section - Using dynamic dimensions */}
+        <div className="flex-grow-1 d-flex justify-content-center w-100">
           {activeSection === "personalInfo" && (
-            <div style={containerStyle} className="shadow-sm mt-md-5 mt-1 mb-5">
-              <h3 className="fw-bold text-center mb-5">Personal Information</h3>
+            <div style={getContainerStyle()} className="shadow-sm mt-md-5 mt-1 mb-5">
+              <h3 className="fw-bold text-center mb-4 mb-md-5">Personal Information</h3>
 
               <form onSubmit={(e) => {
                 e.preventDefault();
@@ -291,10 +275,10 @@ const MyAccount = () => {
                   alert("Form submitted successfully!");
                 }
               }}>
-                <div className="row mb-4">
-                  <div className="col-md-6 mb-4">
+                <div className="row mb-3 mb-md-4">
+                  <div className="col-12 col-md-6 mb-3 mb-md-4">
                     <label className="form-label fw-bold">First Name</label>
-                    <div className="col-10">
+                    <div className="col-12 col-sm-10">
                       <input 
                         type="text" 
                         className="form-control rounded-pill" 
@@ -302,12 +286,12 @@ const MyAccount = () => {
                       />
                     </div>
                   </div>
-                  <div className="col-md-6 mb-4">
+                  <div className="col-12 col-md-6 mb-3 mb-md-4">
                     <div className="d-flex align-items-center mb-2">
                       <label className="form-label fw-bold me-3">Last Name</label>
                       <a href="#" className="text-primary">Edit</a>
                     </div>
-                    <div className="col-10">
+                    <div className="col-12 col-sm-10">
                       <input 
                         type="text" 
                         className="form-control rounded-pill" 
@@ -317,7 +301,7 @@ const MyAccount = () => {
                   </div>
                 </div>
 
-                <div className="mb-4">
+                <div className="mb-3 mb-md-4">
                   <label className="form-label fw-bold mb-2">Gender</label>
                   <div className="d-flex gap-4 ms-3">
                     <div className="form-check">
@@ -346,12 +330,12 @@ const MyAccount = () => {
                 </div>
 
                 <div className="row">
-                  <div className="col-md-6 mb-4">
+                  <div className="col-12 col-md-6 mb-3 mb-md-4">
                     <div className="d-flex align-items-center mb-2">
                       <label className="form-label fw-bold me-3">E-mail Address</label>
                       <a href="#" className="text-primary">Edit</a>
                     </div>
-                    <div className="col-10">
+                    <div className="col-12 col-sm-10">
                       <input
                         type="email"
                         className="form-control rounded-pill"
@@ -359,14 +343,14 @@ const MyAccount = () => {
                         required
                       />
                     </div>
-                    {formErrors.email && <p className="text-danger mt-1">{formErrors.email}</p>}
+                    {formErrors.email && <p className="text-danger mt-1 small">{formErrors.email}</p>}
                   </div>
-                  <div className="col-md-6 mb-4">
+                  <div className="col-12 col-md-6 mb-3 mb-md-4">
                     <div className="d-flex align-items-center mb-2">
                       <label className="form-label fw-bold me-3">Phone Number</label>
                       <a href="#" className="text-primary">Edit</a>
                     </div>
-                    <div className="col-10">
+                    <div className="col-12 col-sm-10">
                       <input
                         type="tel"
                         className="form-control rounded-pill"
@@ -374,15 +358,15 @@ const MyAccount = () => {
                         required
                       />
                     </div>
-                    {formErrors.phoneNumber && <p className="text-danger mt-1">{formErrors.phoneNumber}</p>}
+                    {formErrors.phoneNumber && <p className="text-danger mt-1 small">{formErrors.phoneNumber}</p>}
                   </div>
                 </div>
 
                 {/* Submit Button */}
-                <div className="d-flex justify-content-center mt-5">
+                <div className="d-flex justify-content-center mt-4 mt-md-5">
                   <button 
                     type="submit"
-                    className="btn btn-primary rounded-pill px-5 py-2 fw-bold"
+                    className="btn btn-primary rounded-pill px-4 px-md-5 py-2 fw-bold"
                     style={{ backgroundColor: "#FF9900A8", borderColor: "#FF9900A8" }}
                     disabled={formErrors.email || formErrors.phoneNumber}
                   >
@@ -394,33 +378,27 @@ const MyAccount = () => {
           )}  
           
           {activeSection === "orders" && (
-            <div style={containerStyle} className="shadow-sm mt-md-5 mt-1 mb-5">
-              <h3 className="fw-bold text-center mb-5">Your Orders</h3>
-
+            <div style={getContainerStyle()} className="shadow-sm mt-md-5 mt-1 mb-5">
+              <h3 className="fw-bold text-center mb-4 mb-md-5">Your Orders</h3>
               <div className="container-fluid d-flex align-items-stretch justify-content-center mb-4">
-                <div className="container-fluid custom-responsive-bg d-flex flex-row align-items-center justify-content-evenly gap-4 border p-3 rounded w-100">
+                <div className="container-fluid custom-responsive-bg d-flex flex-column flex-md-row align-items-center justify-content-evenly gap-3 gap-md-4 border p-3 rounded w-100">
                   <img
                     src="/placeholder.png"
                     alt="Order Thumbnail"
-                    className="img-thumbnail"
-                    style={{ width: "100px", backgroundColor: "gray" }}
+                    className="img-thumbnail mb-3 mb-md-0"
+                    style={{ width: "80px", height: "80px", objectFit: "cover", backgroundColor: "gray" }}
                   />
 
-                  <div className="d-block text-center ms-lg-4">
-                    <div className="d-lg-flex mb-2">
-                      <p className="mb-1 me-lg-5">
-                        <strong>Order Name</strong>
-                      </p>
-                                            <p className="mb-1 me-lg-5">
-                        <strong>Order Name</strong>
-                      </p>
+                  <div className="d-flex flex-column text-center text-md-start w-100">
+                    <div className="d-flex flex-column flex-md-row justify-content-between mb-2">
+                      <p className="mb-1 me-md-3 fw-bold">Order Name</p>
                       <p className="mb-1">Date</p>
                     </div>
 
-                    <div className="d-lg-flex">
-                      <p className="mb-1 me-lg-3">Amount paid</p>
+                    <div className="d-flex flex-column flex-md-row justify-content-between align-items-center">
+                      <p className="mb-2 mb-md-1">Amount paid</p>
                       <button
-                        className="btn btn-primary btn-sm responsive-button"
+                        className="btn btn-primary btn-sm px-3"
                         onClick={() => setActiveSection("ratings")}
                       >
                         Rate and Review
@@ -433,34 +411,32 @@ const MyAccount = () => {
           )}
 
           {activeSection === "ratings" && (
-            <div style={containerStyle} className="shadow-sm mt-md-5 mt-1 mb-5">
-              <h3 className="fw-bold text-center mb-5">My Orders</h3>
+            <div style={getContainerStyle()} className="shadow-sm mt-md-5 mt-1 mb-5">
+              <h3 className="fw-bold text-center mb-4 mb-md-5">My Orders</h3>
               <div className="container-fluid d-flex align-items-stretch justify-content-center mb-4">
-                <div className="container-fluid custom-responsive-bg d-flex flex-row align-items-center justify-content-evenly gap-4 border p-3 rounded w-100">
+                <div className="container-fluid custom-responsive-bg d-flex flex-column flex-md-row align-items-center justify-content-evenly gap-3 gap-md-4 border p-3 rounded w-100">
                   <img
                     src="/placeholder.png"
                     alt="Order Thumbnail"
-                    className="img-thumbnail"
-                    style={{ width: "100px", backgroundColor: "gray" }}
+                    className="img-thumbnail mb-3 mb-md-0"
+                    style={{ width: "80px", height: "80px", objectFit: "cover", backgroundColor: "gray" }}
                   />
 
-                  <div className="d-block text-center ms-lg-4">
-                    <div className="d-lg-flex mb-2">
-                      <p className="mb-1 me-lg-5">
-                        <strong>Order Name</strong>
-                      </p>
+                  <div className="d-flex flex-column text-center text-md-start w-100">
+                    <div className="d-flex flex-column flex-md-row justify-content-between mb-2">
+                      <p className="mb-1 me-md-3 fw-bold">Order Name</p>
                       <p className="mb-1">Date</p>
                     </div>
 
-                    <div className="d-lg-flex">
-                      <p className="mb-1 me-lg-5">Amount paid</p>
+                    <div className="d-flex flex-column flex-md-row justify-content-between">
+                      <p className="mb-1 me-md-3">Amount paid</p>
                       <p className="mb-1">Order ID</p>
                     </div>
                   </div>
                 </div>
               </div>
               
-              <div className="mb-4 mt-5 px-4">
+              <div className="mb-4 mt-4 mt-md-5 px-2 px-md-4">
                 <div className="d-flex justify-content-center align-items-center mb-3">
                   <h4 className="fw-bold">Ratings and review</h4>
                 </div>
@@ -480,7 +456,7 @@ const MyAccount = () => {
               
               <div className="d-flex justify-content-center mt-4">
                 <button
-                  className="btn btn-primary rounded-pill px-5 py-2 fw-bold"
+                  className="btn btn-primary rounded-pill px-4 px-md-5 py-2 fw-bold"
                   style={{ backgroundColor: "#FF9900A8", borderColor: "#FF9900A8" }}
                 >
                   Submit
@@ -490,15 +466,15 @@ const MyAccount = () => {
           )}
 
           {activeSection === "paymentMethods" && (
-            <div style={containerStyle} className="shadow-sm mt-md-5 mt-1 mb-5">
-              <h3 className="fw-bold mb-5 text-center">Saved Payment Details</h3>
+            <div style={getContainerStyle()} className="shadow-sm mt-md-5 mt-1 mb-5">
+              <h3 className="fw-bold mb-4 mb-md-5 text-center">Saved Payment Details</h3>
 
-              <div className="mb-5">
+              <div className="mb-4 mb-md-5">
                 <h5 className="fw-bold mb-3">Saved UPI ID's</h5>
                 <div className="mb-4">
-                  <div className="d-flex flex-row align-items-center mb-3">
-                    <label className="col-4 col-md-3 col-form-label fw-bold">UPI ID 1:</label>
-                    <div className="col-8 col-md-6">
+                  <div className="d-flex flex-column flex-sm-row align-items-start align-items-sm-center mb-3">
+                    <label className="col-12 col-sm-4 col-md-3 col-form-label fw-bold mb-1 mb-sm-0">UPI ID 1:</label>
+                    <div className="col-12 col-sm-8 col-md-6">
                       <input 
                         type="text" 
                         className="form-control form-control-sm rounded-pill w-100" 
@@ -508,9 +484,9 @@ const MyAccount = () => {
                       />
                     </div>
                   </div>
-                  <div className="d-flex flex-row align-items-center mb-3">
-                    <label className="col-4 col-md-3 col-form-label fw-bold">UPI ID 2:</label>
-                    <div className="col-8 col-md-6">
+                  <div className="d-flex flex-column flex-sm-row align-items-start align-items-sm-center mb-3">
+                    <label className="col-12 col-sm-4 col-md-3 col-form-label fw-bold mb-1 mb-sm-0">UPI ID 2:</label>
+                    <div className="col-12 col-sm-8 col-md-6">
                       <input 
                         type="text" 
                         className="form-control form-control-sm rounded-pill w-100" 
@@ -526,11 +502,11 @@ const MyAccount = () => {
               <h5 className="fw-bold mb-3">Saved Debit Card / Credit Card</h5>
               {paymentDetails.cardDetails.map((card, index) => (
                 <div key={index} className="mb-4">
-                  <div className="d-flex flex-row align-items-center mb-3">
-                    <label className="col-4 col-md-3 col-form-label fw-bold" htmlFor={`cardDetails.${index}.cardNumber`}>
+                  <div className="d-flex flex-column flex-sm-row align-items-start align-items-sm-center mb-3">
+                    <label className="col-12 col-sm-4 col-md-3 col-form-label fw-bold mb-1 mb-sm-0" htmlFor={`cardDetails.${index}.cardNumber`}>
                       Card Number:
                     </label>
-                    <div className="col-8 col-md-6">
+                    <div className="col-12 col-sm-8 col-md-6">
                       <input 
                         type="text" 
                         className="form-control form-control-sm rounded-pill w-100" 
@@ -540,11 +516,11 @@ const MyAccount = () => {
                       />
                     </div>
                   </div>
-                  <div className="d-flex flex-row align-items-center mb-3">
-                    <label className="col-4 col-md-3 col-form-label fw-bold" htmlFor={`cardDetails.${index}.expiryDate`}>
+                  <div className="d-flex flex-column flex-sm-row align-items-start align-items-sm-center mb-3">
+                    <label className="col-12 col-sm-4 col-md-3 col-form-label fw-bold mb-1 mb-sm-0" htmlFor={`cardDetails.${index}.expiryDate`}>
                       Expiry Date:
                     </label>
-                    <div className="col-8 col-md-6">
+                    <div className="col-12 col-sm-8 col-md-6">
                       <input 
                         type="text" 
                         className="form-control form-control-sm rounded-pill w-100" 
@@ -554,11 +530,11 @@ const MyAccount = () => {
                       />
                     </div>
                   </div>
-                  <div className="d-flex flex-row align-items-center mb-3">
-                    <label className="col-4 col-md-3 col-form-label fw-bold" htmlFor={`cardDetails.${index}.cvv`}>
+                  <div className="d-flex flex-column flex-sm-row align-items-start align-items-sm-center mb-3">
+                    <label className="col-12 col-sm-4 col-md-3 col-form-label fw-bold mb-1 mb-sm-0" htmlFor={`cardDetails.${index}.cvv`}>
                       CVV:
                     </label>
-                    <div className="col-8 col-md-6">
+                    <div className="col-12 col-sm-8 col-md-6">
                       <input
                         type="text"
                         className="form-control form-control-sm rounded-pill w-100"
@@ -571,9 +547,9 @@ const MyAccount = () => {
                 </div>
               ))}
               
-              <div className="d-flex justify-content-center mt-5">
+              <div className="d-flex justify-content-center mt-4 mt-md-5">
                 <button 
-                  className="btn btn-primary rounded-pill px-5 py-2 fw-bold"
+                  className="btn btn-primary rounded-pill px-4 px-md-5 py-2 fw-bold"
                   style={{ backgroundColor: "#FF9900A8", borderColor: "#FF9900A8" }}
                 >
                   Save Changes
@@ -583,8 +559,8 @@ const MyAccount = () => {
           )}
           
           {activeSection === "customerCare" && (
-            <div style={containerStyle} className="shadow-sm mt-md-5 mt-1 mb-5">
-              <h3 className="fw-bold text-center mb-5">Customer Care</h3>
+            <div style={getContainerStyle()} className="shadow-sm mt-md-5 mt-1 mb-5">
+              <h3 className="fw-bold text-center mb-4 mb-md-5">Customer Care</h3>
               
               <form onSubmit={(e) => {
                 e.preventDefault();
@@ -603,10 +579,10 @@ const MyAccount = () => {
                   </div>
                 </div>
 
-                <div className="row mb-4">
-                  <div className="col-md-6 mb-3">
+                <div className="row mb-3 mb-md-4">
+                  <div className="col-12 col-md-6 mb-3">
                     <label className="form-label fw-bold">Name</label>
-                    <div className="col-10">
+                    <div className="col-12 col-sm-10">
                       <input 
                         type="text" 
                         className="form-control rounded-pill" 
@@ -615,40 +591,40 @@ const MyAccount = () => {
                     </div>
                   </div>
                   
-                  <div className="col-md-6 mb-3">
+                  <div className="col-12 col-md-6 mb-3">
                     <label className="form-label fw-bold">Contact Number</label>
-                    <div className="col-10">
+                    <div className="col-12 col-sm-10">
                       <input
                         type="text"
                         className="form-control rounded-pill"
                         onChange={(e) => validatePhoneNumber(e.target.value)}
                         required
                       />
-                      {formErrors.phoneNumber && <p className="text-danger mt-1">{formErrors.phoneNumber}</p>}
+                      {formErrors.phoneNumber && <p className="text-danger mt-1 small">{formErrors.phoneNumber}</p>}
                     </div>
                   </div>
                 </div>
 
                 <div className="mb-4">
-                  <div className="col-md-6">
+                  <div className="col-12 col-md-6">
                     <label className="form-label fw-bold">Email</label>
-                    <div className="col-10">
+                    <div className="col-12 col-sm-10">
                       <input
                         type="email"
                         className="form-control rounded-pill"
                         onChange={(e) => validateEmail(e.target.value)}
                         required
                       />
-                      {formErrors.email && <p className="text-danger mt-1">{formErrors.email}</p>}
+                      {formErrors.email && <p className="text-danger mt-1 small">{formErrors.email}</p>}
                     </div>
                   </div>
                 </div>
 
                 {/* Submit Button */}
-                <div className="d-flex justify-content-center mt-5">
+                <div className="d-flex justify-content-center mt-4 mt-md-5">
                   <button 
                     type="submit"
-                    className="btn btn-primary rounded-pill px-5 py-2 fw-bold"
+                    className="btn btn-primary rounded-pill px-4 px-md-5 py-2 fw-bold"
                     style={{ backgroundColor: "#FF9900A8", borderColor: "#FF9900A8" }}
                     disabled={formErrors.email || formErrors.phoneNumber}
                   >
@@ -663,20 +639,20 @@ const MyAccount = () => {
 
       {/* Footer - Now using mt-auto to push it to the bottom */}
       <footer
-        className="p-3 mt-auto rounded d-flex justify-content-between align-items-center w-100 mb-0"
+        className="p-3 mt-auto rounded d-flex flex-column flex-sm-row justify-content-between align-items-center w-100 mb-0"
         style={{ backgroundColor: "#ffbc57" }}
       >
-        <p className="mb-0">Copyrights &copy; 2024 - DUZO</p>
+        <p className="mb-3 mb-sm-0 text-center text-sm-start">Copyrights &copy; 2024 - DUZO</p>
 
-        <div className="d-sm-flex gap-2">
+        <div className="d-flex gap-3 justify-content-center">
           <a href="https://instagram.com" target="_blank" rel="noopener noreferrer">
-            <FaInstagram size={30} color="black" />
+            <FaInstagram size={windowWidth < 375 ? 20 : 24} color="black" />
           </a>
           <a href="https://facebook.com" target="_blank" rel="noopener noreferrer">
-            <FaFacebook size={30} color="black" />
+            <FaFacebook size={windowWidth < 375 ? 20 : 24} color="black" />
           </a>
           <a href="https://twitter.com" target="_blank" rel="noopener noreferrer">
-            <FaXTwitter size={30} color="black" />
+            <FaXTwitter size={windowWidth < 375 ? 20 : 24} color="black" />
           </a>
         </div>
       </footer>
@@ -686,3 +662,4 @@ const MyAccount = () => {
 
 export default MyAccount;
 
+              
