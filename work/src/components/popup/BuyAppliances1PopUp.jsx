@@ -130,16 +130,15 @@ function BuyAppliances1PopUp({ show, onHide }) {
             <Modal.Title className="fw-bold w-100 text-center">Buy Appliances</Modal.Title>
           </Modal.Header>
           <Modal.Body className="p-3 p-md-3" style={{ backgroundColor: "#ffd5a4", height: "500px" }}>
-          <div className="d-flex flex-wrap justify-content-center gap-4">
+          <div className="d-flex flex-wrap justify-content-start gap-4">
   {[
-    { label: "Buy Refrigerator", to: "/buy-fridge", img: "/fridge.png" },
-    { label: "Buy Refrigerator", to: "/buy-fridge", img: "/fridge.png" },
-    { label: "Buy Refrigerator", to: "/buy-fridge", img: "/fridge.png" },
+    { label: "Buy Refrigerator", to: "/buyfridge", img: "/fridge.png" },
+    { label: "Buy a Washing Machine", to: "/buywashingmachine", img: "/fridge.png" },
+    { label: "Buy a Water Purifier", to: "/buywaterpurifier", img: "/fridge.png" },
 
 
-    { label: "Buy Refrigerator", to: "/buy-fridge", img: "/fridge.png" },
-    { label: "Buy Refrigerator", to: "/buy-fridge", img: "/fridge.png" },
-    { label: "Buy Refrigerator", to: "/buy-fridge", img: "/fridge.png" },
+    { label: "Buy a Air Cooler", to: "/buyaircooler", img: "/fridge.png" },
+   
 
     // ... other items
   ].map((item, idx) => (

@@ -70,6 +70,10 @@ import BuyTable from './pages/BuyTable';
 import BuyDining from './pages/BuyDining';
 import BuyBean from './pages/BuyBean';
 import BuySofaa from './pages/BuySofaa';
+import BuyRefrigerator from './pages/BuyRefrigerator';
+import BuyWashingMachine from './pages/BuyWashingMachine';
+import BuyWaterPurifier from './pages/BuyWaterPurifier';
+import BuyAirCooler from './pages/BuyAirCooler';
 
 
 
@@ -156,6 +160,12 @@ function App() {
         <Route path='/buydining' element={<BuyDining/>}/>
         <Route path='/buybean' element={<BuyBean/>}/>
         <Route path='/buysofa' element={<BuySofaa/>}/>
+        <Route path='/buyfridge' element={<BuyRefrigerator/>}/>
+        <Route path='/buywashingmachine' element={<BuyWashingMachine/>}/>
+        <Route path='/buywaterpurifier' element={<BuyWaterPurifier/>}/>
+        <Route path='/buyaircooler' element={<BuyAirCooler/>}/>
+
+
 
 
 
