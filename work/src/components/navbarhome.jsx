@@ -29,7 +29,7 @@ function Navbarab() {
         expand="lg"
         className="rounded-4 mt-2 mx-2 mb-3"
       >
-        <Container>
+         <Container style={{ maxWidth: '1468px' }}>
           <Navbar.Brand className="mb-2">
             <Link to="/home">
               <img src="/duzo.png" alt="DUZO" width="100" />
