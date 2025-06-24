@@ -9,6 +9,8 @@ import {
   FaSearch
 } from "react-icons/fa";
 import "bootstrap/dist/css/bootstrap.min.css";
+import Footer from "../components/Footer";
+import Copyright from "../components/Copyright";
 
 const ChefForParty = () => {
   const [formData, setFormData] = useState({
@@ -23,7 +25,7 @@ const ChefForParty = () => {
   const [errors, setErrors] = useState({});
   const [submitted, setSubmitted] = useState(false);
   const [showMainContent, setShowMainContent] = useState(true);
-  const [bookedSlots, setBookedSlots] = useState([]); // Store booked date-time combinations
+  const [bookedSlots, setBookedSlots] = useState([]);
 
   // Load booked slots from localStorage on component mount
   useEffect(() => {
@@ -37,6 +39,42 @@ const ChefForParty = () => {
   const getTodayDate = () => {
     const today = new Date();
     return today.toISOString().split('T')[0];
+  };
+
+  // Get current time in HH:MM format
+  const getCurrentTime = () => {
+    const now = new Date();
+    return now.toTimeString().slice(0, 5);
+  };
+
+  // Get minimum selectable time (current time + 3 hours for chef preparation)
+  const getMinimumTime = (selectedDate) => {
+    const today = getTodayDate();
+    
+    if (selectedDate === today) {
+      const now = new Date();
+      const minTime = new Date(now.getTime() + 3 * 60 * 60 * 1000); // Add 3 hours
+      return minTime.toTimeString().slice(0, 5);
+    }
+    
+    return "06:00"; // Default minimum time for future dates
+  };
+
+  // Check if selected time is valid
+  const isTimeValid = (selectedDate, selectedTime) => {
+    if (!selectedDate || !selectedTime) return true;
+    
+    const today = getTodayDate();
+    
+    if (selectedDate === today) {
+      const now = new Date();
+      const selectedDateTime = new Date(`${selectedDate}T${selectedTime}`);
+      const minDateTime = new Date(now.getTime() + 3 * 60 * 60 * 1000);
+      
+      return selectedDateTime >= minDateTime;
+    }
+    
+    return true;
   };
 
   // Check if a date-time slot is already booked
@@ -67,8 +105,44 @@ const ChefForParty = () => {
       });
     }
 
-    // Real-time validation for date-time combination
-    if (name === 'date' || name === 'time') {
+    // Real-time validation for time
+    if (name === 'time' && formData.date) {
+      if (!isTimeValid(formData.date, value)) {
+        const todayDate = getTodayDate();
+        if (formData.date === todayDate) {
+          const minTime = getMinimumTime(formData.date);
+          setErrors(prev => ({
+            ...prev,
+            time: `Time must be at least ${minTime} (3 hours from now for chef preparation)`
+          }));
+        }
+      } else {
+        setErrors(prev => ({
+          ...prev,
+          time: null
+        }));
+      }
+    }
+
+    // Real-time validation for date change
+    if (name === 'date') {
+      // Clear time if new date is selected and current time is invalid
+      if (value && formData.time && !isTimeValid(value, formData.time)) {
+        setFormData(prev => ({
+          ...prev,
+          date: value,
+          time: "" // Clear invalid time
+        }));
+        setErrors(prev => ({
+          ...prev,
+          time: "Please select a valid time for the selected date"
+        }));
+        return;
+      }
+    }
+
+    // Check for booked slots
+    if ((name === 'date' || name === 'time')) {
       const dateToCheck = name === 'date' ? value : formData.date;
       const timeToCheck = name === 'time' ? value : formData.time;
       
@@ -109,21 +183,17 @@ const ChefForParty = () => {
     // Time validation
     if (!formData.time) {
       newErrors.time = "Time is required";
+    } else if (!isTimeValid(formData.date, formData.time)) {
+      const todayDate = getTodayDate();
+      if (formData.date === todayDate) {
+        const minTime = getMinimumTime(formData.date);
+        newErrors.time = `Time must be at least ${minTime} (3 hours from now for chef preparation)`;
+      }
     }
 
-    // Check if the selected date is today and time is in the past
-    if (formData.date && formData.time) {
-      const selectedDateTime = new Date(`${formData.date}T${formData.time}`);
-      const now = new Date();
-      
-      if (formData.date === getTodayDate() && selectedDateTime < now) {
-        newErrors.time = "Time cannot be in the past for today's date";
-      }
-      
-      // Check if slot is already booked
-      if (isSlotBooked(formData.date, formData.time)) {
-        newErrors.dateTime = "This date and time slot is already booked. Please select a different time.";
-      }
+    // Check if slot is already booked
+    if (formData.date && formData.time && isSlotBooked(formData.date, formData.time)) {
+      newErrors.dateTime = "This date and time slot is already booked. Please select a different time.";
     }
 
     // People validation
@@ -168,27 +238,6 @@ const ChefForParty = () => {
       setSubmitted(false);
       setErrors({});
     }
-  };
-
-  // Handle social media clicks
-  const handleSocialMediaClick = (platform) => {
-    const urls = {
-      instagram: "https://www.instagram.com/duzo_official",
-      facebook: "https://www.facebook.com/duzo.official",
-      twitter: "https://www.twitter.com/duzo_official"
-    };
-    
-    window.open(urls[platform], '_blank', 'noopener,noreferrer');
-  };
-
-  // Handle phone click
-  const handlePhoneClick = () => {
-    window.location.href = "tel:+919876543210";
-  };
-
-  // Handle email click
-  const handleEmailClick = () => {
-    window.location.href = "mailto:customercare@duzo.in";
   };
 
   return (
@@ -321,19 +370,54 @@ const ChefForParty = () => {
                         <Form.Control
                           type="time"
                           name="time"
+                          min={formData.date ? getMinimumTime(formData.date) : "06:00"}
+                          max="23:00"
                           isInvalid={submitted && (errors.time || errors.dateTime)}
                           value={formData.time}
                           onChange={handleInputChange}
                           className="rounded-pill"
+                          disabled={!formData.date}
                         />
                         <Form.Control.Feedback type="invalid">
                           {errors.time || errors.dateTime}
                         </Form.Control.Feedback>
+                        
+                        {/* Helper text showing available time range */}
+                        {formData.date && (
+                          <Form.Text className="text-muted small d-block mt-1">
+                            Available from {getMinimumTime(formData.date)} to 23:00
+                            {formData.date === getTodayDate() && (
+                              <span className="text-info"> (3 hours from current time)</span>
+                            )}
+                          </Form.Text>
+                        )}
                       </div>
                     </div>
                   </div>
 
-                  <p className="small text-muted fw-bold">*Our Chef arrives at least 3 hours before start time</p>
+                  <div className="d-flex flex-column gap-1">
+                    <p className="small text-muted fw-bold mb-1">
+                      *Our Chef arrives at least 3 hours before start time
+                    </p>
+                    
+                    {/* Show chef arrival time when valid time is selected */}
+                    {formData.date && formData.time && isTimeValid(formData.date, formData.time) && (
+                      <p className="small text-success fw-bold mb-0">
+                                               ✓ Chef will arrive at {(() => {
+                          const partyTime = new Date(`${formData.date}T${formData.time}`);
+                          const chefArrival = new Date(partyTime.getTime() - 3 * 60 * 60 * 1000);
+                          return chefArrival.toTimeString().slice(0, 5);
+                        })()}
+                      </p>
+                    )}
+                    
+                    {/* Show current time for reference when today is selected */}
+                    {formData.date === getTodayDate() && (
+                      <p className="small text-info fw-bold mb-0">
+                        Current time: {getCurrentTime()}
+                      </p>
+                    )}
+                  </div>
 
                   {/* Number of People */}
                   <div className="d-flex flex-column flex-md-row align-items-md-center gap-2 gap-md-3 mb-3">
@@ -398,7 +482,7 @@ const ChefForParty = () => {
                                 height: "35px"
                               }} 
                             />
-                                                        <Button
+                            <Button
                               variant="outline-secondary"
                               size="sm"
                               style={{
@@ -586,10 +670,10 @@ const ChefForParty = () => {
                 </Col>
               </Row>
               
-             {/* Mobile image section - now hidden */}
-<div className="d-none">
-  <Image src="/chef-.png" alt="Cook" fluid />
-</div>
+              {/* Mobile image section - now hidden */}
+              <div className="d-none">
+                <Image src="/chef-.png" alt="Cook" fluid />
+              </div>
 
               <div className="text-center mt-4">
                 <Button 
@@ -604,160 +688,10 @@ const ChefForParty = () => {
             </Form>
           </Container>
 
-          {/* Footer */}
-          <Container
-            fluid
-            className="p-4 rounded-4 mt-2 text-center"
-            style={{ backgroundColor: "#FFD29E" }}
-          >
-            <Row>
-              <Col md={4}>
-                <img src="/duzo.png" alt="DUZO" width="100" className="mb-2" />
-                
-                {/* Clickable Phone Number */}
-                <p 
-                  className="d-flex align-items-center justify-content-center"
-                  style={{ cursor: 'pointer' }}
-                  onClick={handlePhoneClick}
-                >
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="20"
-                    height="20"
-                    fill="currentColor"
-                    viewBox="0 0 16 16"
-                    className="me-2"
-                  >
-                    <path d="M3 1a2 2 0 0 0-2 2c0 7.18 5.82 13 13 13a2 2 0 0 0 2-2v-2.35a1 1 0 0 0-1.02-1 8.92 8.92 0 0 1-3.62-.71 1 1 0 0 0-1.09.26l-1.43 1.43a11.27 11.27 0 0 1-4.52-4.52l1.43-1.43a1 1 0 0 0 .26-1.09 8.92 8.92 0 0 1-.71-3.62A1 1 0 0 0 3 1z" />
-                  </svg>
-                  <span 
-                    className="text-decoration-underline"
-                    style={{ color: '#0066cc' }}
-                  >
-                    +91 86187 05796
-                  </span>
-                </p>
-
-                {/* Clickable Email */}
-                <p 
-                  className="d-flex align-items-center justify-content-center"
-                  style={{ cursor: 'pointer' }}
-                  onClick={handleEmailClick}
-                >
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="20"
-                    height="20"
-                    fill="currentColor"
-                    viewBox="0 0 16 16"
-                    className="me-2"
-                  >
-                    <path d="M0 4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V4zm2-1a1 1 0 0 0-1 1v.217l7 4.2 7-4.2V4a1 1 0 0 0-1-1H2zm13 2.383-4.708 2.825L15 11.105V5.383zm-.034 6.876-5.64-3.471L8 9.583l-1.326-.795-5.64 3.47A1 1 0 0 0 2 13h12a1 1 0 0 0 .966-.741zM1 11.105l4.708-2.897L1 5.383v5.722z"/>
-                  </svg>
-                  <span 
-                    className="text-decoration-underline"
-                    style={{ color: '#0066cc' }}
-                  >
-                    customercare@duzo.in
-                  </span>
-                </p>
-
-                {/* Clickable Social Media Icons */}
-                <div className="d-flex justify-content-center gap-3">
-                <div 
-                style={{ cursor: 'pointer' }}
-                onClick={() => window.open('https://www.instagram.com/duzo.in/', '_blank', 'noopener,noreferrer')}
-                onMouseEnter={(e) => e.target.style.transform = 'scale(1.1)'}
-                onMouseLeave={(e) => e.target.style.transform = 'scale(1)'}
-                >
-               <FaInstagram 
-               size={24} 
-               color="#E4405F" 
-               style={{ transition: 'transform 0.2s ease' }}
-               />
-               </div>
-                  <div 
-                    style={{ cursor: 'pointer' }}
-                    onClick={() => handleSocialMediaClick('facebook')}
-                    onMouseEnter={(e) => e.target.style.transform = 'scale(1.1)'}
-                    onMouseLeave={(e) => e.target.style.transform = 'scale(1)'}
-                  >
-                    <FaFacebook 
-                      size={24} 
-                      color="#1877F2" 
-                      style={{ transition: 'transform 0.2s ease' }}
-                    />
-                  </div>
-                  <div 
-                    style={{ cursor: 'pointer' }}
-                    onClick={() => handleSocialMediaClick('twitter')}
-                    onMouseEnter={(e) => e.target.style.transform = 'scale(1.1)'}
-                    onMouseLeave={(e) => e.target.style.transform = 'scale(1)'}
-                  >
-                    <img
-                      src="/TWIITERX.png"
-                      alt="Twitter X Logo"
-                      width="24"
-                      height="24"
-                      style={{ transition: 'transform 0.2s ease' }}
-                    />
-                  </div>
-                </div>
-              </Col>
-
-              <Col md={4}>
-                <h3>Services Available At</h3>
-                <h3>Bengaluru</h3>
-                <button
-                  className="btn btn-dark rounded-pill px-4 mt-2 text-black"
-                  style={{ backgroundColor: "#F7A13D" }}
-                >
-                  BOOK NOW
-                </button>
-              </Col>
-
-              <Col md={4}>
-                <h3>Site Map</h3>
-                <ul className="list-unstyled">
-                  <li>
-                    <a href="#" className="text-decoration-none">
-                      Services
-                    </a>
-                  </li>
-                  <li>
-                    <a href="#" className="text-decoration-none">
-                      Hiring
-                    </a>
-                  </li>
-                  <li>
-                    <a href="#" className="text-decoration-none">
-                      About Us
-                    </a>
-                  </li>
-                  <li>
-                    <a href="#" className="text-decoration-none">
-                      Contact Us
-                    </a>
-                  </li>
-                </ul>
-              </Col>
-            </Row>
-          </Container>
-
-          {/* Copyright Section */}
-          <div
-            className="mt-2 rounded-4 text-center d-flex justify-content-center align-items-center"
-            style={{ backgroundColor: "#D28E26", height: "2rem" }}
-          >
-            <div>
-              <img
-                src="/copyright.png"
-                alt="Copyright"
-                width="26"
-                height="26"
-              />
-            </div>
-            2024 - DUZO
+          {/* Footer - Styled exactly like HomePage */}
+          <div className="mt-0 mx-2 pt-0"> 
+            <Footer />
+            <Copyright />
           </div>
         </>
       )}
@@ -766,3 +700,4 @@ const ChefForParty = () => {
 };
 
 export default ChefForParty;
+ 

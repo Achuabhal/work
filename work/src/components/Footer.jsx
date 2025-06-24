@@ -31,7 +31,7 @@ function Footer() {
                 >
                   <path d="M3 1a2 2 0 0 0-2 2c0 7.18 5.82 13 13 13a2 2 0 0 0 2-2v-2.35a1 1 0 0 0-1.02-1 8.92 8.92 0 0 1-3.62-.71 1 1 0 0 0-1.09.26l-1.43 1.43a11.27 11.27 0 0 1-4.52-4.52l1.43-1.43a1 1 0 0 0 .26-1.09 8.92 8.92 0 0 1-.71-3.62A1 1 0 0 0 3 1z" />
                 </svg>{" "}
-                Phone number
+                +91 86187 05796
               </p>
               <p>
                 <svg
@@ -43,23 +43,47 @@ function Footer() {
                 >
                   <path d="M0 4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V4zm2-.5a.5.5 0 0 0-.496.438L8 8.6l6.496-4.663A.5.5 0 0 0 14 3.5H2zm12 10V5.6l-5.504 3.94a.5.5 0 0 1-.992 0L2 5.6V13h12z" />
                 </svg>{" "}
-                E-mail address
+                customercare@duzo.in
               </p>
               <div className="d-flex justify-content-center gap-3">
-                <p>
-                  <FaInstagram size={24} color="black" />
-                </p>
+                <div
+                  style={{ cursor: 'pointer' }}
+                  onClick={() => window.open('https://www.instagram.com/duzo.in/', '_blank', 'noopener,noreferrer')}
+                  onMouseEnter={(e) => e.currentTarget.style.transform = 'scale(1.1)'}
+                  onMouseLeave={(e) => e.currentTarget.style.transform = 'scale(1)'}
+                >
+                  <FaInstagram 
+                    size={24} 
+                    color="black" 
+                    style={{ transition: 'transform 0.2s ease' }}
+                  />
+                </div>
 
-                <p>
-                  <FaFacebook size={24} color="black" />
-                </p>
+                <div
+                  style={{ cursor: 'pointer' }}
+                  onClick={() => window.open('facebook', '_blank', 'noopener,noreferrer')}
+                  onMouseEnter={(e) => e.currentTarget.style.transform = 'scale(1.1)'}
+                  onMouseLeave={(e) => e.currentTarget.style.transform = 'scale(1)'}
+                >
+                  <FaFacebook 
+                    size={24} 
+                    color="black" 
+                    style={{ transition: 'transform 0.2s ease' }}
+                  />
+                </div>
 
-                <div>
+                <div
+                  style={{ cursor: 'pointer' }}
+                  onClick={() => window.open('twitter', '_blank', 'noopener,noreferrer')}
+                  onMouseEnter={(e) => e.currentTarget.style.transform = 'scale(1.1)'}
+                  onMouseLeave={(e) => e.currentTarget.style.transform = 'scale(1)'}
+                >
                   <img
                     src="/TWIITERX.png"
                     alt="Twitter X Logo"
                     width="24"
                     height="24"
+                    style={{ transition: 'transform 0.2s ease' }}
                   />
                 </div>
               </div>

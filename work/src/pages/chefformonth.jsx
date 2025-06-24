@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Container, Row, Col, Form, Button, InputGroup, Alert, Image, Navbar } from "react-bootstrap";
 import {
   FaInstagram,
@@ -9,6 +9,9 @@ import {
   FaSearch
 } from "react-icons/fa";
 import "bootstrap/dist/css/bootstrap.min.css";
+import Footer from "../components/Footer";
+import Copyright from "../components/Copyright";
+import { Link } from "react-router-dom";
 
 const ChefForMonth = () => {
   const [formData, setFormData] = useState({
@@ -22,6 +25,40 @@ const ChefForMonth = () => {
   });
   const [errors, setErrors] = useState({});
   const [submitted, setSubmitted] = useState(false);
+  const [bookedSlots, setBookedSlots] = useState([]);
+
+  // Load booked slots from localStorage on component mount
+  useEffect(() => {
+    const savedBookings = localStorage.getItem('cookMonthBookings');
+    if (savedBookings) {
+      setBookedSlots(JSON.parse(savedBookings));
+    }
+  }, []);
+
+  // Get today's date in YYYY-MM-DD format
+  const getTodayDate = () => {
+    const today = new Date();
+    return today.toISOString().split('T')[0];
+  };
+
+  // Get current time in HH:MM format
+  const getCurrentTime = () => {
+    const now = new Date();
+    return now.toTimeString().slice(0, 5);
+  };
+
+  // Check if a date is already booked
+  const isDateBooked = (date) => {
+    return bookedSlots.some(slot => slot.date === date);
+  };
+
+  // Save booking to localStorage
+  const saveBooking = (date) => {
+    const newBooking = { date, timestamp: new Date().toISOString() };
+    const updatedBookings = [...bookedSlots, newBooking];
+    setBookedSlots(updatedBookings);
+    localStorage.setItem('cookMonthBookings', JSON.stringify(updatedBookings));
+  };
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -36,6 +73,21 @@ const ChefForMonth = () => {
         ...errors,
         [name]: null
       });
+    }
+
+    // Real-time validation for date
+    if (name === 'date') {
+      if (value && isDateBooked(value)) {
+        setErrors(prev => ({
+          ...prev,
+          dateBooked: "This date is already booked for monthly service. Please select a different date."
+        }));
+      } else {
+        setErrors(prev => ({
+          ...prev,
+          dateBooked: null
+        }));
+      }
     }
   };
 
@@ -52,22 +104,31 @@ const ChefForMonth = () => {
     today.setHours(0, 0, 0, 0);
     const selectedDate = new Date(formData.date);
 
+    // Date validation
     if (!formData.date) {
       newErrors.date = "Date is required";
     } else if (selectedDate < today) {
       newErrors.date = "Date cannot be in the past";
     }
 
+    // Check if date is already booked
+    if (formData.date && isDateBooked(formData.date)) {
+      newErrors.dateBooked = "This date is already booked for monthly service. Please select a different date.";
+    }
+
+    // People validation
     if (!formData.people) {
       newErrors.people = "Number of people is required";
     } else if (formData.people <= 0) {
       newErrors.people = "Number of people must be greater than 0";
     }
 
+    // Meal type validation
     if (!formData.mealType) {
       newErrors.mealType = "Please select a meal type";
     }
 
+    // Meals validation
     const totalMeals = formData.starters + formData.mainCourse + formData.desserts + formData.sides;
     if (totalMeals === 0) {
       newErrors.meals = "Please select at least one meal";
@@ -82,9 +143,25 @@ const ChefForMonth = () => {
     setSubmitted(true);
 
     if (validateForm()) {
+      // Save the booking
+      saveBooking(formData.date);
+      
       // Process the form submission
       console.log("Form submitted:", formData);
-      // Add your submission logic here
+      alert("Booking confirmed! Your cook has been scheduled for the month.");
+      
+      // Reset form
+      setFormData({
+        date: "",
+        people: "",
+        mealType: "",
+        starters: 0,
+        mainCourse: 0,
+        desserts: 0,
+        sides: 0
+      });
+      setSubmitted(false);
+      setErrors({});
     }
   };
 
@@ -98,7 +175,9 @@ const ChefForMonth = () => {
       >
         <Container>
           <Navbar.Brand className="mb-5">
-            <img src="/duzo.png" alt="DUZO" width="100" />
+            <Link to="/home">
+              <img src="/duzo.png" alt="DUZO" width="100" />
+            </Link>
           </Navbar.Brand>
 
           <Navbar.Toggle aria-controls="basic-navbar-nav" className="mb-5" />
@@ -166,7 +245,9 @@ const ChefForMonth = () => {
 
                 <div className="d-flex align-items-center gap-2">
                   <img src="/cart.png" width="26" height="26" alt="Cart" />
-                  <img src="/user.png" width="26" height="26" alt="Profile" />
+                  <Link to="/myaccount">
+                    <img src="/user.png" width="26" height="26" alt="Profile" />
+                  </Link>
                 </div>
               </div>
             </div>
@@ -183,22 +264,38 @@ const ChefForMonth = () => {
           <Row className="w-100 mx-0">
             {/* Left Column - Form Fields */}
             <Col xs={12} md={6} className="d-flex flex-column gap-3 text-start">
+              {/* Date Booking Conflict Alert */}
+              {errors.dateBooked && (
+                <Alert variant="danger" className="mb-3">
+                  {errors.dateBooked}
+                </Alert>
+              )}
+
               {/* Date Selection */}
               <div className="d-flex flex-column flex-md-row align-items-md-center gap-2 gap-md-3">
-                <Form.Label className="fw-bold w-100 w-md-50">Select your Month</Form.Label>
+                <Form.Label className="fw-bold w-100 w-md-50">Select Start Date</Form.Label>
                 <div className="w-100 w-md-50">
                   <Form.Control
                     type="date"
                     name="date"
-                    isInvalid={submitted && errors.date}
+                    min={getTodayDate()}
+                    isInvalid={submitted && (errors.date || errors.dateBooked)}
                     value={formData.date}
                     onChange={handleInputChange}
                     style={{ borderRadius: '20px', padding: '0.35rem 0.715rem' }}
                   />
-                  <Form.Control.Feedback type="invalid">{errors.date}</Form.Control.Feedback>
+                  <Form.Control.Feedback type="invalid">
+                    {errors.date || errors.dateBooked}
+                  </Form.Control.Feedback>
+                  
+                  {/* Helper text */}
+                  <Form.Text className="text-muted small d-block mt-1">
+                    Service will start from this date for one month
+                  </Form.Text>
                 </div>
               </div>
 
+             
               {/* Number of People */}
               <div className="d-flex flex-column flex-md-row align-items-md-center gap-2 gap-md-3 mb-3">
                 <Form.Label className="fw-bold w-100 w-md-50">Number of People</Form.Label>
@@ -221,49 +318,50 @@ const ChefForMonth = () => {
                 </div>
               </div>
 
-              {/* Choose your meal - Box-shaped Radio Buttons with Bootstrap */}
-<div className="mt-2">
-  <h4 className="fw-bold mb-3">Choose your Meal</h4>
-  {submitted && errors.mealType && (
-    <Alert variant="danger">{errors.mealType}</Alert>
-  )}
-  
-  <div className="d-flex flex-wrap gap-4 mb-4 justify-content-center">
-    {["Breakfast", "Lunch", "Dinner"].map((meal) => (
-      <div key={meal} className="text-center">
-        <div className="form-check d-flex align-items-center">
-          <input
-            className="form-check-input me-2"
-            type="radio"
-            name="mealType"
-            id={`meal-${meal}`}
-            value={meal}
-            checked={formData.mealType === meal}
-            onChange={handleInputChange}
-            style={{
-              cursor: 'pointer',
-              width: '1.1em',
-              height: '1.1em',
-              borderRadius: '0',
-              marginTop: '0' // Remove default margin-top that Bootstrap adds
-            }}
-          />
-          <label
-            className="form-check-label fw-medium"
-            htmlFor={`meal-${meal}`}
-            style={{ 
-              cursor: 'pointer',
-              marginBottom: '0' // Ensure no bottom margin
-            }}
-          >
-            {meal}
-          </label>
-        </div>
-      </div>
-    ))} 
-  </div>
-</div>
-<h6 className="fw-bold mb-3">(Choose one or more options)</h6>
+              {/* Choose your meal - Radio Buttons */}
+              <div className="mt-2">
+                <h4 className="fw-bold mb-3">Choose your Meal</h4>
+                {submitted && errors.mealType && (
+                  <Alert variant="danger">{errors.mealType}</Alert>
+                )}
+                
+                <div className="d-flex flex-wrap gap-4 mb-4 justify-content-center">
+                  {["Breakfast", "Lunch", "Dinner"].map((meal) => (
+                    <div key={meal} className="text-center">
+                      <div className="form-check d-flex align-items-center">
+                        <input
+                          className="form-check-input me-2"
+                          type="radio"
+                          name="mealType"
+                          id={`meal-${meal}`}
+                          value={meal}
+                          checked={formData.mealType === meal}
+                          onChange={handleInputChange}
+                          style={{
+                            cursor: 'pointer',
+                            width: '1.1em',
+                            height: '1.1em',
+                            borderRadius: '0',
+                            marginTop: '0'
+                          }}
+                        />
+                        <label
+                          className="form-check-label fw-medium"
+                          htmlFor={`meal-${meal}`}
+                          style={{ 
+                            cursor: 'pointer',
+                            marginBottom: '0'
+                          }}
+                        >
+                          {meal}
+                        </label>
+                      </div>
+                    </div>
+                  ))} 
+                </div>
+              </div>
+              <h6 className="fw-bold mb-3">(Choose one or more options)</h6>
+              
               {/* Meals Counter Section */}
               <div className="mt-2">
                 <h4 className="fw-bold mb-3">Choose Number of Meals</h4>
@@ -305,7 +403,7 @@ const ChefForMonth = () => {
                             height: "35px"
                           }}
                         />
-                        <Button
+                                               <Button
                           variant="outline-secondary"
                           size="sm"
                           style={{
@@ -395,7 +493,7 @@ const ChefForMonth = () => {
                             height: "35px",
                             border: "1px solid #ced4da"
                           }}
-                                                  onClick={() => handleMealChange("desserts", formData.desserts - 1)}
+                          onClick={() => handleMealChange("desserts", formData.desserts - 1)}
                         >
                           -
                         </Button>
@@ -494,120 +592,27 @@ const ChefForMonth = () => {
           </Row>
           
           {/* Mobile image section - now hidden */}
-<div className="d-none">
-  <Image src="/chef-.png" alt="Cook" fluid />
-</div>
+          <div className="d-none">
+            <Image src="/chef-.png" alt="Cook" fluid />
+          </div>
 
           <div className="text-center mt-4">
-            <Button type="submit" variant="dark" className="px-4">Continue</Button>
+            <Button 
+              type="submit" 
+              variant="dark" 
+              className="px-4"
+              disabled={errors.dateBooked} // Disable button if there's a date conflict
+            >
+              Continue
+            </Button>
           </div>
         </Form>
       </Container>
 
-      {/* Footer */}
-      <Container
-        fluid
-        className="p-4 rounded-4 mt-2 text-center"
-        style={{ backgroundColor: "#FFD29E" }}
-      >
-        <Row>
-          <Col md={4}>
-            <img src="/duzo.png" alt="DUZO" width="100" className="mb-2" />
-            <p>
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="20"
-                height="20"
-                fill="currentColor"
-                viewBox="0 0 16 16"
-              >
-                <path d="M3 1a2 2 0 0 0-2 2c0 7.18 5.82 13 13 13a2 2 0 0 0 2-2v-2.35a1 1 0 0 0-1.02-1 8.92 8.92 0 0 1-3.62-.71 1 1 0 0 0-1.09.26l-1.43 1.43a11.27 11.27 0 0 1-4.52-4.52l1.43-1.43a1 1 0 0 0 .26-1.09 8.92 8.92 0 0 1-.71-3.62A1 1 0 0 0 3 1z" />
-              </svg>{" "}
-              Phone number
-            </p>
-            <p>
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="20"
-                height="20"
-                fill="currentColor"
-                viewBox="0 0 16 16"
-              >
-                <path d="M0 4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V4zm2-1a1 1 0 0 0-1 1v.217l7 4.2 7-4.2V4a1 1 0 0 0-1-1H2zm13 2.383-4.708 2.825L15 11.105V5.383zm-.034 6.876-5.64-3.471L8 9.583l-1.326-.795-5.64 3.47A1 1 0 0 0 2 13h12a1 1 0 0 0 .966-.741zM1 11.105l4.708-2.897L1 5.383v5.722z"/>
-              </svg>{" "}
-              E-mail address
-            </p>
-            <div className="d-flex justify-content-center gap-3">
-              <p>
-                <FaInstagram size={24} color="black" />
-              </p>
-              <p>
-                <FaFacebook size={24} color="black" />
-              </p>
-              <div>
-                <img
-                  src="/TWIITERX.png"
-                  alt="Twitter X Logo"
-                  width="24"
-                  height="24"
-                />
-              </div>
-            </div>
-          </Col>
-
-          <Col md={4}>
-            <h3>Services Available At</h3>
-            <h3>Bengaluru</h3>
-            <button
-              className="btn btn-dark rounded-pill px-4 mt-2 text-black"
-              style={{ backgroundColor: "#F7A13D" }}
-            >
-              BOOK NOW
-            </button>
-          </Col>
-
-          <Col md={4}>
-            <h3>Site Map</h3>
-            <ul className="list-unstyled">
-              <li>
-                <a href="#" className="text-decoration-none">
-                  Services
-                </a>
-              </li>
-              <li>
-                <a href="#" className="text-decoration-none">
-                  Hiring
-                </a>
-              </li>
-              <li>
-                <a href="#" className="text-decoration-none">
-                  About Us
-                </a>
-              </li>
-              <li>
-                <a href="#" className="text-decoration-none">
-                  Contact Us
-                </a>
-              </li>
-            </ul>
-          </Col>
-        </Row>
-      </Container>
-
-      {/* Copyright Section */}
-      <div
-        className="mt-2 rounded-4 text-center d-flex justify-content-center align-items-center"
-        style={{ backgroundColor: "#D28E26", height: "2rem" }}
-      >
-        <div>
-          <img
-            src="/copyright.png"
-            alt="Copyright"
-            width="26"
-            height="26"
-          />
-        </div>
-        2024 - DUZO
+      {/* Footer - Same as HomePage */}
+      <div className="mt-0 mx-2 pt-0"> 
+        <Footer />
+        <Copyright />
       </div>
     </div>
   );

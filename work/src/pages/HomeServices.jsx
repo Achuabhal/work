@@ -4,6 +4,9 @@ import { FaBolt, FaWrench, FaTools, FaInstagram, FaFacebook } from "react-icons/
 import { useNavigate } from "react-router-dom";
 import HomeServicesBanner from "../components/HomeServicesBanner";
 import ServiceModal from "../components/popup/ServiceModal";
+import Footer from "../components/Footer";
+import Copyright from "../components/Copyright";
+import { Link } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 
 const HomeServices = () => {
@@ -11,6 +14,9 @@ const HomeServices = () => {
   const [selectedService, setSelectedService] = useState("");
   const [showServiceModal, setShowServiceModal] = useState(false);
   const [selectedServiceType, setSelectedServiceType] = useState("");
+  const [searchQuery, setSearchQuery] = useState("");
+  const [locationQuery, setLocationQuery] = useState("");
+  const [errors, setErrors] = useState({});
 
   // Service type icons
   const serviceIcons = {
@@ -28,11 +34,55 @@ const HomeServices = () => {
 
   const handleServiceSelect = (service) => {
     setSelectedService(service);
+    // Clear any previous errors when a service is selected
+    setErrors({});
   };
 
   const handleServiceClick = (serviceName) => {
     setSelectedServiceType(serviceName);
     setShowServiceModal(true);
+  };
+
+  // Validate search inputs
+  const validateInputs = () => {
+    const newErrors = {};
+    
+    if (searchQuery.trim() && searchQuery.trim().length < 3) {
+      newErrors.search = "Search query must be at least 3 characters long";
+    }
+    
+    if (locationQuery.trim() && locationQuery.trim().length < 2) {
+      newErrors.location = "Location must be at least 2 characters long";
+    }
+    
+    setErrors(newErrors);
+    return Object.keys(newErrors).length === 0;
+  };
+
+  // Handle search input changes
+  const handleSearchChange = (e) => {
+    setSearchQuery(e.target.value);
+    // Clear error when user types
+    if (errors.search) {
+      setErrors(prev => ({ ...prev, search: null }));
+    }
+  };
+
+  const handleLocationChange = (e) => {
+    setLocationQuery(e.target.value);
+    // Clear error when user types
+    if (errors.location) {
+      setErrors(prev => ({ ...prev, location: null }));
+    }
+  };
+
+  // Handle search submission
+  const handleSearch = (e) => {
+    e.preventDefault();
+    if (validateInputs()) {
+      console.log("Search:", searchQuery, "Location:", locationQuery);
+      // Implement search functionality here
+    }
   };
 
   return (
@@ -45,12 +95,14 @@ const HomeServices = () => {
       >
         <Container fluid>
           <Navbar.Brand className="py-2">
-            <img 
-              src="/duzo.png" 
-              alt="DUZO" 
-              className="img-fluid"
-              style={{ maxWidth: "100px", height: "auto" }} 
-            />
+            <Link to="/home">
+              <img 
+                src="/duzo.png" 
+                alt="DUZO" 
+                className="img-fluid"
+                style={{ maxWidth: "100px", height: "auto" }} 
+              />
+            </Link>
           </Navbar.Brand>
 
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
@@ -59,29 +111,43 @@ const HomeServices = () => {
             <div className="d-flex flex-column w-100">
               <div className="d-flex w-100 align-items-center justify-content-between gap-3 flex-wrap">
                 <div className="flex-grow-1 my-2 my-lg-0">
-                  <Form className="w-100">
+                  <Form className="w-100" onSubmit={handleSearch}>
                     <Form.Group className="input-group">
                       <div
                         className="d-flex align-items-center w-100 rounded-pill px-2"
                         style={{
                           backgroundColor: "#FFBE5D",
                           padding: "5px",
-                          border: "none",
+                          border: errors.search ? "2px solid #dc3545" : "none",
                         }}
                       >
                         <Form.Control
                           type="search"
                           placeholder="How can we help you?"
                           className="form-control border-0 shadow-none bg-transparent"
+                          value={searchQuery}
+                          onChange={handleSearchChange}
+                          isInvalid={!!errors.search}
                         />
-                        <img
-                          src="/search.png"
-                          alt="Search"
-                          width="25"
-                          height="25"
-                          className="ms-2"
-                        />
+                        <button 
+                          type="submit"
+                          style={{ background: 'none', border: 'none' }}
+                          onClick={handleSearch}
+                        >
+                          <img
+                            src="/search.png"
+                            alt="Search"
+                            width="25"
+                            height="25"
+                            className="ms-2"
+                          />
+                        </button>
                       </div>
+                      {errors.search && (
+                        <div className="invalid-feedback d-block">
+                          {errors.search}
+                        </div>
+                      )}
                     </Form.Group>
                   </Form>
                 </div>
@@ -94,28 +160,39 @@ const HomeServices = () => {
                         style={{
                           backgroundColor: "#FFBE5D",
                           padding: "5px",
-                          border: "none",
+                          border: errors.location ? "2px solid #dc3545" : "none",
                         }}
                       >
                         <Form.Control
                           type="text"
+                          placeholder="Enter location"
                           className="form-control border-0 shadow-none bg-transparent"
+                          value={locationQuery}
+                          onChange={handleLocationChange}
+                          isInvalid={!!errors.location}
                         />
                         <img
                           src="/image.png"
-                          alt="Image"
+                          alt="Location"
                           width="25"
                           height="25"
                           className="ms-2"
                         />
                       </div>
+                      {errors.location && (
+                        <div className="invalid-feedback d-block">
+                          {errors.location}
+                        </div>
+                      )}
                     </Form.Group>
                   </Form>
                 </div>
 
                 <div className="d-flex align-items-center gap-2 my-2 my-lg-0">
                   <img src="/cart.png" width="26" height="26" alt="Cart" />
-                  <img src="/user.png" width="26" height="26" alt="Profile" />
+                  <Link to="/myaccount">
+                    <img src="/user.png" width="26" height="26" alt="Profile" />
+                  </Link>
                 </div>
               </div>
             </div>
@@ -153,7 +230,10 @@ const HomeServices = () => {
               <div 
                 className="text-center" 
                 style={{ cursor: 'pointer' }}
-                onClick={() => handleServiceClick(service.title)}
+                onClick={() => {
+                  handleServiceSelect(service.title);
+                  handleServiceClick(service.title);
+                }}
               >
                 <div 
                   className="rounded-4 overflow-hidden mb-3 mx-auto" 
@@ -162,7 +242,14 @@ const HomeServices = () => {
                     height: '120px',
                     maxWidth: '100%',
                     border: selectedService === service.title ? '3px solid #D28E26' : 'none',
-                    boxShadow: '0 4px 8px rgba(0,0,0,0.1)'
+                    boxShadow: '0 4px 8px rgba(0,0,0,0.1)',
+                    transition: 'all 0.3s ease'
+                  }}
+                  onMouseEnter={(e) => {
+                    e.currentTarget.style.transform = 'scale(1.05)';
+                  }}
+                  onMouseLeave={(e) => {
+                    e.currentTarget.style.transform = 'scale(1)';
                   }}
                 >
                   <img 
@@ -215,6 +302,17 @@ const HomeServices = () => {
                 variant="dark" 
                 className="px-4 py-2"
                 onClick={() => handleServiceClick(selectedService)}
+                style={{
+                  backgroundColor: "#D28E26",
+                  borderColor: "#D28E26",
+                  transition: 'all 0.3s ease'
+                }}
+                onMouseEnter={(e) => {
+                  e.target.style.backgroundColor = "#B8761F";
+                }}
+                onMouseLeave={(e) => {
+                  e.target.style.backgroundColor = "#D28E26";
+                }}
               >
                 Continue with {selectedService}
               </Button>
@@ -222,106 +320,6 @@ const HomeServices = () => {
           </Row>
         )}
       </Container>
-
-      {/* Footer - Improved responsiveness */}
-      <Container
-        fluid
-        className="p-3 p-md-4 rounded-4 mt-1 text-center"
-        style={{ backgroundColor: "#FFD29E" }}
-      >
-        <Row className="gy-4">
-          <Col xs={12} md={4} className="text-center text-md-start">
-            <img src="/duzo.png" alt="DUZO" width="100" className="mb-2" />
-            <p>
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="20"
-                height="20"
-                fill="currentColor"
-                viewBox="0 0 16 16"
-              >
-                <path d="M3 1a2 2 0 0 0-2 2c0 7.18 5.82 13 13 13a2 2 0 0 0 2-2v-2.35a1 1 0 0 0-1.02-1 8.92 8.92 0 0 1-3.62-.71 1 1 0 0 0-1.09.26l-1.43 1.43a11.27 11.27 0 0 1-4.52-4.52l1.43-1.43a1 1 0 0 0 .26-1.09 8.92 8.92 0 0 1-.71-3.62A1 1 0 0 0 3 1z" />
-              </svg>{" "}
-              Phone number
-            </p>
-            <p>
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="20"
-                height="20"
-                fill="currentColor"
-                viewBox="0 0 16 16"
-              >
-                <path d="M0 4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V4zm2-1a1 1 0 0 0-1 1v.217l7 4.2 7-4.2V4a1 1 0 0 0-1-1H2zm13 2.383-4.708 2.825L15 11.105V5.383zm-.034 6.876-5.64-3.471L8 9.583l-1.326-.795-5.64 3.47A1 1 0 0 0 2 13h12a1 1 0 0 0 .966-.741zM1 11.105l4.708-2.897L1 5.383v5.722z"/>
-              </svg>{" "}
-              E-mail address
-            </p>
-            <div className="d-flex justify-content-center justify-content-md-start gap-3">
-              <FaInstagram size={24} color="black" />
-              <FaFacebook size={24} color="black" />
-              <img
-                src="/TWIITERX.png"
-                alt="Twitter X Logo"
-                width="24"
-                height="24"
-              />
-            </div>
-          </Col>
-
-          <Col xs={12} md={4}>
-            <h3>Services Available At</h3>
-            <h3>Bengaluru</h3>
-            <button
-              className="btn btn-dark rounded-pill px-4 mt-2 text-black"
-              style={{ backgroundColor: "#F7A13D" }}
-            >
-              BOOK NOW
-            </button>
-          </Col>
-
-          <Col xs={12} md={4} className="text-center text-md-start">
-            <h3>Site Map</h3>
-            <ul className="list-unstyled">
-              <li>
-                <a href="#" className="text-decoration-none">
-                  Services
-                </a>
-              </li>
-              <li>
-                <a href="#" className="text-decoration-none">
-                  Hiring
-                </a>
-              </li>
-              <li>
-                <a href="#" className="text-decoration-none">
-                  About Us
-                </a>
-              </li>
-              <li>
-                <a href="#" className="text-decoration-none">
-                  Contact Us
-                </a>
-              </li>
-            </ul>
-          </Col>
-        </Row>
-      </Container>
-
-      {/* Copyright Section */}
-      <div
-        className="mt-1 rounded-4 text-center d-flex justify-content-center align-items-center py-2"
-        style={{ backgroundColor: "#D28E26", height: "auto", minHeight: "2rem" }}
-      >
-        <div>
-          <img
-            src="/copyright.png"
-            alt="Copyright"
-            width="26"
-            height="26"
-          />
-        </div>
-        <span className="ms-2">2024 - DUZO</span>
-      </div>
 
       {/* Service Modal */}
       {showServiceModal && (
@@ -331,6 +329,12 @@ const HomeServices = () => {
           serviceType={selectedServiceType}
         />
       )}
+
+      {/* Footer - Same as HomePage */}
+      <div className="mt-0 mx-2 pt-0"> 
+        <Footer />
+        <Copyright />
+      </div>
     </div>
   );
 };
