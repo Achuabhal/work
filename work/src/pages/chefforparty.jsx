@@ -22,7 +22,35 @@ const ChefForParty = () => {
   });
   const [errors, setErrors] = useState({});
   const [submitted, setSubmitted] = useState(false);
-  const [showMainContent, setShowMainContent] = useState(true); // Set to true to show content by default
+  const [showMainContent, setShowMainContent] = useState(true);
+  const [bookedSlots, setBookedSlots] = useState([]); // Store booked date-time combinations
+
+  // Load booked slots from localStorage on component mount
+  useEffect(() => {
+    const savedBookings = localStorage.getItem('chefBookings');
+    if (savedBookings) {
+      setBookedSlots(JSON.parse(savedBookings));
+    }
+  }, []);
+
+  // Get today's date in YYYY-MM-DD format
+  const getTodayDate = () => {
+    const today = new Date();
+    return today.toISOString().split('T')[0];
+  };
+
+  // Check if a date-time slot is already booked
+  const isSlotBooked = (date, time) => {
+    return bookedSlots.some(slot => slot.date === date && slot.time === time);
+  };
+
+  // Save booking to localStorage
+  const saveBooking = (date, time) => {
+    const newBooking = { date, time, timestamp: new Date().toISOString() };
+    const updatedBookings = [...bookedSlots, newBooking];
+    setBookedSlots(updatedBookings);
+    localStorage.setItem('chefBookings', JSON.stringify(updatedBookings));
+  };
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -37,6 +65,24 @@ const ChefForParty = () => {
         ...errors,
         [name]: null
       });
+    }
+
+    // Real-time validation for date-time combination
+    if (name === 'date' || name === 'time') {
+      const dateToCheck = name === 'date' ? value : formData.date;
+      const timeToCheck = name === 'time' ? value : formData.time;
+      
+      if (dateToCheck && timeToCheck && isSlotBooked(dateToCheck, timeToCheck)) {
+        setErrors(prev => ({
+          ...prev,
+          dateTime: "This date and time slot is already booked. Please select a different time."
+        }));
+      } else {
+        setErrors(prev => ({
+          ...prev,
+          dateTime: null
+        }));
+      }
     }
   };
 
@@ -53,22 +99,41 @@ const ChefForParty = () => {
     today.setHours(0, 0, 0, 0);
     const selectedDate = new Date(formData.date);
 
+    // Date validation
     if (!formData.date) {
       newErrors.date = "Date is required";
     } else if (selectedDate < today) {
       newErrors.date = "Date cannot be in the past";
     }
 
+    // Time validation
     if (!formData.time) {
       newErrors.time = "Time is required";
     }
 
+    // Check if the selected date is today and time is in the past
+    if (formData.date && formData.time) {
+      const selectedDateTime = new Date(`${formData.date}T${formData.time}`);
+      const now = new Date();
+      
+      if (formData.date === getTodayDate() && selectedDateTime < now) {
+        newErrors.time = "Time cannot be in the past for today's date";
+      }
+      
+      // Check if slot is already booked
+      if (isSlotBooked(formData.date, formData.time)) {
+        newErrors.dateTime = "This date and time slot is already booked. Please select a different time.";
+      }
+    }
+
+    // People validation
     if (!formData.people) {
       newErrors.people = "Number of people is required";
     } else if (formData.people <= 0) {
       newErrors.people = "Number of people must be greater than 0";
     }
 
+    // Meals validation
     const totalMeals = formData.starters + formData.mainCourse + formData.desserts + formData.sides;
     if (totalMeals === 0) {
       newErrors.meals = "Please select at least one meal";
@@ -83,10 +148,47 @@ const ChefForParty = () => {
     setSubmitted(true);
 
     if (validateForm()) {
+      // Save the booking
+      saveBooking(formData.date, formData.time);
+      
       // Process the form submission
       console.log("Form submitted:", formData);
-      // Add your submission logic here
+      alert("Booking confirmed! Your chef has been scheduled.");
+      
+      // Reset form
+      setFormData({
+        date: "",
+        time: "",
+        people: "",
+        starters: 0,
+        mainCourse: 0,
+        desserts: 0,
+        sides: 0
+      });
+      setSubmitted(false);
+      setErrors({});
     }
+  };
+
+  // Handle social media clicks
+  const handleSocialMediaClick = (platform) => {
+    const urls = {
+      instagram: "https://www.instagram.com/duzo_official",
+      facebook: "https://www.facebook.com/duzo.official",
+      twitter: "https://www.twitter.com/duzo_official"
+    };
+    
+    window.open(urls[platform], '_blank', 'noopener,noreferrer');
+  };
+
+  // Handle phone click
+  const handlePhoneClick = () => {
+    window.location.href = "tel:+919876543210";
+  };
+
+  // Handle email click
+  const handleEmailClick = () => {
+    window.location.href = "mailto:customercare@duzo.in";
   };
 
   return (
@@ -187,6 +289,13 @@ const ChefForParty = () => {
               <Row className="w-100 mx-0">
                 {/* Left Column - Form Fields and Meal Counter */}
                 <Col xs={12} md={6} className="d-flex flex-column gap-3 text-start">
+                  {/* Date-Time Conflict Alert */}
+                  {errors.dateTime && (
+                    <Alert variant="danger" className="mb-3">
+                      {errors.dateTime}
+                    </Alert>
+                  )}
+
                   {/* Date Selection */}
                   <div className="d-flex flex-column flex-md-row align-items-md-center gap-2 gap-md-3">
                     <Form.Label className="fw-bold w-100 w-md-50">Select your Date</Form.Label>
@@ -194,6 +303,7 @@ const ChefForParty = () => {
                       <Form.Control
                         type="date"
                         name="date"
+                        min={getTodayDate()}
                         isInvalid={submitted && errors.date}
                         value={formData.date}
                         onChange={handleInputChange}
@@ -203,27 +313,29 @@ const ChefForParty = () => {
                     </div>
                   </div>
 
-                  {/* Time Selection - with reduced width */}
+                  {/* Time Selection */}
                   <div className="d-flex flex-column flex-md-row align-items-md-center gap-2 gap-md-3">
                     <Form.Label className="fw-bold w-100 w-md-50">Party Start Time</Form.Label>
                     <div className="w-100 w-md-50">
-                      <div style={{ width: "80%" }}> {/* Reduced to 4/5 of original width */}
+                      <div style={{ width: "80%" }}>
                         <Form.Control
                           type="time"
                           name="time"
-                          isInvalid={submitted && errors.time}
+                          isInvalid={submitted && (errors.time || errors.dateTime)}
                           value={formData.time}
                           onChange={handleInputChange}
                           className="rounded-pill"
                         />
-                        <Form.Control.Feedback type="invalid">{errors.time}</Form.Control.Feedback>
+                        <Form.Control.Feedback type="invalid">
+                          {errors.time || errors.dateTime}
+                        </Form.Control.Feedback>
                       </div>
                     </div>
                   </div>
 
                   <p className="small text-muted fw-bold">*Our Chef arrives at least 3 hours before start time</p>
 
-                  {/* Number of People - consistent size across all modes */}
+                  {/* Number of People */}
                   <div className="d-flex flex-column flex-md-row align-items-md-center gap-2 gap-md-3 mb-3">
                     <Form.Label className="fw-bold w-100 w-md-50">Number of People</Form.Label>
                     <div className="w-100 w-md-50 d-flex">
@@ -286,7 +398,7 @@ const ChefForParty = () => {
                                 height: "35px"
                               }} 
                             />
-                            <Button
+                                                        <Button
                               variant="outline-secondary"
                               size="sm"
                               style={{
@@ -384,7 +496,7 @@ const ChefForParty = () => {
                               className="text-center" 
                               value={formData.desserts}
                               readOnly
-                                                           style={{
+                              style={{
                                 fontSize: "0.9rem", 
                                 borderRadius: '0', 
                                 borderLeft: 'none', 
@@ -479,9 +591,15 @@ const ChefForParty = () => {
   <Image src="/chef-.png" alt="Cook" fluid />
 </div>
 
-
               <div className="text-center mt-4">
-                <Button type="submit" variant="dark" className="px-4">Continue</Button>
+                <Button 
+                  type="submit" 
+                  variant="dark" 
+                  className="px-4"
+                  disabled={errors.dateTime} // Disable button if there's a date-time conflict
+                >
+                  Continue
+                </Button>
               </div>
             </Form>
           </Container>
@@ -495,43 +613,93 @@ const ChefForParty = () => {
             <Row>
               <Col md={4}>
                 <img src="/duzo.png" alt="DUZO" width="100" className="mb-2" />
-                <p>
+                
+                {/* Clickable Phone Number */}
+                <p 
+                  className="d-flex align-items-center justify-content-center"
+                  style={{ cursor: 'pointer' }}
+                  onClick={handlePhoneClick}
+                >
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     width="20"
                     height="20"
                     fill="currentColor"
                     viewBox="0 0 16 16"
+                    className="me-2"
                   >
                     <path d="M3 1a2 2 0 0 0-2 2c0 7.18 5.82 13 13 13a2 2 0 0 0 2-2v-2.35a1 1 0 0 0-1.02-1 8.92 8.92 0 0 1-3.62-.71 1 1 0 0 0-1.09.26l-1.43 1.43a11.27 11.27 0 0 1-4.52-4.52l1.43-1.43a1 1 0 0 0 .26-1.09 8.92 8.92 0 0 1-.71-3.62A1 1 0 0 0 3 1z" />
-                  </svg>{" "}
-                  Phone number
+                  </svg>
+                  <span 
+                    className="text-decoration-underline"
+                    style={{ color: '#0066cc' }}
+                  >
+                    +91 86187 05796
+                  </span>
                 </p>
-                <p>
+
+                {/* Clickable Email */}
+                <p 
+                  className="d-flex align-items-center justify-content-center"
+                  style={{ cursor: 'pointer' }}
+                  onClick={handleEmailClick}
+                >
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     width="20"
                     height="20"
                     fill="currentColor"
                     viewBox="0 0 16 16"
+                    className="me-2"
                   >
                     <path d="M0 4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V4zm2-1a1 1 0 0 0-1 1v.217l7 4.2 7-4.2V4a1 1 0 0 0-1-1H2zm13 2.383-4.708 2.825L15 11.105V5.383zm-.034 6.876-5.64-3.471L8 9.583l-1.326-.795-5.64 3.47A1 1 0 0 0 2 13h12a1 1 0 0 0 .966-.741zM1 11.105l4.708-2.897L1 5.383v5.722z"/>
-                  </svg>{" "}
-                  E-mail address
+                  </svg>
+                  <span 
+                    className="text-decoration-underline"
+                    style={{ color: '#0066cc' }}
+                  >
+                    customercare@duzo.in
+                  </span>
                 </p>
+
+                {/* Clickable Social Media Icons */}
                 <div className="d-flex justify-content-center gap-3">
-                  <p>
-                    <FaInstagram size={24} color="black" />
-                  </p>
-                  <p>
-                    <FaFacebook size={24} color="black" />
-                  </p>
-                  <div>
+                <div 
+                style={{ cursor: 'pointer' }}
+                onClick={() => window.open('https://www.instagram.com/duzo.in/', '_blank', 'noopener,noreferrer')}
+                onMouseEnter={(e) => e.target.style.transform = 'scale(1.1)'}
+                onMouseLeave={(e) => e.target.style.transform = 'scale(1)'}
+                >
+               <FaInstagram 
+               size={24} 
+               color="#E4405F" 
+               style={{ transition: 'transform 0.2s ease' }}
+               />
+               </div>
+                  <div 
+                    style={{ cursor: 'pointer' }}
+                    onClick={() => handleSocialMediaClick('facebook')}
+                    onMouseEnter={(e) => e.target.style.transform = 'scale(1.1)'}
+                    onMouseLeave={(e) => e.target.style.transform = 'scale(1)'}
+                  >
+                    <FaFacebook 
+                      size={24} 
+                      color="#1877F2" 
+                      style={{ transition: 'transform 0.2s ease' }}
+                    />
+                  </div>
+                  <div 
+                    style={{ cursor: 'pointer' }}
+                    onClick={() => handleSocialMediaClick('twitter')}
+                    onMouseEnter={(e) => e.target.style.transform = 'scale(1.1)'}
+                    onMouseLeave={(e) => e.target.style.transform = 'scale(1)'}
+                  >
                     <img
                       src="/TWIITERX.png"
                       alt="Twitter X Logo"
                       width="24"
                       height="24"
+                      style={{ transition: 'transform 0.2s ease' }}
                     />
                   </div>
                 </div>
