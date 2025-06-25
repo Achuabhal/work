@@ -1,37 +1,33 @@
-import React from 'react'
-import { Container, Form,Navbar,Nav } from "react-bootstrap";
+import React from 'react';
+import { Container, Form, Navbar } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { Link } from "react-router-dom";
 
 function NavbarOne() {
   return (
     <div>
-       <Navbar style={{ backgroundColor: "#FFD29E" }} expand="lg" className="rounded-4 my-0 ">
-  <Container >  
-    
-    <Navbar.Brand className="mb-2">
-                <Link to="/home">
-                  <img src="/duzo.png" alt="DUZO" width="100" />
-                </Link>
-              </Navbar.Brand>
+      {/* LARGE & TABLET DEVICES NAVBAR */}
+      <Navbar
+        expand="lg"
+        style={{ backgroundColor: "#FFD29E", minHeight: "203px" }}
+        className="rounded-4 my-0 d-none d-md-flex"
+      >
+        <Container fluid className="px-4 px-xl-5">
+          {/* Logo */}
+          <Navbar.Brand className="me-4">
+            <Link to="/home">
+              <img src="/duzo.png" alt="DUZO" width="120" height="80" className="img-fluid" />
+            </Link>
+          </Navbar.Brand>
 
-  
-    <Navbar.Toggle aria-controls="basic-navbar-nav" className="mb-5" />
-
-    <Navbar.Collapse id="basic-navbar-nav">
-      <div className="d-flex flex-column w-100">
-        <div className="d-flex w-100 align-items-center justify-content-between gap-3 flex-wrap">
-          
-          <div className="flex-grow-1">
-            <Form className="w-100" style={{ minWidth: "200px", maxWidth: "400px" }}>
+          {/* Main Content */}
+          <div className="d-flex align-items-center flex-grow-1 gap-3 justify-content-between">
+            {/* Search Bar */}
+            <Form style={{ flex: "1 1 460px" }}>
               <Form.Group className="input-group">
                 <div
-                  className="d-flex align-items-center w-100 rounded-pill px-2"
-                  style={{
-                    backgroundColor: "#FFBE5D",
-                    padding: "5px",
-                    border: "none",
-                  }}
+                  className="d-flex align-items-center w-75 rounded-pill px-3"
+                  style={{ backgroundColor: "#FFBE5D", height: "61px" }}
                 >
                   <Form.Control
                     type="search"
@@ -42,50 +38,109 @@ function NavbarOne() {
                 </div>
               </Form.Group>
             </Form>
-          </div>
 
-        
-          <div style={{ minWidth: "150px", maxWidth: "200px" }}>
-            <Form className="w-100">
+            {/* Location Input */}
+            <Form style={{ width: "200px" }} className="me-2">
               <Form.Group className="input-group">
                 <div
-                  className="d-flex align-items-center w-100 rounded-pill px-2"
-                  style={{
-                    backgroundColor: "#FFBE5D",
-                    padding: "5px",
-                    border: "none",
-                  }}
+                  className="d-flex align-items-center w-100 rounded-pill px-3"
+                  style={{ backgroundColor: "#FFBE5D", height: "60px" }}
                 >
-                  <Form.Control type="text" className="form-control border-0 shadow-none bg-transparent" />
-                  <img src="/image.png" alt="Image" width="25" height="25" className="ms-2" />
+                  <Form.Control
+                    type="text"
+                    className="form-control border-0 shadow-none bg-transparent"
+                  />
+                  <img src="/image.png" alt="Location" width="25" height="25" className="ms-2" />
                 </div>
               </Form.Group>
             </Form>
-          </div>
 
-          
-          <div className="d-flex align-items-center gap-2">
-            <img src="/cart.png" width="26" height="26" alt="Cart" />
-            <img src="/user.png" width="26" height="26" alt="Profile" />
+            {/* Icons */}
+            <div className="d-flex align-items-center gap-2">
+              <img src="/cart.png" alt="Cart" width="50" height="50" />
+              <img src="/user.png" alt="Profile" width="50" height="50" />
+            </div>
           </div>
+        </Container>
+      </Navbar>
+
+      {/* SMALL DEVICES NAVBAR */}
+      <div
+        className="d-flex d-md-none flex-column align-items-start gap-3 p-3"
+        style={{ backgroundColor: "#FFD29E" }}
+      >
+        {/* Logo */}
+        <div>
+          <Link to="/home">
+            <img src="/duzo.png" alt="DUZO" width="120px" height="80px" />
+          </Link>
         </div>
 
-        
-        {/* <div className="w-100 d-flex justify-content-start mt-2 px-3">
-          <Nav className="d-flex gap-3 flex-wrap">
-            <Nav.Link href="#">Homes</Nav.Link>
-            <Nav.Link href="#">Beauty</Nav.Link>
-            <Nav.Link href="#">Automobile</Nav.Link>
-            <Nav.Link href="#">Buy/Rent</Nav.Link>
-          </Nav>
-        </div> */}
+        {/* Search Input */}
+        <div className="w-100">
+          <Form>
+            <Form.Group className="input-group">
+              <div
+                className="d-flex align-items-center w-100 rounded-pill px-2"
+                style={{
+                  backgroundColor: "#FFBE5D",
+                  padding: "5px",
+                  border: "none",
+                }}
+              >
+                <Form.Control
+                  type="search"
+                  placeholder="Search"
+                  className="form-control border-0 shadow-none bg-transparent"
+                />
+                <img
+                  src="/search.png"
+                  alt="Search"
+                  width="20"
+                  height="20"
+                  className="ms-2"
+                />
+              </div>
+            </Form.Group>
+          </Form>
+        </div>
+
+        {/* Text Input */}
+        <div className="w-100">
+          <Form>
+            <Form.Group className="input-group">
+              <div
+                className="d-flex align-items-center w-100 rounded-pill px-2"
+                style={{
+                  backgroundColor: "#FFBE5D",
+                  padding: "5px",
+                  border: "none",
+                }}
+              >
+                <Form.Control
+                  type="text"
+                  className="form-control border-0 shadow-none bg-transparent"
+                />
+                <img
+                  src="/image.png"
+                  alt="Image"
+                  width="20"
+                  height="20"
+                  className="ms-2"
+                />
+              </div>
+            </Form.Group>
+          </Form>
+        </div>
+
+        {/* Icons */}
+        <div className="d-flex align-items-center gap-3">
+          <img src="/cart.png" style={{ width: "40px" }} alt="Cart" />
+          <img src="/user.png" style={{ width: "40px" }} alt="Profile" />
+        </div>
       </div>
-    </Navbar.Collapse>
-  </Container>
-</Navbar>
     </div>
-  )
+  );
 }
 
-export default NavbarOne
-
+export default NavbarOne;

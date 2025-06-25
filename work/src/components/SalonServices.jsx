@@ -26,7 +26,7 @@ const SalonServices = () => {
             maxHeight: "100vh",
           }}
         >
-          <h4 className="fw-bold text-center">Salon for Women</h4>
+          <h4 className="fw-bold text-center mx-2">Salon for Women</h4>
           <p className="text-center">Select your service</p>
 
           <div className="d-flex flex-wrap justify-content-center gap-2">

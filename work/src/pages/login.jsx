@@ -1,21 +1,23 @@
 import React, { useRef, useState } from 'react';
 import { Container, Form, Button, Row, Col } from 'react-bootstrap';
 import { X } from 'react-bootstrap-icons';
-import { Link } from "react-router-dom";
-
+import { useNavigate } from "react-router-dom";
 
 const LoginPage = () => {
   const [otp, setOtp] = useState(['', '', '', '']);
+  const [name, setName] = useState('');
+  const [phone, setPhone] = useState('');
   const otpInputs = useRef([]);
+  const navigate = useNavigate();
 
   const handleOtpChange = (index, value) => {
     // Only allow digits
     if (value && !/^\d+$/.test(value)) return;
-    
+
     const newOtp = [...otp];
     newOtp[index] = value;
     setOtp(newOtp);
-    
+
     // Move focus to next input if a digit was entered
     if (value && index < 3) {
       otpInputs.current[index + 1].focus();
@@ -29,6 +31,19 @@ const LoginPage = () => {
     }
   };
 
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    const isOtpFilled = otp.every((digit) => digit !== '');
+    if (!name.trim() || !phone.trim() || !isOtpFilled) {
+      alert("Please fill in all fields including OTP.");
+      return;
+    }
+
+    // Proceed to home only when everything is valid
+    navigate("/home");
+  };
+
   return (
     <div 
       className="d-flex justify-content-center align-items-center min-vh-100 py-3" 
@@ -36,10 +51,7 @@ const LoginPage = () => {
     >
       <Container 
         className="p-3 p-md-4 rounded-4 shadow-sm mx-2" 
-        style={{ 
-          backgroundColor: '#FDCC82', 
-          maxWidth: '400px'
-        }}
+        style={{ backgroundColor: '#FDCC82', maxWidth: '400px' }}
       >
         <div className="d-flex flex-column mb-4 position-relative">
           <div className="position-absolute end-0">
@@ -48,7 +60,7 @@ const LoginPage = () => {
           <h2 className="m-0 fw-bolder fs-4 text-center mt-5">CREATE YOUR ACCOUNT</h2>
         </div>
 
-        <Form>
+        <Form onSubmit={handleSubmit}>
           {/* Name Field */}
           <Form.Group className="fw-bold mb-3">
             <Form.Label>Name</Form.Label>
@@ -57,7 +69,10 @@ const LoginPage = () => {
                 <Form.Control 
                   type="text" 
                   placeholder="Enter your name" 
+                  value={name}
+                  onChange={(e) => setName(e.target.value)}
                   className="rounded-pill border-0 py-2 px-3 shadow-sm"
+                  required
                 />
               </Col>
             </Row>
@@ -66,18 +81,28 @@ const LoginPage = () => {
           {/* Contact Number Field */}
           <Form.Group className="fw-bold mb-3">
             <Form.Label>Contact Number</Form.Label>
-            <Row className="g-2">
-              <Col xs={3} sm={2}>
+            <Row className="g-2 align-items-center">
+              <Col xs="auto">
                 <div className="rounded-pill bg-white px-3 d-flex align-items-center justify-content-center shadow-sm h-100">
                   +91
                 </div>
               </Col>
-              <Col xs={9} sm={10} md={7}>
-                <Form.Control 
-                  type="number" 
-                  placeholder="Phone number" 
+
+              <Col xs={6} sm={5} md={6}>
+                <Form.Control
+                  type="number"
+                  placeholder="Phone number"
+                  value={phone}
+                  onChange={(e) => setPhone(e.target.value)}
+                  required
                   className="rounded-pill border-0 py-2 px-3 shadow-sm"
                 />
+              </Col>
+
+              <Col xs="auto">
+                <Button variant="dark" className="rounded-pill py-2 px-4 fw-bold">
+                  Send
+                </Button>
               </Col>
             </Row>
           </Form.Group>
@@ -95,6 +120,7 @@ const LoginPage = () => {
                     value={otp[i]}
                     onChange={(e) => handleOtpChange(i, e.target.value)}
                     onKeyDown={(e) => handleKeyDown(i, e)}
+                    required
                     className="rounded-pill border-0 text-center py-2 shadow-sm"
                     style={{ height: '40px' }}
                   />
@@ -103,21 +129,16 @@ const LoginPage = () => {
             </Row>
           </Form.Group>
 
-          {/* Login Button - Centered */}
+          {/* Login Button */}
           <Row className="justify-content-center">
             <Col xs={6} sm={6}>
-            <Link to="/home">
-                      
-                    
-                         
-                      
               <Button 
+                type="submit"
                 variant="dark" 
                 className="w-100 rounded-pill py-2 fw-bold"
               >
                 Login
               </Button>
-              </Link>
             </Col>
           </Row>
         </Form>

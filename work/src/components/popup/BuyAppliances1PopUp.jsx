@@ -23,6 +23,26 @@ function BuyAppliances1PopUp({ show, onHide }) {
     setShowThirdModal(false);
   };
 
+  // Responsive helper
+  const getFlexStyle = () => ({
+    cursor: "pointer",
+    flex: "0 0 30%",
+    maxWidth: "30%",
+    ...(window.innerWidth < 768 && {
+      flex: "0 0 100%",
+      maxWidth: "100%",
+    }),
+  });
+
+  const getBoxStyle = () => ({
+    width: 161,
+    height: 161,
+    borderRadius: 19,
+    backgroundColor: "#D9D9D9",
+    overflow: "hidden",
+    margin: "0 auto",
+  });
+
   return (
     <div>
       {/* First Modal */}
@@ -41,14 +61,12 @@ function BuyAppliances1PopUp({ show, onHide }) {
           <Modal.Body className="p-3 p-md-4" style={{ backgroundColor: "#ffd5a4" }}>
             <div className="d-flex flex-column flex-md-row justify-content-center gap-4">
               <div className="text-center" onClick={() => handleOptionSelect("Buy Furniture")} style={{ cursor: "pointer" }}>
-                <div className="mx-auto mb-3" style={{ width: 161, height: 161, borderRadius: 19, backgroundColor: "#D9D9D9", overflow: "hidden" }}>
-                </div>
+                <div style={getBoxStyle()}></div>
                 <p className="fw-bold">Buy Furniture</p>
               </div>
 
               <div className="text-center" onClick={() => handleOptionSelect("Buy Appliances")} style={{ cursor: "pointer" }}>
-                <div className="mx-auto mb-3" style={{ width: 161, height: 161, borderRadius: 19, backgroundColor: "#D9D9D9", overflow: "hidden" }}>
-                </div>
+                <div style={getBoxStyle()}></div>
                 <p className="fw-bold">Buy Appliances</p>
               </div>
             </div>
@@ -69,49 +87,24 @@ function BuyAppliances1PopUp({ show, onHide }) {
           <Modal.Header closeButton className="border-0" style={{ backgroundColor: "#ffd5a4" }}>
             <Modal.Title className="fw-bold w-100 text-center">Buy Furniture</Modal.Title>
           </Modal.Header>
-          <Modal.Body className="p-3 p-md-3" style={{ backgroundColor: "#ffd5a4", height: "500px" }}>
-          <div className="d-flex flex-wrap justify-content-center gap-4">
-  {[
-    { label: "Buy a Bed", to: "/buybed",  },
-    { label: "Buy Bedroom Storage", to: "/buybedstorage",  },
-    { label: "Buy Tables and Chairs", to: "/buytable", },
-
-
-    { label: "Buy Bean Bag", to: "/buybean", img: "/fridge.png" },
-    { label: "Buy Dining Tables", to: "/buydining", img: "/fridge.png" },
-    { label: "Buy Sofas", to: "/buysofa", img: "/fridge.png" },
-
-    // ... other items
-  ].map((item, idx) => (
-    <div
-      key={idx}
-      className="text-center"
-      onClick={handleCloseModal}
-      style={{
-        cursor: "pointer",
-        flex: "0 0 30%",
-        maxWidth: "30%"
-      }}
-    >
-      <Link className="text-decoration-none text-dark" to={item.to}>
-        <div
-          className="mx-auto mb-3"
-          style={{
-            width: 161,
-            height: 161,
-            borderRadius: 19,
-            backgroundColor: "#D9D9D9",
-            overflow: "hidden"
-          }}
-        >
-        
-        </div>
-        <p className="fw-bold">{item.label}</p>
-      </Link>
-    </div>
-  ))}
-</div>
-
+          <Modal.Body className="p-3 p-md-3" style={{ backgroundColor: "#ffd5a4", height: "auto" }}>
+            <div className="d-flex flex-wrap justify-content-center gap-4">
+              {[
+                { label: "Buy a Bed", to: "/buybed" },
+                { label: "Buy Bedroom Storage", to: "/buybedstorage" },
+                { label: "Buy Tables and Chairs", to: "/buytable" },
+                { label: "Buy Bean Bag", to: "/buybean" },
+                { label: "Buy Dining Tables", to: "/buydining" },
+                { label: "Buy Sofas", to: "/buysofa" },
+              ].map((item, idx) => (
+                <div key={idx} className="text-center" onClick={handleCloseModal} style={getFlexStyle()}>
+                  <Link className="text-decoration-none text-dark" to={item.to}>
+                    <div style={getBoxStyle()}></div>
+                    <p className="fw-bold">{item.label}</p>
+                  </Link>
+                </div>
+              ))}
+            </div>
           </Modal.Body>
         </div>
       </Modal>
@@ -129,48 +122,22 @@ function BuyAppliances1PopUp({ show, onHide }) {
           <Modal.Header closeButton className="border-0" style={{ backgroundColor: "#ffd5a4" }}>
             <Modal.Title className="fw-bold w-100 text-center">Buy Appliances</Modal.Title>
           </Modal.Header>
-          <Modal.Body className="p-3 p-md-3" style={{ backgroundColor: "#ffd5a4", height: "500px" }}>
-          <div className="d-flex flex-wrap justify-content-start gap-4">
-  {[
-    { label: "Buy Refrigerator", to: "/buyfridge", img: "/fridge.png" },
-    { label: "Buy a Washing Machine", to: "/buywashingmachine", img: "/fridge.png" },
-    { label: "Buy a Water Purifier", to: "/buywaterpurifier", img: "/fridge.png" },
-
-
-    { label: "Buy a Air Cooler", to: "/buyaircooler", img: "/fridge.png" },
-   
-
-    // ... other items
-  ].map((item, idx) => (
-    <div
-      key={idx}
-      className="text-center"
-      onClick={handleCloseModal}
-      style={{
-        cursor: "pointer",
-        flex: "0 0 30%",
-        maxWidth: "30%"
-      }}
-    >
-      <Link className="text-decoration-none text-dark" to={item.to}>
-        <div
-          className="mx-auto mb-3"
-          style={{
-            width: 161,
-            height: 161,
-            borderRadius: 19,
-            backgroundColor: "#D9D9D9",
-            overflow: "hidden"
-          }}
-        >
-          
-        </div>
-        <p className="fw-bold">{item.label}</p>
-      </Link>
-    </div>
-  ))}
-</div>
-
+          <Modal.Body className="p-3 p-md-3" style={{ backgroundColor: "#ffd5a4", height: "auto" }}>
+            <div className="d-flex flex-wrap justify-content-start gap-4">
+              {[
+                { label: "Buy Refrigerator", to: "/buyfridge" },
+                { label: "Buy a Washing Machine", to: "/buywashingmachine" },
+                { label: "Buy a Water Purifier", to: "/buywaterpurifier" },
+                { label: "Buy a Air Cooler", to: "/buyaircooler" },
+              ].map((item, idx) => (
+                <div key={idx} className="text-center" onClick={handleCloseModal} style={getFlexStyle()}>
+                  <Link className="text-decoration-none text-dark" to={item.to}>
+                    <div style={getBoxStyle()}></div>
+                    <p className="fw-bold">{item.label}</p>
+                  </Link>
+                </div>
+              ))}
+            </div>
           </Modal.Body>
         </div>
       </Modal>
