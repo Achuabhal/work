@@ -24,32 +24,36 @@ const BuySofaa = () => {
     ],
   };
 
-  const renderProductGrid = (category) => (
-    <div className="my-4" key={category}>
-      <h5 className="fw-bold mb-3">{category}</h5>
-      <Row className="g-4">
-        {products[category].map((product, index) => (
-          <Col key={index} xs={12} sm={6} md={4}>
-            <div
-              style={{
-                width: "300px",
-                height: "250px",
-                backgroundColor: "#D9D9D9",
-                borderRadius: "10px",
-                overflow: "hidden",
-                textAlign: "center",
-                marginLeft:"4rem"
-              }}
-            >
-</div>
-              <p className="fw-semibold mt-2 d-flex justify-content-center">Type 2</p>
-              <p className="fw-semibold mt-2 d-flex justify-content-center">Price</p>
-            
-          </Col>
-        ))}
-      </Row>
-    </div>
-  );
+ const renderProductGrid = (category) => (
+  <div className="my-4" key={category}>
+    <h5 className="fw-bold mb-3">{category}</h5>
+    <Row className="gx-4 gy-4 justify-content-start">
+      {products[category].map((product, index) => (
+        <Col key={index} xs="12" sm="6" md="4" lg="3" className="d-flex justify-content-center">
+          <div
+            style={{
+              width: "100%",
+              maxWidth: "300px",
+              height: "250px",
+              backgroundColor: "#D9D9D9",
+              borderRadius: "10px",
+              overflow: "hidden",
+              textAlign: "center",
+            }}
+          >
+            {/* Optional content here */}
+          </div>
+          <div className="text-center mt-2">
+            <p className="fw-semibold">{product.type || "Type 2"}</p>
+            <p className="fw-semibold">{product.price || "Price"}</p>
+          </div>
+        </Col>
+      ))}
+    </Row>
+  </div>
+);
+
+
 
   return (
     <div className="m-2">

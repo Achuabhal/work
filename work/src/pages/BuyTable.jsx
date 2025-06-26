@@ -30,11 +30,17 @@ const BuyTable = () => {
   };
 
   const renderProductGrid = (category) => (
-    <div className="my-4" key={category}>
-      <h5 className="fw-bold mb-3">{category}</h5>
-      <Row className="g-4">
-        {products[category].map((product, index) => (
-          <Col key={index} xs={12} sm={6} md={4}>
+  <div className="my-4" key={category}>
+    <h5 className="fw-bold mb-3">{category}</h5>
+    <Row className="g-5 justify-content-start flex-wrap">
+      {products[category].map((product, index) => (
+        <Col
+          key={index}
+          xs="auto"
+          className="d-flex justify-content-start mb-4"
+          style={{ minWidth: "300px", marginRight: "20px" }}
+        >
+          <div className="text-center">
             <div
               style={{
                 width: "300px",
@@ -42,19 +48,17 @@ const BuyTable = () => {
                 backgroundColor: "#D9D9D9",
                 borderRadius: "10px",
                 overflow: "hidden",
-                textAlign: "center",
-                marginLeft:"4rem"
               }}
-            >
-</div>
-              <p className="fw-semibold mt-2 d-flex justify-content-center">Type 2</p>
-              <p className="fw-semibold mt-2 d-flex justify-content-center">Price</p>
-            
-          </Col>
-        ))}
-      </Row>
-    </div>
-  );
+            ></div>
+            <p className="fw-semibold mt-2">{product.type || "Type 2"}</p>
+            <p className="fw-semibold mt-2">{product.price || "Price"}</p>
+          </div>
+        </Col>
+      ))}
+    </Row>
+  </div>
+);
+
 
   return (
     <div className="m-2">
